@@ -1,5 +1,6 @@
 {
   "name": "lucid",
+  "type":"library",
   "repo": "devlucid/lucid",
   "description": "",
   "authors": [
@@ -9,6 +10,9 @@
     "Mike Thorn <mthorn@devlucid.com>"
   ],
   "autoload": {
+      "psr-4": { "devlucid\\": "src/php/" }
+  },
+  "autoload-dev": {
       "psr-4": { "devlucid\\": "src/php/" }
   },
   "license": "MIT",
