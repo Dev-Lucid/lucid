@@ -11,5 +11,10 @@
   "autoload": {
       "psr-4": { "devlucid\\": "src/php/" }
   },
-  "license": "MIT"
+  "license": "MIT",
+  "bin": [
+      "scripts/copy_fonts.php",
+      "scripts/launch.sh",
+      "scripts/tail-log.sh"
+  ]
 }
