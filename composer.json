@@ -10,10 +10,10 @@
     "Mike Thorn <mthorn@devlucid.com>"
   ],
   "autoload": {
-      "psr-4": { "devlucid\\": "src/php/" }
+      "classmap": ["src/php/lucid.php"]
   },
   "autoload-dev": {
-      "psr-4": { "devlucid\\": "src/php/" }
+      "classmap": ["src/php/lucid.php"]
   },
   "license": "MIT",
   "bin": [
