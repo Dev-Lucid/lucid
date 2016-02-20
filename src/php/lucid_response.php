@@ -45,13 +45,13 @@ class lucid_response
         $this->data[ (($run_before)?'pre':'post') . 'Javascript' ] .= $js;
     }
 
-    public function replace($area, $content)
+    public function replace($area, $content=null)
     {
         if(!isset($area) and !is_null($this->default_position)){
             $area = $this->default_position;
         }
 
-        if(!isset($content)){
+        if(!isset($content) || is_null($content)){
             $content = ob_get_clean();
             ob_start();
         }

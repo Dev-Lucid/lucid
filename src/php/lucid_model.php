@@ -1,6 +1,6 @@
 <?php
 
-class lucid_model
+class lucid_model extends Model
 {
-    
+
 }

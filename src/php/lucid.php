@@ -13,6 +13,11 @@ class lucid
     public static $default_request = null;
     private static $actions         = [];
 
+
+    public static $lang_major = 'en';
+    public static $lang_minor = 'us';
+    public static $lang_phrases = [];
+
     public static function init()
     {
         # set the default paths. These can be overridden in a config file
@@ -20,6 +25,7 @@ class lucid
         lucid::$paths['controllers'] = lucid::$paths['app'].'/controllers';
         lucid::$paths['views']       = lucid::$paths['app'].'/views';
         lucid::$paths['models']      = realpath(__DIR__.'/../../../../../db/models/');
+        lucid::$paths['dictionaries']= realpath(__DIR__.'/../../../../../dictionaries/');
 
         lucid::$request =& $_REQUEST;
         lucid::$actions = [
@@ -33,6 +39,7 @@ class lucid
         lucid::$libs[] = __DIR__.'/lucid_model.php';
         lucid::$libs[] = __DIR__.'/lucid_response.php';
         lucid::$libs[] = __DIR__.'/lucid_logger.php';
+        lucid::$libs[] = __DIR__.'/lucid_i18n.php';
 
         $configs = func_get_args();
         foreach($configs as $config){
@@ -50,6 +57,8 @@ class lucid
         lucid::add_action('request', $action, lucid::$request);
 
         lucid::$response = new lucid_response();
+
+        lucid_i18n::load_dictionaries();
 
         if(is_null(lucid::$logger)){
             error_log('Logger is still null, instantiating default logger using psr-3 interface, output to error_log');
@@ -107,13 +116,25 @@ class lucid
         return $new_obj;
     }
 
-    public static function view($name)
+    public static function view($name, $parameters=[])
     {
         $name = lucid::_clean_file_name($name);
         $file_name = lucid::$paths['views'].'/'.$name.'.php';
         if (file_exists($file_name))
         {
-            return include($file_name);
+            foreach($parameters as $key=>$val)
+            {
+                global $$key;
+                $$key = $val;
+                lucid::log('setting global '.$key.' to '.$val);
+                //$GLOBALS[$key] = $val;
+            }
+            $result = include($file_name);
+            foreach($parameters as $key=>$val)
+            {
+                unset($GLOBALS[$key]);
+            }
+            return $result;
         }
         else
         {
@@ -151,6 +172,14 @@ class lucid
         lucid::$actions[$when][] = [$controller_method, $parameters];
     }
 
+    public static function add_phrases($phrases)
+    {
+        foreach($phrases as $key=>$value)
+        {
+            lucid::$lang_phrases[$key] = $value;
+        }
+    }
+
     public static function process_actions()
     {
         lucid::process_action_list('pre');
@@ -170,6 +199,12 @@ class lucid
         list($controller_name, $method) = explode('.',$action);
 
         $controller = lucid::controller($controller_name);
+
+        # 'view' is a special controller that just loads files. No reflection necessary
+        if($controller_name == 'view'){
+            lucid::log()->info($controller_name.'->'.$method.'()');
+            return $controller->$method($passed_params);
+        }
 
         # using reflection, determine the name of each of the parameters of the method.
         $r = new ReflectionMethod(get_class($controller), $method);
@@ -191,6 +226,6 @@ class lucid
 
         # finally, call the controller method with the bound parameters
         lucid::log()->info($controller_name.'->'.$method.'()');
-        call_user_func_array( [$controller, $method],  $bound_params);
+        return call_user_func_array( [$controller, $method],  $bound_params);
     }
 }
