@@ -4,6 +4,7 @@
 # https://octobercms.com
 
 lucid::add_phrases([
+
     'access_log:created_at'=>'Datum & tijd',
     'access_log:email'=>'E-mailadres',
     'access_log:first_name'=>'Voornaam',
@@ -13,6 +14,7 @@ lucid::add_phrases([
     'access_log:login'=>'Gebruikersnaam',
     'access_log:menu_description'=>'Bekijk een lijst met succesvolle inlogpogingen van gebruikers.',
     'access_log:menu_label'=>'Toegangslogboek',
+
     'account:apply'=>'Toepassen',
     'account:cancel'=>'Annuleren',
     'account:delete'=>'Verwijderen',
@@ -34,12 +36,16 @@ lucid::add_phrases([
     'account:restore_error'=>'Een gebruiker met de gebruikersnaam \':login\' is niet gevonden',
     'account:restore_success'=>'Een e-mail met instructies om het wachtwoord te herstellen is verzonden naar jouw e-mailadres.',
     'account:sign_out'=>'Uitloggen',
+
     'ajax_handler:invalid_name'=>'Ongeldige AJAX handlernaam: :name.',
     'ajax_handler:not_found'=>'AJAX handler \':name\' is niet gevonden.',
+
     'alert:cancel_button_text'=>'Annuleren',
     'alert:confirm_button_text'=>'OK',
+
     'app:name'=>'October CMS',
     'app:tagline'=>'Getting back to basics',
+
     'asset:already_exists'=>'Bestand of map met deze naam bestaat al',
     'asset:create_directory'=>'Nieuwe map',
     'asset:create_file'=>'Nieuw bestand',
@@ -80,12 +86,16 @@ lucid::add_phrases([
     'asset:type_not_allowed'=>'Enkel de volgende bestandstypen zijn toegestaand: :allowed_types',
     'asset:unsaved_label'=>'Niet opgeslagen middelen',
     'asset:upload_files'=>'Bestand(en) uploaden',
+
     'auth:title'=>'Beheeromgeving',
+
     'backend_preferences:locale'=>'Taal',
     'backend_preferences:locale_comment'=>'Selecteer jouw gewenste taal.',
     'backend_preferences:menu_description'=>'Beheer taalvoorkeur en de weergave van het CMS.',
     'backend_preferences:menu_label'=>'CMS voorkeuren',
+
     'behavior:missing_property'=>'Klasse :class moet variabele $:property bevatten welke gebruikt wordt door het gedrag (behavior) :behavior.',
+
     'branding:app_name'=>'Applicatie naam',
     'branding:app_name_description'=>'Deze naam wordt weergegeven bij de titel van de beheeromgeving.',
     'branding:app_tagline'=>'Applicatie slogan',
@@ -102,7 +112,9 @@ lucid::add_phrases([
     'branding:secondary_dark'=>'Secundair (Donker)',
     'branding:secondary_light'=>'Secundair (Licht)',
     'branding:styles'=>'Stijlen',
+
     'cms:menu_label'=>'CMS',
+
     'cms_object:delete_success'=>'Templates zijn succesvol verwijderd: :count.',
     'cms_object:error_creating_directory'=>'Map aanmaken mislukt: \":name\". Controleer de schrijfrechten.',
     'cms_object:error_deleting'=>'Fout bij het verwijderen van template: \":name\". Controleer de schrijfrechten.',
@@ -112,7 +124,9 @@ lucid::add_phrases([
     'cms_object:invalid_file'=>'Ongeldige bestandsnaam: :name. Bestandsnamen mogen enkel bestaan uit letters, cijfers, underscores, streepjes en punten. Voorbeelden van correcte bestandsnamen: pagina.htm, pagina, map/pagina',
     'cms_object:invalid_file_extension'=>'Ongeldige bestandsextensie: :invalid. Toegestane extensies zijn: :allowed.',
     'cms_object:invalid_property'=>'Parameter \":name\" kan niet worden gewijzigd',
+
     'combiner:not_found'=>'Het samenvoegbestand \':name\' is niet gevonden.',
+
     'component:alias'=>'Alias',
     'component:alias_description'=>'Een unieke naam voor dit component voor gebruik in de code van een pagina of layout.',
     'component:invalid_request'=>'De template kan niet worden opgeslagen vanwege ongeldige componentgegevens.',
@@ -123,8 +137,10 @@ lucid::add_phrases([
     'component:not_found'=>'Het component \':name\' is niet gevonden.',
     'component:unnamed'=>'Naamloos',
     'component:validation_message'=>'Een alias voor het component is verplicht en mag alleen bestaan uit letters, cijfers en underscores. De alias moet beginnen met een letter.',
+
     'config:not_found'=>'Kan het configuratiebestand :file gedefinieerd voor :location niet vinden.',
     'config:required'=>'Configuratie gebruikt in :location moet de waarde :property toewijzen.',
+
     'content:delete_confirm_multiple'=>'Weet je zeker dat je de geselecteerde tekstblokken of mappen wilt verwijderen?',
     'content:delete_confirm_single'=>'Weet je zeker dat je dit tekstblok wilt verwijderen?',
     'content:menu_label'=>'Tekstblokken',
@@ -132,6 +148,7 @@ lucid::add_phrases([
     'content:no_list_records'=>'Geen tekstblokken (content) gevonden',
     'content:not_found_name'=>'Het tekstblok (content) \':name\' is niet gevonden.',
     'content:unsaved_label'=>'Niet opgeslagen tekstblokken',
+
     'dashboard:add_widget'=>'Widget toevoegen',
     'dashboard:columns'=>'{1} kolom|[2,Inf] kolommen',
     'dashboard:full_width'=>'Volledige breedte',
@@ -151,7 +168,9 @@ lucid::add_phrases([
     'dashboard:widget_title_error'=>'Een widget titel is verplicht.',
     'dashboard:widget_title_label'=>'Widget titel',
     'dashboard:widget_width'=>'Breedte',
+
     'directory:create_fail'=>'Map aanmaken mislukt: :name',
+
     'editor:auto_closing'=>'Sluit tags en speciale karakters automatisch',
     'editor:code'=>'Code',
     'editor:code_folding'=>'Code invouwing',
@@ -182,6 +201,7 @@ lucid::add_phrases([
     'editor:url'=>'URL',
     'editor:use_hard_tabs'=>'Inspringen met tabs',
     'editor:word_wrap'=>'Tekstterugloop',
+
     'event_log:created_at'=>'Datum & tijd',
     'event_log:empty_link'=>'Gebeurtenissenlogboek legen',
     'event_log:empty_loading'=>'Bezig met het gebeurtenissenlogboek legen...',
@@ -194,9 +214,12 @@ lucid::add_phrases([
     'event_log:menu_label'=>'Gebeurtenissenlogboek',
     'event_log:message'=>'Bericht',
     'event_log:return_link'=>'Terug naar gebeurtenissenlogboek',
+
     'field:invalid_type'=>'Ongeldig type veld: :type.',
     'field:options_method_not_exists'=>'De modelklasse :model moet de methode :method() definiëren met daarin opties voor het veld \":field\".',
+
     'file:create_fail'=>'Bestand aanmaken mislukt: :name',
+
     'fileupload:attachment'=>'Bijlage',
     'fileupload:attachment_url'=>'Bijlage URL',
     'fileupload:default_prompt'=>'Klik op %s of sleep hier een bestand naar toe om te uploaden',
@@ -207,7 +230,9 @@ lucid::add_phrases([
     'fileupload:title_label'=>'Titel',
     'fileupload:upload_error'=>'Upload fout',
     'fileupload:upload_file'=>'Upload bestand',
+
     'filter:all'=>'alle',
+
     'form:action_confirm'=>'Weet je het zeker?',
     'form:add'=>'Toevoegen',
     'form:apply'=>'Toepassen',
@@ -261,6 +286,7 @@ lucid::add_phrases([
     'form:undefined_tab'=>'Overig',
     'form:update_success'=>':name is succesvol bijgewerkt',
     'form:update_title'=>'Bewerk :name',
+
     'import_export:auto_match_columns'=>'Automatisch matchen van kolommen',
     'import_export:column'=>'Kolom',
     'import_export:column_preview'=>'Kolom voorbeeldweergave',
@@ -299,6 +325,7 @@ lucid::add_phrases([
     'import_export:upload_csv_file'=>'1. Upload een CSV bestand',
     'import_export:upload_valid_csv'=>'Upload een geldig CSV bestand.',
     'import_export:warnings'=>'Waarschuwingen',
+
     'install:install_completing'=>'Bezig met het afronden van het installatieproces',
     'install:install_success'=>'De plugin is succesvol geïnstalleerd.',
     'install:missing_plugin_name'=>'Voer de naam van een plugin in om te installeren.',
@@ -306,6 +333,7 @@ lucid::add_phrases([
     'install:plugin_label'=>'Installeer plugin',
     'install:project_label'=>'Koppel aan project',
     'install:theme_label'=>'Installeer thema',
+
     'layout:delete_confirm_multiple'=>'Weet je zeker dat je de geselecteerde layouts wilt verwijderen?',
     'layout:delete_confirm_single'=>'Weet je zeker dat je deze layout wilt verwijderen?',
     'layout:menu_label'=>'Layouts',
@@ -313,6 +341,7 @@ lucid::add_phrases([
     'layout:no_list_records'=>'Geen layouts gevonden',
     'layout:not_found_name'=>'De layout \':name\' is niet gevonden',
     'layout:unsaved_label'=>'Niet opgeslagen layouts',
+
     'list:behavior_not_ready'=>'Gedrag (behavior) van de lijst is niet geladen. Controleer of makeLists() in de controller is aangeroepen.',
     'list:column_switch_false'=>'Nee',
     'list:column_switch_true'=>'Ja',
@@ -338,6 +367,7 @@ lucid::add_phrases([
     'list:setup_help'=>'Selecteer door middel van vinkjes de kolommen welke je in de lijst wilt zien. Je kunt de volgorde van kolommen veranderen door ze omhoog of omlaag te slepen.',
     'list:setup_title'=>'Lijst instellingen',
     'list:updating'=>'Bijwerken...',
+
     'locale:cs'=>'Czech',
     'locale:de'=>'German',
     'locale:el'=>'Greek',
@@ -362,6 +392,7 @@ lucid::add_phrases([
     'locale:tr'=>'Turkish',
     'locale:zh-cn'=>'Chinese (China)',
     'locale:zh-tw'=>'Chinese (Taiwan)',
+
     'mail:drivers_hint_content'=>'Om deze e-mail methode te gebruiken moet de plugin \":plugin\" zijn geïnstalleerd.',
     'mail:drivers_hint_header'=>'Stuurprogramma\'s niet geïnstalleerd',
     'mail:general'=>'Algemeen',
@@ -395,6 +426,7 @@ lucid::add_phrases([
     'mail:smtp_port'=>'SMTP poort',
     'mail:smtp_ssl'=>'SSL verbinding vereist',
     'mail:smtp_username'=>'Gebruikersnaam',
+
     'mail_templates:code'=>'Code',
     'mail_templates:code_comment'=>'Een unieke code die refereert naar deze lay-out',
     'mail_templates:content_css'=>'CSS',
@@ -428,10 +460,12 @@ lucid::add_phrases([
     'mail_templates:test_confirm'=>'Er zal een testbericht verstuurd worden naar :email. Zal ik doorgaan?',
     'mail_templates:test_send'=>'Stuur testbericht',
     'mail_templates:test_success'=>'Het testbericht is succesvol verzonden.',
+
     'maintenance:is_enabled'=>'Onderhoudsmodus inschakelen',
     'maintenance:is_enabled_comment'=>'Toon de volgende pagina als onderhoudsmodus is ingeschakeld:',
     'maintenance:settings_menu'=>'Onderhoudsmodus',
     'maintenance:settings_menu_description'=>'Instellingen voor de onderhoudsmodus pagina.',
+
     'markdowneditor:bold'=>'Vet',
     'markdowneditor:code'=>'Code',
     'markdowneditor:formatting'=>'Opmaak',
@@ -451,6 +485,7 @@ lucid::add_phrases([
     'markdowneditor:quote'=>'Quote',
     'markdowneditor:unorderedlist'=>'Ongeordende lijst',
     'markdowneditor:video'=>'Video',
+
     'media:add_folder'=>'Map toevoegen',
     'media:click_here'=>'Klik hier',
     'media:crop_and_insert'=>'Uitsnijden & Invoegen',
@@ -510,7 +545,9 @@ lucid::add_phrases([
     'media:uploading_error'=>'Upload mislukt',
     'media:uploading_file_num'=>'Uploaden van :number bestanden...',
     'media:width'=>'Breedte',
+
     'mediafinder:default_prompt'=>'Klik op de %s knop om een media item te vinden',
+
     'mediamanager:insert_audio'=>'Invoegen Media Audio',
     'mediamanager:insert_image'=>'Invoegen Media Afbeelding',
     'mediamanager:insert_link'=>'Invoegen Media Link',
@@ -520,6 +557,7 @@ lucid::add_phrases([
     'mediamanager:invalid_file_single_insert'=>'Selecteer één bestand.',
     'mediamanager:invalid_image_empty_insert'=>'Selecteer afbeelding(en) om in te voegen.',
     'mediamanager:invalid_video_empty_insert'=>'Selecteer een video bestand om in te voegen.',
+
     'model:invalid_class'=>'Model :model gebruikt in :class is ongeldig. Het moet van de \\Model klasse erven (inherit).',
     'model:mass_assignment_failed'=>'Massa toewijzing voor Model attribute \':attribute\' mislukt.',
     'model:missing_id'=>'Record ID van het model is niet opgegeven.',
@@ -527,11 +565,14 @@ lucid::add_phrases([
     'model:missing_relation'=>'Model \':class\' bevat geen definitie voor \':relation\'.',
     'model:name'=>'Model',
     'model:not_found'=>'Model \':class\' met ID :id is niet gevonden',
+
     'myaccount:menu_description'=>'Werk accountinstellingen zoals naam, e-mailadres en wachtwoord bij.',
     'myaccount:menu_keywords'=>'security login',
     'myaccount:menu_label'=>'Mijn account',
+
     'mysettings:menu_description'=>'Instellingen gerelateerd aan jouw beheeraccount',
     'mysettings:menu_label'=>'Mijn instellingen',
+
     'page:access_denied:cms_link'=>'Terug naar CMS',
     'page:access_denied:help'=>'Je hebt niet de benodigde rechten om deze pagina te bekijken.',
     'page:access_denied:label'=>'Toegang geweigerd',
@@ -550,6 +591,7 @@ lucid::add_phrases([
     'page:not_found_name'=>'De pagina \':name\' is niet gevonden.',
     'page:unsaved_label'=>'Niet opgeslagen pagina\'s',
     'page:untitled'=>'Naamloos',
+
     'partial:delete_confirm_multiple'=>'Weet je zeker dat je de geselecteerde sjablonen wilt verwijderen?',
     'partial:delete_confirm_single'=>'Weet je zeker dat je dit sjabloon wilt verwijderen?',
     'partial:invalid_name'=>'Ongeldige naam voor sjabloon (partial): :name.',
@@ -558,6 +600,7 @@ lucid::add_phrases([
     'partial:no_list_records'=>'Geen sjablonen (partial) gevonden',
     'partial:not_found_name'=>'Het sjabloon (partial) \':name\' is niet gevonden.',
     'partial:unsaved_label'=>'Niet opgeslagen sjablonen',
+
     'permissions:access_logs'=>'Bekijk systeem logbestanden',
     'permissions:manage_assets'=>'Beheer middelen',
     'permissions:manage_branding'=>'Back-end aanpassen',
@@ -575,10 +618,12 @@ lucid::add_phrases([
     'permissions:manage_system_settings'=>'Beheer systeeminstellingen',
     'permissions:manage_themes'=>'Beheer thema\'s',
     'permissions:name'=>'Cms',
+
     'plugin:label'=>'Plugin',
     'plugin:name:help'=>'Gebruik bij het invoeren van de naam de unieke code van de plugin. Bijvoorbeeld: RainLab.Blog',
     'plugin:name:label'=>'Plugin naam',
     'plugin:unnamed'=>'Naamloze plugin',
+
     'plugins:disable_confirm'=>'Weet je het zeker dat je deze plugin wilt uitschakelen?',
     'plugins:disable_success'=>'Gekozen plugins zijn succesvol uitgeschakeld.',
     'plugins:disabled_help'=>'Uitgeschakelde plugins worden genegeerd door de applicatie.',
@@ -603,6 +648,7 @@ lucid::add_phrases([
     'plugins:search'=>'Zoek plugins om te installeren',
     'plugins:selected_amount'=>'Geselecteerde plugins: :amount',
     'plugins:unknown_plugin'=>'De plugin is verwijderd van het bestandssysteem.',
+
     'project:attach'=>'Project koppelen',
     'project:detach'=>'Project ontkoppelen',
     'project:detach_confirm'=>'Weet je zeker dat je dit project wilt ontkoppelen?',
@@ -613,7 +659,9 @@ lucid::add_phrases([
     'project:none'=>'Geen',
     'project:owner_label'=>'Eigenaar',
     'project:unbind_success'=>'Project is succesvol ontkoppeld.',
+
     'recordfinder:find_record'=>'Zoek record',
+
     'relation:add'=>'Toevoegen',
     'relation:add_a_new'=>'Nieuwe :name toevoegen',
     'relation:add_name'=>':name toevoegen',
@@ -645,8 +693,10 @@ lucid::add_phrases([
     'relation:unlink_name'=>'Ontkoppel :name',
     'relation:update'=>'Wijzigen',
     'relation:update_name'=>'Wijzig :name',
+
     'reorder:default_title'=>'Rangschik records',
     'reorder:no_records'=>'Er zijn geen records beschikbaar om te rangschikken.',
+
     'request_log:count'=>'Aantal',
     'request_log:empty_link'=>'Aanvragenlogboek legen',
     'request_log:empty_loading'=>'Bezig met het aanvragenlogboek legen...',
@@ -660,20 +710,24 @@ lucid::add_phrases([
     'request_log:return_link'=>'Terug naar het aanvragenlogboek',
     'request_log:status_code'=>'Status',
     'request_log:url'=>'URL',
+
     'server:connect_error'=>'Fout tijdens het verbinden met de server.',
     'server:file_corrupt'=>'Door server aangeboden bestand is corrupt.',
     'server:file_error'=>'Fout tijdens aanleveren bestand door server.',
     'server:response_empty'=>'Lege reactie van de server.',
     'server:response_invalid'=>'Ongeldige reactie van de server.',
     'server:response_not_found'=>'De updateserver kan niet worden gevonden.',
+
     'settings:menu_label'=>'Instellingen',
     'settings:missing_model'=>'De instellingenpagina mist de definitie van een Model.',
     'settings:not_found'=>'Kan specifieke instelling niet vinden.',
     'settings:return'=>'Terug naar systeeminstellingen',
     'settings:search'=>'Zoeken',
     'settings:update_success'=>'Instellingen voor :name zijn succesvol bijgewerkt.',
+
     'sidebar:add'=>'Toevoegen',
     'sidebar:search'=>'Zoeken...',
+
     'system:categories:cms'=>'CMS',
     'system:categories:customers'=>'Klanten',
     'system:categories:events'=>'Events',
@@ -688,9 +742,11 @@ lucid::add_phrases([
     'system:categories:users'=>'Gebruikers',
     'system:menu_label'=>'Systeem',
     'system:name'=>'Systeem',
+
     'template:invalid_type'=>'Onbekend type template.',
     'template:not_found'=>'De opgevraagde template is niet gevonden.',
     'template:saved'=>'De template is succesvol opgeslagen.',
+
     'theme:activate_button'=>'Activeren',
     'theme:active:not_found'=>'Het actieve thema is niet gevonden.',
     'theme:active:not_set'=>'Er is geen actief thema geselecteerd.',
@@ -758,13 +814,16 @@ lucid::add_phrases([
     'theme:theme_label'=>'Thema',
     'theme:theme_title'=>'Thema\'s',
     'theme:unnamed'=>'Naamloos thema',
+
     'themes:install'=>'Installeer themas',
     'themes:installed'=>'Geïnstalleerde thema\'s',
     'themes:no_themes'=>'Er zijn geen thema\'s geinstallerd uit de marketplace.',
     'themes:recommended'=>'Aanbevolen',
     'themes:remove_confirm'=>'Weet je zeker dat je dit thema wilt verwijderen?',
     'themes:search'=>'Zoek thema\'s om te installeren...',
+
     'tooltips:preview_website'=>'Voorvertoning website',
+
     'updates:check_label'=>'Controleer op updates',
     'updates:core_build'=>'Build :build',
     'updates:core_build_help'=>'De meest recente versie is beschikbaar.',
@@ -817,6 +876,7 @@ lucid::add_phrases([
     'updates:update_label'=>'Applicatie bijwerken',
     'updates:update_loading'=>'Beschikbare updates laden...',
     'updates:update_success'=>'Het updateproces is succesvol afgerond.',
+
     'user:account'=>'Account',
     'user:allow'=>'Toestaat',
     'user:avatar'=>'Avatar',
@@ -856,6 +916,7 @@ lucid::add_phrases([
     'user:send_invite_comment'=>'Vink deze optie aan om de gebruiker een uitnodiging per e-mail te sturen',
     'user:superuser'=>'Supergebruiker',
     'user:superuser_comment'=>'Vink deze optie aan om de gebruiker volledige rechten tot het systeem te geven.',
+
     'validation:accepted'=>'Het veld :attribute moet worden geaccepteerd.',
     'validation:active_url'=>'De URL van :attribute is ongeldig.',
     'validation:after'=>'De datum van :attribute moet een waarde zijn na :date.',
@@ -904,11 +965,14 @@ lucid::add_phrases([
     'validation:size:string'=>'Het aantal tekens van :attribute moet exact :size zijn.',
     'validation:unique'=>'Het veld :attribute is al toegewezen.',
     'validation:url'=>'De URL van :attribute is ongeldig.',
+
     'warnings:extension'=>'De PHP extensie :name is niet geïnstalleerd. Installeer deze bibliotheek en activeer de extensie.',
     'warnings:permissions'=>'De map :name of de submapen zijn niet schrijfbaar voor PHP. Zet de bijhorende rechten voor de webserver in deze map.',
     'warnings:tips'=>'Systeem configuratie tips',
     'warnings:tips_description'=>'Er zijn problemen gevonden waar je aandacht aan moet besteden om uw systeem goed te configureren.',
+
     'widget:not_bound'=>'Een widget met klassenaam \':name\' is niet gekoppeld aan de controller',
     'widget:not_registered'=>'Een widget met klassenaam \':name\' is niet geregistreerd',
+
     'zip:extract_failed'=>'Kan het corebestand \':file\' niet uitpakken.',
 ]);

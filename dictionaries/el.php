@@ -4,6 +4,7 @@
 # https://octobercms.com
 
 lucid::add_phrases([
+
     'access_log:created_at'=>'Ημερομηνία & Ώρα',
     'access_log:email'=>'Email',
     'access_log:first_name'=>'Όνομα',
@@ -13,6 +14,7 @@ lucid::add_phrases([
     'access_log:login'=>'Σύνδεση',
     'access_log:menu_description'=>'Λίστα με τις επιτυχημένες προσβάσεις στο back-end.',
     'access_log:menu_label'=>'Αρχείο καταγραφής προσβάσεων',
+
     'account:apply'=>'Εφαρμογή',
     'account:cancel'=>'Άκυρο',
     'account:delete'=>'Διαγραφή',
@@ -34,12 +36,16 @@ lucid::add_phrases([
     'account:restore_error'=>'Δεν βρέθηκε χρήστης με τα στοιχεία \':login\'',
     'account:restore_success'=>'Ένα email έχει σταλεί στην διεύθυνση ηλεκτρονικού ταχυδρομείου σου με τις οδηγίες επαναφοράς του κωδικού σου.',
     'account:sign_out'=>'Αποσύνδεση',
+
     'ajax_handler:invalid_name'=>'Μη έγκυρο όνομα χειριστή AJAX: :name.',
     'ajax_handler:not_found'=>'Ο χειρίστης AJAX \':name\' δεν βρέθηκε.',
+
     'alert:cancel_button_text'=>'Άκυρο',
     'alert:confirm_button_text'=>'Εντάξει',
+
     'app:name'=>'October CMS',
     'app:tagline'=>'Επιστροφή στα βασικά',
+
     'asset:already_exists'=>'Το αρχείο ή ο κατάλογος με αυτό το όνομα υπάρχει ήδη',
     'asset:create_directory'=>'Δημιουργία καταλόγου',
     'asset:create_file'=>'Δημιουργία αρχείου',
@@ -80,12 +86,16 @@ lucid::add_phrases([
     'asset:type_not_allowed'=>'Επιτρέπονται μόνο οι επόμενοι τύποι αρχείων:allowed_types',
     'asset:unsaved_label'=>'Μη αποθηκευμενοι ποροι',
     'asset:upload_files'=>'Ανέβασμα αρχείου(α)',
+
     'auth:title'=>'Περιοχή Διαχείρισης',
+
     'backend_preferences:locale'=>'Γλώσσα',
     'backend_preferences:locale_comment'=>'Επιλέξτε την επιθυμητή τοπική περιοχή για την χρήση γλώσσας.',
     'backend_preferences:menu_description'=>'Διαχειριστείτε τις ρυθμίσεις του λογαριασμού σας όπως την επιθυμητή γλώσσα.',
     'backend_preferences:menu_label'=>'Προτιμήσεις Back-End',
+
     'behavior:missing_property'=>'Η κλάση :class πρέπει να καθορίζει την ιδιότητα $:property που χρησιμοποιείτε από την συμπεριφορά :behavior.',
+
     'branding:app_name'=>'Όνομα Εφαρμογής',
     'branding:app_name_description'=>'Το όνομα αυτό εμφανίζεται στην περιοχή τίλιου του back-end.',
     'branding:app_tagline'=>'Ετικέτα Εφαρμογής',
@@ -102,7 +112,9 @@ lucid::add_phrases([
     'branding:secondary_dark'=>'Δευτερεύων (Σκούρο)',
     'branding:secondary_light'=>'Δευτερεύων (Ανοιχτό)',
     'branding:styles'=>'Στυλ',
+
     'cms:menu_label'=>'CMS',
+
     'cms_object:delete_success'=>'Τα πρότυπα τα οποία διαγράφηκαν επιτυχώς: :count.',
     'cms_object:error_creating_directory'=>'Σφάλμα δημιουργίας του καταλόγου :name. Παρακαλούμε ελέγξτε τα δικαιώματα εγγραφής.',
     'cms_object:error_deleting'=>'Σφάλμα διαγράφης του αρχείου \':name\' του προτύπου. Παρακαλούμε ελέγξτε τα δικαιώματα εγγραφής.',
@@ -112,7 +124,9 @@ lucid::add_phrases([
     'cms_object:invalid_file'=>'Μη έγκυρο όνομα αρχείου: :name. Τα ονόματα αρχείων μπορούν να περιέχουν μόνο αλφαριθμητικά σύμβολα, κάτω παύλες, παύλες και τελείες. Μερικά παραδείγματα σωστών ονομάτων αρχείων: page.htm, page, subdirectory/page',
     'cms_object:invalid_file_extension'=>'Μη έγκυρη επέκταση αρχείου: :invalid. Οι επιτρεπόμενες επεκτάσεις είναι: :allowed.',
     'cms_object:invalid_property'=>'Η ιδιότητα \':name\' δεν μπορεί να οριστεί.',
+
     'combiner:not_found'=>'Το αρχείο συγχώνευσης \':name\' δεν βρέθηκε.',
+
     'component:alias'=>'Ψευδώνυμο',
     'component:alias_description'=>'Ένα μοναδικό όνομα δίνεται σε αυτό το συστατικό όταν το χρησιμοποιείτε στον κώδικα της σελίδας ή της διάταξης.',
     'component:invalid_request'=>'Το πρότυπο δεν μπορεί να σωθεί λόγω των μη έγκυρων δεδομένων του συστατικού.',
@@ -123,8 +137,10 @@ lucid::add_phrases([
     'component:not_found'=>'Το συστατικό \':name\' δεν βρέθηκε.',
     'component:unnamed'=>'Χωρίς Όνομα',
     'component:validation_message'=>'Τα ψευδώνυμα των συστατικών είναι υποχρεωτικά και μπορούν να περιέχουν μόνο Λατινικά σύμβολα, αριθμούς, και κάτω παύλες. Τα ψευδώνυμα θα πρέπει να αρχίζουν με ένα λατινικό σύμβολο.',
+
     'config:not_found'=>'Δεν κατέστη δυνατό να βρεθεί το αρχείο διαμόρφωσης :file το οποίο ορίστηκε στην διαδρομή :location.',
     'config:required'=>'Η διαμόρφωση που χρησιμοποιήθηκε στην διαδρομή :location πρέπει να παρέχει μια τιμή \':property\'.',
+
     'content:delete_confirm_multiple'=>'Είστε σίγουροι ότι θέλετε να διαγράψετε τα επιλεγμένα αρχεία περιχεόμενου ή τους καταλόγους;',
     'content:delete_confirm_single'=>'Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το αρχείο περιεχομένου;',
     'content:menu_label'=>'Περιεχόμενο',
@@ -132,6 +148,7 @@ lucid::add_phrases([
     'content:no_list_records'=>'Δεν βρέθηκαν αρχεία περιεχομένου.',
     'content:not_found_name'=>'Το αρχείο περιεχομένου \':name\' δεν βρέθηκε.',
     'content:unsaved_label'=>'Μη αποθηκευμένο περιεχόμενο',
+
     'dashboard:add_widget'=>'Προσθήκη Widget',
     'dashboard:columns'=>'{1} στηλη|[2,Inf] στήλες',
     'dashboard:full_width'=>'πλήρες πλάτος',
@@ -151,7 +168,9 @@ lucid::add_phrases([
     'dashboard:widget_title_error'=>'O τίτλος του Widget είναι απαραίτητος.',
     'dashboard:widget_title_label'=>'Τίτλος Widget',
     'dashboard:widget_width'=>'Πλάτος',
+
     'directory:create_fail'=>'Δεν είναι δυνατή η δημιουργία του καταλόγου: :name',
+
     'editor:auto_closing'=>'Αυτόματο κλείσιμο ετικετών και ειδικών χαρακτήρων',
     'editor:code'=>'Κώδικας',
     'editor:code_folding'=>'Αναδίπλωση κώδικα',
@@ -182,6 +201,7 @@ lucid::add_phrases([
     'editor:url'=>'URL',
     'editor:use_hard_tabs'=>'Εσοχή με την χρήση tabs',
     'editor:word_wrap'=>'Αναδίπλωση κειμένου',
+
     'event_log:created_at'=>'Ημέρα & Ώρα',
     'event_log:empty_link'=>'Άδειασμα καταγραφής συμβάντων',
     'event_log:empty_loading'=>'Αδειάζει το αρχείο καταγραφής συμβάντων...',
@@ -194,9 +214,12 @@ lucid::add_phrases([
     'event_log:menu_label'=>'Καταγραφή συμβάντων',
     'event_log:message'=>'Μήνυμα',
     'event_log:return_link'=>'Επιστροφή στην καταγραφή συμβάντων',
+
     'field:invalid_type'=>'Χρησιμοποιήθηκε μη έγκυρος τύπος πεδίου :type.',
     'field:options_method_not_exists'=>'H κλάση του μοντέλου πρέπει να καθορίζει μια μέθοδο :method() επιστροφής επίλογων για το πεδίο \':field\'',
+
     'file:create_fail'=>'Δεν είναι δυνατή η δημιουργία του αρχείου: :name',
+
     'fileupload:attachment'=>'Επισύναψη',
     'fileupload:attachment_url'=>'URL Συνημμένου',
     'fileupload:default_prompt'=>'Κάντε κλικ στο %s ή σύρετε ένα αρχείο εδώ για να το ανεβάσετε',
@@ -207,7 +230,9 @@ lucid::add_phrases([
     'fileupload:title_label'=>'Τίτλος',
     'fileupload:upload_error'=>'Σφάλμα ανεβάσματος',
     'fileupload:upload_file'=>'Ανέβασμα αρχείου',
+
     'filter:all'=>'όλα',
+
     'form:action_confirm'=>'Είστε σίγουροι;',
     'form:add'=>'Προσθήκη',
     'form:apply'=>'Εφαρμογή',
@@ -257,6 +282,7 @@ lucid::add_phrases([
     'form:undefined_tab'=>'Διάφορα',
     'form:update_success'=>'Το :name έχει ενημερωθεί επιτυχώς',
     'form:update_title'=>'Επεξεργασία :name',
+
     'install:install_completing'=>'Ολοκλήρωση διαδικασίας εγκατάστασης',
     'install:install_success'=>'Το πρόσθετο εγκαταστάθηκε επιτυχώς',
     'install:missing_plugin_name'=>'Παρακαλούμε προσδιορίστε το όνομα του Πρόσθετου για την εγκατάσταση',
@@ -264,6 +290,7 @@ lucid::add_phrases([
     'install:plugin_label'=>'Εγκατάσταση Πρόσθετου',
     'install:project_label'=>'Σύνδεση με το Project',
     'install:theme_label'=>'Εγκατάσταση Θέματος',
+
     'layout:delete_confirm_multiple'=>'Είστε σίγουροι ότι θέλετε να διαγράψετε τις επιλεγμένες διατάξεις;',
     'layout:delete_confirm_single'=>'Είστε σίγουροι ότι θέλετε να διαγράψετε αυτήν την διάταξη;',
     'layout:menu_label'=>'Διατάξεις',
@@ -271,6 +298,7 @@ lucid::add_phrases([
     'layout:no_list_records'=>'Δεν βρέθηκε η διάταξη',
     'layout:not_found_name'=>'The layout \':name\' is not found',
     'layout:unsaved_label'=>'Μη αποθηκευμένες διατάξεις',
+
     'list:behavior_not_ready'=>'Η συμπεριφορά της λίστας δεν έχει αρχικοποιηθεί, ελέγξτε ότι έχετε καλέσει την makeLists() στον χειριστή.',
     'list:default_title'=>'Λίστα',
     'list:delete_selected'=>'Διαγραφή επιλεγμένου',
@@ -292,6 +320,7 @@ lucid::add_phrases([
     'list:search_prompt'=>'Αναζήτηση...',
     'list:setup_help'=>'Χρησιμοποιήστε το πλαίσιο ελέγχου για να επιλέξετε τις στήλες που θέλετε να δείτε στην λίστα. Μπορείτε να αλλάξετε την θέση των στηλών με το σύρσιμο πάνω και κάτω.',
     'list:setup_title'=>'Ρύθμιση Λίστας',
+
     'locale:cs'=>'Τσέχος',
     'locale:de'=>'Γερμανικά',
     'locale:el'=>'Ελληνικά',
@@ -316,6 +345,7 @@ lucid::add_phrases([
     'locale:tr'=>'Τουρκικά',
     'locale:zh-cn'=>'Κινέζικα (Κίνα)',
     'locale:zh-tw'=>'Κινέζικα (Ταϊβάν)',
+
     'mail:drivers_hint_content'=>'Αυτή η μέθοδος ταχυδρομείου απαιτεί να είναι εγκατεστημένο το πρόσθετο \":plugin\" πριν μπορέσετε να αποστείλετε ένα ηλεκτρονικό ταχυδρομείο.',
     'mail:drivers_hint_header'=>'Οι οδηγοί δεν είναι εγκατεστημένοι',
     'mail:general'=>'Γενικά',
@@ -349,6 +379,7 @@ lucid::add_phrases([
     'mail:smtp_port'=>'SMTP Port',
     'mail:smtp_ssl'=>'Απαιτείται SSL σύνδεση',
     'mail:smtp_username'=>'Όνομα Χρήστη',
+
     'mail_templates:code'=>'Κωδικος',
     'mail_templates:code_comment'=>'Μοναδικός κωδικός που χρησιμοποιείται για την αναφορά σε αυτό το πρότυπο',
     'mail_templates:content_css'=>'CSS',
@@ -375,10 +406,12 @@ lucid::add_phrases([
     'mail_templates:test_confirm'=>'Ένα δοκιμαστικό μήνυμα θα σταλεί στο :email. Συνέχεια;',
     'mail_templates:test_send'=>'Αποστολή δοκιμαστικού μηνύματος',
     'mail_templates:test_success'=>'Το δοκιμαστικό μήνυμα έχει αποσταλεί ευτυχώς.',
+
     'maintenance:is_enabled'=>'Ενεργοποίηση λειτουργίας συντήρησης',
     'maintenance:is_enabled_comment'=>'Όταν ενεργοποιηθεί, οι επισκέπτες τις ιστοσελίδας θα δουν την σελίδα που έχει επιλεγεί παρακάτω.',
     'maintenance:settings_menu'=>'Λειτουργία συντήρησης',
     'maintenance:settings_menu_description'=>'Διαμορφώστε τη σελίδα λειτουργίας συντήρησης και εναλλάξτε την ρύθμιση.',
+
     'markdowneditor:bold'=>'Έντονα',
     'markdowneditor:code'=>'Κώδικας',
     'markdowneditor:formatting'=>'Μορφοποίηση',
@@ -398,6 +431,7 @@ lucid::add_phrases([
     'markdowneditor:quote'=>'Παράθεση',
     'markdowneditor:unorderedlist'=>'Μη ταξινομημένη λίστα',
     'markdowneditor:video'=>'Βίντεο',
+
     'media:add_folder'=>'Προσθήκη καταλόγου',
     'media:click_here'=>'Κλικ εδώ',
     'media:crop_and_insert'=>'Περικοπή & Εισαγωγή',
@@ -456,6 +490,7 @@ lucid::add_phrases([
     'media:uploading_complete'=>'Το ανέβασμα ολοκληρώθηκε',
     'media:uploading_file_num'=>'Ανέβασμα :number αρχείων...',
     'media:width'=>'Πλάτος',
+
     'mediamanager:insert_audio'=>'Εισαγωγή Ήχου από τα Μέσα',
     'mediamanager:insert_image'=>'Εισαγωγή Εικόνας από τα Μέσα',
     'mediamanager:insert_link'=>'Εισαγωγή Συνδέσμου από τα Μέσα',
@@ -465,6 +500,7 @@ lucid::add_phrases([
     'mediamanager:invalid_file_single_insert'=>'Παρακαλούμε επιλέξτε ένα μοναδικό αρχείο.',
     'mediamanager:invalid_image_empty_insert'=>'Παρακαλούμε επιλέξτε την εικόνα ή τις εικόνες για εισαγωγη.',
     'mediamanager:invalid_video_empty_insert'=>'Παρακαλούμε επιλέξτε ένα αρχείο βίντεο για εισαγωγή.',
+
     'model:invalid_class'=>'Το μοντέλο \':model\' που χρησιμοποιήθηκε στην :class δεν είναι έγκυρο, πρέπει να κληρονομεί την κλάση του \\Model.',
     'model:mass_assignment_failed'=>'Η μαζική εκχώρηση για την ιδιότητα \':attribute\' του μοντέλου απέτυχε.',
     'model:missing_id'=>'Δεν έχει οριστεί το ID για να αναζητηθεί η εγγραφή του μοντέλου.',
@@ -472,11 +508,14 @@ lucid::add_phrases([
     'model:missing_relation'=>'Η κλάση \':class\' του μοντέλου δεν περιέχει ένα ορισμό για την \':relation\'.',
     'model:name'=>'Μοντέλο',
     'model:not_found'=>'Η κλάση \':class\' του μοντέλου με ID :id δεν μπόρεσε να βρεθεί',
+
     'myaccount:menu_description'=>'Ενημερώστε τις λεπτομερείς του λογαριασμού σας όπως το όνομα, την διεύθυνση email και τον κωδικού.',
     'myaccount:menu_keywords'=>'ασφαλής σύνδεση',
     'myaccount:menu_label'=>'Ο λογαριασμός μου',
+
     'mysettings:menu_description'=>'Ρυθμίσεις σχετικές με τον λογαριασμό διαχειριστή σας',
     'mysettings:menu_label'=>'Οι ρυθμίσεις μου',
+
     'page:access_denied:cms_link'=>'Επιστροφή σύστημα διαχείρισης.',
     'page:access_denied:help'=>'Δεν έχεις τα απαραίτητα δικαιώματα για να δεις αυτήν την σελίδα.',
     'page:access_denied:label'=>'Απαγορεύεται η πρόσβαση',
@@ -495,6 +534,7 @@ lucid::add_phrases([
     'page:not_found_name'=>'Η σελίδα \':name\' δεν βρέθηκε',
     'page:unsaved_label'=>'Μη αποθηκευμένες σελίδες',
     'page:untitled'=>'Χωρίς Τίτλο',
+
     'partial:delete_confirm_multiple'=>'Είστε σίγουροι ότι θέλετε να διαγράψετε τα επιλεγμένα τμήματα;',
     'partial:delete_confirm_single'=>'Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το τμήμα;',
     'partial:invalid_name'=>'Μη έγκυρο όνομα τμήματος: :name.',
@@ -503,6 +543,7 @@ lucid::add_phrases([
     'partial:no_list_records'=>'Δεν βρέθηκαν τμήματα',
     'partial:not_found_name'=>'Το μερικό \':name\' δεν βρέθηκε.',
     'partial:unsaved_label'=>'Μη αποθηκευμένα τμήματα',
+
     'permissions:access_logs'=>'Προβολή των αρχείων καταγραφής του συστήματος',
     'permissions:manage_assets'=>'Διαχείριση πόρων',
     'permissions:manage_branding'=>'Προσαρμογή του back-end',
@@ -519,10 +560,12 @@ lucid::add_phrases([
     'permissions:manage_themes'=>'Διαχείριση θεμάτων',
     'permissions:name'=>'Cms',
     'permissions:view_the_dashboard'=>'Προβολή του πίνακα ελέγχου',
+
     'plugin:label'=>'Πρόσθετο',
     'plugin:name:help'=>'Ονομάστε το πρόσθετο με τον μοναδικό κωδικό του. Για παράδειγμα RainLab.Blog',
     'plugin:name:label'=>'Όνομα Πρόσθετου',
     'plugin:unnamed'=>'Ανώνυμο πρόσθετο',
+
     'plugins:disable_confirm'=>'Είστε σίγουροι;',
     'plugins:disable_success'=>'Επιτυχημένη απενεργοποίηση αυτών των πρόσθετων.',
     'plugins:disabled_help'=>'Τα πρόσθετα που είναι απενεργοποιημένα αγνοούνται από την εφαρμογή.',
@@ -547,6 +590,7 @@ lucid::add_phrases([
     'plugins:search'=>'αναζήτηση πρόσθετων για εγκατάσταση...',
     'plugins:selected_amount'=>'Επιλεγμένα πρόσθετα',
     'plugins:unknown_plugin'=>'Το πρόσθετο έχει αφαιρεθεί από το σύστημα.',
+
     'project:attach'=>'Σύνδεση Project',
     'project:detach'=>'Αποσύνδεση Project',
     'project:detach_confirm'=>'Είστε σίγουροι ότι θέλετε να αποσυνδέσετε το Project σας;',
@@ -557,6 +601,7 @@ lucid::add_phrases([
     'project:none'=>'Κανένα',
     'project:owner_label'=>'Ιδιοκτήτης',
     'project:unbind_success'=>'Το Project αποσυνδέθηκε επιτυχώς.',
+
     'relation:add'=>'Προσθήκη',
     'relation:add_a_new'=>'Προσθήκη νέου :name',
     'relation:add_name'=>'Προσθήκη :name',
@@ -588,8 +633,10 @@ lucid::add_phrases([
     'relation:unlink_name'=>'Αποσύνδεση :name',
     'relation:update'=>'Ενημέρωση',
     'relation:update_name'=>'Ενημέρωση :name',
+
     'reorder:default_title'=>'Αναδιάταξη εγγραφών',
     'reorder:no_records'=>'Δεν υπάρχουν διαθέσιμες εγγραφές για ταξινόμηση.',
+
     'request_log:count'=>'Καταμέτρηση',
     'request_log:empty_link'=>'Άδειασμα καταγραφής αιτήσεων',
     'request_log:empty_loading'=>'Αδειάζει το αρχείο καταγραφής αιτήσεων',
@@ -603,20 +650,24 @@ lucid::add_phrases([
     'request_log:return_link'=>'Επιστροφή στην καταγραφή αιτήσεων',
     'request_log:status_code'=>'Κατάσταση',
     'request_log:url'=>'URL',
+
     'server:connect_error'=>'Σφάλμα σύνδεσης στον διακομιστή.',
     'server:file_corrupt'=>'Το αρχείο από τον διακομιστή είναι κατεστραμμένο.',
     'server:file_error'=>'Ο διακομιστής απέτυχε να παραδώσει το πακέτο.',
     'server:response_empty'=>'Κενή απάντηση από τον διακομιστή.',
     'server:response_invalid'=>'Μη έγκυρη απάντηση από τον διακομιστή.',
     'server:response_not_found'=>'Δεν μπόρεσε να βρεθεί ο διακομιστής ενημερώσεων.',
+
     'settings:menu_label'=>'Ρυθμίσεις',
     'settings:missing_model'=>'Λείπει από την σελίδα των ρυθμίσεων ο ορισμός του μοντέλου.',
     'settings:not_found'=>'Δεν κατέστη δυνατόν να βρεθούν οι συγκεκριμένες ρυθμίσεις.',
     'settings:return'=>'Επιστροφή στις ρυθμίσεις του συστήματος',
     'settings:search'=>'Αναζήτηση',
     'settings:update_success'=>'Οι ρυθμίσεις για το :name έχουν ενημερωθεί επιτυχώς.',
+
     'sidebar:add'=>'Προσθήκη',
     'sidebar:search'=>'Αναζήτηση...',
+
     'system:categories:cms'=>'CMS',
     'system:categories:customers'=>'Πελάτες',
     'system:categories:events'=>'Εκδηλώσεις',
@@ -631,9 +682,11 @@ lucid::add_phrases([
     'system:categories:users'=>'Χρήστες',
     'system:menu_label'=>'Σύστημα',
     'system:name'=>'Σύστημα',
+
     'template:invalid_type'=>'Άγνωστος τύπος προτύπου.',
     'template:not_found'=>'Το ζητούμενο πρότυπο δεν βρέθηκε.',
     'template:saved'=>'Το πρότυπο έχει σωθεί επιτυχώς.',
+
     'theme:activate_button'=>'Ενεργοποίηση',
     'theme:active:not_found'=>'Δεν βρέθηκε το ενεργό θέμα.',
     'theme:active:not_set'=>'Δεν έχει οριστεί το ενεργό θέμα.',
@@ -701,13 +754,16 @@ lucid::add_phrases([
     'theme:theme_label'=>'Θέμα',
     'theme:theme_title'=>'Θέματα',
     'theme:unnamed'=>'Ανώνυμο θέμα',
+
     'themes:install'=>'Εγκατάσταση θεμάτων',
     'themes:installed'=>'Εγκατεστημένο θέματα',
     'themes:no_themes'=>'Δεν υπάρχουν εγκατεστημένα θέματα από το MarketPlace.',
     'themes:recommended'=>'Προτεινόμενα',
     'themes:remove_confirm'=>'Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το θέμα;',
     'themes:search'=>'αναζήτηστε θέματα για να τα εγκαταστήσετε...',
+
     'tooltips:preview_website'=>'Προεπισκόπηση ιστοσελίδας',
+
     'updates:check_label'=>'Έλεγχος για ενημερώσεις',
     'updates:core_build'=>'Έκδοση :build',
     'updates:core_build_help'=>'Η τελευταία έκδοση είναι διαθέσιμη.',
@@ -760,6 +816,7 @@ lucid::add_phrases([
     'updates:update_label'=>'Ενημέρωση Λογισμικού',
     'updates:update_loading'=>'Φόρτωση διαθέσιμων ενημερώσεων...',
     'updates:update_success'=>'Η διαδικασία της ενημέρωσης εκτελέστηκε επιτυχώς.',
+
     'user:account'=>'Λογαριασμός',
     'user:allow'=>'Επέτρεψε',
     'user:avatar'=>'Avatar',
@@ -799,6 +856,7 @@ lucid::add_phrases([
     'user:send_invite_comment'=>'Αποστέλλει ένα μήνυμα καλωσορίσματος το οποίο περιέχει τις πληροφορίες σύνδεσης και του κωδικού.',
     'user:superuser'=>'Υπέρ-Χρήστης',
     'user:superuser_comment'=>'Εκχώρηση σε αυτόν τον λογαριασμό απεριόριστη πρόσβαση σε όλες τις περιοχές.',
+
     'validation:accepted'=>'Το :attribute πρέπει να γίνει αποδεκτό.',
     'validation:active_url'=>'Το :attribute δεν είναι ένα έγκυρο URL.',
     'validation:after'=>'Η :attribute πρέπει να είναι μια ημερομηνία μετρά την :date.',
@@ -847,11 +905,14 @@ lucid::add_phrases([
     'validation:size:string'=>'Το :attribute πρέπει να είναι :size χαρακτήρες.',
     'validation:unique'=>'Η :attribute έχει ήδη χρησιμοποιηθεί.',
     'validation:url'=>'Η :attribute είναι μη έγκυρη.',
+
     'warnings:extension'=>'Η επέκταση :name της PHP δεν έχει εγκατασταθεί. Παρακαλούμε εγκαταστήστε την βιβλιοθήκη και ενεργοποιήστε την επέκταση.',
     'warnings:permissions'=>'Ο φάκελος :name ή οι υποφάκελοι του δεν έχουν δικαίωμα εγγραφής για την PHP. Παρακαλούμε ρυθμίστε τα κατάλληλα δικαιώματα στον webserver για αυτό τον καταλογο.',
     'warnings:tips'=>'Συμβουλές ρύθμισης του συστήματος',
     'warnings:tips_description'=>'Υπάρχουν ζητήματα για τα οποία πρέπει να δώσετε προσοχή με σκοπό να ρυθμιστεί το σύστημα ορθά.',
+
     'widget:not_bound'=>'Το Widget με το όνομα της κλάσης \':name\' δεν έχει βρεθεί στον χειριστή.',
     'widget:not_registered'=>'Δεν έχει καθοριστεί το όνομα \':name\' της κλάσης του Widget',
+
     'zip:extract_failed'=>'Δεν κατέστη δυνατή η αποσυμπίεση του αρχείου του πυρήνα \':file\'.',
 ]);

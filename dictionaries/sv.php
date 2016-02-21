@@ -4,6 +4,7 @@
 # https://octobercms.com
 
 lucid::add_phrases([
+
     'access_log:created_at'=>'Dataum och tid',
     'access_log:email'=>'E-post',
     'access_log:first_name'=>'Förnamn',
@@ -13,6 +14,7 @@ lucid::add_phrases([
     'access_log:login'=>'Inloggning',
     'access_log:menu_description'=>'Visa en lista över framgångsrika inloggningar av back-end användare.',
     'access_log:menu_label'=>'Åtkomstlogg',
+
     'account:apply'=>'Spara',
     'account:cancel'=>'Avbryt',
     'account:delete'=>'Radera',
@@ -34,12 +36,16 @@ lucid::add_phrases([
     'account:restore_error'=>'En användare med användarnamnet \':login\' kunde ej hittas',
     'account:restore_success'=>'Ett meddelande har sänts till din e-postadress med instruktioner om hur du återställer ditt lösenord',
     'account:sign_out'=>'Logga ut',
+
     'ajax_handler:invalid_name'=>'Felaktig AJAX-hanterare: :name',
     'ajax_handler:not_found'=>'AJAX-hanterare \':name\' kunde ej hittas',
+
     'alert:cancel_button_text'=>'Avbryt',
     'alert:confirm_button_text'=>'OK',
+
     'app:name'=>'October CMS',
     'app:tagline'=>'Getting back to basics',
+
     'asset:already_exists'=>'En fil eller mapp med detta namn finns redan',
     'asset:create_directory'=>'Skapa mapp',
     'asset:create_file'=>'Skapa fil',
@@ -80,12 +86,16 @@ lucid::add_phrases([
     'asset:type_not_allowed'=>'Endast följande filtyper är tillåtna: :allowed_types',
     'asset:unsaved_label'=>'Osparade filer',
     'asset:upload_files'=>'Ladda upp fil(er)',
+
     'auth:title'=>'Administrationsområde',
+
     'backend_preferences:locale'=>'Språk',
     'backend_preferences:locale_comment'=>'Välj önskat språk.',
     'backend_preferences:menu_description'=>'Hantera dina kontoinställningar såsom önskat språk.',
     'backend_preferences:menu_label'=>'Back-end preferenser',
+
     'behavior:missing_property'=>'Klassen :class måste definiera egenskapen $:property som används av :behavior -egenskapen',
+
     'branding:app_name'=>'Applikationsnamn',
     'branding:app_name_description'=>'Detta namn visas i titelområdet back-end.',
     'branding:app_tagline'=>'Applikationstaggning',
@@ -102,7 +112,9 @@ lucid::add_phrases([
     'branding:secondary_dark'=>'Sekundär (Mörk)',
     'branding:secondary_light'=>'Sekundär (Ljus)',
     'branding:styles'=>'Formatmallar',
+
     'cms:menu_label'=>'CMS',
+
     'cms_object:delete_success'=>'Mallarna är nu raderade: :count.',
     'cms_object:error_creating_directory'=>'Ett fel inträffade när mappen :name skulle skapas',
     'cms_object:error_deleting'=>'Det gick inte att radera mallfilen: \":name\".',
@@ -112,7 +124,9 @@ lucid::add_phrases([
     'cms_object:invalid_file'=>'Felaktigt filnamn: :name. Filnamn kan endast innehålla alfanumeriska tecken, understreck, streck och punkter. Några exempel på korrekta filnamn är: sida.htm, sida, undermapp/sida',
     'cms_object:invalid_file_extension'=>'Felaktig filändelse: :invalid. Tillåtna filändelser är: :allowed.',
     'cms_object:invalid_property'=>'Egenskapen \":name\" kunde inte sättas',
+
     'combiner:not_found'=>'Kombinationsfilen \':name\' kunde ej hittas',
+
     'component:alias'=>'Alias',
     'component:alias_description'=>'Ett unikt namn för denna komponent, när den skall användas i sid- eller layoutkod',
     'component:invalid_request'=>'Mallen kunde inte sparas pga felaktig komponentdata',
@@ -123,8 +137,10 @@ lucid::add_phrases([
     'component:not_found'=>'Komponenten \':name\' kunde ej hittas',
     'component:unnamed'=>'Ej namngiven',
     'component:validation_message'=>'Komponentalias är obligatoriska och får endast innehålla bokstäver, siffror, och understreck. De måste börja med en bokstav',
+
     'config:not_found'=>'Kunde inte hitta konfigurationsfilen :file definierad för :location',
     'config:required'=>'Konfigurationen som används i :location måste sända med ett värde :property',
+
     'content:delete_confirm_multiple'=>'Vill du verkligen radera markerade filer eller mappar?',
     'content:delete_confirm_single'=>'Vill du verkligen radera detta innehållsfil?',
     'content:menu_label'=>'Innehåll',
@@ -132,6 +148,7 @@ lucid::add_phrases([
     'content:no_list_records'=>'Inga innehållsfiler funna',
     'content:not_found_name'=>'Innehållet \':name\' kunde ej hittas',
     'content:unsaved_label'=>'Osparat innehåll',
+
     'dashboard:add_widget'=>'Lägg till widget',
     'dashboard:columns'=>'{1} column|[2,Inf] kolonner',
     'dashboard:full_width'=>'max bredd',
@@ -151,7 +168,9 @@ lucid::add_phrases([
     'dashboard:widget_title_error'=>'En widgets titel är tvingande.',
     'dashboard:widget_title_label'=>'Widget-titel',
     'dashboard:widget_width'=>'Bredd',
+
     'directory:create_fail'=>'Kunde inte skapa mapp: :name',
+
     'editor:auto_closing'=>'Stäng taggar och specialtecken automatiskt',
     'editor:code'=>'Kod',
     'editor:code_folding'=>'Dölj kod',
@@ -182,6 +201,7 @@ lucid::add_phrases([
     'editor:url'=>'URL',
     'editor:use_hard_tabs'=>'Indentera med tab',
     'editor:word_wrap'=>'Radbryting',
+
     'event_log:created_at'=>'Datum och tid',
     'event_log:empty_link'=>'Töm händelseloggen',
     'event_log:empty_loading'=>'Tömmer händelselogg...',
@@ -194,9 +214,12 @@ lucid::add_phrases([
     'event_log:menu_label'=>'Händelselogg',
     'event_log:message'=>'Meddelande',
     'event_log:return_link'=>'Återvänd till händelseloggen',
+
     'field:invalid_type'=>'Felaktig fälttyp använd :type.',
     'field:options_method_not_exists'=>'Modelklassen :model måste definera en metod :method() som returnerar villkor för formfältet \":field\"',
+
     'file:create_fail'=>'Kunde inte skapa fil: :name',
+
     'fileupload:attachment'=>'Bilaga',
     'fileupload:attachment_url'=>'Bilage-URL',
     'fileupload:default_prompt'=>'Klicka på %s eller dra en fil hit för att ladda upp',
@@ -207,7 +230,9 @@ lucid::add_phrases([
     'fileupload:title_label'=>'Titel',
     'fileupload:upload_error'=>'Fel vid uppladdning',
     'fileupload:upload_file'=>'Ladda upp fil',
+
     'filter:all'=>'alla',
+
     'form:action_confirm'=>'Är du säker?',
     'form:add'=>'Lägg till',
     'form:apply'=>'Spara',
@@ -257,6 +282,7 @@ lucid::add_phrases([
     'form:undefined_tab'=>'Övrigt',
     'form:update_success'=>':name har blivit uppdaterad',
     'form:update_title'=>'Redigera :name',
+
     'install:install_completing'=>'Installationen är klar',
     'install:install_success'=>'Tillägget har installerats',
     'install:missing_plugin_name'=>'Välj ett tilläggsnamn att installera',
@@ -264,6 +290,7 @@ lucid::add_phrases([
     'install:plugin_label'=>'Installera tillägg',
     'install:project_label'=>'Länka till Projekt',
     'install:theme_label'=>'Installera tema',
+
     'layout:delete_confirm_multiple'=>'Vill du verkligen radera valda layouter?',
     'layout:delete_confirm_single'=>'Vill du verkligen radera denna layouter?',
     'layout:menu_label'=>'Layouter',
@@ -271,6 +298,7 @@ lucid::add_phrases([
     'layout:no_list_records'=>'Inga layouter funna',
     'layout:not_found_name'=>'Layouten \':name\' hittades ej',
     'layout:unsaved_label'=>'Osparade layouter',
+
     'list:behavior_not_ready'=>'Listegenskapen har inte blivit initierad, kontrollera att du har anropat makeLists() i din controller',
     'list:default_title'=>'Lista',
     'list:delete_selected'=>'Radera utvald',
@@ -292,6 +320,7 @@ lucid::add_phrases([
     'list:search_prompt'=>'Sök...',
     'list:setup_help'=>'Använd kryssrutorna för att välja kolumner du vill se i listan. Du kan ändra positionen på kolumnerna genom att dra dem upp eller ner.',
     'list:setup_title'=>'List inställningar',
+
     'locale:cs'=>'Czech',
     'locale:de'=>'Tyska',
     'locale:el'=>'Grekiska',
@@ -316,6 +345,7 @@ lucid::add_phrases([
     'locale:tr'=>'Turkiska',
     'locale:zh-cn'=>'Kinesiska (Kina)',
     'locale:zh-tw'=>'Kinesiska (Taiwan)',
+
     'mail:drivers_hint_content'=>'Den här e-postmetoden kräver att tillägget \":plugin\" är installerat innan du kan skicka e-post.',
     'mail:drivers_hint_header'=>'Drivrutiner är inte installerade',
     'mail:general'=>'Generellt',
@@ -349,6 +379,7 @@ lucid::add_phrases([
     'mail:smtp_port'=>'SMTP-port',
     'mail:smtp_ssl'=>'SSL-anslutning krävs',
     'mail:smtp_username'=>'Användarnamn',
+
     'mail_templates:code'=>'Kod',
     'mail_templates:code_comment'=>'Unik kod som används för att hänvisa till den här mallen',
     'mail_templates:content_css'=>'CSS',
@@ -375,10 +406,12 @@ lucid::add_phrases([
     'mail_templates:test_confirm'=>'Ett testmeddelande kommer skickas till :email. Fortsätt?',
     'mail_templates:test_send'=>'Skicka ett testmeddelande',
     'mail_templates:test_success'=>'Testmeddelandet har skickats.',
+
     'maintenance:is_enabled'=>'Akrivera underhållsläge-läget',
     'maintenance:is_enabled_comment'=>'När den är aktiverad så kommer besökare att se sidan som väljs nedan.',
     'maintenance:settings_menu'=>'Underhållsläge',
     'maintenance:settings_menu_description'=>'Konfigurera underhållsläge-sidan och växla inställningen.',
+
     'markdowneditor:bold'=>'Fet',
     'markdowneditor:code'=>'Kod',
     'markdowneditor:formatting'=>'Formatering',
@@ -398,6 +431,7 @@ lucid::add_phrases([
     'markdowneditor:quote'=>'Citat',
     'markdowneditor:unorderedlist'=>'Oordnad lista',
     'markdowneditor:video'=>'Video',
+
     'media:add_folder'=>'Ny mapp',
     'media:click_here'=>'Klicka här',
     'media:crop_and_insert'=>'Beskär & infoga',
@@ -456,7 +490,9 @@ lucid::add_phrases([
     'media:uploading_complete'=>'Uppladdning slutförd',
     'media:uploading_file_num'=>'Laddar upp :number fil(er)...',
     'media:width'=>'Bredd',
+
     'mediafinder:default_prompt'=>'Klicka på %s knappen för att hitta ett mediaföremål',
+
     'mediamanager:insert_audio'=>'Infoga ljud',
     'mediamanager:insert_image'=>'Infoga bild',
     'mediamanager:insert_link'=>'Infoga medialänk',
@@ -466,6 +502,7 @@ lucid::add_phrases([
     'mediamanager:invalid_file_single_insert'=>'Vänligen välj en enskild fil.',
     'mediamanager:invalid_image_empty_insert'=>'Vänligen välj bild(er) att infoga.',
     'mediamanager:invalid_video_empty_insert'=>'Vänligen välj en video att infoga.',
+
     'model:invalid_class'=>'Modellen :model i klass :class är ej giltig. Den måste ärva från \\Model-klassen',
     'model:mass_assignment_failed'=>'Mass uppdraget misslyckades för Modell-attributet \':attribute\'.',
     'model:missing_id'=>'Det finns inget ID anviget för modellen',
@@ -473,11 +510,14 @@ lucid::add_phrases([
     'model:missing_relation'=>'Modellen \':class\' saknar en definition för \':relation\'',
     'model:name'=>'Modell',
     'model:not_found'=>'Modellen \':class\' med ID :id kunde ej hittas',
+
     'myaccount:menu_description'=>'Uppdatera dina kontouppgifter såsom namn, e-postadress och lösenord.',
     'myaccount:menu_keywords'=>'säkerhets inloggning',
     'myaccount:menu_label'=>'Mitt konto',
+
     'mysettings:menu_description'=>'Inställningar rörande ditt administrationskonto',
     'mysettings:menu_label'=>'Mina inställningar',
+
     'page:access_denied:cms_link'=>'Gå till CMS backend',
     'page:access_denied:help'=>'Du har inte behörighet att visa den här sidan.',
     'page:access_denied:label'=>'Nekat tillträde',
@@ -496,6 +536,7 @@ lucid::add_phrases([
     'page:not_found_name'=>'The page \':name\' is not found',
     'page:unsaved_label'=>'Osparade sidor',
     'page:untitled'=>'Ej namngiven',
+
     'partial:delete_confirm_multiple'=>'Vill du verkligen radera markerade partials?',
     'partial:delete_confirm_single'=>'Vill du verkligen radera denna partial?',
     'partial:invalid_name'=>'Felaktigt partialnamn: :name',
@@ -504,6 +545,7 @@ lucid::add_phrases([
     'partial:no_list_records'=>'Inga partials funna',
     'partial:not_found_name'=>'En partial med namn \':name\' kunde ej hittas',
     'partial:unsaved_label'=>'Osparade partials',
+
     'permissions:access_logs'=>'Visa systemloggen',
     'permissions:manage_assets'=>'Hantera filer',
     'permissions:manage_branding'=>'Anpassa back-end',
@@ -522,10 +564,12 @@ lucid::add_phrases([
     'permissions:manage_themes'=>'Hantera teman',
     'permissions:name'=>'Cms',
     'permissions:view_the_dashboard'=>'Visa kontrollpanelen',
+
     'plugin:label'=>'Tillägg',
     'plugin:name:help'=>'Namnge tillägget efter dess unika kod. Exempelvis RainLab.Blog',
     'plugin:name:label'=>'Tilläggsnamn',
     'plugin:unnamed'=>'Namnlöst tillägg',
+
     'plugins:disable_confirm'=>'Är du säker?',
     'plugins:disable_success'=>'Tilläggen avaktiverades.',
     'plugins:disabled_help'=>'De avaktiverade tilläggen ignorerades av systemet.',
@@ -550,6 +594,7 @@ lucid::add_phrases([
     'plugins:search'=>'sök efter tillägg att installera...',
     'plugins:selected_amount'=>'Markerade tillägg: :amount',
     'plugins:unknown_plugin'=>'Tillägget har raderats.',
+
     'project:attach'=>'Länka projekt',
     'project:detach'=>'Avlänka projekt',
     'project:detach_confirm'=>'Vill du verkligen avlänka detta projekt?',
@@ -560,6 +605,7 @@ lucid::add_phrases([
     'project:none'=>'Inget',
     'project:owner_label'=>'Ägare',
     'project:unbind_success'=>'Projektet har avlänkats',
+
     'relation:add'=>'Lägg till',
     'relation:add_a_new'=>'Lägg till en ny :name',
     'relation:add_name'=>'Lägg till :name',
@@ -591,8 +637,10 @@ lucid::add_phrases([
     'relation:unlink_name'=>'Avlänka :name',
     'relation:update'=>'Uppdatera',
     'relation:update_name'=>'Uppdatera :name',
+
     'reorder:default_title'=>'Ordna om rader',
     'reorder:no_records'=>'Det finns inga rader att sortera.',
+
     'request_log:count'=>'Räknare',
     'request_log:empty_link'=>'Töm förfrågningsloggen',
     'request_log:empty_loading'=>'Tömmer förfrågningsloggen...',
@@ -606,20 +654,24 @@ lucid::add_phrases([
     'request_log:return_link'=>'Återvänd till förfrågningsloggen',
     'request_log:status_code'=>'Status',
     'request_log:url'=>'URL',
+
     'server:connect_error'=>'Ett fel uppstod vid anslutning till servern.',
     'server:file_corrupt'=>'Filen från servern är korrupt.',
     'server:file_error'=>'Servern kunde inte leverera paketet.',
     'server:response_empty'=>'Tomt svar från servern.',
     'server:response_invalid'=>'Felaktigt svar från servern.',
     'server:response_not_found'=>'Uppdateringsserver kunde ej hittas.',
+
     'settings:menu_label'=>'Inställningar',
     'settings:missing_model'=>'Inställningssidan saknar en modell-definition',
     'settings:not_found'=>'Det går inte att hitta de angivna inställningarna.',
     'settings:return'=>'Återgå till systeminställningar',
     'settings:search'=>'Sök',
     'settings:update_success'=>'Inställningar för :name har uppdaterats',
+
     'sidebar:add'=>'Lägg till',
     'sidebar:search'=>'Sök...',
+
     'system:categories:cms'=>'CMS',
     'system:categories:customers'=>'Kunder',
     'system:categories:events'=>'Händelser',
@@ -634,9 +686,11 @@ lucid::add_phrases([
     'system:categories:users'=>'Användare',
     'system:menu_label'=>'System',
     'system:name'=>'System',
+
     'template:invalid_type'=>'Felaktig malltyp',
     'template:not_found'=>'Den angivna mallen kunde ej hittas',
     'template:saved'=>'Mallen har sparats',
+
     'theme:activate_button'=>'Aktivera',
     'theme:active:not_found'=>'Kunde inte hitta det aktiva temat.',
     'theme:active:not_set'=>'Ett aktivt tema är ej valt',
@@ -704,13 +758,16 @@ lucid::add_phrases([
     'theme:theme_label'=>'Tema',
     'theme:theme_title'=>'Teman',
     'theme:unnamed'=>'Namnlöst tema',
+
     'themes:install'=>'Installerar teman',
     'themes:installed'=>'Installerade teman',
     'themes:no_themes'=>'Det finns inga teman installerade från marknadsplatsen.',
     'themes:recommended'=>'Rekommenderat',
     'themes:remove_confirm'=>'Är du säker på att du vill radera det här temat?',
     'themes:search'=>'sök efter teman att installera...',
+
     'tooltips:preview_website'=>'Förhandsgranska websidan',
+
     'updates:check_label'=>'Sök efter uppdateringar',
     'updates:core_build'=>'Build :build',
     'updates:core_build_help'=>'Senaste build är tillgänglig.',
@@ -763,6 +820,7 @@ lucid::add_phrases([
     'updates:update_label'=>'Uppdatera systemet',
     'updates:update_loading'=>'Laddar tillgängliga uppdateringar...',
     'updates:update_success'=>'Uppdateringen är slutförd.',
+
     'user:account'=>'Konto',
     'user:allow'=>'Tillåt',
     'user:avatar'=>'Avatar',
@@ -802,6 +860,7 @@ lucid::add_phrases([
     'user:send_invite_comment'=>'Markera denna checkbox för att skicka en inbjudan till användaren via e-post',
     'user:superuser'=>'Superanvändare',
     'user:superuser_comment'=>'Markera denna checkbox för att ge denna person tillgång till alla områden',
+
     'validation:accepted'=>':attribute måste accepteras.',
     'validation:active_url'=>':attribute är ej en korrekt URL.',
     'validation:after'=>':attribute måste vara ett datum efter :date.',
@@ -850,11 +909,14 @@ lucid::add_phrases([
     'validation:size:string'=>':attribute måste vara :size tecken.',
     'validation:unique'=>':attribute är redan upptaget.',
     'validation:url'=>'Formatet :attribute är felaktigt.',
+
     'warnings:extension'=>'PHP-tillägget: Namnet är inte installerat. Vänligen installera och aktivera det biblioteket.',
     'warnings:permissions'=>'Katalogen :name eller dess underkataloger är inte skrivbara av PHP. Väligen ändra dess motsvarande behörigheter för web-servern i denna katalogen.',
     'warnings:tips'=>'Systemkonfigurationstips',
     'warnings:tips_description'=>'Det finns problem som du behöver åtgärda för att konfigurera systemet ordentligt.',
+
     'widget:not_bound'=>'En widget med klassnamnet \':name\' saknas i controllern',
     'widget:not_registered'=>'En widget med klassnamnet \':name\' har ej blivit registrerad',
+
     'zip:extract_failed'=>'Kunde inte packa upp core-fil \':file\'.',
 ]);

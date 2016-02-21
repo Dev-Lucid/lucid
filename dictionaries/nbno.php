@@ -4,6 +4,7 @@
 # https://octobercms.com
 
 lucid::add_phrases([
+
     'access_log:created_at'=>'Tid',
     'access_log:email'=>'E-postadresse',
     'access_log:first_name'=>'Fornavn',
@@ -13,6 +14,7 @@ lucid::add_phrases([
     'access_log:login'=>'Brukernavn',
     'access_log:menu_description'=>'Se en liste over vellykkede innlogginger på backend.',
     'access_log:menu_label'=>'Aksesslogg',
+
     'account:apply'=>'Fortsett',
     'account:cancel'=>'Avbryt',
     'account:delete'=>'Slett',
@@ -34,10 +36,13 @@ lucid::add_phrases([
     'account:restore_error'=>'Brukernavnet \':login\' eksisterer ikke.',
     'account:restore_success'=>'En e-post har blitt sendt til din e-postadresse med informasjon om gjenoppretting av passord.',
     'account:sign_out'=>'Logg ut',
+
     'ajax_handler:invalid_name'=>'Ugyldig AJAX handler navn: :name.',
     'ajax_handler:not_found'=>'AJAX handler \':name\' ble ikke funnet.',
+
     'app:name'=>'October CMS',
     'app:tagline'=>'Getting back to basics',
+
     'asset:already_exists'=>'Fil eller mappe med samme navn eksiterer allerede',
     'asset:create_directory'=>'Opprett mappe',
     'asset:create_file'=>'Opprett fil',
@@ -78,12 +83,16 @@ lucid::add_phrases([
     'asset:type_not_allowed'=>'Kun følgende filtyper er tillat: :allowed_types',
     'asset:unsaved_label'=>'Ulagrede ressurser',
     'asset:upload_files'=>'Last opp fil(er)',
+
     'auth:title'=>'Administrasjonsområde',
+
     'backend_preferences:locale'=>'Språk',
     'backend_preferences:locale_comment'=>'Velg ditt ønsket språk.',
     'backend_preferences:menu_description'=>'Administrer kontoinnstillinger som for eksempel språk.',
     'backend_preferences:menu_label'=>'Backend-innstillinger',
+
     'behavior:missing_property'=>'Klassen :class må definere egenskapen $:property som brukes av :behavior -egenskapen.',
+
     'branding:app_name'=>'App-navn',
     'branding:app_name_description'=>'Dette navnet vises i tittelområdet backend.',
     'branding:app_tagline'=>'App Tagline',
@@ -100,7 +109,9 @@ lucid::add_phrases([
     'branding:secondary_dark'=>'Sekundær (Mørk)',
     'branding:secondary_light'=>'Sekundær (Lys)',
     'branding:styles'=>'Stilsett',
+
     'cms:menu_label'=>'CMS',
+
     'cms_object:delete_success'=>'Templates som ble slettet: :count.',
     'cms_object:error_creating_directory'=>'Kunne ikke opprette mappen :name. Vennligst sjekk skriverettigheter på serveren.',
     'cms_object:error_deleting'=>'Kunne ikke slette filen \':name\'. Vennligst sjekk skriverettigheter på serveren.',
@@ -110,7 +121,9 @@ lucid::add_phrases([
     'cms_object:invalid_file'=>'Ugyldig filnavn: :name. Filnavn kan kun inneholde alfanumeriske tegn, understrek, bindestrek og punktum. Eksempel: page.htm, page, subdirectory/page',
     'cms_object:invalid_file_extension'=>'Ugyldig filtype: :invalid. Tillatte filtyper er: :allowed.',
     'cms_object:invalid_property'=>'Egenskapen \':name\' kan ikke settes',
+
     'combiner:not_found'=>'Kombinasjonsfilen \':name\' ble ikke funnet.',
+
     'component:alias'=>'Alias',
     'component:alias_description'=>'Et unikt navn gitt til komponenten for å benytte den i sider og layouts.',
     'component:invalid_request'=>'Templaten kan ikke lagres på grunn av ugyldig komponentdata.',
@@ -121,8 +134,10 @@ lucid::add_phrases([
     'component:not_found'=>'Komponenten \':name\' ble ikke funnet.',
     'component:unnamed'=>'Navnløs',
     'component:validation_message'=>'Komponentaliaser kan kun inneholde latinske symboler, tall og understreker. Aliaser skal starte med et latinsk symbol.',
+
     'config:not_found'=>'Fant ikke konfigurasjonsfilen :file definert for for :location.',
     'config:required'=>'Konfigurasjon brukt i :location må angi verdien \':property\'.',
+
     'content:delete_confirm_multiple'=>'Vil du virkelig slette valgte innholdsfiler eller -mapper?',
     'content:delete_confirm_single'=>'Vil du virkelig slette denne innholdsfilen eller -mappen?',
     'content:menu_label'=>'Innhold',
@@ -130,6 +145,7 @@ lucid::add_phrases([
     'content:no_list_records'=>'No content files found',
     'content:not_found_name'=>'Innholdsfilen \':name\' ble ikke funnet.',
     'content:unsaved_label'=>'Ulagret innhold',
+
     'dashboard:add_widget'=>'Legg til widget',
     'dashboard:columns'=>'{1} kolonne|[2,Inf] kolonner',
     'dashboard:full_width'=>'full bredde',
@@ -149,7 +165,9 @@ lucid::add_phrases([
     'dashboard:widget_title_error'=>'Tittel er obligatorisk.',
     'dashboard:widget_title_label'=>'Widget-tittel',
     'dashboard:widget_width'=>'Bredde',
+
     'directory:create_fail'=>'Kan ikke opprette mappen: :name',
+
     'editor:code'=>'Kode',
     'editor:code_folding'=>'Code folding',
     'editor:content'=>'Innhold',
@@ -179,6 +197,7 @@ lucid::add_phrases([
     'editor:url'=>'URL',
     'editor:use_hard_tabs'=>'Inntrykk med tabs',
     'editor:word_wrap'=>'Word wrap',
+
     'event_log:created_at'=>'Tid',
     'event_log:empty_link'=>'Tøm hendelseslogg',
     'event_log:empty_loading'=>'Tømmer hendelseslogg...',
@@ -191,14 +210,19 @@ lucid::add_phrases([
     'event_log:menu_label'=>'Hendelseslogg',
     'event_log:message'=>'Melding',
     'event_log:return_link'=>'Tilbake til hendelseslogg',
+
     'field:invalid_type'=>'Ugyldig felttype brukt :type.',
     'field:options_method_not_exists'=>'Modellklassen :model må definere en metode :method() som returnerer vilkår for formfeltet \':field\'.',
+
     'file:create_fail'=>'Kan ikke opprette filen: :name',
+
     'fileupload:attachment'=>'Vedlegg',
     'fileupload:description_label'=>'Beskrivelse',
     'fileupload:help'=>'Legg til tittel og beskrivelse for dette vedlegget.',
     'fileupload:title_label'=>'Tittel',
+
     'filter:all'=>'alle',
+
     'form:action_confirm'=>'Er du sikker?',
     'form:add'=>'Legg til',
     'form:apply'=>'Fortsett',
@@ -246,6 +270,7 @@ lucid::add_phrases([
     'form:undefined_tab'=>'Div.',
     'form:update_success'=>':name har blitt endret',
     'form:update_title'=>'Endre :name',
+
     'install:install_completing'=>'Fullfører installasjonen',
     'install:install_success'=>'Plugin har blitt installert.',
     'install:missing_plugin_name'=>'Vennligst oppgi pluginens navn.',
@@ -253,6 +278,7 @@ lucid::add_phrases([
     'install:plugin_label'=>'Installér',
     'install:project_label'=>'Tilkoble prosjekt',
     'install:theme_label'=>'Installér tema',
+
     'layout:delete_confirm_multiple'=>'Vil du virkelig slette valgte layouts?',
     'layout:delete_confirm_single'=>'Vil du virkelig slette denne layout?',
     'layout:menu_label'=>'Layouts',
@@ -260,6 +286,7 @@ lucid::add_phrases([
     'layout:no_list_records'=>'Ingen layouts funnet',
     'layout:not_found_name'=>'Layouten \':name\' ble ikke funnet',
     'layout:unsaved_label'=>'Ulagrede layouts',
+
     'list:behavior_not_ready'=>'List-egenskapen har ikke blir initialisert, sjekk at du har kalt makeList() i kontrolleren.',
     'list:default_title'=>'Liste',
     'list:delete_selected'=>'Slett valgte',
@@ -281,6 +308,7 @@ lucid::add_phrases([
     'list:search_prompt'=>'Søk...',
     'list:setup_help'=>'Kryss av sjekkboksene for å velge hvilke kolonner du vil ha i listen. Du kan sortere kolonnene ved å dra sjekkboksene opp eller ned.',
     'list:setup_title'=>'Listeinnstillinger',
+
     'locale:cs'=>'Czech',
     'locale:de'=>'Tysk',
     'locale:en'=>'Engelsk',
@@ -303,6 +331,7 @@ lucid::add_phrases([
     'locale:tr'=>'Tyrkisk',
     'locale:zh-cn'=>'Kinesisk (Kina)',
     'locale:zh-tw'=>'Chinese (Taiwan)',
+
     'mail:general'=>'Generelt',
     'mail:log_file'=>'Loggfil',
     'mail:mailgun'=>'Mailgun',
@@ -330,6 +359,7 @@ lucid::add_phrases([
     'mail:smtp_port'=>'SMTP-port',
     'mail:smtp_ssl'=>'SSL-tilkobling påkrevd',
     'mail:smtp_username'=>'Brukernavn',
+
     'mail_templates:code'=>'Code',
     'mail_templates:code_comment'=>'Unik kode som tilknyttes denne malen',
     'mail_templates:content_css'=>'CSS',
@@ -352,10 +382,12 @@ lucid::add_phrases([
     'mail_templates:templates'=>'Maler',
     'mail_templates:test_send'=>'Send testmelding',
     'mail_templates:test_success'=>'Testmeldingen har blitt sendt.',
+
     'maintenance:is_enabled'=>'Aktivér vedlikeholdsmodus',
     'maintenance:is_enabled_comment'=>'Når aktivert, vil besøkende se følgende side:',
     'maintenance:settings_menu'=>'Vedlikeholdsmodus',
     'maintenance:settings_menu_description'=>'Konfigurer vedlikeholdsmodussiden og endre innstillinger.',
+
     'media:add_folder'=>'Ny mappe',
     'media:click_here'=>'Klikk her',
     'media:crop_and_insert'=>'Crop & Insert',
@@ -414,6 +446,7 @@ lucid::add_phrases([
     'media:uploading_complete'=>'Opplasting fullført',
     'media:uploading_file_num'=>'Laster opp :number fil(er)...',
     'media:width'=>'Bredde',
+
     'model:invalid_class'=>'Modellen :model som brukes i :class er ugyldig, den må arve \\Model-klassen.',
     'model:mass_assignment_failed'=>'Mass assignment feilet for modell-attributten \':attribute\'.',
     'model:missing_id'=>'Det er ingen ID spesifisert for å se opp modellen.',
@@ -421,11 +454,14 @@ lucid::add_phrases([
     'model:missing_relation'=>'Modellen \':class\' mangler en definisjon for \':relation\'.',
     'model:name'=>'Modell',
     'model:not_found'=>'Modellen \':class\' med ID-en :id ble ikke funnet',
+
     'myaccount:menu_description'=>'Oppdater dine kontodetaljer, som navn, e-postadresse og passord.',
     'myaccount:menu_keywords'=>'sikkerhetsinnlogging',
     'myaccount:menu_label'=>'Min konto',
+
     'mysettings:menu_description'=>'Innstillinger relatert til din administratorkonto',
     'mysettings:menu_label'=>'Mine innstillinger',
+
     'page:access_denied:cms_link'=>'Tilbake til backend',
     'page:access_denied:help'=>'Du har ikke nødvendig tilgang til å se denne siden.',
     'page:access_denied:label'=>'Ingen tilgang',
@@ -443,6 +479,7 @@ lucid::add_phrases([
     'page:not_found_name'=>'Siden \':name\' ble ikke funnet',
     'page:unsaved_label'=>'Ulagrede sider',
     'page:untitled'=>'Uten navn',
+
     'partial:delete_confirm_multiple'=>'Vil du virkelig slette valgte partials?',
     'partial:delete_confirm_single'=>'Vil du virkelig slette denne partialen?',
     'partial:invalid_name'=>'Ugyldig partial navn: :name.',
@@ -451,6 +488,7 @@ lucid::add_phrases([
     'partial:no_list_records'=>'Ingen partials funnet',
     'partial:not_found_name'=>'En partial ved navn \':name\' ble ikke funnet.',
     'partial:unsaved_label'=>'Ulagrede partials',
+
     'permissions:access_logs'=>'Se systemlogger',
     'permissions:manage_assets'=>'Administrer ressurser',
     'permissions:manage_branding'=>'Tilpasse backend',
@@ -466,9 +504,11 @@ lucid::add_phrases([
     'permissions:manage_themes'=>'Administrer maler',
     'permissions:name'=>'Cms',
     'permissions:view_the_dashboard'=>'Se dashboard',
+
     'plugin:name:help'=>'Navngi pluginen ved et unikt navn. For eksempel, RainLab.Blog',
     'plugin:name:label'=>'Plugin-navn',
     'plugin:unnamed'=>'Navnløs plugin',
+
     'plugins:disable_confirm'=>'Er du sikker?',
     'plugins:disable_success'=>'Plugins har blitt deaktivert.',
     'plugins:disabled_help'=>'Deaktiverte plugins blir ignorert av applikasjonen.',
@@ -491,6 +531,7 @@ lucid::add_phrases([
     'plugins:search'=>'søk etter plugins å installere...',
     'plugins:selected_amount'=>'Valgte plugins: :amount',
     'plugins:unknown_plugin'=>'Plugins har blitt fjernet fra systemet.',
+
     'project:attach'=>'Tilkoble prosjekt',
     'project:detach'=>'Avkoble prosjekt',
     'project:detach_confirm'=>'Vil du virkelig avkoble dette prosjektet?',
@@ -501,6 +542,7 @@ lucid::add_phrases([
     'project:none'=>'Ingen',
     'project:owner_label'=>'Eier',
     'project:unbind_success'=>'Prosjektet har blitt avkoblet.',
+
     'relation:add'=>'Legg til',
     'relation:add_a_new'=>'Legg til ny :name',
     'relation:add_name'=>'Legg til :name',
@@ -532,6 +574,7 @@ lucid::add_phrases([
     'relation:unlink_name'=>'Fjern link :name',
     'relation:update'=>'Oppdater',
     'relation:update_name'=>'Oppdater :name',
+
     'request_log:count'=>'Antall',
     'request_log:empty_link'=>'Tøm forespørselslogg',
     'request_log:empty_loading'=>'Tømmer forespørselslogg...',
@@ -545,20 +588,24 @@ lucid::add_phrases([
     'request_log:return_link'=>'Tilbake til forespørselslogg',
     'request_log:status_code'=>'Status',
     'request_log:url'=>'URL',
+
     'server:connect_error'=>'Kunne ikke koble til serveren.',
     'server:file_corrupt'=>'Pakken fra serveren er korrupt.',
     'server:file_error'=>'Serveren kunne ikke levere pakken.',
     'server:response_empty'=>'Tom respons fra serveren.',
     'server:response_invalid'=>'Feilaktig respons fra serveren.',
     'server:response_not_found'=>'Oppdateringsserveren ble ikke funnet.',
+
     'settings:menu_label'=>'Innstillinger',
     'settings:missing_model'=>'Innstillingssiden mangler en modell-definisjon.',
     'settings:not_found'=>'Fant ikke spesifiserte innstilling.',
     'settings:return'=>'Tilbake til systeminnstillinger',
     'settings:search'=>'Søk',
     'settings:update_success'=>'Innstillingene for :name har blitt lagret.',
+
     'sidebar:add'=>'Legg til',
     'sidebar:search'=>'Søk...',
+
     'system:categories:cms'=>'CMS',
     'system:categories:customers'=>'Kunder',
     'system:categories:events'=>'Hendelser',
@@ -573,9 +620,11 @@ lucid::add_phrases([
     'system:categories:users'=>'Brukere',
     'system:menu_label'=>'System',
     'system:name'=>'System',
+
     'template:invalid_type'=>'Ukjent template-type.',
     'template:not_found'=>'Forespurt template ikke funnet.',
     'template:saved'=>'Templaten har blitt lagret.',
+
     'theme:activate_button'=>'Aktivér',
     'theme:active:not_found'=>'Aktivt tema ikke funnet.',
     'theme:active:not_set'=>'Aktivt tema er ikke valgt.',
@@ -638,13 +687,16 @@ lucid::add_phrases([
     'theme:settings_menu_description'=>'Forhåndsvis en liste over installerte temaer og velg et aktivt tema.',
     'theme:theme_label'=>'Tema',
     'theme:unnamed'=>'Navnløst tema',
+
     'themes:install'=>'Installer tema',
     'themes:installed'=>'Installerte temaer',
     'themes:no_themes'=>'Det er ingen installerte temaer fra markedsplassen.',
     'themes:recommended'=>'Anbefalt',
     'themes:remove_confirm'=>'Vil du virkelig slette dette temaet?',
     'themes:search'=>'søk etter temaer å installere...',
+
     'tooltips:preview_website'=>'Forhåndsvis nettsiden',
+
     'updates:check_label'=>'Se etter oppdateringer',
     'updates:core_build'=>'Build :build',
     'updates:core_build_help'=>'Siste build er tilgjengelig.',
@@ -679,6 +731,7 @@ lucid::add_phrases([
     'updates:update_label'=>'Oppdatér programvare',
     'updates:update_loading'=>'Henter tilgjengelige oppdateringer...',
     'updates:update_success'=>'Oppdatering har fullført.',
+
     'user:account'=>'konto',
     'user:allow'=>'Tillat',
     'user:avatar'=>'Avatar',
@@ -717,6 +770,7 @@ lucid::add_phrases([
     'user:send_invite_comment'=>'Kryss av denne boksen for å sende personen en invitasjon via e-post',
     'user:superuser'=>'Superbruker',
     'user:superuser_comment'=>'Kryss av denne boksen for å gi personen tilgang til alle områder.',
+
     'validation:accepted'=>':attribute må aksepteres.',
     'validation:active_url'=>':attribute er ikke en gyldig URL.',
     'validation:after'=>':attribute må være en dato etter :date.',
@@ -764,11 +818,14 @@ lucid::add_phrases([
     'validation:size:string'=>':attribute må være :size tegn.',
     'validation:unique'=>':attribute er allerede i bruk.',
     'validation:url'=>':attribute format er ugyldig.',
+
     'warnings:extension'=>'PHP-extensionen :name er ikke installert..',
     'warnings:permissions'=>'Mappen :name eller dens undermapper kan ikke skrives på av PHP. Vennligst sjekk skrivetilganger på serveren.',
     'warnings:tips'=>'Tips for systemkonfigurasjon',
     'warnings:tips_description'=>'Det er problemer du må være oppmerksom på for å konfigurere systemet riktig.',
+
     'widget:not_bound'=>'En widget med klassenavnet \':name\' er ikke bundet til kontrolleren',
     'widget:not_registered'=>'En widget med klassenavnet \':name\' har ikke blitt registrert',
+
     'zip:extract_failed'=>'Kunne ikke pakke opp core-fil \':file\'.',
 ]);

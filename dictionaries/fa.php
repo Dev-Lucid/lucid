@@ -4,6 +4,7 @@
 # https://octobercms.com
 
 lucid::add_phrases([
+
     'access_log:created_at'=>'زمان و تاریخ',
     'access_log:email'=>'پست الکترونیکی',
     'access_log:first_name'=>'نام',
@@ -13,6 +14,7 @@ lucid::add_phrases([
     'access_log:login'=>'ورود',
     'access_log:menu_description'=>'نمایش لیست ورود موفقیت آمیز کاربران مدیر.',
     'access_log:menu_label'=>'ثبت دسترسی ها',
+
     'account:apply'=>'اعمال کردن',
     'account:cancel'=>'انصراف',
     'account:delete'=>'حذف',
@@ -34,12 +36,16 @@ lucid::add_phrases([
     'account:restore_error'=>'کاربری با نام کاریری \':login\' یافت نشد.',
     'account:restore_success'=>'یک نامه به پست الکترونیکی شما جهت شروع عملیات بارگرداندن کلمه عبور ارسال شد.',
     'account:sign_out'=>'خروج',
+
     'ajax_handler:invalid_name'=>'نام کنترل کننده آژاکس نا معتبر است: :name.',
     'ajax_handler:not_found'=>'کنترل کننده آژاکس \':name\' یافت نشد.',
+
     'alert:cancel_button_text'=>'انصراف',
     'alert:confirm_button_text'=>'تایید',
+
     'app:name'=>'مدیریت محتوی اکتبر',
     'app:tagline'=>'بازگشت به گذشته',
+
     'asset:already_exists'=>'فایل یا پوشه ای با این نام وجود دارد.',
     'asset:create_directory'=>'ایجاد پوشه',
     'asset:create_file'=>'ایجاد فایل',
@@ -80,12 +86,16 @@ lucid::add_phrases([
     'asset:type_not_allowed'=>'فقط این نوع فایل ها قابل قبول می باشد: :allowed_types',
     'asset:unsaved_label'=>'فایل(های) ذخیره نشده',
     'asset:upload_files'=>'افزودن فایل(ها)',
+
     'auth:title'=>'بخش مدیریت',
+
     'backend_preferences:locale'=>'زبان',
     'backend_preferences:locale_comment'=>'زبان مورد نظر خود را انتخاب نمایید.',
     'backend_preferences:menu_description'=>'تنظیمات مربوط به زبان مربوط به قسمت مدیریت.',
     'backend_preferences:menu_label'=>'تنظیمات مدیریت',
+
     'behavior:missing_property'=>'کلاس :class باید شامل خصوصیت $:property که در :behavior استفاده شده است باشد.',
+
     'branding:app_name'=>'نام برنامه',
     'branding:app_name_description'=>'این نام در بخش عنوان قسمت مدیریت نمایش داده می شود.',
     'branding:app_tagline'=>'شعار برنامه',
@@ -102,8 +112,11 @@ lucid::add_phrases([
     'branding:secondary_dark'=>'ثانویه (تیره)',
     'branding:secondary_light'=>'ثانویه (روشن)',
     'branding:styles'=>'شیوه نامه ها',
+
     'calendar'=>'jalali',
+
     'cms:menu_label'=>'مدیریت محتوی',
+
     'cms_object:delete_success'=>'تعداد :count فایل با موفقیت حذف شد.',
     'cms_object:error_creating_directory'=>'خطا در ایجاد پوشه ی :name. لطفا حق دسترسی ها را بررسی نمایید.',
     'cms_object:error_deleting'=>'خطا در خذف فایل \":name\". لطفا حق دسترسی ها را بررسی نمایید.',
@@ -113,7 +126,9 @@ lucid::add_phrases([
     'cms_object:invalid_file'=>'نام :name برای فایل نام معتبر است. نام فایل میتواند شامل کاراکتر انگلیسی ، خط تیره و نقطه باشد. بعنوان مثال page.htm، page و subdirectory/page',
     'cms_object:invalid_file_extension'=>'پسوند :invalid برای فایل نا معتبر است. پسوند های معتبر عبارتند از: :allowed.',
     'cms_object:invalid_property'=>'عدم توانایی در تغییر خاصیت \":name\"',
+
     'combiner:not_found'=>'فایل ترکیب کننده \':name\' یافت نشد.',
+
     'component:alias'=>'نام مستعار',
     'component:alias_description'=>'نام یکتایی که به این ابزار داده می شود تا درون صفحات و طرح بندی ها به این ابزار اشاره کند.',
     'component:invalid_request'=>'بدلیل داده ی نا معتبر ابزار امکان ذخیره قالب وجود ندارد.',
@@ -124,8 +139,10 @@ lucid::add_phrases([
     'component:not_found'=>'ابزار \':name\' یافت نشد.',
     'component:unnamed'=>'بدون نام',
     'component:validation_message'=>'نام مستعار برای ابزار مورد نیاز بوده و می تواند شامل حروف لاتین، اعداد، و خط زیر باشد و باید با حرف لاتین شروع شود.',
+
     'config:not_found'=>'فایل پیکربندی  :file تعریف شده در :location یافت نشد.',
     'config:required'=>'پیکربندی استفاده شده در :location باید مقدار \':property\' را ارائه نماید.',
+
     'content:delete_confirm_multiple'=>'آیا از حذف فایل ها و یا پوشه های انتخاب شده اطمینان دارید؟',
     'content:delete_confirm_single'=>'آیا از حذف این فایل اطمینان دارید؟',
     'content:menu_label'=>'محتوا',
@@ -133,6 +150,7 @@ lucid::add_phrases([
     'content:no_list_records'=>'هیچ فایل محتوایی وجود ندارد',
     'content:not_found_name'=>'فایل محتوای \':name\' یافت نشد.',
     'content:unsaved_label'=>'محتوای ذخیره نشده',
+
     'dashboard:add_widget'=>'افزودن ابزارک',
     'dashboard:columns'=>'{1} ستون|[2,Inf] ستون ها',
     'dashboard:full_width'=>'عرض کامل',
@@ -152,8 +170,11 @@ lucid::add_phrases([
     'dashboard:widget_title_error'=>'گزینه \"عنوان ابزارک\" حتما باید وارد شود.',
     'dashboard:widget_title_label'=>'عنوان ابزارک',
     'dashboard:widget_width'=>'عرض',
+
     'direction'=>'rtl',
+
     'directory:create_fail'=>'مشکلی در ایجاد پوشه ی :name به وجود آمده است',
+
     'editor:auto_closing'=>'نشانه ها و کاراکترهای خاص بصورت خودکار بسته شوند',
     'editor:code'=>'کد',
     'editor:code_folding'=>'بلاک بندی کدها',
@@ -184,6 +205,7 @@ lucid::add_phrases([
     'editor:url'=>'آدرس',
     'editor:use_hard_tabs'=>'فاصله گذاری با استفاده از TAB',
     'editor:word_wrap'=>'چیدمان کلمات',
+
     'event_log:created_at'=>'ساعت و تاریخ',
     'event_log:empty_link'=>'پاک  سازی گزارش رویداد ها',
     'event_log:empty_loading'=>'درحال پاکسازی گزارشها...',
@@ -196,9 +218,12 @@ lucid::add_phrases([
     'event_log:menu_label'=>'گزارش رویدادها',
     'event_log:message'=>'پیغام',
     'event_log:return_link'=>'بازگشت به گزارش رویداد ها',
+
     'field:invalid_type'=>'نوع فیلد :type نا معتبر می باشد.',
     'field:options_method_not_exists'=>'کلاس مدل :model باید شامل متد :method() باشد و گزینه های مورد نیاز \":field\" را بازگرداند.',
+
     'file:create_fail'=>'مشکلی در ایجاد فایل :name به وجود آمده است',
+
     'fileupload:attachment'=>'فایل ضمیمه',
     'fileupload:attachment_url'=>'آدرس پیوست',
     'fileupload:default_prompt'=>'فایل  را جهت ارسال به این نقطه بکشید و یا %s را کلیک کنیید',
@@ -209,7 +234,9 @@ lucid::add_phrases([
     'fileupload:title_label'=>'عنوان',
     'fileupload:upload_error'=>'خطا در ارسال فایل',
     'fileupload:upload_file'=>'ارسال فایل',
+
     'filter:all'=>'همه',
+
     'form:action_confirm'=>'آیا اطمینان دارید؟',
     'form:add'=>'افزودن',
     'form:apply'=>'اعمال',
@@ -259,6 +286,7 @@ lucid::add_phrases([
     'form:undefined_tab'=>'متفرقه',
     'form:update_success'=>':name با موفقیت به روز رسانی شد.',
     'form:update_title'=>'ویرایش :name',
+
     'install:install_completing'=>'مرحله ی پایانی عملیات نصب',
     'install:install_success'=>'افزونه با موفقیت نصب شد.',
     'install:missing_plugin_name'=>'لطفان نام افزونه را جهت نصب وارد نمایید.',
@@ -266,6 +294,7 @@ lucid::add_phrases([
     'install:plugin_label'=>'نصب افزونه',
     'install:project_label'=>'ضمیمه کردن به نرم افزار',
     'install:theme_label'=>'نصب قالب',
+
     'layout:delete_confirm_multiple'=>'آیا از حذف طرح بندی های انتخاب شده اطمینان دارید؟',
     'layout:delete_confirm_single'=>'آیا از حذف این طرح بندی اطمینان دارید؟',
     'layout:menu_label'=>'طرح بندی ها',
@@ -273,6 +302,7 @@ lucid::add_phrases([
     'layout:no_list_records'=>'طرح بندی یافت نشد',
     'layout:not_found_name'=>'طرح بندی ی \':name\' یافت نشد',
     'layout:unsaved_label'=>'طرح بندی(های) ذخیره نشده',
+
     'list:behavior_not_ready'=>'لسیت مقدار دهی اولیه شده است ، لطفا بررسی نمایید که متد makeLists() در کنترلر خود فراخوانی کرده باشید.',
     'list:default_title'=>'لیست',
     'list:delete_selected'=>'حذف انتخاب شده ها',
@@ -294,6 +324,7 @@ lucid::add_phrases([
     'list:search_prompt'=>'جستجو...',
     'list:setup_help'=>'ستون هایی را که میخواهید مشاهده نمایید را انتخاب نمایید. میتوانید محل قرار گیری ستونها را با جابجا نمودن آنها به .',
     'list:setup_title'=>'راه اندازی لیست',
+
     'locale:cs'=>'چک اسلواکی',
     'locale:de'=>'آلمانی',
     'locale:el'=>'یونانی',
@@ -318,6 +349,7 @@ lucid::add_phrases([
     'locale:tr'=>'ترکی',
     'locale:zh-cn'=>'چینی',
     'locale:zh-tw'=>'Chinese (Taiwan)',
+
     'mail:drivers_hint_content'=>'این روش برای ارسال پست الکترونیکی به افزونه \":plugin\" نیاز دارد. جهت استفاده از این روش لطفا افزونه مورد نیاز را نصب نمایید.',
     'mail:drivers_hint_header'=>'درایور ها نصب نشده اند',
     'mail:general'=>'عمومی',
@@ -351,6 +383,7 @@ lucid::add_phrases([
     'mail:smtp_port'=>'درگاه SMTP',
     'mail:smtp_ssl'=>'اتصال امن SSL مورد نیاز است',
     'mail:smtp_username'=>'نام کاربری',
+
     'mail_templates:code'=>'کد',
     'mail_templates:code_comment'=>'کد یکتای مشخص کننده ی این قالب',
     'mail_templates:content_css'=>'شیوه نامه',
@@ -377,10 +410,12 @@ lucid::add_phrases([
     'mail_templates:test_confirm'=>'یک نامه الکترونیکی جهت آزمایش به :email ارسال شد. آیا میخواهید ادامه دهید؟',
     'mail_templates:test_send'=>'ارسال پیغام آزمایشی',
     'mail_templates:test_success'=>'پیغام آزمایشی ارسال شد.',
+
     'maintenance:is_enabled'=>'فعال سازی حالت تعمیرات',
     'maintenance:is_enabled_comment'=>'اگر فعال شود کاربران به این صفحه هدایت خواهند شد.',
     'maintenance:settings_menu'=>'حالت تعمیرات',
     'maintenance:settings_menu_description'=>'تنظیم کردن صفحه مربوط به تعمیرات و تغییر تنظیمات این حالت.',
+
     'markdowneditor:bold'=>'ظخیم',
     'markdowneditor:code'=>'کد',
     'markdowneditor:formatting'=>'قالب بندی',
@@ -400,6 +435,7 @@ lucid::add_phrases([
     'markdowneditor:quote'=>'نقل قول',
     'markdowneditor:unorderedlist'=>'لیست بدون ترتیب',
     'markdowneditor:video'=>'ویدیو',
+
     'media:add_folder'=>'پوشه جدید',
     'media:click_here'=>'اینجا کلیک کنید',
     'media:crop_and_insert'=>'بریدن و افزودن',
@@ -458,7 +494,9 @@ lucid::add_phrases([
     'media:uploading_complete'=>'ارسال انجام شد',
     'media:uploading_file_num'=>'ارسال :number فایل(ها)...',
     'media:width'=>'عرض',
+
     'mediafinder:default_prompt'=>'%s را جهت انتخاب فایل چند رسانه ای انتخاب کنید',
+
     'mediamanager:insert_audio'=>'درج صوت',
     'mediamanager:insert_image'=>'درج تصویر',
     'mediamanager:insert_link'=>'درج آدرس رسانه',
@@ -468,6 +506,7 @@ lucid::add_phrases([
     'mediamanager:invalid_file_single_insert'=>'لطفا یک فایل را وارد نمایید',
     'mediamanager:invalid_image_empty_insert'=>'لطفا تصویر(ها) را جهت درج انتخاب نمایید',
     'mediamanager:invalid_video_empty_insert'=>'لطفا ویدیو را جهت درج انتخاب نمایید.',
+
     'model:invalid_class'=>'مدل :model استفاده شده در :class معتبر نمی باشد، این مدل باید از کلاس \\Model ارث برده باشد.',
     'model:mass_assignment_failed'=>'Mass assignment failed for Model attribute \':attribute\'.',
     'model:missing_id'=>'مشخصه ای برای مودل مورد نظر یافت نشد.',
@@ -475,11 +514,14 @@ lucid::add_phrases([
     'model:missing_relation'=>'مدل \':class\' شامل تعریفی از \':relation\'.',
     'model:name'=>'مدل',
     'model:not_found'=>'مدل \':class\' با مشخصه ی :id یافت نشد',
+
     'myaccount:menu_description'=>'به روز رسانی اطلاعات حساب کار بری شما مانند نام و کلمه عبور و ... .',
     'myaccount:menu_keywords'=>'ورود امن',
     'myaccount:menu_label'=>'حساب کاربری من',
+
     'mysettings:menu_description'=>'تنظیمات مربوط به حساب کاربری شما',
     'mysettings:menu_label'=>'تنظیمات من',
+
     'page:access_denied:cms_link'=>'بازگشت به مدیریت',
     'page:access_denied:help'=>'شما مجوز لازم براس دسترسی به این صفحه را ندارید.',
     'page:access_denied:label'=>'شما مجوز دسترسی ندارید',
@@ -498,6 +540,7 @@ lucid::add_phrases([
     'page:not_found_name'=>'صفحه ای با نام \':name\' یافت نشد',
     'page:unsaved_label'=>'صفحه(های) ذخیره نشده',
     'page:untitled'=>'بدون عنوان',
+
     'partial:delete_confirm_multiple'=>'آیا از حذف بخش های انتخاب شده اطمینان دارید؟',
     'partial:delete_confirm_single'=>'آیا از حذف این بخش بندی اطمینان دارید؟',
     'partial:invalid_name'=>'نام بخش نا معتبر است: :name.',
@@ -506,6 +549,7 @@ lucid::add_phrases([
     'partial:no_list_records'=>'بخشی وجود ندارد',
     'partial:not_found_name'=>'بخشی با نام \':name\' یافت نشد.',
     'partial:unsaved_label'=>'بخش(های) ذخیره نشده',
+
     'permissions:access_logs'=>'نمایش وقایع سیستم',
     'permissions:manage_assets'=>'مدیریت فایلها',
     'permissions:manage_branding'=>'شخصی سازی قسمت مدیریت',
@@ -522,10 +566,12 @@ lucid::add_phrases([
     'permissions:manage_themes'=>'مدیریت قالب ها',
     'permissions:name'=>'مدیریت محتوی',
     'permissions:view_the_dashboard'=>'نمایش صفحه مدیریت',
+
     'plugin:label'=>'افزونه',
     'plugin:name:help'=>'یک اسم یکتا برای نام افزونه برای مثال: RainLab.Blog',
     'plugin:name:label'=>'نام افزونه',
     'plugin:unnamed'=>'افزونه بدون نام',
+
     'plugins:disable_confirm'=>'آیا اطمینان دارید؟',
     'plugins:disable_success'=>'افزونه ها با موفقیت غیر فعال شدند.',
     'plugins:disabled_help'=>'افزونه های غیر فعال توسط برنامه نادیده گرفته می شوند.',
@@ -550,6 +596,7 @@ lucid::add_phrases([
     'plugins:search'=>'جستجوی افزونه جهت نصب',
     'plugins:selected_amount'=>'افزونه های انتخاب شده: :amount',
     'plugins:unknown_plugin'=>'افرونه ها با موفقیت پاک شدند.',
+
     'project:attach'=>'افرودن به پروژه',
     'project:detach'=>'حذف از پروژه',
     'project:detach_confirm'=>'آیا از حذف این پروژه اطمینان دارید؟',
@@ -560,6 +607,7 @@ lucid::add_phrases([
     'project:none'=>'هیچ',
     'project:owner_label'=>'صاحب امتیاز',
     'project:unbind_success'=>'پروژه با موفقیت پاک شد.',
+
     'relation:add'=>'افزودن',
     'relation:add_a_new'=>':name جدید',
     'relation:add_name'=>'افزودن :name',
@@ -591,8 +639,10 @@ lucid::add_phrases([
     'relation:unlink_name'=>'حذف لینک :name',
     'relation:update'=>'بروز رسانی',
     'relation:update_name'=>'بروز رسانی :name',
+
     'reorder:default_title'=>'مرتب سازی موارد',
     'reorder:no_records'=>'موردی جهت مرتب سازی یافت نشد.',
+
     'request_log:count'=>'شمارشگر',
     'request_log:empty_link'=>'پاک کردن گزارش درخواستها',
     'request_log:empty_loading'=>'در حال پاکسازی...',
@@ -606,20 +656,24 @@ lucid::add_phrases([
     'request_log:return_link'=>'بازگشت به گزارش درخواستها',
     'request_log:status_code'=>'وضعیت',
     'request_log:url'=>'آردس',
+
     'server:connect_error'=>'خطا در برقراری ارتباط با سرور.',
     'server:file_corrupt'=>'فایل دریافت شده از سرور ناقص است.',
     'server:file_error'=>'خطا در ارسال یا دریافت اطلاعات به سرور.',
     'server:response_empty'=>'پاسخ خالی از سوی سرور.',
     'server:response_invalid'=>'پاسخ نا معتبر از سوی سرور.',
     'server:response_not_found'=>'سرور به روز رسانی یافت نشد.',
+
     'settings:menu_label'=>'تنظیمات',
     'settings:missing_model'=>'صفحه تنظیمات شامل یک مدل تعریف نشده می باشد.',
     'settings:not_found'=>'تنظیمات مورد نظر یافت نشد.',
     'settings:return'=>'بازگشت به تنظیمات سیستم',
     'settings:search'=>'جستجو',
     'settings:update_success'=>'تنظیمات برای :name با موفقیت تغییر یافت.',
+
     'sidebar:add'=>'افزودن',
     'sidebar:search'=>'جستجو...',
+
     'system:categories:cms'=>'مدیریت محتوی',
     'system:categories:customers'=>'مشتریان',
     'system:categories:events'=>'رویداد ها',
@@ -634,9 +688,11 @@ lucid::add_phrases([
     'system:categories:users'=>'کاربران',
     'system:menu_label'=>'سیستم',
     'system:name'=>'سیستم',
+
     'template:invalid_type'=>'نوع قالب معتبر نمی باشد.',
     'template:not_found'=>'قالب درخواست شده یافت نشد.',
     'template:saved'=>'قالب با موفقیت ذخیره شد.',
+
     'theme:activate_button'=>'فعال کردن',
     'theme:active:not_found'=>'قالب فعال یافت نشد.',
     'theme:active:not_set'=>'قالب فعال مشخص نشده است.',
@@ -704,13 +760,16 @@ lucid::add_phrases([
     'theme:theme_label'=>'قالب',
     'theme:theme_title'=>'قالب ها',
     'theme:unnamed'=>'قالب بدون نام',
+
     'themes:install'=>'نصب قالب جدید',
     'themes:installed'=>'قالب های نصب شده',
     'themes:no_themes'=>'هیچ قالبی یافت نشد',
     'themes:recommended'=>'پیشنهادی',
     'themes:remove_confirm'=>'آیا از حذف این قالب اطمینان دارید؟',
     'themes:search'=>'جستجوی قالب برای نصب',
+
     'tooltips:preview_website'=>'پیش نماسش وب سایت',
+
     'updates:check_label'=>'بررسی بروز رسانی',
     'updates:core_build'=>'نسخه ی :build',
     'updates:core_build_help'=>'به روز رسانی جدید موجود است',
@@ -763,6 +822,7 @@ lucid::add_phrases([
     'updates:update_label'=>'بروز رسانی نرم افزار',
     'updates:update_loading'=>'بارگزاری بروز رسانی های موجود...',
     'updates:update_success'=>'بروز رسانی با موفقیت انجام شد.',
+
     'user:account'=>'حساب کاربری',
     'user:allow'=>'اجازه دسترسی',
     'user:avatar'=>'نمایه',
@@ -802,6 +862,7 @@ lucid::add_phrases([
     'user:send_invite_comment'=>'جهت ارسال دعوت نامه به پست الکترونیکی این شخص این گزینه را فعال نمایید',
     'user:superuser'=>'کاربر ممتاز',
     'user:superuser_comment'=>'اگر میخواهید این شخص به تمام قسمت ها دسترسی داشته باشد این گزینه را فعال نمایید.',
+
     'validation:accepted'=>':attribute باید مورد قبولتان باشد.',
     'validation:active_url'=>':attribute آدرس سایت معتبری نیست.',
     'validation:after'=>':attribute باید تاریخی بعد از :date باشد.',
@@ -850,11 +911,14 @@ lucid::add_phrases([
     'validation:size:string'=>':attribute باید :size کاراکتر باشد.',
     'validation:unique'=>':attribute استفاده شده تکراری می باشد.',
     'validation:url'=>'قالب :attribute نا معتبر است.',
+
     'warnings:extension'=>'افزونه PHP با نام :name نصب نشده است. لطفن این افزونه را نصب کرده و فعال نمایید.',
     'warnings:permissions'=>'پوشه :name یا یکی از زیر پوشه های آن برای PHP قابل نوشتن نیستند. لطفا تنظیمات این پوشه را تعییر دهید.',
     'warnings:tips'=>'راهنمایی پیکر بندی سیستم',
     'warnings:tips_description'=>'مشکلاتی در پیکربندی سیستم وجود دارد، شما باید تنظیمات زیر را بررسی نمایید.',
+
     'widget:not_bound'=>'ابزارکی تعریف شده در کلاس با نام \':name\' به هیچ کنترلری ارتباط داده نشده است',
     'widget:not_registered'=>'کلاس مربوط به ابزارک \':name\' به سیستم معرفی نشده است',
+
     'zip:extract_failed'=>'عدم توانایی در گشودن فایل هسته \':file\'.',
 ]);

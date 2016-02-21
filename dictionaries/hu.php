@@ -4,6 +4,7 @@
 # https://octobercms.com
 
 lucid::add_phrases([
+
     'access_log:created_at'=>'Időpont',
     'access_log:email'=>'E-mail cím',
     'access_log:first_name'=>'Keresztnév',
@@ -13,6 +14,7 @@ lucid::add_phrases([
     'access_log:login'=>'Felhasználónév',
     'access_log:menu_description'=>'A felhasználók sikeres bejelentkezéseinek megtekintése.',
     'access_log:menu_label'=>'Hozzáférésnapló',
+
     'account:apply'=>'Alkalmaz',
     'account:cancel'=>'Mégsem',
     'account:delete'=>'Törlés',
@@ -34,12 +36,16 @@ lucid::add_phrases([
     'account:restore_error'=>'Nem található a(z) \':login\' nevű felhasználó.',
     'account:restore_success'=>'A visszaállítással kapcsolatos utasításokat tartalmazó levél elküldésre került az e-mail címére.',
     'account:sign_out'=>'Kijelentkezés',
+
     'ajax_handler:invalid_name'=>'Érvénytelen AJAX kezelő név: :name.',
     'ajax_handler:not_found'=>'A(z) \':name\' AJAX kezelő nem található.',
+
     'alert:cancel_button_text'=>'Mégsem',
     'alert:confirm_button_text'=>'OK',
+
     'app:name'=>'OctoberCMS',
     'app:tagline'=>'Visszatérés az alapokhoz',
+
     'asset:already_exists'=>'Már létezik ilyen nevű fájl vagy könyvtár.',
     'asset:create_directory'=>'Könyvtár létrehozása',
     'asset:create_file'=>'Fájl létrehozása',
@@ -80,12 +86,16 @@ lucid::add_phrases([
     'asset:type_not_allowed'=>'Csak a következő fájltípusok engedélyezettek: :allowed_types',
     'asset:unsaved_label'=>'Nem mentett fájl(ok)',
     'asset:upload_files'=>'Fájl(ok) feltöltése',
+
     'auth:title'=>'Adminisztrációs oldal',
+
     'backend_preferences:locale'=>'Nyelv',
     'backend_preferences:locale_comment'=>'Válassza ki az alapértelmezett nyelvet.',
     'backend_preferences:menu_description'=>'A működésének testreszabása.',
     'backend_preferences:menu_label'=>'Admin felület',
+
     'behavior:missing_property'=>'A(z) :class osztálynak kell definiálnia a(z) :behavior viselkedés által használt $:property tulajdonságot.',
+
     'branding:app_name'=>'Weboldal neve',
     'branding:app_name_description'=>'Ez a név látható a bejelentkező képernyőn.',
     'branding:app_tagline'=>'Weboldal szlogenje',
@@ -102,7 +112,9 @@ lucid::add_phrases([
     'branding:secondary_dark'=>'Másodlagos (sötét)',
     'branding:secondary_light'=>'Másodlagos (világos)',
     'branding:styles'=>'Stílusok',
+
     'cms:menu_label'=>'Testreszabás',
+
     'cms_object:delete_success'=>'A sablonok törlése sikerült: :count.',
     'cms_object:error_creating_directory'=>'Hiba a(z) :name könyvtár létrehozásakor. Ellenőrizze az írási engedélyeket.',
     'cms_object:error_deleting'=>'Hiba a(z) \':name\' sablonfájl törlésekor. Ellenőrizze az írási engedélyeket.',
@@ -112,7 +124,9 @@ lucid::add_phrases([
     'cms_object:invalid_file'=>'Érvénytelen fájlnév. Csak latin betűt, számot, aláhúzásjelet, kötőjelet és pontot tartalmazhat. Néhány példa a megfelelő fájlnévre: kapcsolat.htm, impresszum, konyvtar/oldalnev',
     'cms_object:invalid_file_extension'=>'Érvénytelen fájlkiterjesztés: :invalid. Az engedélyezett kiterjesztések: :allowed.',
     'cms_object:invalid_property'=>'A(z) \':name\' tulajdonság nem állítható be.',
+
     'combiner:not_found'=>'A(z) \':name\' egyesítőfájl nem található.',
+
     'component:alias'=>'Alias',
     'component:alias_description'=>'Ennek a komponensnek a lap vagy az elrendezés kódjában való használatkor adott egyedi név.',
     'component:invalid_request'=>'A sablon érvénytelen komponens adatok miatt nem menthető.',
@@ -123,8 +137,10 @@ lucid::add_phrases([
     'component:not_found'=>'A(z) \':name\' komponens nem található.',
     'component:unnamed'=>'Névtelen',
     'component:validation_message'=>'A komponens aliasok kötelezőek, és csak latin szimbólumokat, számokat, valamint aláhúzásjeleket tartalmazhatnak. Az aliasoknak latin szimbólummal kell kezdődniük.',
+
     'config:not_found'=>'Nem található a(z) :location számára definiált :file konfigurációs fájl.',
     'config:required'=>'A(z) :location helyen használt konfigurációnak meg kell adnia egy \':property\' értéket.',
+
     'content:delete_confirm_multiple'=>'Valóban törölni akarja a kijelölt tartalomfájlokat vagy könyvtárakat?',
     'content:delete_confirm_single'=>'Valóban törölni akarja ezt a tartalomfájlt?',
     'content:menu_label'=>'Tartalom',
@@ -132,6 +148,7 @@ lucid::add_phrases([
     'content:no_list_records'=>'Nem találhatók tartalomfájlok',
     'content:not_found_name'=>'A(z) \':name\' tartalomfájl nem található.',
     'content:unsaved_label'=>'Nem mentett tartalom',
+
     'dashboard:add_widget'=>'Widget hozzáadása',
     'dashboard:columns'=>'{1} oszlop|[2,Inf] oszlop',
     'dashboard:full_width'=>'teljes szélesség',
@@ -151,7 +168,9 @@ lucid::add_phrases([
     'dashboard:widget_title_error'=>'A widget címének megadása kötelező.',
     'dashboard:widget_title_label'=>'Widget címe',
     'dashboard:widget_width'=>'Szélesség',
+
     'directory:create_fail'=>'Nem hozható létre a könyvtár: :name',
+
     'editor:auto_closing'=>'Automatikus kódlezárás',
     'editor:code'=>'PHP',
     'editor:code_folding'=>'Kód összecsukása',
@@ -182,6 +201,7 @@ lucid::add_phrases([
     'editor:url'=>'Webcím',
     'editor:use_hard_tabs'=>'Behúzás tabulátorokkal',
     'editor:word_wrap'=>'Tördelés',
+
     'event_log:created_at'=>'Időpont',
     'event_log:empty_link'=>'Eseménynapló kiürítése',
     'event_log:empty_loading'=>'Az eseménynapló kiürítése...',
@@ -194,9 +214,12 @@ lucid::add_phrases([
     'event_log:menu_label'=>'Eseménynapló',
     'event_log:message'=>'Üzenet',
     'event_log:return_link'=>'Vissza az eseménynapló listához',
+
     'field:invalid_type'=>'A(z) :type mezőtípus érvénytelen.',
     'field:options_method_not_exists'=>'A(z) :model modellosztálynak egy :method() metódus visszaadandó beállításait kell definiálnia a(z) \':field\' űrlapmező számára.',
+
     'file:create_fail'=>'Nem hozható létre a fájl: :name',
+
     'fileupload:attachment'=>'Csatolmány',
     'fileupload:attachment_url'=>'Csatolmány webcíme',
     'fileupload:default_prompt'=>'Hozza ide a fájlt vagy kattintson erre: %s',
@@ -207,7 +230,9 @@ lucid::add_phrases([
     'fileupload:title_label'=>'Cím',
     'fileupload:upload_error'=>'Feltöltési hiba',
     'fileupload:upload_file'=>'Fájl feltöltése',
+
     'filter:all'=>'mind',
+
     'form:action_confirm'=>'Biztos benne?',
     'form:add'=>'Hozzáadás',
     'form:apply'=>'Alkalmaz',
@@ -257,6 +282,7 @@ lucid::add_phrases([
     'form:undefined_tab'=>'Egyebek',
     'form:update_success'=>'A(z) :name módosítása sikerült',
     'form:update_title'=>':name szerkesztése',
+
     'import_export:auto_match_columns'=>'Automatikus oszlop párosítás',
     'import_export:column'=>'Oszlop',
     'import_export:column_preview'=>'Oszlop előnézete',
@@ -295,6 +321,7 @@ lucid::add_phrases([
     'import_export:upload_csv_file'=>'1. CSV fájl feltöltése',
     'import_export:upload_valid_csv'=>'Kérjük töltsön fel érvényes CSV fájlt.',
     'import_export:warnings'=>'Figyelmeztetések',
+
     'install:install_completing'=>'A telepítési folyamat befejezése',
     'install:install_success'=>'A bővítmény telepítése sikerült.',
     'install:missing_plugin_name'=>'Adja meg a telepítendő bővítmény nevét.',
@@ -302,6 +329,7 @@ lucid::add_phrases([
     'install:plugin_label'=>'Bővítmény telepítése',
     'install:project_label'=>'Csatolás projekthez',
     'install:theme_label'=>'Téma telepítése',
+
     'layout:delete_confirm_multiple'=>'Valóban törölni akarja a kijelölt elrendezéseket?',
     'layout:delete_confirm_single'=>'Valóban törölni akarja ezt az elrendezést?',
     'layout:menu_label'=>'Elrendezések',
@@ -309,6 +337,7 @@ lucid::add_phrases([
     'layout:no_list_records'=>'Nem találhatók elrendezések',
     'layout:not_found_name'=>'A(z) \':name\' elrendezés nem található',
     'layout:unsaved_label'=>'Nem mentett elrendezés(ek)',
+
     'list:behavior_not_ready'=>'Nem történt meg a lista viselkedés inicializálása és ellenőrizze, hogy meghívta-e a(z) makeLists() függvényt a vezérlőben.',
     'list:default_title'=>'Lista',
     'list:delete_selected'=>'Kiválasztottak törlése',
@@ -330,6 +359,7 @@ lucid::add_phrases([
     'list:search_prompt'=>'Keresés...',
     'list:setup_help'=>'A jelölőnégyzetek használatával válassza ki azokat az oszlopokat, melyeket látni szeretne a listában. Az oszlopok pozícióját felfelé vagy lefelé húzással módosíthatja.',
     'list:setup_title'=>'Lista beállítása',
+
     'locale:cs'=>'Cseh',
     'locale:de'=>'Német',
     'locale:el'=>'Görög',
@@ -354,6 +384,7 @@ lucid::add_phrases([
     'locale:tr'=>'Török',
     'locale:zh-cn'=>'Kínai',
     'locale:zh-tw'=>'Kínai (tajvani)',
+
     'mail:drivers_hint_content'=>'A levél küldéséhez szükséges, hogy telepítve legyen a(z) \":plugin\" nevű bővítmény.',
     'mail:drivers_hint_header'=>'Meghajtó nincs telepítve',
     'mail:general'=>'Általános',
@@ -387,6 +418,7 @@ lucid::add_phrases([
     'mail:smtp_port'=>'SMTP port',
     'mail:smtp_ssl'=>'SSL kapcsolat szükséges',
     'mail:smtp_username'=>'Felhasználónév',
+
     'mail_templates:code'=>'Kód',
     'mail_templates:code_comment'=>'Erre a sablonra hivatkozásként használt egyedi kód.',
     'mail_templates:content_css'=>'CSS',
@@ -420,10 +452,12 @@ lucid::add_phrases([
     'mail_templates:test_confirm'=>'Teszt üzenet küldése a(z) \":email\" címre. Folytatja?',
     'mail_templates:test_send'=>'Tesztüzenet küldése',
     'mail_templates:test_success'=>'A tesztüzenet elküldése sikerült.',
+
     'maintenance:is_enabled'=>'Karbantartási mód engedélyezése',
     'maintenance:is_enabled_comment'=>'Aktiválása esetén a weboldal látogatói az alább kiválasztott lapot fogják látni.',
     'maintenance:settings_menu'=>'Karbantartás',
     'maintenance:settings_menu_description'=>'Szolgáltatás be / ki kapcsolása és testreszabása.',
+
     'markdowneditor:bold'=>'Félkövér',
     'markdowneditor:code'=>'Kód',
     'markdowneditor:formatting'=>'Forráskód',
@@ -443,6 +477,7 @@ lucid::add_phrases([
     'markdowneditor:quote'=>'Idézet',
     'markdowneditor:unorderedlist'=>'Rendezett lista',
     'markdowneditor:video'=>'Videó',
+
     'media:add_folder'=>'Könyvtár létrehozása',
     'media:click_here'=>'Megtekintés',
     'media:crop_and_insert'=>'Vágás és beillesztés',
@@ -502,7 +537,9 @@ lucid::add_phrases([
     'media:uploading_error'=>'Feltöltés sikertelen',
     'media:uploading_file_num'=>'Feltöltve :number fájl...',
     'media:width'=>'Szélesség',
+
     'mediafinder:default_prompt'=>'Kattintson a(z) %s gombra új média fájl kereséséhez.',
+
     'mediamanager:insert_audio'=>'Audió beszúrása',
     'mediamanager:insert_image'=>'Kép beszúrása',
     'mediamanager:insert_link'=>'Hivatkozás beszúrása',
@@ -512,6 +549,7 @@ lucid::add_phrases([
     'mediamanager:invalid_file_single_insert'=>'Kérjük jelöljön ki egy fájlt.',
     'mediamanager:invalid_image_empty_insert'=>'Válasszon ki legalább egy képet a beszúráshoz.',
     'mediamanager:invalid_video_empty_insert'=>'Válasszon ki legalább egy videót a beszúráshoz.',
+
     'model:invalid_class'=>'A(z) :class osztályban használt :model modell nem érvényes, örökölnie kell a \\Model osztályt.',
     'model:mass_assignment_failed'=>'A tömeges hozzárendelés a(z) \':attribute\' modell attribútumhoz nem sikerült.',
     'model:missing_id'=>'Nincs azonosító megadva a modellrekord kereséséhez.',
@@ -519,11 +557,14 @@ lucid::add_phrases([
     'model:missing_relation'=>'A(z) \':class\' modell nem tartalmaz definíciót a(z) \':relation\' reláció számára.',
     'model:name'=>'Modell',
     'model:not_found'=>'Nem található :id azonosítójú \':class\' modell.',
+
     'myaccount:menu_description'=>'A felhasználói adatok módosítása.',
     'myaccount:menu_keywords'=>'biztonságos bejelentkezés',
     'myaccount:menu_label'=>'Fiókom',
+
     'mysettings:menu_description'=>'A fiókkal kapcsolatos beállítások',
     'mysettings:menu_label'=>'Beállításaim',
+
     'page:access_denied:cms_link'=>'Vissza a látogatói oldalra',
     'page:access_denied:help'=>'Ön nem rendelkezik a szükséges engedélyekkel ennek a lapnak a megtekintéséhez.',
     'page:access_denied:label'=>'Hozzáférés megtagadva',
@@ -542,6 +583,7 @@ lucid::add_phrases([
     'page:not_found_name'=>'A következő lap nem található: \':name\'',
     'page:unsaved_label'=>'Nem mentett lap(ok)',
     'page:untitled'=>'Névtelen',
+
     'partial:delete_confirm_multiple'=>'Valóban törölni akarja a kijelölt részlapokat?',
     'partial:delete_confirm_single'=>'Valóban törölni akarja ezt a részlapot?',
     'partial:invalid_name'=>'Érvénytelen részlapnév: :name.',
@@ -550,6 +592,7 @@ lucid::add_phrases([
     'partial:no_list_records'=>'Nem találhatók részlapok',
     'partial:not_found_name'=>'A(z) \':name\' részlap nem található.',
     'partial:unsaved_label'=>'Nem mentett részlap(ok)',
+
     'permissions:access_logs'=>'Rendszer naplók megtekintése',
     'permissions:manage_assets'=>'Fájlok kezelése',
     'permissions:manage_branding'=>'Admin felület testreszabása',
@@ -568,10 +611,12 @@ lucid::add_phrases([
     'permissions:manage_themes'=>'Témák kezelése',
     'permissions:name'=>'Testreszabás',
     'permissions:view_the_dashboard'=>'Vezérlőpult megtekintése',
+
     'plugin:label'=>'Bővítmény',
     'plugin:name:help'=>'Nevezze meg egyedi kódja alapján a bővítményt. Például: RainLab.Blog',
     'plugin:name:label'=>'Bővítmény neve',
     'plugin:unnamed'=>'Névtelen bővítmény',
+
     'plugins:disable_confirm'=>'Biztos benne?',
     'plugins:disable_success'=>'A bővítmények sikeresen letiltásra kerültek.',
     'plugins:disabled_help'=>'A kiválasztott bővítményeket a weboldal figyelmen kívül hagyja.',
@@ -596,6 +641,7 @@ lucid::add_phrases([
     'plugins:search'=>'keresés...',
     'plugins:selected_amount'=>'Kijelölt bővítmények: :amount',
     'plugins:unknown_plugin'=>'A bővítmények eltávolítása megtörtént.',
+
     'project:attach'=>'Csatolás',
     'project:detach'=>'leválasztás',
     'project:detach_confirm'=>'Biztosan le akarja választani a projektet?',
@@ -606,6 +652,7 @@ lucid::add_phrases([
     'project:none'=>'Nincs',
     'project:owner_label'=>'Fejlesztő',
     'project:unbind_success'=>'A projekt leválasztása sikerült.',
+
     'relation:add'=>'Hozzáadás',
     'relation:add_a_new'=>'Új :name hozzáadása',
     'relation:add_name'=>':name hozzáadása',
@@ -637,8 +684,10 @@ lucid::add_phrases([
     'relation:unlink_name'=>':name csatolásának megszüntetése',
     'relation:update'=>'Frissítés',
     'relation:update_name'=>'A(z) :name frissítése',
+
     'reorder:default_title'=>'Elemek újrarendezése',
     'reorder:no_records'=>'Nincs elérhető tartalom a rendezéshez.',
+
     'request_log:count'=>'Számláló',
     'request_log:empty_link'=>'Kérelemnapló kiürítése',
     'request_log:empty_loading'=>'A kérelemnapló kiürítése...',
@@ -652,20 +701,24 @@ lucid::add_phrases([
     'request_log:return_link'=>'Vissza a kérelemnapló listához',
     'request_log:status_code'=>'Állapot',
     'request_log:url'=>'Webcím',
+
     'server:connect_error'=>'Hiba a kiszolgálóhoz való csatlakozáskor.',
     'server:file_corrupt'=>'A kiszolgálóról letöltött fájl sérült.',
     'server:file_error'=>'Nem sikerült továbbítania a kiszolgálónak a csomagot.',
     'server:response_empty'=>'Üres válasz érkezett a kiszolgálóról.',
     'server:response_invalid'=>'Érvénytelen válasz érkezett a kiszolgálóról.',
     'server:response_not_found'=>'A frissítési kiszolgáló nem található.',
+
     'settings:menu_label'=>'Beállítások',
     'settings:missing_model'=>'A beállítások lap egy modell definíciót hiányol.',
     'settings:not_found'=>'Nem találhatók a megadott beállítások.',
     'settings:return'=>'Vissza a beállításokhoz',
     'settings:search'=>'Keresés',
     'settings:update_success'=>'A(z) :name beállításainak frissítése sikerült.',
+
     'sidebar:add'=>'Hozzáadás',
     'sidebar:search'=>'Keresés...',
+
     'system:categories:cms'=>'Weboldal',
     'system:categories:customers'=>'Vevők',
     'system:categories:events'=>'Események',
@@ -680,9 +733,11 @@ lucid::add_phrases([
     'system:categories:users'=>'Felhasználók',
     'system:menu_label'=>'Rendszer',
     'system:name'=>'Rendszer',
+
     'template:invalid_type'=>'Ismeretlen sablon típus.',
     'template:not_found'=>'A kért sablon nem található.',
     'template:saved'=>'A módosítások sikeresen mentésre kerültek.',
+
     'theme:activate_button'=>'Aktiválás',
     'theme:active:not_found'=>'Az aktív téma nem található.',
     'theme:active:not_set'=>'Nincs beállítva az aktív téma.',
@@ -750,13 +805,16 @@ lucid::add_phrases([
     'theme:theme_label'=>'Téma',
     'theme:theme_title'=>'Témák',
     'theme:unnamed'=>'Névtelen témák',
+
     'themes:install'=>'Téma telepítése',
     'themes:installed'=>'Telepítve',
     'themes:no_themes'=>'Egy téma sincs telepítve a piactérről.',
     'themes:recommended'=>'Ajánlott',
     'themes:remove_confirm'=>'Valóban törölni akarja ezt a témát?',
     'themes:search'=>'keresés...',
+
     'tooltips:preview_website'=>'Weboldal megtekintése',
+
     'updates:check_label'=>'Frissítések keresése',
     'updates:core_build'=>'Új verzió: :build',
     'updates:core_build_help'=>'Elérhető a legújabb hivatalos kiadás.',
@@ -809,6 +867,7 @@ lucid::add_phrases([
     'updates:update_label'=>'Honlap frissítése',
     'updates:update_loading'=>'Elérhető frissítések betöltése...',
     'updates:update_success'=>'A frissítési sikeresen végrehajtásra került.',
+
     'user:account'=>'Fiók',
     'user:allow'=>'Engedélyezés',
     'user:avatar'=>'Profilkép',
@@ -848,6 +907,7 @@ lucid::add_phrases([
     'user:send_invite_comment'=>'A fentebb megadott adatokat tartalmazza.',
     'user:superuser'=>'Szuperadmin',
     'user:superuser_comment'=>'Korlátlan hozzáférést biztosít a teljes admin felülethez.',
+
     'validation:accepted'=>'A(z) :attribute-t el kell fogadni.',
     'validation:active_url'=>'A(z) :attribute nem érvényes URL cím.',
     'validation:after'=>'A(z) :attribute :date utáni dátum kell, hogy legyen.',
@@ -895,11 +955,14 @@ lucid::add_phrases([
     'validation:size:string'=>'A(z) :attribute :size karakter kell, hogy legyen.',
     'validation:unique'=>'A(z) :attribute már foglalt.',
     'validation:url'=>'A(z) :attribute formátuma érvénytelen.',
+
     'warnings:extension'=>'A(z) :name PHP kiterjesztés nincs telepítve. Telepítse ezt a függvénytárat és aktiválja a kiterjesztést.',
     'warnings:permissions'=>'A(z) :name könyvtár vagy alkönyvtárai a PHP számára nem írhatóak. Adjon megfelelő engedélyeket a webkiszolgálónak erre a könyvtárra.',
     'warnings:tips'=>'Rendszer konfigurációs tippek',
     'warnings:tips_description'=>'Olyan problémák vannak, melyekre figyeljen oda a rendszer megfelelő konfigurálása érdekében.',
+
     'widget:not_bound'=>'A(z) \':name\' osztálynevű widget kötése nem történt meg a vezérlővel.',
     'widget:not_registered'=>'A(z) \':name\' widget osztálynév regisztrálása nem történt meg.',
+
     'zip:extract_failed'=>'Nem tömöríthető ki a(z) \':file\' fájl.',
 ]);

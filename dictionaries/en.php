@@ -4,6 +4,7 @@
 # https://octobercms.com
 
 lucid::add_phrases([
+
     'access_log:created_at'=>'Date & Time',
     'access_log:email'=>'Email',
     'access_log:first_name'=>'First name',
@@ -13,6 +14,7 @@ lucid::add_phrases([
     'access_log:login'=>'Login',
     'access_log:menu_description'=>'View a list of successful back-end user sign ins.',
     'access_log:menu_label'=>'Access log',
+
     'account:apply'=>'Apply',
     'account:cancel'=>'Cancel',
     'account:delete'=>'Delete',
@@ -34,12 +36,16 @@ lucid::add_phrases([
     'account:restore_error'=>'A user could not be found with a login value of \':login\'',
     'account:restore_success'=>'An email has been sent to your email address with password restore instructions.',
     'account:sign_out'=>'Sign out',
+
     'ajax_handler:invalid_name'=>'Invalid AJAX handler name: :name.',
     'ajax_handler:not_found'=>'AJAX handler \':name\' was not found.',
+
     'alert:cancel_button_text'=>'Cancel',
     'alert:confirm_button_text'=>'OK',
+
     'app:name'=>'October CMS',
     'app:tagline'=>'Getting back to basics',
+
     'asset:already_exists'=>'File or directory with this name already exists',
     'asset:create_directory'=>'Create directory',
     'asset:create_file'=>'Create file',
@@ -80,12 +86,16 @@ lucid::add_phrases([
     'asset:type_not_allowed'=>'Only the following file types are allowed: :allowed_types',
     'asset:unsaved_label'=>'Unsaved asset(s)',
     'asset:upload_files'=>'Upload file(s)',
+
     'auth:title'=>'Administration Area',
+
     'backend_preferences:locale'=>'Language',
     'backend_preferences:locale_comment'=>'Select your desired locale for language use.',
     'backend_preferences:menu_description'=>'Manage your account preferences such as desired language.',
     'backend_preferences:menu_label'=>'Back-end preferences',
+
     'behavior:missing_property'=>'Class :class must define property $:property used by :behavior behavior.',
+
     'branding:app_name'=>'App Name',
     'branding:app_name_description'=>'This name is shown in the title area of the back-end.',
     'branding:app_tagline'=>'App Tagline',
@@ -102,7 +112,9 @@ lucid::add_phrases([
     'branding:secondary_dark'=>'Secondary (Dark)',
     'branding:secondary_light'=>'Secondary (Light)',
     'branding:styles'=>'Styles',
+
     'cms:menu_label'=>'CMS',
+
     'cms_object:delete_success'=>'Templates were successfully deleted: :count.',
     'cms_object:error_creating_directory'=>'Error creating directory :name. Please check write permissions.',
     'cms_object:error_deleting'=>'Error deleting the template file \':name\'. Please check write permissions.',
@@ -112,7 +124,9 @@ lucid::add_phrases([
     'cms_object:invalid_file'=>'Invalid file name: :name. File names can contain only alphanumeric symbols, underscores, dashes and dots. Some examples of correct file names: page.htm, page, subdirectory/page',
     'cms_object:invalid_file_extension'=>'Invalid file extension: :invalid. Allowed extensions are: :allowed.',
     'cms_object:invalid_property'=>'The property \':name\' cannot be set',
+
     'combiner:not_found'=>'The combiner file \':name\' is not found.',
+
     'component:alias'=>'Alias',
     'component:alias_description'=>'A unique name given to this component when using it in the page or layout code.',
     'component:invalid_request'=>'The template cannot be saved because of invalid component data.',
@@ -123,8 +137,10 @@ lucid::add_phrases([
     'component:not_found'=>'The component \':name\' is not found.',
     'component:unnamed'=>'Unnamed',
     'component:validation_message'=>'Component aliases are required and can contain only Latin symbols, digits, and underscores. The aliases should start with a Latin symbol.',
+
     'config:not_found'=>'Unable to find configuration file :file defined for :location.',
     'config:required'=>'Configuration used in :location must supply a value \':property\'.',
+
     'content:delete_confirm_multiple'=>'Do you really want to delete selected content files or directories?',
     'content:delete_confirm_single'=>'Do you really want delete this content file?',
     'content:menu_label'=>'Content',
@@ -132,6 +148,7 @@ lucid::add_phrases([
     'content:no_list_records'=>'No content files found',
     'content:not_found_name'=>'The content file \':name\' is not found.',
     'content:unsaved_label'=>'Unsaved content',
+
     'dashboard:add_widget'=>'Add widget',
     'dashboard:columns'=>'{1} column|[2,Inf] columns',
     'dashboard:full_width'=>'full width',
@@ -151,7 +168,9 @@ lucid::add_phrases([
     'dashboard:widget_title_error'=>'The Widget Title is required.',
     'dashboard:widget_title_label'=>'Widget title',
     'dashboard:widget_width'=>'Width',
+
     'directory:create_fail'=>'Cannot create directory: :name',
+
     'editor:auto_closing'=>'Auto close tags and special characters',
     'editor:code'=>'Code',
     'editor:code_folding'=>'Code folding',
@@ -182,6 +201,7 @@ lucid::add_phrases([
     'editor:url'=>'URL',
     'editor:use_hard_tabs'=>'Indent using tabs',
     'editor:word_wrap'=>'Word wrap',
+
     'event_log:created_at'=>'Date & Time',
     'event_log:empty_link'=>'Empty event log',
     'event_log:empty_loading'=>'Emptying event log...',
@@ -194,9 +214,12 @@ lucid::add_phrases([
     'event_log:menu_label'=>'Event log',
     'event_log:message'=>'Message',
     'event_log:return_link'=>'Return to event log',
+
     'field:invalid_type'=>'Invalid field type used :type.',
     'field:options_method_not_exists'=>'The model class :model must define a method :method() returning options for the \':field\' form field.',
+
     'file:create_fail'=>'Cannot create file: :name',
+
     'fileupload:attachment'=>'Attachment',
     'fileupload:attachment_url'=>'Attachment URL',
     'fileupload:default_prompt'=>'Click the %s or drag a file here to upload',
@@ -207,7 +230,9 @@ lucid::add_phrases([
     'fileupload:title_label'=>'Title',
     'fileupload:upload_error'=>'Upload error',
     'fileupload:upload_file'=>'Upload file',
+
     'filter:all'=>'all',
+
     'form:action_confirm'=>'Are you sure?',
     'form:add'=>'Add',
     'form:apply'=>'Apply',
@@ -261,6 +286,7 @@ lucid::add_phrases([
     'form:undefined_tab'=>'Misc',
     'form:update_success'=>'The :name has been updated successfully',
     'form:update_title'=>'Edit :name',
+
     'import_export:auto_match_columns'=>'Auto match columns',
     'import_export:column'=>'Column',
     'import_export:column_preview'=>'Column preview',
@@ -299,6 +325,7 @@ lucid::add_phrases([
     'import_export:upload_csv_file'=>'1. Upload a CSV file',
     'import_export:upload_valid_csv'=>'Please upload a valid CSV file.',
     'import_export:warnings'=>'Warnings',
+
     'install:install_completing'=>'Finishing installation process',
     'install:install_success'=>'The plugin has been installed successfully.',
     'install:missing_plugin_name'=>'Please specify a Plugin name to install.',
@@ -306,6 +333,7 @@ lucid::add_phrases([
     'install:plugin_label'=>'Install Plugin',
     'install:project_label'=>'Attach to Project',
     'install:theme_label'=>'Install Theme',
+
     'layout:delete_confirm_multiple'=>'Do you really want to delete selected layouts?',
     'layout:delete_confirm_single'=>'Do you really want delete this layout?',
     'layout:menu_label'=>'Layouts',
@@ -313,6 +341,7 @@ lucid::add_phrases([
     'layout:no_list_records'=>'No layouts found',
     'layout:not_found_name'=>'The layout \':name\' is not found',
     'layout:unsaved_label'=>'Unsaved layout(s)',
+
     'list:behavior_not_ready'=>'List behavior has not been initialized, check that you have called makeLists() in your controller.',
     'list:column_switch_false'=>'No',
     'list:column_switch_true'=>'Yes',
@@ -338,6 +367,7 @@ lucid::add_phrases([
     'list:setup_help'=>'Use checkboxes to select columns you want to see in the list. You can change position of columns by dragging them up or down.',
     'list:setup_title'=>'List Setup',
     'list:updating'=>'Updating...',
+
     'locale:cs'=>'Czech',
     'locale:de'=>'German',
     'locale:el'=>'Greek',
@@ -362,6 +392,7 @@ lucid::add_phrases([
     'locale:tr'=>'Turkish',
     'locale:zh-cn'=>'Chinese (China)',
     'locale:zh-tw'=>'Chinese (Taiwan)',
+
     'mail:drivers_hint_content'=>'This mail method requires the plugin \":plugin\" be installed before you can send mail.',
     'mail:drivers_hint_header'=>'Drivers not installed',
     'mail:general'=>'General',
@@ -395,6 +426,7 @@ lucid::add_phrases([
     'mail:smtp_port'=>'SMTP port',
     'mail:smtp_ssl'=>'SSL connection required',
     'mail:smtp_username'=>'Username',
+
     'mail_templates:code'=>'Code',
     'mail_templates:code_comment'=>'Unique code used to refer to this template',
     'mail_templates:content_css'=>'CSS',
@@ -428,10 +460,12 @@ lucid::add_phrases([
     'mail_templates:test_confirm'=>'A test message will be sent to :email. Continue?',
     'mail_templates:test_send'=>'Send test message',
     'mail_templates:test_success'=>'The test message has been successfully sent.',
+
     'maintenance:is_enabled'=>'Enable maintenance mode',
     'maintenance:is_enabled_comment'=>'When activated website visitors will see the page chosen below.',
     'maintenance:settings_menu'=>'Maintenance mode',
     'maintenance:settings_menu_description'=>'Configure the maintenance mode page and toggle the setting.',
+
     'markdowneditor:bold'=>'Bold',
     'markdowneditor:code'=>'Code',
     'markdowneditor:formatting'=>'Formatting',
@@ -451,6 +485,7 @@ lucid::add_phrases([
     'markdowneditor:quote'=>'Quote',
     'markdowneditor:unorderedlist'=>'Unordered List',
     'markdowneditor:video'=>'Video',
+
     'media:add_folder'=>'Add folder',
     'media:click_here'=>'Click here',
     'media:crop_and_insert'=>'Crop & Insert',
@@ -510,7 +545,9 @@ lucid::add_phrases([
     'media:uploading_error'=>'Upload failed',
     'media:uploading_file_num'=>'Uploading :number file(s)...',
     'media:width'=>'Width',
+
     'mediafinder:default_prompt'=>'Click the %s button to find a media item',
+
     'mediamanager:insert_audio'=>'Insert Media Audio',
     'mediamanager:insert_image'=>'Insert Media Image',
     'mediamanager:insert_link'=>'Insert Media Link',
@@ -520,6 +557,7 @@ lucid::add_phrases([
     'mediamanager:invalid_file_single_insert'=>'Please select a single file.',
     'mediamanager:invalid_image_empty_insert'=>'Please select image(s) to insert.',
     'mediamanager:invalid_video_empty_insert'=>'Please select a video file to insert.',
+
     'model:invalid_class'=>'Model :model used in :class is not valid, it must inherit the \\Model class.',
     'model:mass_assignment_failed'=>'Mass assignment failed for Model attribute \':attribute\'.',
     'model:missing_id'=>'There is no ID specified for looking up the model record.',
@@ -527,11 +565,14 @@ lucid::add_phrases([
     'model:missing_relation'=>'Model \':class\' does not contain a definition for \':relation\'.',
     'model:name'=>'Model',
     'model:not_found'=>'Model \':class\' with an ID of :id could not be found',
+
     'myaccount:menu_description'=>'Update your account details such as name, email address and password.',
     'myaccount:menu_keywords'=>'security login',
     'myaccount:menu_label'=>'My account',
+
     'mysettings:menu_description'=>'Settings related to your administration account',
     'mysettings:menu_label'=>'My Settings',
+
     'page:access_denied:cms_link'=>'Return to the back-end',
     'page:access_denied:help'=>'You don\'t have the required permissions to view this page.',
     'page:access_denied:label'=>'Access denied',
@@ -550,6 +591,7 @@ lucid::add_phrases([
     'page:not_found_name'=>'The page \':name\' is not found',
     'page:unsaved_label'=>'Unsaved page(s)',
     'page:untitled'=>'Untitled',
+
     'partial:delete_confirm_multiple'=>'Do you really want to delete selected partials?',
     'partial:delete_confirm_single'=>'Do you really want delete this partial?',
     'partial:invalid_name'=>'Invalid partial name: :name.',
@@ -558,6 +600,7 @@ lucid::add_phrases([
     'partial:no_list_records'=>'No partials found',
     'partial:not_found_name'=>'The partial \':name\' is not found.',
     'partial:unsaved_label'=>'Unsaved partial(s)',
+
     'permissions:access_logs'=>'View system logs',
     'permissions:manage_assets'=>'Manage assets',
     'permissions:manage_branding'=>'Customize the back-end',
@@ -576,10 +619,12 @@ lucid::add_phrases([
     'permissions:manage_themes'=>'Manage themes',
     'permissions:name'=>'Cms',
     'permissions:view_the_dashboard'=>'View the dashboard',
+
     'plugin:label'=>'Plugin',
     'plugin:name:help'=>'Name the plugin by its unique code. For example, RainLab.Blog',
     'plugin:name:label'=>'Plugin Name',
     'plugin:unnamed'=>'Unnamed plugin',
+
     'plugins:disable_confirm'=>'Are you sure?',
     'plugins:disable_success'=>'Successfully disabled those plugins.',
     'plugins:disabled_help'=>'Plugins that are disabled are ignored by the application.',
@@ -604,6 +649,7 @@ lucid::add_phrases([
     'plugins:search'=>'search plugins to install...',
     'plugins:selected_amount'=>'Plugins selected: :amount',
     'plugins:unknown_plugin'=>'Plugin has been removed from the file system.',
+
     'project:attach'=>'Attach Project',
     'project:detach'=>'Detach Project',
     'project:detach_confirm'=>'Are you sure you want to detach this project?',
@@ -614,7 +660,9 @@ lucid::add_phrases([
     'project:none'=>'None',
     'project:owner_label'=>'Owner',
     'project:unbind_success'=>'Project has been detached successfully.',
+
     'recordfinder:find_record'=>'Find Record',
+
     'relation:add'=>'Add',
     'relation:add_a_new'=>'Add a new :name',
     'relation:add_name'=>'Add :name',
@@ -646,8 +694,10 @@ lucid::add_phrases([
     'relation:unlink_name'=>'Unlink :name',
     'relation:update'=>'Update',
     'relation:update_name'=>'Update :name',
+
     'reorder:default_title'=>'Reorder records',
     'reorder:no_records'=>'There are no records available to sort.',
+
     'request_log:count'=>'Counter',
     'request_log:empty_link'=>'Empty request log',
     'request_log:empty_loading'=>'Emptying request log...',
@@ -661,20 +711,24 @@ lucid::add_phrases([
     'request_log:return_link'=>'Return to request log',
     'request_log:status_code'=>'Status',
     'request_log:url'=>'URL',
+
     'server:connect_error'=>'Error connecting to the server.',
     'server:file_corrupt'=>'File from server is corrupt.',
     'server:file_error'=>'Server failed to deliver the package.',
     'server:response_empty'=>'Empty response from the server.',
     'server:response_invalid'=>'Invalid response from the server.',
     'server:response_not_found'=>'The update server could not be found.',
+
     'settings:menu_label'=>'Settings',
     'settings:missing_model'=>'The settings page is missing a Model definition.',
     'settings:not_found'=>'Unable to find the specified settings.',
     'settings:return'=>'Return to system settings',
     'settings:search'=>'Search',
     'settings:update_success'=>'Settings for :name have been updated successfully.',
+
     'sidebar:add'=>'Add',
     'sidebar:search'=>'Search...',
+
     'system:categories:cms'=>'CMS',
     'system:categories:customers'=>'Customers',
     'system:categories:events'=>'Events',
@@ -689,9 +743,11 @@ lucid::add_phrases([
     'system:categories:users'=>'Users',
     'system:menu_label'=>'System',
     'system:name'=>'System',
+
     'template:invalid_type'=>'Unknown template type.',
     'template:not_found'=>'The requested template was not found.',
     'template:saved'=>'The template has been successfully saved.',
+
     'theme:activate_button'=>'Activate',
     'theme:active:not_found'=>'The active theme is not found.',
     'theme:active:not_set'=>'The active theme is not set.',
@@ -759,13 +815,16 @@ lucid::add_phrases([
     'theme:theme_label'=>'Theme',
     'theme:theme_title'=>'Themes',
     'theme:unnamed'=>'Unnamed theme',
+
     'themes:install'=>'Install themes',
     'themes:installed'=>'Installed themes',
     'themes:no_themes'=>'There are no themes installed from the marketplace.',
     'themes:recommended'=>'Recommended',
     'themes:remove_confirm'=>'Are you sure you want to remove this theme?',
     'themes:search'=>'search themes to install...',
+
     'tooltips:preview_website'=>'Preview the website',
+
     'updates:check_label'=>'Check for updates',
     'updates:core_build'=>'Build :build',
     'updates:core_build_help'=>'Latest build is available.',
@@ -818,6 +877,7 @@ lucid::add_phrases([
     'updates:update_label'=>'Update software',
     'updates:update_loading'=>'Loading available updates...',
     'updates:update_success'=>'The update process was performed successfully.',
+
     'user:account'=>'Account',
     'user:allow'=>'Allow',
     'user:avatar'=>'Avatar',
@@ -857,6 +917,7 @@ lucid::add_phrases([
     'user:send_invite_comment'=>'Sends a welcome message containing login and password information.',
     'user:superuser'=>'Super User',
     'user:superuser_comment'=>'Grants this account unlimited access to all areas.',
+
     'validation:accepted'=>'The :attribute must be accepted.',
     'validation:active_url'=>'The :attribute is not a valid URL.',
     'validation:after'=>'The :attribute must be a date after :date.',
@@ -905,11 +966,14 @@ lucid::add_phrases([
     'validation:size:string'=>'The :attribute must be :size characters.',
     'validation:unique'=>'The :attribute has already been taken.',
     'validation:url'=>'The :attribute format is invalid.',
+
     'warnings:extension'=>'The PHP extension :name is not installed. Please install this library and activate the extension.',
     'warnings:permissions'=>'Directory :name or its subdirectories is not writable for PHP. Please set corresponding permissions for the webserver on this directory.',
     'warnings:tips'=>'System configuration tips',
     'warnings:tips_description'=>'There are issues you need to pay attention to in order to configure the system properly.',
+
     'widget:not_bound'=>'A widget with class name \':name\' has not been bound to the controller',
     'widget:not_registered'=>'A widget class name \':name\' has not been registered',
+
     'zip:extract_failed'=>'Unable to extract core file \':file\'.',
 ]);

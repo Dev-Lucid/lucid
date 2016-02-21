@@ -2,6 +2,8 @@
 
 class lucid
 {
+    public static $stage        = 'production';
+
     public static $logger       = null;
     public static $response     = null;
     public static $db           = null;
@@ -13,22 +15,34 @@ class lucid
     public static $default_request = null;
     private static $actions         = [];
 
-
     public static $lang_major = 'en';
     public static $lang_minor = 'us';
+    public static $lang_supported = ['en'];
     public static $lang_phrases = [];
 
-    public static function init()
+    public static function init($configs=[])
     {
         # set the default paths. These can be overridden in a config file
-        lucid::$paths['app']         = realpath(__DIR__.'/../../../../../app/');
-        lucid::$paths['controllers'] = lucid::$paths['app'].'/controllers';
-        lucid::$paths['views']       = lucid::$paths['app'].'/views';
-        lucid::$paths['models']      = realpath(__DIR__.'/../../../../../db/models/');
-        lucid::$paths['dictionaries']= [
-            realpath(__DIR__.'/../../dictionaries/'),
-            realpath(__DIR__.'/../../../../../dictionaries/'),
+        lucid::$paths['base']  = realpath(__DIR__.'/../../../../../');
+        lucid::$paths['lucid'] = realpath(__DIR__.'/../../');
+        lucid::$paths['app']   = lucid::$paths['base'].'/app/';
+        lucid::$paths['config']= lucid::$paths['base'].'/config/';
+
+        lucid::$paths['controllers'] = [
+            lucid::$paths['lucid'].'/controllers/',
+            lucid::$paths['app'].'controllers',
         ];
+        lucid::$paths['views'] = [
+            lucid::$paths['lucid'].'/views/',
+            lucid::$paths['app'].'views/',
+        ];
+        lucid::$paths['dictionaries'] = [
+            lucid::$paths['lucid'].'/dictionaries/',
+            lucid::$paths['base'].'/dictionaries/',
+        ];
+
+        # there only needs to be one path for models since they are regenerated via a script anyway
+        lucid::$paths['models'] = lucid::$paths['base'].'/db/models/';
 
         lucid::$request =& $_REQUEST;
         lucid::$actions = [
@@ -44,7 +58,6 @@ class lucid
         lucid::$libs[] = __DIR__.'/lucid_logger.php';
         lucid::$libs[] = __DIR__.'/lucid_i18n.php';
 
-        $configs = func_get_args();
         foreach($configs as $config){
             include($config);
         }
@@ -59,9 +72,19 @@ class lucid
         unset(lucid::$request['action']);
         lucid::add_action('request', $action, lucid::$request);
 
+        if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
+        {
+            $user_lang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+            # Some test strings
+            # $user_lang = 'pt-br,pt;q=0.8,en-us;q=0.5,en,en-uk;q=0.3';
+            # $user_lang = 'ja;q=0.8,de-de;q=0.3';
+            lucid_i18n::determine_best_user_language($user_lang);
+        }
+        lucid_i18n::load_dictionaries();
+
         lucid::$response = new lucid_response();
 
-        lucid_i18n::load_dictionaries();
+
 
         if(is_null(lucid::$logger)){
             error_log('Logger is still null, instantiating default logger using psr-3 interface, output to error_log');
@@ -100,15 +123,18 @@ class lucid
     public static function controller($name)
     {
         $name = lucid::_clean_file_name($name);
-        $file_name = lucid::$paths['controllers'].'/'.$name.'.php';
         $class_name = 'lucid_controller_'.$name;
 
         # only bother to load if the class isn't already loaded.
         if(!class_exists($class_name))
         {
-            if (file_exists($file_name))
+            foreach(lucid::$paths['controllers'] as $controller_path)
             {
-                include($file_name);
+                $file_name = $controller_path.'/'.$name.'.php';
+                if (file_exists($file_name))
+                {
+                    include($file_name);
+                }
             }
         }
         if(!class_exists($class_name))
@@ -122,27 +148,26 @@ class lucid
     public static function view($name, $parameters=[])
     {
         $name = lucid::_clean_file_name($name);
-        $file_name = lucid::$paths['views'].'/'.$name.'.php';
-        if (file_exists($file_name))
+
+        foreach(lucid::$paths['views'] as $view_path)
         {
-            foreach($parameters as $key=>$val)
+            $file_name = $view_path.'/'.$name.'.php';
+            if (file_exists($file_name))
             {
-                global $$key;
-                $$key = $val;
-                lucid::log('setting global '.$key.' to '.$val);
-                //$GLOBALS[$key] = $val;
+                foreach($parameters as $key=>$val)
+                {
+                    global $$key;
+                    $$key = $val;
+                }
+                $result = include($file_name);
+                foreach($parameters as $key=>$val)
+                {
+                    unset($GLOBALS[$key]);
+                }
+                return $result;
             }
-            $result = include($file_name);
-            foreach($parameters as $key=>$val)
-            {
-                unset($GLOBALS[$key]);
-            }
-            return $result;
         }
-        else
-        {
-            throw new Exception('Unable to load view '.$file_name.', file does not exist');
-        }
+        throw new Exception('Unable to load view '.$file_name.', file does not exist');
     }
 
     private static function _clean_file_name($name)

@@ -4,6 +4,7 @@
 # https://octobercms.com
 
 lucid::add_phrases([
+
     'access_log:created_at'=>'Tanggal & Waktu',
     'access_log:email'=>'Surel',
     'access_log:first_name'=>'Nama depan',
@@ -13,6 +14,7 @@ lucid::add_phrases([
     'access_log:login'=>'Nama Pengguna',
     'access_log:menu_description'=>'Tampilan senarai pengguna back-end yang berhasil masuk.',
     'access_log:menu_label'=>'Catatan akses',
+
     'account:apply'=>'Terapkan',
     'account:cancel'=>'Urung',
     'account:delete'=>'Hapus',
@@ -34,10 +36,13 @@ lucid::add_phrases([
     'account:restore_error'=>'Pengguna dengan nama pengguna \':login\' tidak ditemukan',
     'account:restore_success'=>'Sebuah surat berisi petunjuk pemulihan telah dikirim ke alamat surat elektronik Anda.',
     'account:sign_out'=>'Keluar',
+
     'ajax_handler:invalid_name'=>'Nama AJAX handler: :name tidak valid.',
     'ajax_handler:not_found'=>'AJAX handler \':name\' tidak ditemukan.',
+
     'app:name'=>'October CMS',
     'app:tagline'=>'Dapati kembali yang mendasar',
+
     'asset:already_exists'=>'Sudah ada berkas atau direktori dengan nama ini',
     'asset:create_directory'=>'Buat direktori',
     'asset:create_file'=>'Buat berkas',
@@ -78,12 +83,16 @@ lucid::add_phrases([
     'asset:type_not_allowed'=>'Hanya jenis-jenis berkas berikut yang diperbolahkan: :allowed_types',
     'asset:unsaved_label'=>'Aset tak tersimpan',
     'asset:upload_files'=>'Unggah berkas',
+
     'auth:title'=>'Area Administrasi',
+
     'backend_preferences:locale'=>'Bahasa',
     'backend_preferences:locale_comment'=>'Pilih bahasa lokal yang ingin digunakan.',
     'backend_preferences:menu_description'=>'Kelola penyesuaian akun Anda seperti bahasa yang diinginkan.',
     'backend_preferences:menu_label'=>'Penyesuaian Back-end',
+
     'behavior:missing_property'=>'Kelas :class harus menetapkan properti $:property digunakan oleh behavior :behavior.',
+
     'branding:app_name'=>'Nama Apl',
     'branding:app_name_description'=>'Nama ini ditampilkan pada area judul back-end.',
     'branding:app_tagline'=>'Slogan Apl',
@@ -100,7 +109,9 @@ lucid::add_phrases([
     'branding:secondary_dark'=>'Sekunder (Gelap)',
     'branding:secondary_light'=>'Sekunder (Terang)',
     'branding:styles'=>'Gaya',
+
     'cms:menu_label'=>'CMS',
+
     'cms_object:delete_success'=>'Acuan: :count berhasil dihapus.',
     'cms_object:error_creating_directory'=>'Galat membuat direktori :name. Silakan periksa izin tulis.',
     'cms_object:error_deleting'=>'Galat menghapus berkas acuan \':name\'. Silakan periksa izin tulis.',
@@ -110,7 +121,9 @@ lucid::add_phrases([
     'cms_object:invalid_file'=>'Nama berkas: :name tidak valid. Nama berkas hanya dapat memuat angka, huruf, garis bawah, strip, dan titik. Contoh penamaan berkas yang benar: laman.htm, laman, subdirektori/laman',
     'cms_object:invalid_file_extension'=>'Ekstensi berkas: :invalid tidak valid. Ekstensi yang diperbolehkan: :allowed.',
     'cms_object:invalid_property'=>'Properti \':name\' tidak dapat diatur',
+
     'combiner:not_found'=>'Berkas penggabung \':name\' tidak ditemukan.',
+
     'component:alias'=>'Alias',
     'component:alias_description'=>'Nama unik untuk komponen ini saat digunakan di dalam kode laman atau tata letak.',
     'component:invalid_request'=>'Acuan tidak dapat disimpan dikarenakan data komponen tidak valid.',
@@ -121,8 +134,10 @@ lucid::add_phrases([
     'component:not_found'=>'Komponen \':name\' tidak ditemukan.',
     'component:unnamed'=>'Tak bernama',
     'component:validation_message'=>'Alias komponen diperlukan dan hanya dapat memuat simbol Latin, angka, dan garis bawah. Alias harus diawali dengan simbol Latin.',
+
     'config:not_found'=>'Tidak dapat menemukan berkas pengaturan :file ditetapkan untuk :location.',
     'config:required'=>'Pengaturan yang digunakan pada :location harus memberikan nilai \':property\'.',
+
     'content:delete_confirm_multiple'=>'Anda yakin akan menghapus berkas atau direktori muatan terpilih?',
     'content:delete_confirm_single'=>'Anda yakin akan menghapus berkas muatan ini?',
     'content:menu_label'=>'Muatan',
@@ -130,6 +145,7 @@ lucid::add_phrases([
     'content:no_list_records'=>'Tidak ada muatan ditemukan',
     'content:not_found'=>'Berkas muatan \':name\' tidak ditemukan.',
     'content:unsaved_label'=>'Muatan tak tersimpan',
+
     'dashboard:add_widget'=>'Tambah gawit',
     'dashboard:columns'=>'{1} kolom|[2,Inf] kolom',
     'dashboard:full_width'=>'lebar penuh',
@@ -149,7 +165,9 @@ lucid::add_phrases([
     'dashboard:widget_title_error'=>'Tajuk gawit diperlukan.',
     'dashboard:widget_title_label'=>'Tajuk gawit',
     'dashboard:widget_width'=>'Lebar',
+
     'directory:create_fail'=>'Tidak dapat membuat direktori: :name',
+
     'editor:code'=>'Kode',
     'editor:code_folding'=>'Pelipat kode',
     'editor:content'=>'Muatan',
@@ -179,6 +197,7 @@ lucid::add_phrases([
     'editor:url'=>'URL',
     'editor:use_hard_tabs'=>'Inden dengan tabs',
     'editor:word_wrap'=>'Bungkus kata',
+
     'event_log:created_at'=>'Tanggal & Waktu',
     'event_log:empty_link'=>'Kosongkan catatan peristiwa',
     'event_log:empty_loading'=>'Mengosongkan catatan peristiwa...',
@@ -191,14 +210,19 @@ lucid::add_phrases([
     'event_log:menu_label'=>'Catatan Peristiwa',
     'event_log:message'=>'Pesan',
     'event_log:return_link'=>'Kembali ke catatan peristiwa',
+
     'field:invalid_type'=>'Jenis medan tidak valid digunakan :type.',
     'field:options_method_not_exists'=>'Kelas model :model harus menentukan metode :method() yang mengembalikan opsi untuk borang medan \':field\'.',
+
     'file:create_fail'=>'Tidak dapat membuat berkas: :name',
+
     'fileupload:attachment'=>'Lampiran',
     'fileupload:description_label'=>'Jabaran',
     'fileupload:help'=>'Tambah judul dan jabaran untuk lampiran ini.',
     'fileupload:title_label'=>'Judul',
+
     'filter:all'=>'semua',
+
     'form:action_confirm'=>'Anda yakin?',
     'form:add'=>'Tambah',
     'form:apply'=>'Terapkan',
@@ -246,11 +270,13 @@ lucid::add_phrases([
     'form:undefined_tab'=>'Lain-lain',
     'form:update_success'=>':name berhasil diperbarui',
     'form:update_title'=>'Sunting :name',
+
     'install:install_completing'=>'Menyelesaikan proses pemasangan',
     'install:install_success'=>'Pengaya berhasil dipasang.',
     'install:missing_plugin_name'=>'Silakan tentukan nama Pengaya yang akan dipasang.',
     'install:plugin_label'=>'Pasang Pengaya',
     'install:project_label'=>'Kaitkan Ke Proyek',
+
     'layout:delete_confirm_multiple'=>'Anda yakin akan menghapus tata letak terpilih?',
     'layout:delete_confirm_single'=>'Anda yakin akan menghapus tata letak ini?',
     'layout:menu_label'=>'Tata letak',
@@ -258,6 +284,7 @@ lucid::add_phrases([
     'layout:no_list_records'=>'Tidak ada tata letak ditemukan',
     'layout:not_found'=>'Tata letak \':name\' tidak ditemukan',
     'layout:unsaved_label'=>'Tata letak tak tersimpan',
+
     'list:behavior_not_ready'=>'Behavior Senarai belum diinisialisasi, periksa apakah Anda telah memanggil makeLists() pada controller Anda.',
     'list:default_title'=>'Senarai',
     'list:delete_selected'=>'Hapus yang terpilih',
@@ -279,6 +306,7 @@ lucid::add_phrases([
     'list:search_prompt'=>'Pencarian...',
     'list:setup_help'=>'Gunakan kotak cek untuk memilih kolom yang ingin ditampilkan pada senarai. Anda dapat mengubah posisi kolom dengan menyeretnya naik atau turun.',
     'list:setup_title'=>'Pengaturan Senarai',
+
     'locale:cs'=>'Czech',
     'locale:de'=>'Jerman',
     'locale:en'=>'Inggris',
@@ -299,6 +327,7 @@ lucid::add_phrases([
     'locale:sk'=>'Slowakia (Slovakia)',
     'locale:sv'=>'Swedia',
     'locale:tr'=>'Turki',
+
     'mail:general'=>'Umum',
     'mail:log_file'=>'Berkas catatan',
     'mail:mailgun'=>'Mailgun',
@@ -326,6 +355,7 @@ lucid::add_phrases([
     'mail:smtp_port'=>'Porta SMTP',
     'mail:smtp_ssl'=>'Koneksi SSL diperlukan',
     'mail:smtp_username'=>'Nama pengguna',
+
     'mail_templates:code'=>'Kode',
     'mail_templates:code_comment'=>'Kode unik yang digunakan untuk merujuk acuan ini',
     'mail_templates:content_css'=>'CSS',
@@ -348,10 +378,12 @@ lucid::add_phrases([
     'mail_templates:templates'=>'Acuan',
     'mail_templates:test_send'=>'Kirim pesan ujicoba',
     'mail_templates:test_success'=>'Pesan ujicoba berhasil dikirim.',
+
     'maintenance:is_enabled'=>'Berdayakan mode perbaikan',
     'maintenance:is_enabled_comment'=>'Bila diaktifkan, pengunjung website akan melihat laman terpilih berikut.',
     'maintenance:settings_menu'=>'Mode perbaikan',
     'maintenance:settings_menu_description'=>'Penyusunan laman mode perbaikan dan tukar pengaturan.',
+
     'model:invalid_class'=>'Model :model yang digunakan pada :class tidak valid, model harus turunan kelas \\Model.',
     'model:mass_assignment_failed'=>'Penetapan masal gagal untuk atribut Model \':attribute\'.',
     'model:missing_id'=>'Tidak ada ID ditentukan untuk mencari rekam model.',
@@ -359,11 +391,14 @@ lucid::add_phrases([
     'model:missing_relation'=>'Model \':class\' tidak berisi tentuan untuk \':relation\'.',
     'model:name'=>'Model',
     'model:not_found'=>'Model \':class\' dengan ID :id tidak dapat ditemukan',
+
     'myaccount:menu_description'=>'Perbarui rincian akun Anda seperti nama, alamat surel dan sandi lewat.',
     'myaccount:menu_keywords'=>'security login',
     'myaccount:menu_label'=>'Akunku',
+
     'mysettings:menu_description'=>'Pengaturan yang berkaitan dengan akun administrasi Anda',
     'mysettings:menu_label'=>'Pengaturanku',
+
     'page:access_denied:cms_link'=>'Kembali ke back-end',
     'page:access_denied:help'=>'Anda tidak memiliki izin untuk melihat laman ini.',
     'page:access_denied:label'=>'Akses ditolak',
@@ -380,6 +415,7 @@ lucid::add_phrases([
     'page:not_found:label'=>'Laman tidak ditemukan',
     'page:unsaved_label'=>'Laman tak tersimpan',
     'page:untitled'=>'Tak Berjudul',
+
     'partial:delete_confirm_multiple'=>'Anda yakin akan menghapus bagian terpilih?',
     'partial:delete_confirm_single'=>'Anda yakin akan menghapus bagian ini?',
     'partial:invalid_name'=>'Nama bagian: :name tidak valid.',
@@ -388,6 +424,7 @@ lucid::add_phrases([
     'partial:no_list_records'=>'Tidak ada bagian ditemukan',
     'partial:not_found'=>'Potongan \':name\' tidak ditemukan.',
     'partial:unsaved_label'=>'Bagian tak tersimpan',
+
     'permissions:manage_assets'=>'Kelola aset',
     'permissions:manage_content'=>'Kelola muatan',
     'permissions:manage_layouts'=>'Kelola tata letak',
@@ -401,9 +438,11 @@ lucid::add_phrases([
     'permissions:manage_themes'=>'Kelola tema',
     'permissions:name'=>'Cms',
     'permissions:view_the_dashboard'=>'Tampilan dasbor',
+
     'plugin:name:help'=>'Namai pengaya dengan kode uniknya. Contoh, RainLab.Blog',
     'plugin:name:label'=>'Nama Pengaya',
     'plugin:unnamed'=>'Pengaya Tak Bernama',
+
     'plugins:disable_confirm'=>'Anda yakin akan melumpuhkannya?',
     'plugins:disable_success'=>'Berhasil melumpuhkan pengaya tersebut.',
     'plugins:disabled_help'=>'Pengaya yang dilumpuhkan akan diabaikan aplikasi.',
@@ -420,6 +459,7 @@ lucid::add_phrases([
     'plugins:remove_success'=>'Berhasil melepaskan pengaya tersebut dari sistem.',
     'plugins:selected_amount'=>'Pengaya terpilih: :amount',
     'plugins:unknown_plugin'=>'Pengaya telah dilepas dari sistem berkas.',
+
     'project:attach'=>'Kaitkan Proyek',
     'project:detach'=>'Lepas Proyek',
     'project:detach_confirm'=>'Anda yakin akan melepaskan proyek ini?',
@@ -430,6 +470,7 @@ lucid::add_phrases([
     'project:none'=>'Tidak ada',
     'project:owner_label'=>'Pemilik',
     'project:unbind_success'=>'Proyek telah berhasil dilepaskan.',
+
     'relation:add'=>'Tambah',
     'relation:add_a_new'=>'Tambah :name baru',
     'relation:add_name'=>'Tambah :name',
@@ -461,6 +502,7 @@ lucid::add_phrases([
     'relation:unlink_name'=>'Buka Taut :name',
     'relation:update'=>'Perbarui',
     'relation:update_name'=>'Perbarui :name',
+
     'request_log:count'=>'Hitungan',
     'request_log:empty_link'=>'Kosongkan catatan permintaan',
     'request_log:empty_loading'=>'Mengosongkan catatan permintaan...',
@@ -474,20 +516,24 @@ lucid::add_phrases([
     'request_log:return_link'=>'Kembali ke catatan permintaan',
     'request_log:status_code'=>'Status',
     'request_log:url'=>'URL',
+
     'server:connect_error'=>'Galat mengkoneksikan dengan peladen.',
     'server:file_corrupt'=>'Berkas dari peladen tidak lengkap.',
     'server:file_error'=>'Peladen gagal mengirimkan paket.',
     'server:response_empty'=>'Tanggapan kosong dari peladen.',
     'server:response_invalid'=>'Tanggapan tidak valid dari peladen.',
     'server:response_not_found'=>'Peladen pembaruan tidak dapat ditemukan.',
+
     'settings:menu_label'=>'Pengaturan',
     'settings:missing_model'=>'Laman pengaturan kehilangan definisi Model.',
     'settings:not_found'=>'Tidak dapat menemukan pengaturan yang ditentukan.',
     'settings:return'=>'Kembali ke pengaturan sistem',
     'settings:search'=>'Pencarian',
     'settings:update_success'=>'Pengaturan untuk :name berhasil diperbarui.',
+
     'sidebar:add'=>'Tambah',
     'sidebar:search'=>'Pencarian...',
+
     'system:categories:cms'=>'CMS',
     'system:categories:customers'=>'Pelanggan',
     'system:categories:events'=>'Peristiwa',
@@ -502,9 +548,11 @@ lucid::add_phrases([
     'system:categories:users'=>'Pengguna',
     'system:menu_label'=>'Sistem',
     'system:name'=>'Sistem',
+
     'template:invalid_type'=>'Jenis acuan tidak diketahui.',
     'template:not_found'=>'Acuan yang diminta tidak ditemukan.',
     'template:saved'=>'Acuan berhasil disimpan.',
+
     'theme:activate_button'=>'Aktifkan',
     'theme:active:not_found'=>'Tema aktif tidak ditemukan.',
     'theme:active:not_set'=>'Tema aktif tidak diatur.',
@@ -516,7 +564,9 @@ lucid::add_phrases([
     'theme:find_more_themes'=>'Temukan lebih banyak tema pada Toko Tema OctoberCMS.',
     'theme:settings_menu'=>'Tema front-end',
     'theme:settings_menu_description'=>'Tinjau senarai tema terpasang dan pilih tema aktif.',
+
     'tooltips:preview_website'=>'Tinjau website',
+
     'updates:check_label'=>'Periksa pembaruan',
     'updates:core_build'=>'Binaan :build',
     'updates:core_build_help'=>'Tersedia binaan terbaru.',
@@ -550,6 +600,7 @@ lucid::add_phrases([
     'updates:update_label'=>'Pembaruan perangkat lunak',
     'updates:update_loading'=>'Memuat pembaruan yang tersedia...',
     'updates:update_success'=>'Proses pembaruan berhasil dilaksanakan.',
+
     'user:allow'=>'Boleh',
     'user:avatar'=>'Avatar',
     'user:delete_confirm'=>'Anda yakin akan menghapus administrator ini?',
@@ -587,6 +638,7 @@ lucid::add_phrases([
     'user:send_invite_comment'=>'Gunakan kotak cek ini untuk mengirimi pengguna undangan surel',
     'user:superuser'=>'Pengguna Super',
     'user:superuser_comment'=>'Centang kotak ini untuk memperkenankan pengguna ini mengakses semua area.',
+
     'validation:accepted'=>'Isian :attribute harus diterima.',
     'validation:active_url'=>'Isian :attribute bukan URL yang valid.',
     'validation:after'=>'Isian :attribute harus tanggal setelah :date.',
@@ -637,11 +689,14 @@ lucid::add_phrases([
     'validation:size:string'=>'Isian :attribute harus berukuran :size karakter.',
     'validation:unique'=>'Isian :attribute sudah ada sebelumnya.',
     'validation:url'=>'Format isian :attribute tidak valid.',
+
     'warnings:extension'=>'Ekstensi PHP :name tidak terpasang. Silakan pasang pustaka ini dan aktifkan ekstensi.',
     'warnings:permissions'=>'Direktori :name atau direktori di bawahnya tidak dapat ditulis oleh PHP. Silakan atur hak akses webserver yang sesuai pada direktori ini.',
     'warnings:tips'=>'Kiat pengaturan sistem',
     'warnings:tips_description'=>'Ada masalah yang perlu Anda perhatikan untuk mengatur sistem dengan tepat.',
+
     'widget:not_bound'=>'Gawit dengan kelas bernama \':name\' belum terikat pada controller',
     'widget:not_registered'=>'Kelas gawit bernama \':name\' belum terdaftar',
+
     'zip:extract_failed'=>'Tidak dapat membuka berkas inti \':file\'.',
 ]);

@@ -4,6 +4,7 @@
 # https://octobercms.com
 
 lucid::add_phrases([
+
     'access_log:created_at'=>'Data e ora',
     'access_log:email'=>'Indirizzo e-mail',
     'access_log:first_name'=>'Nome',
@@ -13,6 +14,7 @@ lucid::add_phrases([
     'access_log:login'=>'Login',
     'access_log:menu_description'=>'Visualizza una lista degli accessi da parte degli amministratori.',
     'access_log:menu_label'=>'Registro accessi',
+
     'account:apply'=>'Applica',
     'account:cancel'=>'Annulla',
     'account:delete'=>'Elimina',
@@ -34,10 +36,13 @@ lucid::add_phrases([
     'account:restore_error'=>'Nessun utente con username \':login\' è stato trovato.',
     'account:restore_success'=>'Le istruzioni per reimpostare la password sono state inviate al tuo indirizzo e-mail.',
     'account:sign_out'=>'Esci',
+
     'ajax_handler:invalid_name'=>'Nome del gestore AJAX non valido: :name.',
     'ajax_handler:not_found'=>'Il gestore AJAX \':name\' non è stato trovato.',
+
     'app:name'=>'October CMS',
     'app:tagline'=>'Tornare alle origini',
+
     'asset:already_exists'=>'Un file o cartella con questo nome è già esistente',
     'asset:create_directory'=>'Crea cartella',
     'asset:create_file'=>'Crea file',
@@ -78,12 +83,16 @@ lucid::add_phrases([
     'asset:type_not_allowed'=>'Solo i seguenti tipi di file sono consentiti: :allowed_types',
     'asset:unsaved_label'=>'Asset(s) non salvati',
     'asset:upload_files'=>'Carica file(s)',
+
     'auth:title'=>'Area di Amministrazione',
+
     'backend_preferences:locale'=>'Lingua',
     'backend_preferences:locale_comment'=>'Seleziona la lingua da utilizzare.',
     'backend_preferences:menu_description'=>'Gestisci le preferenze del tuo account, come la lingua.',
     'backend_preferences:menu_label'=>'Preferenze pannello di controllo',
+
     'behavior:missing_property'=>'La classe :class deve definire la proprietà $:property utilizzata dalla funzione :behavior.',
+
     'branding:app_name'=>'Nome dell\'applicazione',
     'branding:app_name_description'=>'Questo campo verrà visualizzato nella barra del titolo del pannello di controllo.',
     'branding:app_tagline'=>'Slogan dell\'applicazione',
@@ -100,7 +109,9 @@ lucid::add_phrases([
     'branding:secondary_dark'=>'Secondario (Scuro)',
     'branding:secondary_light'=>'Secondario (Chiaro)',
     'branding:styles'=>'Stili',
+
     'cms:menu_label'=>'CMS',
+
     'cms_object:delete_success'=>'Template eliminati correttamente: :count.',
     'cms_object:error_creating_directory'=>'Errore nella creazione della cartella :name. Verifica le autorizzazioni di scrittura.',
     'cms_object:error_deleting'=>'Errore nella cancellazione del file \':name\'. Verifica le autorizzazioni di scrittura.',
@@ -110,7 +121,9 @@ lucid::add_phrases([
     'cms_object:invalid_file'=>'Nome file non valido: :name. I nomi dei file possono contenere solo caratteri alfanumerici, underscores, trattini e punti. Alcuni esempi di nome di file corretti: page.htm, page, subdirectory/page',
     'cms_object:invalid_file_extension'=>'Estensione del file non valida: :invalid. Le estensioni consentite sono: :allowed.',
     'cms_object:invalid_property'=>'La proprietà \':name\' non può essere impostata',
+
     'combiner:not_found'=>'Il file combinatore \':name\' non è stato trovato.',
+
     'component:alias'=>'Alias',
     'component:alias_description'=>'Un nome univoco fornito a questo componente quando utilizzato nella pagina o nel layout.',
     'component:invalid_request'=>'Il template non può essere salvato a causa di dati dei componenti non validi.',
@@ -121,8 +134,10 @@ lucid::add_phrases([
     'component:not_found'=>'Il componente \':name\' non è stato trovato.',
     'component:unnamed'=>'Senza nome',
     'component:validation_message'=>'L\'alias del componente è obbligatorio e può contenere solo lettere latine, numeri e underscores. L\'alias deve iniziare con una lettera.',
+
     'config:not_found'=>'Il file di configurazione :file definito per :location non è stato trovato.',
     'config:required'=>'La configurazione utilizzata in :location deve fornire un valore \':property\'.',
+
     'content:delete_confirm_multiple'=>'Sei sicuro di voler eliminare i file o le cartelle di contenuti selezionate?',
     'content:delete_confirm_single'=>'Sei sicuro di voler eliminare questo file di contenuti?',
     'content:menu_label'=>'Contenuti',
@@ -130,6 +145,7 @@ lucid::add_phrases([
     'content:no_list_records'=>'Nessun file di contenuto trovato',
     'content:not_found_name'=>'Il file di contenuti \':name\' non è stato trovato.',
     'content:unsaved_label'=>'Contenuti non salvati',
+
     'dashboard:add_widget'=>'Aggiungi widget',
     'dashboard:columns'=>'{1} colonna|[2,Inf] colonne',
     'dashboard:full_width'=>'intera larghezza',
@@ -149,7 +165,9 @@ lucid::add_phrases([
     'dashboard:widget_title_error'=>'Il titolo del widget è un campo obbligatorio.',
     'dashboard:widget_title_label'=>'Titolo del widget',
     'dashboard:widget_width'=>'Larghezza',
+
     'directory:create_fail'=>'Impossibile creare la cartella: :name',
+
     'editor:code'=>'Codice',
     'editor:code_folding'=>'Raggruppa il codice',
     'editor:content'=>'Contenuto',
@@ -179,6 +197,7 @@ lucid::add_phrases([
     'editor:url'=>'URL',
     'editor:use_hard_tabs'=>'Indenta utilizzando i Tab',
     'editor:word_wrap'=>'A capo automatico',
+
     'event_log:created_at'=>'Data e ora',
     'event_log:empty_link'=>'Svuota il registro eventi',
     'event_log:empty_loading'=>'Svuotamento del registro eventi in corso...',
@@ -191,9 +210,12 @@ lucid::add_phrases([
     'event_log:menu_label'=>'Registro eventi',
     'event_log:message'=>'Messaggio',
     'event_log:return_link'=>'Ritorna al registro eventi',
+
     'field:invalid_type'=>'Il tipo di campo :type non è valido.',
     'field:options_method_not_exists'=>'La classe :model deve definire un metodo :method() che ritorni le opzioni per il campo \":field\".',
+
     'file:create_fail'=>'Impossibile creare il file: :name',
+
     'fileupload:attachment'=>'Allegato',
     'fileupload:attachment_url'=>'URL Allegato',
     'fileupload:default_prompt'=>'Fai clic su %s o trascina un file qui per eseguire il caricamento',
@@ -204,7 +226,9 @@ lucid::add_phrases([
     'fileupload:title_label'=>'Titolo',
     'fileupload:upload_error'=>'Errore nel caricamento',
     'fileupload:upload_file'=>'Carica file',
+
     'filter:all'=>'tutto',
+
     'form:action_confirm'=>'Sei sicuro?',
     'form:add'=>'Aggiungi',
     'form:apply'=>'Applica',
@@ -254,6 +278,7 @@ lucid::add_phrases([
     'form:undefined_tab'=>'Varie',
     'form:update_success'=>':name modificato con successo',
     'form:update_title'=>'Modifica :name',
+
     'install:install_completing'=>'Sto terminando il processo di installazione',
     'install:install_success'=>'Il plugin è stato installato con successo.',
     'install:missing_plugin_name'=>'Specifica il nome del plugin da installare.',
@@ -261,6 +286,7 @@ lucid::add_phrases([
     'install:plugin_label'=>'Installa plugin',
     'install:project_label'=>'Collega al progetto',
     'install:theme_label'=>'Installa tema',
+
     'layout:delete_confirm_multiple'=>'Sei sicuro di voler eliminare i layouts selezionati?',
     'layout:delete_confirm_single'=>'Sei sicuro di voler eliminare questo layout?',
     'layout:menu_label'=>'Layout',
@@ -268,6 +294,7 @@ lucid::add_phrases([
     'layout:no_list_records'=>'Nessun layout trovato',
     'layout:not_found_name'=>'Il layout \':name\' non è stato trovato',
     'layout:unsaved_label'=>'Layout non salvati',
+
     'list:behavior_not_ready'=>'L\'elenco non è stato inizializzato, controlla di aver chiamato il metodo makeLists() nel controller.',
     'list:default_title'=>'Elenco',
     'list:delete_selected'=>'Elimina selezionati',
@@ -289,6 +316,7 @@ lucid::add_phrases([
     'list:search_prompt'=>'Cerca...',
     'list:setup_help'=>'Utilizza le checkbox per selezionare le colonne che vuoi visualizzare nell\'elenco. Puoi cambiare la posizione delle colonne trascinandole verso l\'alto o il basso.',
     'list:setup_title'=>'Configura elenco',
+
     'locale:cs'=>'Ceco',
     'locale:de'=>'Tedesco',
     'locale:el'=>'Greco',
@@ -312,6 +340,7 @@ lucid::add_phrases([
     'locale:sv'=>'Svedese',
     'locale:tr'=>'Turco',
     'locale:zh-cn'=>'Cinese (Cina)',
+
     'mail:drivers_hint_content'=>'Questa modalità di invio richiede che il plugin \":plugin\" sia installato prima che tu possa inviare messaggi.',
     'mail:drivers_hint_header'=>'Driver non installati',
     'mail:general'=>'Generale',
@@ -341,6 +370,7 @@ lucid::add_phrases([
     'mail:smtp_port'=>'Porta SMTP',
     'mail:smtp_ssl'=>'Connessione SSL richiesta',
     'mail:smtp_username'=>'Username',
+
     'mail_templates:code'=>'Codice',
     'mail_templates:code_comment'=>'Codice univoco utilizzato come riferimento a questo modello',
     'mail_templates:content_css'=>'CSS',
@@ -363,10 +393,12 @@ lucid::add_phrases([
     'mail_templates:templates'=>'Modelli',
     'mail_templates:test_send'=>'Invia un messaggio di prova',
     'mail_templates:test_success'=>'Il messaggio di prova è stato inviato con successo.',
+
     'maintenance:is_enabled'=>'Abilita modalità di manutenzione',
     'maintenance:is_enabled_comment'=>'Se attivo i visitatori del sito vedranno la pagina selezionata sotto.',
     'maintenance:settings_menu'=>'Modalità di manutenzione',
     'maintenance:settings_menu_description'=>'Configura la pagina da visualizzare in modalità di manutenzione e cambia l\'impostazione.',
+
     'media:add_folder'=>'Aggiungi cartella',
     'media:click_here'=>'Fai clic qui',
     'media:crop_and_insert'=>'Ritaglia e inserisci',
@@ -425,7 +457,9 @@ lucid::add_phrases([
     'media:uploading_complete'=>'Caricamento completato',
     'media:uploading_file_num'=>'Caricamento in corso di :number file(s)...',
     'media:width'=>'Larghezza',
+
     'mediafinder:default_prompt'=>'Fai clic sul pulsante %s per trovare un elemento multimediale',
+
     'model:invalid_class'=>'Il modello :model utilizzato nella classe :class non è valido, deve ereditare la classe \\Model.',
     'model:mass_assignment_failed'=>'Assegnazione massiva fallita per l\'attributo \':attribute\' del modello.',
     'model:missing_id'=>'Nessun ID specificato per la ricerca.',
@@ -433,11 +467,14 @@ lucid::add_phrases([
     'model:missing_relation'=>'Il modello \':class\' non contiene una definizione per la relazione \':relation\'.',
     'model:name'=>'Modello',
     'model:not_found'=>'Nessun modello \':class\' con ID :id trovato.',
+
     'myaccount:menu_description'=>'Aggiorna i dettagli del tuo account, come il nome, l\'indirizzo e-mail e la password.',
     'myaccount:menu_keywords'=>'sicurezza login',
     'myaccount:menu_label'=>'Il mio account',
+
     'mysettings:menu_description'=>'Impostazioni legate al tuo account amministratore',
     'mysettings:menu_label'=>'Impostazioni personali',
+
     'page:access_denied:cms_link'=>'Ritorna al pannello di controllo',
     'page:access_denied:help'=>'Non hai le autorizzazioni necessarie per accedere a questa pagina.',
     'page:access_denied:label'=>'Accesso negato',
@@ -456,6 +493,7 @@ lucid::add_phrases([
     'page:not_found_name'=>'Pagina \':name\' non trovata',
     'page:unsaved_label'=>'Pagina/e non salvate',
     'page:untitled'=>'Senza titolo',
+
     'partial:delete_confirm_multiple'=>'Sei sicuro di voler eliminare le viste parziali selezionate?',
     'partial:delete_confirm_single'=>'Sei sicuro di voler eliminare questa vista parziale?',
     'partial:invalid_name'=>'Nome della vista parziale non valido: :name.',
@@ -464,6 +502,7 @@ lucid::add_phrases([
     'partial:no_list_records'=>'Nessuna vista parziale trovata',
     'partial:not_found_name'=>'La vista parziale \':name\' non è stata trovata.',
     'partial:unsaved_label'=>'Viste parziali non salvate',
+
     'permissions:access_logs'=>'Visualizza registri di sistema',
     'permissions:manage_assets'=>'Gestisci assets',
     'permissions:manage_branding'=>'Personalizza il pannello di controllo',
@@ -480,10 +519,12 @@ lucid::add_phrases([
     'permissions:manage_themes'=>'Gestisci temi',
     'permissions:name'=>'Cms',
     'permissions:view_the_dashboard'=>'Visualizza la dashboard',
+
     'plugin:label'=>'Plugin',
     'plugin:name:help'=>'Cerca il plugin tramite il suo codice univoco. Ad esempio, RainLab.Blog',
     'plugin:name:label'=>'Nome del plugin',
     'plugin:unnamed'=>'Plugin senza nome',
+
     'plugins:disable_confirm'=>'Sei sicuro?',
     'plugins:disable_success'=>'Disabilitazione dei plugin eseguita con successo.',
     'plugins:disabled_help'=>'I plugin disabilitati sono ignorati dall\'applicazione.',
@@ -508,6 +549,7 @@ lucid::add_phrases([
     'plugins:search'=>'cerca plugin da installare...',
     'plugins:selected_amount'=>'Plugin selezionati: :amount',
     'plugins:unknown_plugin'=>'Il plugin è stato rimosso dal file system.',
+
     'project:attach'=>'Collega progetto',
     'project:detach'=>'Scollega progetto',
     'project:detach_confirm'=>'Sei sicuro di voler scollegare questo progetto?',
@@ -518,6 +560,7 @@ lucid::add_phrases([
     'project:none'=>'Nessuno',
     'project:owner_label'=>'Proprietario',
     'project:unbind_success'=>'Il progetto è stato scollegato con successo.',
+
     'relation:add'=>'Aggiungi',
     'relation:add_a_new'=>'Aggiungi nuovo :name',
     'relation:add_name'=>'Aggiungi :name',
@@ -549,6 +592,7 @@ lucid::add_phrases([
     'relation:unlink_name'=>'Scollega :name',
     'relation:update'=>'Aggiorna',
     'relation:update_name'=>'Aggiorna :name',
+
     'request_log:count'=>'Contatore',
     'request_log:empty_link'=>'Svuota il registro richieste',
     'request_log:empty_loading'=>'Svuotamento del registro richieste in corso...',
@@ -562,20 +606,24 @@ lucid::add_phrases([
     'request_log:return_link'=>'Ritorna al registro richieste',
     'request_log:status_code'=>'Codice di stato',
     'request_log:url'=>'URL',
+
     'server:connect_error'=>'Errore durante la connessione al server.',
     'server:file_corrupt'=>'Il file è corrotto.',
     'server:file_error'=>'Il server non è riuscito a consegnare il pacchetto.',
     'server:response_empty'=>'Il server ha fornito una risposta vuota.',
     'server:response_invalid'=>'Il server ha fornito una risposta non valida.',
     'server:response_not_found'=>'Il server degli aggiornamento non è stato trovato.',
+
     'settings:menu_label'=>'Impostazioni',
     'settings:missing_model'=>'La pagine delle impostazioni non ha nessun modello associato.',
     'settings:not_found'=>'Impossibile trovare le impostazioni specificate.',
     'settings:return'=>'Ritorna alle impostazioni di sistema',
     'settings:search'=>'Cerca',
     'settings:update_success'=>'Le impostazioni per :name sono state aggiornate con successo.',
+
     'sidebar:add'=>'Aggiungi',
     'sidebar:search'=>'Cerca...',
+
     'system:categories:cms'=>'CMS',
     'system:categories:customers'=>'Clienti',
     'system:categories:events'=>'Eventi',
@@ -590,9 +638,11 @@ lucid::add_phrases([
     'system:categories:users'=>'Utenti',
     'system:menu_label'=>'Sistema',
     'system:name'=>'Sistema',
+
     'template:invalid_type'=>'Tipo di template sconosciuto.',
     'template:not_found'=>'Il template richiesto non è stato trovato.',
     'template:saved'=>'Il template è stato salvato con successo',
+
     'theme:activate_button'=>'Attiva',
     'theme:active:not_found'=>'Il tema attivo non è stato trovato.',
     'theme:active:not_set'=>'Il tema attivo non è impostato.',
@@ -660,13 +710,16 @@ lucid::add_phrases([
     'theme:theme_label'=>'Tema',
     'theme:theme_title'=>'Temi',
     'theme:unnamed'=>'Tema senza nome',
+
     'themes:install'=>'Installa temi',
     'themes:installed'=>'Temi installati',
     'themes:no_themes'=>'Non ci sono temi installati dal marketplace.',
     'themes:recommended'=>'Raccomandati',
     'themes:remove_confirm'=>'Sei sicuro di voler rimuovere questo tema?',
     'themes:search'=>'cerca temi da installare...',
+
     'tooltips:preview_website'=>'Anteprima del sito web',
+
     'updates:check_label'=>'Verifica gli aggiornamenti',
     'updates:core_build'=>'Build :build',
     'updates:core_build_help'=>'Disponibile l\'ultima build.',
@@ -719,6 +772,7 @@ lucid::add_phrases([
     'updates:update_label'=>'Aggiorna il software',
     'updates:update_loading'=>'Caricamento degli aggiornamenti disponibili...',
     'updates:update_success'=>'L\'aggiornamento è stato eseguito con successo.',
+
     'user:account'=>'Account',
     'user:allow'=>'Consenti',
     'user:avatar'=>'Avatar',
@@ -758,6 +812,7 @@ lucid::add_phrases([
     'user:send_invite_comment'=>'Invia un messaggio di benvenuto contenente le credenziali per l\'accesso.',
     'user:superuser'=>'Super User',
     'user:superuser_comment'=>'Seleziona per consentire all\'utente di accedere a tutte le aree.',
+
     'validation:accepted'=>':attribute deve essere accettato.',
     'validation:active_url'=>':attribute non è un URL valido.',
     'validation:after'=>':attribute deve essere una data maggiore di :date.',
@@ -806,11 +861,14 @@ lucid::add_phrases([
     'validation:size:string'=>':attribute deve essere :size caratteri.',
     'validation:unique'=>':attribute è già presente.',
     'validation:url'=>'Il formato di :attribute non è valido.',
+
     'warnings:extension'=>'L\'estensione di PHP :name non è installata. Installa questa libreria ed attiva l\'estensione.',
     'warnings:permissions'=>'La cartella :name o le sue sottocartelle non sono scrivibili da PHP. Imposta le corrette autorizzazioni per il server web su questa cartella.',
     'warnings:tips'=>'Suggerimenti per la configurazione del sistema',
     'warnings:tips_description'=>'Ci sono elementi a cui è necessario prestare attenzione al fine di configurare il sistema in maniera corretta.',
+
     'widget:not_bound'=>'Nessun widget \':name\' è stato legato al controller',
     'widget:not_registered'=>'Nessun widget \':name\' è stato registrato',
+
     'zip:extract_failed'=>'Estrazione del file sistema \':file\' non riuscita.',
 ]);

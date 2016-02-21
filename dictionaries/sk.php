@@ -4,8 +4,10 @@
 # https://octobercms.com
 
 lucid::add_phrases([
+
     'ajax_handler:invalid_name'=>'Invalid AJAX handler name: :name.',
     'ajax_handler:not_found'=>'AJAX handler \':name\' was not found.',
+
     'asset:already_exists'=>'File or directory with this name already exists',
     'asset:create_directory'=>'Create directory',
     'asset:create_file'=>'Create file',
@@ -46,7 +48,9 @@ lucid::add_phrases([
     'asset:type_not_allowed'=>'Only the following file types are allowed: :allowed_types',
     'asset:unsaved_label'=>'Unsaved asset(s)',
     'asset:upload_files'=>'Upload file(s)',
+
     'cms:menu_label'=>'CMS',
+
     'cms_object:delete_success'=>'Templates were successfully deleted: :count.',
     'cms_object:error_creating_directory'=>'Error creating directory :name. Please check write permissions.',
     'cms_object:error_deleting'=>'Error deleting the template file \':name\'. Please check write permissions.',
@@ -56,6 +60,7 @@ lucid::add_phrases([
     'cms_object:invalid_file'=>'Invalid file name: :name. File names can contain only alphanumeric symbols, underscores, dashes and dots. Some examples of correct file names: page.htm, page, subdirectory/page',
     'cms_object:invalid_file_extension'=>'Invalid file extension: :invalid. Allowed extensions are: :allowed.',
     'cms_object:invalid_property'=>'The property \':name\' cannot be set',
+
     'component:alias'=>'Alias',
     'component:alias_description'=>'A unique name given to this component when using it in the page or layout code.',
     'component:invalid_request'=>'The template cannot be saved because of invalid component data.',
@@ -66,6 +71,7 @@ lucid::add_phrases([
     'component:not_found'=>'The component \':name\' is not found.',
     'component:unnamed'=>'Unnamed',
     'component:validation_message'=>'Component aliases are required and can contain only Latin symbols, digits, and underscores. The aliases should start with a Latin symbol.',
+
     'content:delete_confirm_multiple'=>'Do you really want to delete selected content files or directories?',
     'content:delete_confirm_single'=>'Do you really want delete this content file?',
     'content:menu_label'=>'Content',
@@ -73,6 +79,7 @@ lucid::add_phrases([
     'content:no_list_records'=>'No content files found',
     'content:not_found_name'=>'The content file \':name\' is not found.',
     'content:unsaved_label'=>'Unsaved content',
+
     'editor:code'=>'Code',
     'editor:content'=>'Content',
     'editor:description'=>'Description',
@@ -91,6 +98,7 @@ lucid::add_phrases([
     'editor:settings'=>'Settings',
     'editor:title'=>'Title',
     'editor:url'=>'URL',
+
     'layout:delete_confirm_multiple'=>'Do you really want to delete selected layouts?',
     'layout:delete_confirm_single'=>'Do you really want delete this layout?',
     'layout:menu_label'=>'Layouts',
@@ -98,10 +106,12 @@ lucid::add_phrases([
     'layout:no_list_records'=>'No layouts found',
     'layout:not_found_name'=>'The layout \':name\' is not found',
     'layout:unsaved_label'=>'Unsaved layout(s)',
+
     'maintenance:is_enabled'=>'Enable maintenance mode',
     'maintenance:is_enabled_comment'=>'When activated website visitors will see the page chosen below.',
     'maintenance:settings_menu'=>'Maintenance mode',
     'maintenance:settings_menu_description'=>'Configure the maintenance mode page and toggle the setting.',
+
     'page:custom_error:help'=>'We\'re sorry, but something went wrong and the page cannot be displayed.',
     'page:custom_error:label'=>'Page error',
     'page:delete_confirm_multiple'=>'Do you really want to delete selected pages?',
@@ -114,6 +124,7 @@ lucid::add_phrases([
     'page:not_found:help'=>'The requested page cannot be found.',
     'page:not_found:label'=>'Page not found',
     'page:unsaved_label'=>'Unsaved page(s)',
+
     'partial:delete_confirm_multiple'=>'Do you really want to delete selected partials?',
     'partial:delete_confirm_single'=>'Do you really want delete this partial?',
     'partial:invalid_name'=>'Invalid partial name: :name.',
@@ -122,6 +133,7 @@ lucid::add_phrases([
     'partial:no_list_records'=>'No partials found',
     'partial:not_found_name'=>'The partial \':name\' is not found.',
     'partial:unsaved_label'=>'Unsaved partial(s)',
+
     'permissions:manage_assets'=>'Manage assets',
     'permissions:manage_content'=>'Manage content',
     'permissions:manage_layouts'=>'Manage layouts',
@@ -129,11 +141,14 @@ lucid::add_phrases([
     'permissions:manage_partials'=>'Manage partials',
     'permissions:manage_themes'=>'Manage themes',
     'permissions:name'=>'Cms',
+
     'sidebar:add'=>'Add',
     'sidebar:search'=>'Search...',
+
     'template:invalid_type'=>'Unknown template type.',
     'template:not_found'=>'The requested template was not found.',
     'template:saved'=>'The template has been successfully saved.',
+
     'theme:activate_button'=>'Activate',
     'theme:active:not_found'=>'The active theme is not found.',
     'theme:active:not_set'=>'The active theme is not set.',

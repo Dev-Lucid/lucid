@@ -4,6 +4,7 @@
 # https://octobercms.com
 
 lucid::add_phrases([
+
     'access_log:created_at'=>'Datum & čas',
     'access_log:email'=>'E-mail',
     'access_log:first_name'=>'Jméno',
@@ -13,6 +14,7 @@ lucid::add_phrases([
     'access_log:login'=>'Login',
     'access_log:menu_description'=>'Zobrazit seznam úspěšných přihlášení do administrace.',
     'access_log:menu_label'=>'Log přístupů',
+
     'account:apply'=>'Použít',
     'account:cancel'=>'Zrušit',
     'account:delete'=>'Smazat',
@@ -34,12 +36,16 @@ lucid::add_phrases([
     'account:restore_error'=>'Uživatel s přihlašovacím jménem \':login\' nebyl nalezen',
     'account:restore_success'=>'E-mail byl zaslán na vaší e-mailovou adresu s heslem a instrukcemi k obnově.',
     'account:sign_out'=>'Odhlásit',
+
     'ajax_handler:invalid_name'=>'Invalid AJAX handler name: :name.',
     'ajax_handler:not_found'=>'AJAX handler \':name\' was not found.',
+
     'alert:cancel_button_text'=>'Zrušit',
     'alert:confirm_button_text'=>'OK',
+
     'app:name'=>'October CMS',
     'app:tagline'=>'Getting back to basics',
+
     'asset:already_exists'=>'Soubor nebo složka s tímto názvem již existují',
     'asset:create_directory'=>'Vytvořit složku',
     'asset:create_file'=>'Vytvořit soubor',
@@ -80,12 +86,16 @@ lucid::add_phrases([
     'asset:type_not_allowed'=>'Je možno nahrávat pouze tyto typy souborů: :allowed_types',
     'asset:unsaved_label'=>'Neuložené soubory',
     'asset:upload_files'=>'Nahrát soubor(y)',
+
     'auth:title'=>'Administrace',
+
     'backend_preferences:locale'=>'Jazyk',
     'backend_preferences:locale_comment'=>'Vyberte si jazyk administrace, který chcete používat.',
     'backend_preferences:menu_description'=>'Nastavte si svůj účet, jako třeba jazyk.',
     'backend_preferences:menu_label'=>'Nastavení administrace',
+
     'behavior:missing_property'=>'Třída :class musí definovat parametr $:property použitý v třídě chování :behavior.',
+
     'branding:app_name'=>'Jméno aplikace',
     'branding:app_name_description'=>'Toto jméno se zobrazí v titulní liště stránek.',
     'branding:app_tagline'=>'Motto aplikace',
@@ -102,7 +112,9 @@ lucid::add_phrases([
     'branding:secondary_dark'=>'Sekundární (tmavá)',
     'branding:secondary_light'=>'Sekundární (světlá)',
     'branding:styles'=>'Styly',
+
     'cms:menu_label'=>'CMS',
+
     'cms_object:delete_success'=>'Šablony úspěšně smazány: :count.',
     'cms_object:error_creating_directory'=>'Chyba vytváření složky :name. Zkontrolujte práva k zápisu.',
     'cms_object:error_deleting'=>'Chyba mazání souboru s šablonou \':name\'. Zkontrolujte práva k zápisu.',
@@ -112,7 +124,9 @@ lucid::add_phrases([
     'cms_object:invalid_file'=>'Invalid file name: :name. File names can contain only alphanumeric symbols, underscores, dashes and dots. Some examples of correct file names: page.htm, page, subdirectory/page',
     'cms_object:invalid_file_extension'=>'Chybná přípona souboru: :invalid. Povolené přípony jsou: :allowed.',
     'cms_object:invalid_property'=>'Parametr \':name\' není možno nastavit',
+
     'combiner:not_found'=>'Slučující soubor \':name\' nebyl nalezen.',
+
     'component:alias'=>'Alias',
     'component:alias_description'=>'Unikátní název komponenty pro použití ve stránkách, nebo kodéch layoutu.',
     'component:invalid_request'=>'Šablona nemohla být uložena, protože jedna z komponent nemá správně vyplněná data.',
@@ -123,8 +137,10 @@ lucid::add_phrases([
     'component:not_found'=>'Komponenta \':name\' nebyla nalezena.',
     'component:unnamed'=>'Bez jména',
     'component:validation_message'=>'Alias komponenty je povinný a může obsahovat pouze písmena, čísla a podtržítka. Alias by měl začínat písmenem.',
+
     'config:not_found'=>'Nepovedlo se najít konfigurační soubor :file, který je definován pro :location.',
     'config:required'=>'Konfigurace použitá v :location musí obsahovat hodnotu \':property\'.',
+
     'content:delete_confirm_multiple'=>'Opravdu chcete smazat tyto obsahové soubory nebo složky?',
     'content:delete_confirm_single'=>'Opravdu chcete smazat tento obsahový soubor?',
     'content:menu_label'=>'Obsahy',
@@ -132,6 +148,7 @@ lucid::add_phrases([
     'content:no_list_records'=>'Žádné obsahové soubory',
     'content:not_found_name'=>'Obsahový soubor \':name\' nebyl nalezen.',
     'content:unsaved_label'=>'Neuložený obsah',
+
     'dashboard:add_widget'=>'Přidat widget',
     'dashboard:columns'=>'{1} sloupec|[2,Inf] sloupce',
     'dashboard:full_width'=>'plná šířka',
@@ -151,7 +168,9 @@ lucid::add_phrases([
     'dashboard:widget_title_error'=>'Musíte zadat název widgetu',
     'dashboard:widget_title_label'=>'Název widgetu',
     'dashboard:widget_width'=>'Šířka',
+
     'directory:create_fail'=>'Nelze vytvořit složku: :name',
+
     'editor:auto_closing'=>'Automatické doplňování tagů a speciálních znaků',
     'editor:code'=>'PHP kód',
     'editor:code_folding'=>'Skládání kódu',
@@ -182,6 +201,7 @@ lucid::add_phrases([
     'editor:url'=>'URL',
     'editor:use_hard_tabs'=>'Odsazení tabulátory',
     'editor:word_wrap'=>'Zalamování řádek',
+
     'event_log:created_at'=>'Datum & Čas',
     'event_log:empty_link'=>'Smazat záznam událostí',
     'event_log:empty_loading'=>'Mazání záznamu událostí...',
@@ -194,9 +214,12 @@ lucid::add_phrases([
     'event_log:menu_label'=>'Záznam událostí',
     'event_log:message'=>'Zpráva',
     'event_log:return_link'=>'Zpět na záznam událostí',
+
     'field:invalid_type'=>'Byl použitý špatný typ :type.',
     'field:options_method_not_exists'=>'Modelová třída :model musí implementovat metodu :method(), která vrací volby pro formulářové pole \':field\'',
+
     'file:create_fail'=>'Nelze vytvořit soubor: :name',
+
     'fileupload:attachment'=>'Příloha',
     'fileupload:attachment_url'=>'URL přílohy',
     'fileupload:default_prompt'=>'Click the %s or drag a file here to upload',
@@ -207,7 +230,9 @@ lucid::add_phrases([
     'fileupload:title_label'=>'Název',
     'fileupload:upload_error'=>'Chyba nahrávání',
     'fileupload:upload_file'=>'Nahrát soubor',
+
     'filter:all'=>'vše',
+
     'form:action_confirm'=>'Jste si jistí?',
     'form:add'=>'Přidat',
     'form:apply'=>'Použít',
@@ -257,6 +282,7 @@ lucid::add_phrases([
     'form:undefined_tab'=>'Ostatní',
     'form:update_success'=>':name byl úspěšně upraven',
     'form:update_title'=>'Upravit :name',
+
     'install:install_completing'=>'Dokončování instalace',
     'install:install_success'=>'Plugin byl úspěšně nainstalován.',
     'install:missing_plugin_name'=>'Zadejte prosím jméno pluginu které chcete instalovat.',
@@ -264,6 +290,7 @@ lucid::add_phrases([
     'install:plugin_label'=>'Instalace pluginu',
     'install:project_label'=>'Připojit k projektu',
     'install:theme_label'=>'Instalace téma',
+
     'layout:delete_confirm_multiple'=>'Opravdu chcete odstranit vybrané layouty?',
     'layout:delete_confirm_single'=>'Opravdu chcete odstranit tento layout?',
     'layout:menu_label'=>'Layouty',
@@ -271,6 +298,7 @@ lucid::add_phrases([
     'layout:no_list_records'=>'Žádné layouty nebyly nalezeny',
     'layout:not_found_name'=>'Layout \':name\' nebyl nalezen',
     'layout:unsaved_label'=>'Neuložený layout(y)',
+
     'list:behavior_not_ready'=>'List behavior has not been initialized, check that you have called makeLists() in your controller.',
     'list:default_title'=>'Seznam',
     'list:delete_selected'=>'Smazat vybrané',
@@ -292,6 +320,7 @@ lucid::add_phrases([
     'list:search_prompt'=>'Hledat...',
     'list:setup_help'=>'Pomocí checkboxů si vyberte, které sloupce chcete ve výpisu vidět. Pozici změníte chytnutím a posunem nahorů, nebo dolů.',
     'list:setup_title'=>'Nastavení výpisu',
+
     'locale:cs'=>'Čeština',
     'locale:de'=>'Němčina',
     'locale:el'=>'Řečtina',
@@ -316,6 +345,7 @@ lucid::add_phrases([
     'locale:tr'=>'Turečtina',
     'locale:zh-cn'=>'Čínštína (Čína)',
     'locale:zh-tw'=>'Čínštína (Tchaj-wan)',
+
     'mail:drivers_hint_content'=>'Tato metoda posílání e-mailů vyžaduje nainstalovaný plugin \":plugin\" ještě před odesláním první zprávy.',
     'mail:drivers_hint_header'=>'Ovladač není nainstalovaný',
     'mail:general'=>'Obecné',
@@ -349,6 +379,7 @@ lucid::add_phrases([
     'mail:smtp_port'=>'SMTP port',
     'mail:smtp_ssl'=>'Vyžadováno SSL připojení',
     'mail:smtp_username'=>'Uživatelské jméno',
+
     'mail_templates:code'=>'Kód',
     'mail_templates:code_comment'=>'Unikátní kód přes který se odkazujeme na šablonu',
     'mail_templates:content_css'=>'CSS',
@@ -375,10 +406,12 @@ lucid::add_phrases([
     'mail_templates:test_confirm'=>'Testovací zpráva bude zaslána na :email. Chcete pokračovat?',
     'mail_templates:test_send'=>'Poslat testovací zprávu',
     'mail_templates:test_success'=>'Testovací zpráva byla úspěšně odeslána.',
+
     'maintenance:is_enabled'=>'Aktivovat režim údržby',
     'maintenance:is_enabled_comment'=>'Pokud je režim údržby aktivní, uživatelé uvidí stránku vybranou níže.',
     'maintenance:settings_menu'=>'Režim údržby',
     'maintenance:settings_menu_description'=>'Nastavte stránku režimu údržby a její nastavení.',
+
     'markdowneditor:bold'=>'Tučně',
     'markdowneditor:code'=>'Kód',
     'markdowneditor:formatting'=>'Formátování',
@@ -398,6 +431,7 @@ lucid::add_phrases([
     'markdowneditor:quote'=>'Citace',
     'markdowneditor:unorderedlist'=>'Nečíslovaný seznam',
     'markdowneditor:video'=>'Video',
+
     'media:add_folder'=>'Přidat složku',
     'media:click_here'=>'Klikněte zde',
     'media:crop_and_insert'=>'Oříznout & vložit',
@@ -456,7 +490,9 @@ lucid::add_phrases([
     'media:uploading_complete'=>'Nahrávání kompletní',
     'media:uploading_file_num'=>'Nahrávám :number soubor(y)...',
     'media:width'=>'Šířka',
+
     'mediafinder:default_prompt'=>'Klikněte na tlačítko %s pro hledání souboru',
+
     'mediamanager:insert_audio'=>'Vložit zvuk',
     'mediamanager:insert_image'=>'Vložit obrázek',
     'mediamanager:insert_link'=>'Vložit odkaz',
@@ -466,6 +502,7 @@ lucid::add_phrases([
     'mediamanager:invalid_file_single_insert'=>'Vyberte jeden soubor.',
     'mediamanager:invalid_image_empty_insert'=>'Vyberte soubor(y) pro vložení.',
     'mediamanager:invalid_video_empty_insert'=>'Vyberte video soubor pro vložení.',
+
     'model:invalid_class'=>'Model :model použitý ve třídě :class není validní, musí dědit ze třídy Model.',
     'model:mass_assignment_failed'=>'Mass assignment failed for Model attribute \':attribute\'.',
     'model:missing_id'=>'Není specifikované ID pro hledání záznamu v modelu.',
@@ -473,11 +510,14 @@ lucid::add_phrases([
     'model:missing_relation'=>'Model \':class\' neobsahuje definici pro \':relation\'.',
     'model:name'=>'Model',
     'model:not_found'=>'Model \':class\' s ID :id nebyl nalezen',
+
     'myaccount:menu_description'=>'Nastavte si svoje jméno, e-mailovou adresu a heslo.',
     'myaccount:menu_keywords'=>'bezpečnost login',
     'myaccount:menu_label'=>'Můj účet',
+
     'mysettings:menu_description'=>'Nastavení vašeho administrátorského účtu',
     'mysettings:menu_label'=>'Moje nastavení',
+
     'page:access_denied:cms_link'=>'Zpět do administrace',
     'page:access_denied:help'=>'Nemáte potřebná oprávnění k prohlížení této stránky.',
     'page:access_denied:label'=>'Přístup odmítnut',
@@ -496,6 +536,7 @@ lucid::add_phrases([
     'page:not_found_name'=>'Stránka \':name\' nebyla nalezena',
     'page:unsaved_label'=>'Neuložené stránky',
     'page:untitled'=>'Bez názvu',
+
     'partial:delete_confirm_multiple'=>'Opravdu chcete smazat tyto dílčí šablony?',
     'partial:delete_confirm_single'=>'Opravdu chcete smazat tuto dílčí šablonu?',
     'partial:invalid_name'=>'Chybný název dílčí šablony: :name.',
@@ -504,6 +545,7 @@ lucid::add_phrases([
     'partial:no_list_records'=>'Žádné dílčí šablony',
     'partial:not_found_name'=>'Dílčí šablona \':name\' nebyla nalezena.',
     'partial:unsaved_label'=>'Neuložené dílčí šablony',
+
     'permissions:access_logs'=>'Zobrazit záznam přístupů',
     'permissions:manage_assets'=>'Správa souborů',
     'permissions:manage_branding'=>'Nastavení administrace',
@@ -520,10 +562,12 @@ lucid::add_phrases([
     'permissions:manage_themes'=>'Správa témat',
     'permissions:name'=>'Cms',
     'permissions:view_the_dashboard'=>'Zobrazit plochu',
+
     'plugin:label'=>'Pluginy',
     'plugin:name:help'=>'Pojmenujte plugin unikátním kódem, například RainLab.Blog',
     'plugin:name:label'=>'Název pluginu',
     'plugin:unnamed'=>'Plugin bez jména',
+
     'plugins:disable_confirm'=>'Jste si jistí?',
     'plugins:disable_success'=>'Pluginy úspěšně deaktivovány.',
     'plugins:disabled_help'=>'Neaktivní pluginy jsou kompletně ignorovány systémem.',
@@ -548,6 +592,7 @@ lucid::add_phrases([
     'plugins:search'=>'vyhledejte pluginy k instalaci...',
     'plugins:selected_amount'=>'Vybrané pluginy: :amount',
     'plugins:unknown_plugin'=>'Plugin odstraněn ze systému.',
+
     'project:attach'=>'Připojit projekt',
     'project:detach'=>'Odpojit projekt',
     'project:detach_confirm'=>'Jste si jistí, že chcete odpojit váš projekt?',
@@ -558,6 +603,7 @@ lucid::add_phrases([
     'project:none'=>'Žádný',
     'project:owner_label'=>'Vlastník',
     'project:unbind_success'=>'Projekt byl úspěšně odpojen.',
+
     'relation:add'=>'Přidat',
     'relation:add_a_new'=>'Přidat nový :name',
     'relation:add_name'=>'Přidat :name',
@@ -589,8 +635,10 @@ lucid::add_phrases([
     'relation:unlink_name'=>'Unlink :name',
     'relation:update'=>'Upravit',
     'relation:update_name'=>'Upravit :name',
+
     'reorder:default_title'=>'Seřadit záznamy',
     'reorder:no_records'=>'Nenašli jsme žádné záznamy k seřazení.',
+
     'request_log:count'=>'Počítadlo',
     'request_log:empty_link'=>'Smazat záznam požadavků',
     'request_log:empty_loading'=>'Mazání záznamu požadavků...',
@@ -604,20 +652,24 @@ lucid::add_phrases([
     'request_log:return_link'=>'Zpět na záznam událostí',
     'request_log:status_code'=>'Status',
     'request_log:url'=>'URL',
+
     'server:connect_error'=>'Chyba připojení k serveru.',
     'server:file_corrupt'=>'Soubor stažený ze serveru je chybný.',
     'server:file_error'=>'Chyba stahování balíčku ze serveru.',
     'server:response_empty'=>'Prázdná odpověď ze serveru.',
     'server:response_invalid'=>'Špatná odpověď ze serveru.',
     'server:response_not_found'=>'Aktualizační server nebyl nalezen.',
+
     'settings:menu_label'=>'Nastavení',
     'settings:missing_model'=>'Stránka s nastavením vyžaduje definovat Model.',
     'settings:not_found'=>'Takové nastavení se nepovedlo najít.',
     'settings:return'=>'Zpět do systémového nastavení',
     'settings:search'=>'Hledat',
     'settings:update_success'=>'Nastavení pro :name byla úspěšně uložena.',
+
     'sidebar:add'=>'Přidat',
     'sidebar:search'=>'Hledat...',
+
     'system:categories:cms'=>'CMS',
     'system:categories:customers'=>'Zákazníci',
     'system:categories:events'=>'Události',
@@ -632,9 +684,11 @@ lucid::add_phrases([
     'system:categories:users'=>'Uživatelé',
     'system:menu_label'=>'System',
     'system:name'=>'System',
+
     'template:invalid_type'=>'Neznámý typ šablony.',
     'template:not_found'=>'Požadovaná šablona nebyla nalezena.',
     'template:saved'=>'Šablona byla úspěšně uložena.',
+
     'theme:activate_button'=>'Aktivovat',
     'theme:active:not_found'=>'Aktivní téma nebylo nalezeno.',
     'theme:active:not_set'=>'Aktivní téma nebylo nastaveno.',
@@ -702,13 +756,16 @@ lucid::add_phrases([
     'theme:theme_label'=>'Téma',
     'theme:theme_title'=>'Téma',
     'theme:unnamed'=>'Téma bez názvu',
+
     'themes:install'=>'Instalace témat',
     'themes:installed'=>'Instalované téma',
     'themes:no_themes'=>'Žádné téma instalované z tržiště.',
     'themes:recommended'=>'Doporučené',
     'themes:remove_confirm'=>'Opravdu chcete odstranit toto téma?',
     'themes:search'=>'vyhledejte téma k instalaci...',
+
     'tooltips:preview_website'=>'Náhled stránek',
+
     'updates:check_label'=>'Kontrola aktualizací',
     'updates:core_build'=>'Sestavení :build',
     'updates:core_build_help'=>'Nejnovější sestavení je dostupné.',
@@ -761,6 +818,7 @@ lucid::add_phrases([
     'updates:update_label'=>'Aktualizace',
     'updates:update_loading'=>'Načítám dostupné aktualizace...',
     'updates:update_success'=>'Aktualizace systému proběhla úspěšně.',
+
     'user:account'=>'Účet',
     'user:allow'=>'Povolit',
     'user:avatar'=>'Avatar',
@@ -800,6 +858,7 @@ lucid::add_phrases([
     'user:send_invite_comment'=>'Odešle uvítací e-mail s údaji pro přihlášení.',
     'user:superuser'=>'Super uživatel',
     'user:superuser_comment'=>'Má neomezený přístup do všech stránek administrace.',
+
     'validation:accepted'=>'The :attribute must be accepted.',
     'validation:active_url'=>':attribute není validní URL.',
     'validation:after'=>':attribute musí být datum po :date.',
@@ -848,11 +907,14 @@ lucid::add_phrases([
     'validation:size:string'=>':attribute musí mít :size znaků.',
     'validation:unique'=>':attribute je již použitý.',
     'validation:url'=>':attribute formát není správný.',
+
     'warnings:extension'=>'PHP rozšíření :name není nainstalované. Nainstalujte prosím knihovnu a aktivujte rozšíření.',
     'warnings:permissions'=>'Složka :name nebo její podsložky nejsou pro PHP zapisovatelné. Nastavte prosím odpovídající oprávnění webového serveru pro tuto složku.',
     'warnings:tips'=>'Tipy pro konfiguraci systému',
     'warnings:tips_description'=>'Některé problémy s nastavením systému si vyžadují vaší pozornost.',
+
     'widget:not_bound'=>'Widget s názvem třídy \':name\' není navázaná na kontroler.',
     'widget:not_registered'=>'Třída widgetu se jménem \':name\' není zaregistrovaná.',
+
     'zip:extract_failed'=>'Nepovedlo se rozbalit soubor \':file\'.',
 ]);

@@ -4,6 +4,7 @@
 # https://octobercms.com
 
 lucid::add_phrases([
+
     'access_log:created_at'=>'日時',
     'access_log:email'=>'メール',
     'access_log:first_name'=>'名',
@@ -13,6 +14,7 @@ lucid::add_phrases([
     'access_log:login'=>'ログイン',
     'access_log:menu_description'=>'サインインに成功したバックエンドユーザーを表示します。',
     'access_log:menu_label'=>'アクセスログ',
+
     'account:apply'=>'適用',
     'account:cancel'=>'キャンセル',
     'account:delete'=>'削除',
@@ -34,10 +36,13 @@ lucid::add_phrases([
     'account:restore_error'=>'\':login\'というユーザーは登録されていません。',
     'account:restore_success'=>'パスワードを元に戻すための手順を説明したメールを送信しました。',
     'account:sign_out'=>'ログアウト',
+
     'ajax_handler:invalid_name'=>'正しくないAjaxハンドラ名：:name。',
     'ajax_handler:not_found'=>'\':name\' Ajaxハンドラが見つかりません。',
+
     'app:name'=>'October CMS',
     'app:tagline'=>'基本に戻ろう！',
+
     'asset:already_exists'=>'この名前のファイル／ディレクトリは既に存在します。',
     'asset:create_directory'=>'ディレクトリ作成',
     'asset:create_file'=>'ファイル作成',
@@ -78,12 +83,16 @@ lucid::add_phrases([
     'asset:type_not_allowed'=>'許可されているファイルタイプは、:allowed_typesだけです。',
     'asset:unsaved_label'=>'保存されていないアセット',
     'asset:upload_files'=>'ファイルアップロード',
+
     'auth:title'=>'システム管理者領域',
+
     'backend_preferences:locale'=>'ロケール',
     'backend_preferences:locale_comment'=>'使用する言語のロケールを選択してください。',
     'backend_preferences:menu_description'=>'言語の設定などを行います。',
     'backend_preferences:menu_label'=>'バックエンド',
+
     'behavior:missing_property'=>':class クラスは、 :behavior ビヘイビアーにより使用される、 :property プロパティーを定義する必要があります。',
+
     'branding:app_name'=>'アプリ名',
     'branding:app_name_description'=>'この名前はバックエンドのタイトル領域に表示されます。',
     'branding:app_tagline'=>'アプリタグライン',
@@ -100,7 +109,9 @@ lucid::add_phrases([
     'branding:secondary_dark'=>'セカンダリ (暗い)',
     'branding:secondary_light'=>'セカンダリ (明るい)',
     'branding:styles'=>'スタイル',
+
     'cms:menu_label'=>'CMS',
+
     'cms_object:delete_success'=>':count個のテンプレートを削除しました。',
     'cms_object:error_creating_directory'=>':nameディレクトリー作成エラー',
     'cms_object:error_deleting'=>'\":name\"一時ファイル削除エラー',
@@ -110,7 +121,9 @@ lucid::add_phrases([
     'cms_object:invalid_file'=>'正しくないファイル名：:name。ファイル名は英文字、下線(_)、ダッシュ(-)、ピリオド(.)で構成されなくてはなりません。（正しいファイル名の例：page, page.htm, subdirectory/page）',
     'cms_object:invalid_file_extension'=>'正しくないファイル拡張子：:invalid。許されている拡張子は、:allowedです。',
     'cms_object:invalid_property'=>'\":name\"プロパティーをセットできません。',
+
     'combiner:not_found'=>'コンバイナファイル\':name\'が見つかりません。',
+
     'component:alias'=>'エイリアス',
     'component:alias_description'=>'ページやレイアウトコードの中で使用される、一意のコンポーネント名。',
     'component:invalid_request'=>'コンポーネントデータが正しくないため、テンプレートは保存できません。',
@@ -121,8 +134,10 @@ lucid::add_phrases([
     'component:not_found'=>'\':name\'コンポーネントが見つかりません。',
     'component:unnamed'=>'名前なし',
     'component:validation_message'=>'ラテン文字、数字、下線(_)で構成された、コンポーネントエイリアスが必要です。エイリアスはラテン文字で始まらなくてなりません。',
+
     'config:not_found'=>':location で、 :file 設定ファイルが見つかりません。',
     'config:required'=>':location　の中の設定で、値の指定が必要な、 :property が見つかりません。',
+
     'content:delete_confirm_multiple'=>'指定した全コンテンツファイル／ディレクトリーを本当に削除しますか？',
     'content:delete_confirm_single'=>'本当にこのコンテンツファイルを削除しますか？',
     'content:menu_label'=>'コンテンツ',
@@ -130,6 +145,7 @@ lucid::add_phrases([
     'content:no_list_records'=>'コンテンツファイルが見つかりません',
     'content:not_found_name'=>'\':name\'コンテンツファイルが見つかりません。',
     'content:unsaved_label'=>'保存されていないコンテンツ',
+
     'dashboard:add_widget'=>'ウィジェットの追加',
     'dashboard:columns'=>'{1} カラム|[2,Inf] カラム',
     'dashboard:full_width'=>'全幅',
@@ -149,7 +165,9 @@ lucid::add_phrases([
     'dashboard:widget_title_error'=>'ウィジェットタイトルを指定してください。',
     'dashboard:widget_title_label'=>'ウィジェットタイトル',
     'dashboard:widget_width'=>'ウィジェット幅',
+
     'directory:create_fail'=>'ディレクトリ\':name\'を作成できません。',
+
     'editor:code'=>'コード',
     'editor:code_folding'=>'コード折りたたみ',
     'editor:content'=>'コンテンツ',
@@ -179,6 +197,7 @@ lucid::add_phrases([
     'editor:url'=>'URL',
     'editor:use_hard_tabs'=>'インデントにタブを使用する',
     'editor:word_wrap'=>'ワードラップ',
+
     'event_log:created_at'=>'日付と時間',
     'event_log:empty_link'=>'イベントログを空にする',
     'event_log:empty_loading'=>'イベントログを空にしています...',
@@ -191,14 +210,19 @@ lucid::add_phrases([
     'event_log:menu_label'=>'イベントログ',
     'event_log:message'=>'メッセージ',
     'event_log:return_link'=>'イベントログに戻る',
+
     'field:invalid_type'=>'無効なフィールドタイプ :type が使用されています。',
     'field:options_method_not_exists'=>'モデルクラスの:modelは、\":field\"フォームフィールドのためにオプションを返す、:method()メソッドを定義しなくてはなりません。',
+
     'file:create_fail'=>'ファイル\':name\'を作成できません。',
+
     'fileupload:attachment'=>'添付',
     'fileupload:description_label'=>'説明',
     'fileupload:help'=>'この添付のタイトルと説明を追加します。',
     'fileupload:title_label'=>'タイトル',
+
     'filter:all'=>'すべて',
+
     'form:action_confirm'=>'削除していいですか？',
     'form:add'=>'Add',
     'form:apply'=>'適用',
@@ -246,11 +270,13 @@ lucid::add_phrases([
     'form:undefined_tab'=>'その他',
     'form:update_success'=>':nameを更新しました。',
     'form:update_title'=>'編集 :name',
+
     'install:install_completing'=>'インストールを仕上げ中',
     'install:install_success'=>'プラグインをインストールしました。',
     'install:missing_plugin_name'=>'インストールするプラグインの名前を指定してください。',
     'install:plugin_label'=>'プラグインインストール',
     'install:project_label'=>'プロジェクト追加',
+
     'layout:delete_confirm_multiple'=>'指定した全ページを本当に削除しますか？',
     'layout:delete_confirm_single'=>'本当にこのページを削除しますか？',
     'layout:menu_label'=>'レイアウト',
@@ -258,6 +284,7 @@ lucid::add_phrases([
     'layout:no_list_records'=>'レイアウトが見つかりません',
     'layout:not_found_name'=>'レイアウト\':name\'が見つかりません。',
     'layout:unsaved_label'=>'保存されていないレイアウト',
+
     'list:behavior_not_ready'=>'リストビヘイビアーは初期化されていません。コントローラーで、makeLists()を呼び出しているか確認してください。',
     'list:default_title'=>'リスト',
     'list:invalid_column_datetime'=>'カラムの値 \':column\' はDateTimeオブジェクトではありません。モデル内の $dates に指定していますか？',
@@ -275,6 +302,7 @@ lucid::add_phrases([
     'list:search_prompt'=>'検索...',
     'list:setup_help'=>'リストの表示したいカラムをチェックボックスで選択してください。カラムの位置は上下にドラッグして変更できます。',
     'list:setup_title'=>'リストのセットアップ',
+
     'locale:cs'=>'Czech',
     'locale:de'=>'German',
     'locale:en'=>'English',
@@ -292,6 +320,7 @@ lucid::add_phrases([
     'locale:ru'=>'Russian',
     'locale:sv'=>'Swedish',
     'locale:tr'=>'Turkish',
+
     'mail:general'=>'全般',
     'mail:log_file'=>'ログファイル',
     'mail:mailgun'=>'Mailgun',
@@ -316,6 +345,7 @@ lucid::add_phrases([
     'mail:smtp_port'=>'SMTPポート',
     'mail:smtp_ssl'=>'SSL接続が必要',
     'mail:smtp_username'=>'ユーザー名',
+
     'mail_templates:code'=>'コード',
     'mail_templates:code_comment'=>'システム内で一意なコードをつけてください。',
     'mail_templates:content_css'=>'CSS',
@@ -338,10 +368,12 @@ lucid::add_phrases([
     'mail_templates:templates'=>'テンプレートs',
     'mail_templates:test_send'=>'テストメッセージを送信する',
     'mail_templates:test_success'=>'テストメッセージが送信されました。',
+
     'maintenance:is_enabled'=>'メンテナンスモードを有効にする',
     'maintenance:is_enabled_comment'=>'メンテナンスモードの時、Webサイト訪問者が見るページを選択してください。',
     'maintenance:settings_menu'=>'メンテナンスモード',
     'maintenance:settings_menu_description'=>'メンテナンスモードページの設定と切り替えをします。',
+
     'model:invalid_class'=>':classクラスで使用している、:modelモデルは正しくありません。\\Modelクラスを継承してください。',
     'model:mass_assignment_failed'=>'モデル属性\':attribute\'の一括設定に失敗しました。',
     'model:missing_id'=>'モデルレコードを探すためのIDが、指定されていません。',
@@ -349,11 +381,14 @@ lucid::add_phrases([
     'model:missing_relation'=>'\':class\'モデルは、\':relation\'の定義を持っていません。',
     'model:name'=>'モデル',
     'model:not_found'=>'IDが:idの、\':class\'モデルは見つかりません。',
+
     'myaccount:menu_description'=>'名前、電子メールアドレス、パスワードなどのあなたのアカウント詳細をアップデートしてください。',
     'myaccount:menu_keywords'=>'セキュリティ ログイン',
     'myaccount:menu_label'=>'アカウント',
+
     'mysettings:menu_description'=>'この管理者アカウントの設定をします。',
     'mysettings:menu_label'=>'マイ設定',
+
     'page:access_denied:cms_link'=>'CMSのバックエンドに行く',
     'page:access_denied:help'=>'このページを表示するために必要な権限がありません。',
     'page:access_denied:label'=>'アクセスが拒否されました',
@@ -370,6 +405,7 @@ lucid::add_phrases([
     'page:not_found:label'=>'ページが見つかりません。',
     'page:unsaved_label'=>'保存されていないページ',
     'page:untitled'=>'タイトル無し',
+
     'partial:delete_confirm_multiple'=>'指定した全パーシャルを本当に削除しますか？',
     'partial:delete_confirm_single'=>'本当にこのパーシャルを削除しますか？',
     'partial:invalid_name'=>'正しくないパーシャル名：:name。',
@@ -378,6 +414,7 @@ lucid::add_phrases([
     'partial:no_list_records'=>'パーシャルが見つかりません。',
     'partial:not_found_name'=>'\':name\'パーシャルは見つかりません。',
     'partial:unsaved_label'=>'保存されていないパーシャル(s)',
+
     'permissions:manage_assets'=>'アセット管理',
     'permissions:manage_content'=>'コンテンツ管理',
     'permissions:manage_layouts'=>'レイアウト管理',
@@ -390,9 +427,11 @@ lucid::add_phrases([
     'permissions:manage_themes'=>'テーマ管理',
     'permissions:name'=>'CMS',
     'permissions:view_the_dashboard'=>'ダッシュボードの表示',
+
     'plugin:name:help'=>'重複しないプラグイン名を付けてください。（例：RainLab.Blog）',
     'plugin:name:label'=>'プラグイン名',
     'plugin:unnamed'=>'名前なしプラグイン',
+
     'plugins:disable_confirm'=>'無効にしていいですか？',
     'plugins:disable_success'=>'プラグインを無効にしました。',
     'plugins:disabled_help'=>'プラグインを無効にすると、アプリケーションから参照されなくなります。',
@@ -409,6 +448,7 @@ lucid::add_phrases([
     'plugins:remove_success'=>'システムからプラグインを削除しました。',
     'plugins:selected_amount'=>'プラグインを:amount個選択',
     'plugins:unknown_plugin'=>'システムから見知らぬプラグインを削除しました。',
+
     'project:attach'=>'プロジェクト追加',
     'project:detach'=>'プロジェクト切り離し',
     'project:detach_confirm'=>'このプロジェクトを切り離しますか？',
@@ -419,6 +459,7 @@ lucid::add_phrases([
     'project:none'=>'無し',
     'project:owner_label'=>'所有者',
     'project:unbind_success'=>'プロジェクトを切り離しました。',
+
     'relation:add'=>'追加',
     'relation:add_a_new'=>'新しい追加 :name',
     'relation:add_name'=>'追加 :name',
@@ -450,6 +491,7 @@ lucid::add_phrases([
     'relation:unlink_name'=>'リンク解除 :name',
     'relation:update'=>'更新',
     'relation:update_name'=>'更新 :name',
+
     'request_log:count'=>'カウンタ',
     'request_log:empty_link'=>'リクエストログを空にする',
     'request_log:empty_loading'=>'リクエストログを空にしています...',
@@ -463,20 +505,24 @@ lucid::add_phrases([
     'request_log:return_link'=>'リクエストログに戻る',
     'request_log:status_code'=>'ステータス',
     'request_log:url'=>'URL',
+
     'server:connect_error'=>'サーバー接続エラー。',
     'server:file_corrupt'=>'サーバーからのファイルが壊れています。',
     'server:file_error'=>'サーバーがパッケージ配布に失敗。',
     'server:response_empty'=>'サーバーから空のレスポンス。',
     'server:response_invalid'=>'サーバーからの無効なレスポンス。',
     'server:response_not_found'=>'更新サーバーが見つかりません。',
+
     'settings:menu_label'=>'設定',
     'settings:missing_model'=>'モデルの定義が見つかりません。',
     'settings:not_found'=>'指定された設定は使えません。',
     'settings:return'=>'システム設定へ戻る',
     'settings:search'=>'検索',
     'settings:update_success'=>':name を設定しました。',
+
     'sidebar:add'=>'追加',
     'sidebar:search'=>'検索...',
+
     'system:categories:cms'=>'CMS',
     'system:categories:customers'=>'カスタマー',
     'system:categories:events'=>'イベント',
@@ -491,9 +537,11 @@ lucid::add_phrases([
     'system:categories:users'=>'ユーザー',
     'system:menu_label'=>'システム',
     'system:name'=>'システム',
+
     'template:invalid_type'=>'未知のテンプレートタイプ。',
     'template:not_found'=>'リクエストされたテンプレートが見つかりません。',
     'template:saved'=>'テンプレートを保存しました。',
+
     'theme:activate_button'=>'これをアクティブにする',
     'theme:active:not_found'=>'アクティブなテーマが見つかりません。',
     'theme:active:not_set'=>'アクティブなテーマが設定されていません。',
@@ -505,7 +553,9 @@ lucid::add_phrases([
     'theme:find_more_themes'=>'OctoberCMSマーケットプレースで、もっとテーマを探す。',
     'theme:settings_menu'=>'フロントエンドのテーマ',
     'theme:settings_menu_description'=>'インストール済みのテーマのプレビュー一覧とアクティブテーマの選択。',
+
     'tooltips:preview_website'=>'Webサイトをプレビューする',
+
     'updates:check_label'=>'アップデート確認',
     'updates:core_build'=>'ビルド :build',
     'updates:core_build_help'=>'新しいビルドが存在します。',
@@ -538,6 +588,7 @@ lucid::add_phrases([
     'updates:update_label'=>'ソフトウェアアップデート',
     'updates:update_loading'=>'アップデートロード中…',
     'updates:update_success'=>'アップデートしました。',
+
     'user:allow'=>'許可',
     'user:avatar'=>'アバター',
     'user:delete_confirm'=>'この管理者を本当に削除しますか？',
@@ -575,6 +626,7 @@ lucid::add_phrases([
     'user:send_invite_comment'=>'このユーザーに、メールで招待状を送る場合、ボックスをチェックしてください。',
     'user:superuser'=>'スーパーユーザー',
     'user:superuser_comment'=>'全領域へのアクセスをこのユーザーに許可する場合、ボックスをチェックしてください。',
+
     'validation:accepted'=>':attributeを承認してください。',
     'validation:active_url'=>':attributeは、有効なURLではありません。',
     'validation:after'=>':attributeには、:date以降の日付を指定してください。',
@@ -632,11 +684,14 @@ lucid::add_phrases([
     'validation:timezone'=>':attributeには、有効なタイムゾーンを指定してください。',
     'validation:unique'=>'指定の:attributeは既に使用されています。',
     'validation:url'=>':attributeは、有効なURL形式で指定してください。',
+
     'warnings:extension'=>'PHP拡張\":name\"はインストールされていません。PHP拡張をインストールして有効にしてください。',
     'warnings:permissions'=>'ディレクトリ\":name\"またはそのサブディレクトリは、PHPから書き込みできません。このディレクトリのパーミッションを設定してください。',
     'warnings:tips'=>'システム構成のチップス',
     'warnings:tips_description'=>'あなたが、システムを適切に設定するために注意を払う必要がある問題があります。',
+
     'widget:not_bound'=>'ウィジットクラス名の\':name\'は、コントローラーと結び付けられていません。',
     'widget:not_registered'=>'\':name\'は、ウィジット名として登録されていません。',
+
     'zip:extract_failed'=>'コアファイル： \':file\' が取り出せません。',
 ]);

@@ -4,6 +4,7 @@
 # https://octobercms.com
 
 lucid::add_phrases([
+
     'access_log:created_at'=>'Datums & Laiks',
     'access_log:email'=>'Epasts',
     'access_log:first_name'=>'Vārds',
@@ -13,6 +14,7 @@ lucid::add_phrases([
     'access_log:login'=>'Lietotājvārds',
     'access_log:menu_description'=>'Rāda sarakstu ar veiksmīgajiem back-end autorizēšanās mēģinājumiem.',
     'access_log:menu_label'=>'Autorizēšanās žurnāls',
+
     'account:apply'=>'Apstiprināt',
     'account:cancel'=>'Atcelt',
     'account:delete'=>'Dzēst',
@@ -34,10 +36,13 @@ lucid::add_phrases([
     'account:restore_error'=>'Lietotājs ar norādīto lietotājvārdu neeksistē \':login\'',
     'account:restore_success'=>'Epasts tika nosūtīts uz norādīto adresi ar paroles atiestatīšanas norādēm.',
     'account:sign_out'=>'Izrakstīties',
+
     'ajax_handler:invalid_name'=>'Nederīgs AJAX handler nosaukums: :name.',
     'ajax_handler:not_found'=>'AJAX handler \':name\' netika atrasts.',
+
     'app:name'=>'October CMS',
     'app:tagline'=>'Atgriežamies pie pamatiem',
+
     'asset:already_exists'=>'Fails vai mape ar šo nosaukumu jau eksistē',
     'asset:create_directory'=>'Izveidot mapi',
     'asset:create_file'=>'Izveidot failu',
@@ -78,12 +83,16 @@ lucid::add_phrases([
     'asset:type_not_allowed'=>'Tikai sekojošie failu tipi ir atļauti: :allowed_types',
     'asset:unsaved_label'=>'Nesaglabāts papildinājums(i)',
     'asset:upload_files'=>'Augšupielādēt failu(us)',
+
     'auth:title'=>'Administrācijas vide',
+
     'backend_preferences:locale'=>'Valoda',
     'backend_preferences:locale_comment'=>'Izvēlieties kādu valodu izmantosiet.',
     'backend_preferences:menu_description'=>'Pārvaldiet sava konta iestatījumus, piemēram, valodu.',
     'backend_preferences:menu_label'=>'Back-end iestatījumi',
+
     'behavior:missing_property'=>'Klasei :class jābūt definētai īpašumam $:property tiek lietota :behavior rīcībai.',
+
     'branding:app_name'=>'Nosaukums',
     'branding:app_name_description'=>'Šis nosaukums tiek rādīts augšpusē iekš back-end.',
     'branding:app_tagline'=>'Apraksts',
@@ -100,7 +109,9 @@ lucid::add_phrases([
     'branding:secondary_dark'=>'Sekundārā (Tumša)',
     'branding:secondary_light'=>'Sekundārā (Gaiša)',
     'branding:styles'=>'Stili',
+
     'cms:menu_label'=>'CMS',
+
     'cms_object:delete_success'=>'Tika veiksmīgi izdzēstas veidnes: :count.',
     'cms_object:error_creating_directory'=>'Kļūda izveidojot direktoriju :name. Lūdzu pārbaudiet rakstīšanas tiesības.',
     'cms_object:error_deleting'=>'Kūda dzēšot veidnes failu \':name\'. Lūdzu pārbaudiet rakstīšanas tiesības.',
@@ -110,7 +121,9 @@ lucid::add_phrases([
     'cms_object:invalid_file'=>'Nederīgs faila nosaukums: :name. Failu nosaukumi drīkst sastāvēt tikai no cipariem/burtiem, apakšsvītrām, šķērssvītrām un punktiem. Daži pareizi piemēri: lapa.htm, lapa, direktorija/lapa',
     'cms_object:invalid_file_extension'=>'Nederīgs faila tips: :invalid. Atļautie tipi: :allowed.',
     'cms_object:invalid_property'=>'Īpašuma nosaukums \':name\' nevar tikt iestatīts',
+
     'combiner:not_found'=>'Kombināciju fails \':name\' netika atrasts.',
+
     'component:alias'=>'Saīsinājums',
     'component:alias_description'=>'Unikāls nosaukums šim komponentam kad tas tiek izmantots lapas vai izkārtojuma kodā.',
     'component:invalid_request'=>'The template cannot be saved because of invalid component data.',
@@ -121,8 +134,10 @@ lucid::add_phrases([
     'component:not_found'=>'Komponents \':name\' netika atrasts.',
     'component:unnamed'=>'Nenosaukts',
     'component:validation_message'=>'Komponenta saīsinājums ir obligāts un var sastāvēt tikai no Latīņu simboliem, skaitļiem un apakšsvītrām. Saīsinājumiem vajadzētu sākties ar Latīņu simbolu.',
+
     'config:not_found'=>'Nebija iespējams atrast konfigurācijas failu :file definēt iekš :location.',
     'config:required'=>'Konfigurācijai, kura tiek lietotat :location ir jānorāda vērtība \':property\'.',
+
     'content:delete_confirm_multiple'=>'Vai tiešām vēlaties izdzēst izbēlētos satura failus vai mapes?',
     'content:delete_confirm_single'=>'Vai tiešām vēlaties dzēst šo satura failu?',
     'content:menu_label'=>'Saturs',
@@ -130,6 +145,7 @@ lucid::add_phrases([
     'content:no_list_records'=>'Nav satura failu',
     'content:not_found_name'=>'Satura fails \':name\' netika atrasts.',
     'content:unsaved_label'=>'Nesaglabāts saturs',
+
     'dashboard:add_widget'=>'Pievienot logrīku',
     'dashboard:columns'=>'{1} kolona|[2,Inf] kolonas',
     'dashboard:full_width'=>'pilns platums',
@@ -149,7 +165,9 @@ lucid::add_phrases([
     'dashboard:widget_title_error'=>'Logrīka virsraksts ir obligāts.',
     'dashboard:widget_title_label'=>'Logrīka virsraksts',
     'dashboard:widget_width'=>'Platums',
+
     'directory:create_fail'=>'Nevar izveidot mapi: :name',
+
     'editor:auto_closing'=>'Automātiski aizvērt birkas un īpašos simbolus',
     'editor:code'=>'Code',
     'editor:code_folding'=>'Koda savilkšana',
@@ -180,6 +198,7 @@ lucid::add_phrases([
     'editor:url'=>'URL',
     'editor:use_hard_tabs'=>'Kārtot lietojot Tab',
     'editor:word_wrap'=>'Vārdu aplaušana',
+
     'event_log:created_at'=>'Datums & Laiks',
     'event_log:empty_link'=>'Iztukšot notikumu žurnālu',
     'event_log:empty_loading'=>'Iztukšojam notikumu žurnālu...',
@@ -192,9 +211,12 @@ lucid::add_phrases([
     'event_log:menu_label'=>'Notikumu žurnāls',
     'event_log:message'=>'Ziņojums',
     'event_log:return_link'=>'Atgriezties notikumu žurnālā',
+
     'field:invalid_type'=>'Nederīgs lauka tips :type.',
     'field:options_method_not_exists'=>'Moduļa klasei :model jādefinē metodi :method() atgrieztās vērtības \':field\' formas laukam.',
+
     'file:create_fail'=>'Nevar izveidot failu: :name',
+
     'fileupload:attachment'=>'Pielikums',
     'fileupload:attachment_url'=>'Pielikuma URL',
     'fileupload:default_prompt'=>'Uzklikšķiniet uz %s vai nesiet failu šeit',
@@ -205,7 +227,9 @@ lucid::add_phrases([
     'fileupload:title_label'=>'Vrisraksts',
     'fileupload:upload_error'=>'Augšupielādes kļūda',
     'fileupload:upload_file'=>'Augšupielādēt failu',
+
     'filter:all'=>'visi',
+
     'form:action_confirm'=>'Vai esat pārliecināts?',
     'form:add'=>'Pievienot',
     'form:apply'=>'Apstiprināt',
@@ -255,6 +279,7 @@ lucid::add_phrases([
     'form:undefined_tab'=>'Izvēles',
     'form:update_success'=>':name tika veiksmīgi atjaunināts',
     'form:update_title'=>'Labot :name',
+
     'install:install_completing'=>'Pabeidzam instalācijas procesu',
     'install:install_success'=>'Spraudnis tika veiksmīgi instalēts.',
     'install:missing_plugin_name'=>'Lūdzu norādiet Spraudņa nosaukumu, kuru instalēt.',
@@ -262,6 +287,7 @@ lucid::add_phrases([
     'install:plugin_label'=>'Instalēt Spraudni',
     'install:project_label'=>'Pievienot projektam',
     'install:theme_label'=>'Instalēt Tēmu',
+
     'layout:delete_confirm_multiple'=>'Vai tiešām vēlaties izdzēst izvēlētos izkārtojumus?',
     'layout:delete_confirm_single'=>'Vai tiešām vēlaties dzēst šo izkārtojumu?',
     'layout:menu_label'=>'Izkārtojumi',
@@ -269,6 +295,7 @@ lucid::add_phrases([
     'layout:no_list_records'=>'Nav izkārtojumu',
     'layout:not_found_name'=>'Izkārtojums \':name\' netika atrasts',
     'layout:unsaved_label'=>'Nesaglabāts izkārtojums(i)',
+
     'list:behavior_not_ready'=>'Saraksts nav inicializēts, pārbaudiet vai saucāt makeLists() jūsu kontrolierī.',
     'list:default_title'=>'Saraksts',
     'list:delete_selected'=>'Dzēst izvēlētos',
@@ -290,6 +317,7 @@ lucid::add_phrases([
     'list:search_prompt'=>'Meklēt...',
     'list:setup_help'=>'Izmantojie rūtiņas lai izvēlētos kolonas kuras vēlaties redzēt sarakstā. Varat mainīt kolonu pozīcaijas pārnesot tās augšup vai lejup.',
     'list:setup_title'=>'Saraksta iestatīšana',
+
     'locale:cs'=>'Czech',
     'locale:de'=>'German',
     'locale:en'=>'English',
@@ -313,6 +341,7 @@ lucid::add_phrases([
     'locale:tr'=>'Turkish',
     'locale:zh-cn'=>'Chinese (China)',
     'locale:zh-tw'=>'Chinese (Taiwan)',
+
     'mail:drivers_hint_content'=>'Šai pasta metodei nepieciešams spraudnis \":plugin\" instalējiet to pirms pasta sūtīšanas.',
     'mail:drivers_hint_header'=>'Dziņi nav instalēti',
     'mail:general'=>'Galvenie',
@@ -342,6 +371,7 @@ lucid::add_phrases([
     'mail:smtp_port'=>'SMTP Ports',
     'mail:smtp_ssl'=>'Nepieciešams SSL savienojums',
     'mail:smtp_username'=>'Lietotājvārds',
+
     'mail_templates:code'=>'Kods',
     'mail_templates:code_comment'=>'Unikāls kods, lai identificētu šo veidni',
     'mail_templates:content_css'=>'CSS',
@@ -364,10 +394,12 @@ lucid::add_phrases([
     'mail_templates:templates'=>'Veidnes',
     'mail_templates:test_send'=>'Sūtīt testa vēstuli',
     'mail_templates:test_success'=>'Testa vēstule tika veiksmīgi nosūtīta.',
+
     'maintenance:is_enabled'=>'Iespējot apkopes režīmu',
     'maintenance:is_enabled_comment'=>'Kad aktivizēts mājaslapas apmeklētāji redzēs zemāk izvēlēto lapu.',
     'maintenance:settings_menu'=>'Apkopes režīms',
     'maintenance:settings_menu_description'=>'Konfigurējiet apkopes režīma lapu un pielāgojiet iestatījumus.',
+
     'media:add_folder'=>'Pievienot mapi',
     'media:click_here'=>'Spiest šeit',
     'media:crop_and_insert'=>'Apgriezt un Ievietot',
@@ -426,7 +458,9 @@ lucid::add_phrases([
     'media:uploading_complete'=>'Augšupielāde pabeigta',
     'media:uploading_file_num'=>'Augšupielādējam :number failu(us)...',
     'media:width'=>'Platums',
+
     'mediafinder:default_prompt'=>'Klikšķiniet uz %s pogas, lai atrastu multividi',
+
     'model:invalid_class'=>'Modulis :model lietots :class ir nederīgs, tam jābūt mantotam no \\Moduļa klases.',
     'model:mass_assignment_failed'=>'Masveida saistīšana neizdevās Moduļa atribūtam \':attribute\'.',
     'model:missing_id'=>'Nav ticis norādīts ID, lai meklētu ierakstu.',
@@ -434,11 +468,14 @@ lucid::add_phrases([
     'model:missing_relation'=>'Modulis \':class\' nesniedz informāciju par \':relation\'.',
     'model:name'=>'Modulis',
     'model:not_found'=>'Modulis \':class\' ar ID :id netika atrasts',
+
     'myaccount:menu_description'=>'Atjaunojiet sava konta detaļas, piemēram, vārdu, epastu un paroli.',
     'myaccount:menu_keywords'=>'drošība login',
     'myaccount:menu_label'=>'Mans konts',
+
     'mysettings:menu_description'=>'Iestatījumi saistībā ar jūsu administrātora kontu',
     'mysettings:menu_label'=>'Mani Iestatījumi',
+
     'page:access_denied:cms_link'=>'Atgriezties back-end',
     'page:access_denied:help'=>'Jums nav piekļuves tiesību, lai skatītu šo lapu.',
     'page:access_denied:label'=>'Piekļuve liegta',
@@ -457,6 +494,7 @@ lucid::add_phrases([
     'page:not_found_name'=>'Lapa \':name\' netika atrasta',
     'page:unsaved_label'=>'Nesaglabāta lapa(s)',
     'page:untitled'=>'Bez nosaukuma',
+
     'partial:delete_confirm_multiple'=>'Vai tiešām vēlaties izdzēst izvēlētās daļas?',
     'partial:delete_confirm_single'=>'Vai tiešām vēlaties dzēst šo daļu?',
     'partial:invalid_name'=>'Nederīgs daļas nosaukums: :name.',
@@ -465,6 +503,7 @@ lucid::add_phrases([
     'partial:no_list_records'=>'Daļas nav atrastas',
     'partial:not_found_name'=>'Daļa \':name\' nav atrasta.',
     'partial:unsaved_label'=>'Nesaglabāta daļa(s)',
+
     'permissions:access_logs'=>'Skatīt sistēmas žurnālus',
     'permissions:manage_assets'=>'Pārvaldīt papildinājumus',
     'permissions:manage_branding'=>'Pielāgot back-end',
@@ -481,10 +520,12 @@ lucid::add_phrases([
     'permissions:manage_themes'=>'Pārvaldīt tēmas',
     'permissions:name'=>'Cms',
     'permissions:view_the_dashboard'=>'Skatīt mērinstrumentu paneli',
+
     'plugin:label'=>'Spraudnis',
     'plugin:name:help'=>'Norādiet spraudņa unikālo kodu. Piemēram, RainLab.Blog',
     'plugin:name:label'=>'Spraudņa nosaukums',
     'plugin:unnamed'=>'Nenosaukts spraudnis',
+
     'plugins:disable_confirm'=>'Vai esat pārliecināts?',
     'plugins:disable_success'=>'Šie spraudņi tika veiksmīgi atspējoti.',
     'plugins:disabled_help'=>'Atspējotie spraudņi tiek ignorēti.',
@@ -509,6 +550,7 @@ lucid::add_phrases([
     'plugins:search'=>'meklēt spraudņus, lai instalētu...',
     'plugins:selected_amount'=>'Izvēlēti spraudņi: :amount',
     'plugins:unknown_plugin'=>'Spraudņi tika noņemti no failu sistēmas.',
+
     'project:attach'=>'Pievienot projektu',
     'project:detach'=>'Atvienot projektu',
     'project:detach_confirm'=>'Vai esat pārliecināts, ka vēlaties atvienot šo projektu?',
@@ -519,6 +561,7 @@ lucid::add_phrases([
     'project:none'=>'Nekas',
     'project:owner_label'=>'Īpašnieks',
     'project:unbind_success'=>'Projekts tika veiksmīgi atvienots.',
+
     'relation:add'=>'Pievienot',
     'relation:add_a_new'=>'Pievienot jaunu :name',
     'relation:add_name'=>'Pievienot :name',
@@ -550,8 +593,10 @@ lucid::add_phrases([
     'relation:unlink_name'=>'Atsaistīt :name',
     'relation:update'=>'Atjaunot',
     'relation:update_name'=>'Atjaunot :name',
+
     'reorder:default_title'=>'Pārkārtot ierakstus',
     'reorder:no_records'=>'Nav pieejami ieraksti, ko pārkārtot.',
+
     'request_log:count'=>'Skaits',
     'request_log:empty_link'=>'Iztukšot pieprasījumu žurnālu',
     'request_log:empty_loading'=>'Iztukšojam pieprasījumu žurnālu...',
@@ -565,20 +610,24 @@ lucid::add_phrases([
     'request_log:return_link'=>'Atgriezties notikumu žurnālā',
     'request_log:status_code'=>'Statuss',
     'request_log:url'=>'URL',
+
     'server:connect_error'=>'Kļūda savienojoties ar serveri.',
     'server:file_corrupt'=>'Fails no servera ir bojāts.',
     'server:file_error'=>'Neizdevās saņemt failus no servera.',
     'server:response_empty'=>'Tukša atbilde no autjauninājumu servera.',
     'server:response_invalid'=>'Nederīga atbilde no autjauninājumu servera.',
     'server:response_not_found'=>'Atjauninājumu serveris netika atrasts.',
+
     'settings:menu_label'=>'Iestatījumi',
     'settings:missing_model'=>'Iestatījumu lapa nav norādīta Moduļa definīcijā.',
     'settings:not_found'=>'Nebija iespējams atrast norādītos iestatījumus.',
     'settings:return'=>'Atgriezties sistēmas iestatījumos',
     'settings:search'=>'Meklēt',
     'settings:update_success'=>'Iestatījumi priekš :name tika veiksmīgi atjaunināti.',
+
     'sidebar:add'=>'Pievienot',
     'sidebar:search'=>'Meklēt...',
+
     'system:categories:cms'=>'CMS',
     'system:categories:customers'=>'Klienti',
     'system:categories:events'=>'Notikumi',
@@ -593,9 +642,11 @@ lucid::add_phrases([
     'system:categories:users'=>'Lietotāji',
     'system:menu_label'=>'Sistēma',
     'system:name'=>'Sistēma',
+
     'template:invalid_type'=>'Nezināms veidnes tips.',
     'template:not_found'=>'Pieprasītā veidne nav atrasta.',
     'template:saved'=>'Fails tika veiksmīgi saglabāts.',
+
     'theme:activate_button'=>'Aktivizēt',
     'theme:active:not_found'=>'Aktīvā tēma netika atrasta.',
     'theme:active:not_set'=>'Aktīvā tēma netika iestatīta.',
@@ -663,13 +714,16 @@ lucid::add_phrases([
     'theme:theme_label'=>'Tēma',
     'theme:theme_title'=>'Tēmas',
     'theme:unnamed'=>'Nenosaukta tēma',
+
     'themes:install'=>'Instalēt tēmas',
     'themes:installed'=>'Instalētās tēmas',
     'themes:no_themes'=>'Nav tēmas, kuras būtu instalētas no tirgus plača.',
     'themes:recommended'=>'Ieteiktās',
     'themes:remove_confirm'=>'Vai esat pārliecināts, ka vēlaties noņemt šo tēmu?',
     'themes:search'=>'meklēt tēmas, kuras instalēt...',
+
     'tooltips:preview_website'=>'Priekšskatīt web lapu',
+
     'updates:check_label'=>'Pārbaudīt atjauninājumus',
     'updates:core_build'=>'Versija :build',
     'updates:core_build_help'=>'Jaunāka versija ir pieejama.',
@@ -722,6 +776,7 @@ lucid::add_phrases([
     'updates:update_label'=>'Programmatūras atjaunināšana',
     'updates:update_loading'=>'Ielādējam pieejamos atjauninājumus...',
     'updates:update_success'=>'Atjaunināšanas process noritēja veiksmīgi.',
+
     'user:account'=>'Konts',
     'user:allow'=>'Atļaut',
     'user:avatar'=>'Avatar',
@@ -761,6 +816,7 @@ lucid::add_phrases([
     'user:send_invite_comment'=>'Atķeksējiet šo aili, lai nosūtītu uzaicinājumu pa Epastu',
     'user:superuser'=>'Super Lietotājs',
     'user:superuser_comment'=>'Atķeksējiet šo aili, lai atļautu šai personai neierobežotu piekļuvi.',
+
     'validation:accepted'=>':attribute jābūt apstiprinātam.',
     'validation:active_url'=>':attribute nav derīga URL.',
     'validation:after'=>':attribute jābūt datumam pēc :date.',
@@ -809,11 +865,14 @@ lucid::add_phrases([
     'validation:size:string'=>':attribute ir jābūt :size simboliem.',
     'validation:unique'=>':attribute ir jau aizņemts.',
     'validation:url'=>':attribute nederīgs formāts.',
+
     'warnings:extension'=>'PHP paplašinājums :name nav instalēts. Lūdzu instalējiet šo papildinājumu un aktivizējiet to.',
     'warnings:permissions'=>'Mape :name vai tās apakšmapes nav ierakstāmas ar PHP. Lūdzu iestatiet pareizas tiesības web serverim šajā mapē.',
     'warnings:tips'=>'Sistēmas konfigurācijas padomi',
     'warnings:tips_description'=>'Ir lietas, kurām vajadzētu pievērst uzmanību, lai konfigurētu sistēmu pareizi.',
+
     'widget:not_bound'=>'Logrīks ar klases nosaukumu \':name\' nav piesaistīts kontrolierim',
     'widget:not_registered'=>'Logrīka klases nosaukums \':name\' nav reģistrēts',
+
     'zip:extract_failed'=>'Nebija iespējams atarhivēt failu \':file\'.',
 ]);

@@ -4,6 +4,7 @@
 # https://octobercms.com
 
 lucid::add_phrases([
+
     'access_log:created_at'=>'日期 & 时间',
     'access_log:email'=>'电子邮箱',
     'access_log:first_name'=>'名',
@@ -13,6 +14,7 @@ lucid::add_phrases([
     'access_log:login'=>'登录',
     'access_log:menu_description'=>'查看成功登陆后台用户日志。',
     'access_log:menu_label'=>'访问日志',
+
     'account:apply'=>'应用',
     'account:cancel'=>'取消',
     'account:delete'=>'删除',
@@ -34,10 +36,13 @@ lucid::add_phrases([
     'account:restore_error'=>'找不到用户 \':login\'',
     'account:restore_success'=>'密码重置的邮件已发往你的邮箱.',
     'account:sign_out'=>'登出',
+
     'ajax_handler:invalid_name'=>'不合法的 AJAX 处理器: :name.',
     'ajax_handler:not_found'=>' AJAX 处理器 \':name\' 找不到.',
+
     'app:name'=>'October CMS',
     'app:tagline'=>'欢迎使用October CMS！',
+
     'asset:already_exists'=>'文件或目录已存在',
     'asset:create_directory'=>'新建目录',
     'asset:create_file'=>'新建文件',
@@ -78,12 +83,16 @@ lucid::add_phrases([
     'asset:type_not_allowed'=>'只有下面的文件类型是允许的: :allowed_types',
     'asset:unsaved_label'=>'未保存的资源',
     'asset:upload_files'=>'上传文件',
+
     'auth:title'=>'管理区域',
+
     'backend_preferences:locale'=>'语言',
     'backend_preferences:locale_comment'=>'选择你希望使用的本地语言。',
     'backend_preferences:menu_description'=>'管理你的后台设置, 比如希望使用的语言。',
     'backend_preferences:menu_label'=>'后台设置',
+
     'behavior:missing_property'=>'行为 :behavior 使用的类 :class 必须定义属性 $:property。',
+
     'branding:app_name'=>'站点名称',
     'branding:app_name_description'=>'这个名称显示在后台的标题区域.',
     'branding:app_tagline'=>'站点标语',
@@ -100,7 +109,9 @@ lucid::add_phrases([
     'branding:secondary_dark'=>'次要 (Dark)',
     'branding:secondary_light'=>'次要 (Light)',
     'branding:styles'=>'样式',
+
     'cms:menu_label'=>'CMS',
+
     'cms_object:delete_success'=>'模板成功删除: :count.',
     'cms_object:error_creating_directory'=>'创建文件夹 :name 错误. 请检查写权限.',
     'cms_object:error_deleting'=>'删除模板文件 \':name\' 错误. 请检查写权限.',
@@ -110,7 +121,9 @@ lucid::add_phrases([
     'cms_object:invalid_file'=>'不合法的文件名: :name. 文件名只能包括字母或数字, _, - 和 .. 一些正确的文件名: page.htm, page, subdirectory/page',
     'cms_object:invalid_file_extension'=>'不合法的文件扩展: :invalid. 允许的扩展: :allowed.',
     'cms_object:invalid_property'=>'属性 \':name\' 不能设置',
+
     'combiner:not_found'=>'组合文件 \':name\' 没找到.',
+
     'component:alias'=>'别名',
     'component:alias_description'=>'这个组件的唯一名称, 在页面或者布局代码中.',
     'component:invalid_request'=>'模板不能保存, 因为非法组件数据.',
@@ -121,8 +134,10 @@ lucid::add_phrases([
     'component:not_found'=>'组件 \':name\' 找不到.',
     'component:unnamed'=>'未命名的',
     'component:validation_message'=>'需要组件别名, 且只能包含拉丁字符, 数字和下划线. 别名必须以拉丁字符开头.',
+
     'config:not_found'=>'无法找到定义 :location 的配置文件 :file。',
     'config:required'=>'配置 :location 必须有 \':property\'。',
+
     'content:delete_confirm_multiple'=>'你真的想要删除选中的文件或目录吗?',
     'content:delete_confirm_single'=>'你真的想要删除这个内容文件?',
     'content:menu_label'=>'内容',
@@ -130,6 +145,7 @@ lucid::add_phrases([
     'content:no_list_records'=>'找不到内容文件',
     'content:not_found_name'=>'内容文件 \':name\' 找不到.',
     'content:unsaved_label'=>'未保存内容',
+
     'dashboard:add_widget'=>'添加小工具',
     'dashboard:columns'=>'{1} 栏|[2,Inf] 栏',
     'dashboard:full_width'=>'全部宽度',
@@ -149,7 +165,9 @@ lucid::add_phrases([
     'dashboard:widget_title_error'=>'需要小工具标题.',
     'dashboard:widget_title_label'=>'小工具标题',
     'dashboard:widget_width'=>'宽度',
+
     'directory:create_fail'=>'不能创建目录: :name',
+
     'editor:code'=>'代码',
     'editor:code_folding'=>'代码折叠',
     'editor:content'=>'内容',
@@ -179,6 +197,7 @@ lucid::add_phrases([
     'editor:url'=>'URL',
     'editor:use_hard_tabs'=>'使用tabs缩进',
     'editor:word_wrap'=>'自动换行',
+
     'event_log:created_at'=>'时间和日期',
     'event_log:empty_link'=>'清空事件日志',
     'event_log:empty_loading'=>'清空事件日志...',
@@ -191,9 +210,12 @@ lucid::add_phrases([
     'event_log:menu_label'=>'事件日志',
     'event_log:message'=>'消息',
     'event_log:return_link'=>'返回时间日志',
+
     'field:invalid_type'=>'不合法的字段类型 :type.',
     'field:options_method_not_exists'=>'模型 :model 必须定义一个返回 \':field\' 表单字段选项的方法 :method()。',
+
     'file:create_fail'=>'不能创建文件: :name',
+
     'fileupload:attachment'=>'附件',
     'fileupload:attachment_url'=>'附件地址',
     'fileupload:default_prompt'=>'点击 %s 或者拖动一个文件到这里来上传',
@@ -204,7 +226,9 @@ lucid::add_phrases([
     'fileupload:title_label'=>'标题',
     'fileupload:upload_error'=>'上传错误',
     'fileupload:upload_file'=>'上传文件',
+
     'filter:all'=>'全部',
+
     'form:action_confirm'=>'你确定?',
     'form:add'=>'增加',
     'form:apply'=>'应用',
@@ -253,6 +277,7 @@ lucid::add_phrases([
     'form:undefined_tab'=>'杂项',
     'form:update_success'=>':name 更新成功',
     'form:update_title'=>'编辑 :name',
+
     'install:install_completing'=>'完成安装过程',
     'install:install_success'=>'插件安装成功。',
     'install:missing_plugin_name'=>'请输入要安装的插件名称。',
@@ -260,6 +285,7 @@ lucid::add_phrases([
     'install:plugin_label'=>'安装插件',
     'install:project_label'=>'加入项目',
     'install:theme_label'=>'安装主题',
+
     'layout:delete_confirm_multiple'=>'你真的想要删除选中的布局?',
     'layout:delete_confirm_single'=>'你真的想要删除这个布局?',
     'layout:menu_label'=>'布局',
@@ -267,6 +293,7 @@ lucid::add_phrases([
     'layout:no_list_records'=>'找不到布局',
     'layout:not_found_name'=>'布局 \':name\' 找不到',
     'layout:unsaved_label'=>'未保存布局',
+
     'list:behavior_not_ready'=>'列表没有初始化, 确认你的控制器中调用了makeLists().',
     'list:default_title'=>'列表',
     'list:delete_selected'=>'删除选择的',
@@ -288,6 +315,7 @@ lucid::add_phrases([
     'list:search_prompt'=>'搜索...',
     'list:setup_help'=>'使用多选框选择你想在列表中看到的栏. 你可以通过拖拽调整栏的位置.',
     'list:setup_title'=>'建立列表',
+
     'locale:cs'=>'Czech',
     'locale:de'=>'German',
     'locale:el'=>'Greek',
@@ -312,6 +340,7 @@ lucid::add_phrases([
     'locale:tr'=>'Turkish',
     'locale:zh-cn'=>'简体中文',
     'locale:zh-tw'=>'Chinese (Taiwan)',
+
     'mail:drivers_hint_content'=>'这个邮件发送方法需要安装插件\":plugin\"。',
     'mail:drivers_hint_header'=>'驱动未安装',
     'mail:general'=>'常规',
@@ -341,6 +370,7 @@ lucid::add_phrases([
     'mail:smtp_port'=>'SMTP 端口',
     'mail:smtp_ssl'=>'需要SSL连接',
     'mail:smtp_username'=>'用户名',
+
     'mail_templates:code'=>'代码',
     'mail_templates:code_comment'=>'指向这个模板的唯一代码',
     'mail_templates:content_css'=>'CSS',
@@ -363,10 +393,12 @@ lucid::add_phrases([
     'mail_templates:templates'=>'模板',
     'mail_templates:test_send'=>'发送测试消息',
     'mail_templates:test_success'=>'测试消息已经成功发送.',
+
     'maintenance:is_enabled'=>'启用维护模式',
     'maintenance:is_enabled_comment'=>'当启用时, 网站访问者会看到下述页面.',
     'maintenance:settings_menu'=>'维护模式',
     'maintenance:settings_menu_description'=>'配置维护模式页面和开关设置.',
+
     'media:add_folder'=>'增加文件夹',
     'media:click_here'=>'点击这里',
     'media:crop_and_insert'=>'裁剪并插入',
@@ -425,6 +457,7 @@ lucid::add_phrases([
     'media:uploading_complete'=>'上传完毕',
     'media:uploading_file_num'=>'上传 :number 文件...',
     'media:width'=>'宽度',
+
     'model:invalid_class'=>'模型 :model 在 :class 中是不合法的, 它必须继承 \\Model 类.',
     'model:mass_assignment_failed'=>'为Model属性\':attribute\'赋值失败.',
     'model:missing_id'=>'没有找到指定ID的模型记录.',
@@ -432,11 +465,14 @@ lucid::add_phrases([
     'model:missing_relation'=>'模型 \':class\' 不包含 \':relation\'.',
     'model:name'=>'模型',
     'model:not_found'=>'ID为 :id 的 模型 \':class\' 找不到',
+
     'myaccount:menu_description'=>'更新你的账户细节, 比如名字, 邮件地址和密码.',
     'myaccount:menu_keywords'=>'安全登录',
     'myaccount:menu_label'=>'我的账户',
+
     'mysettings:menu_description'=>'设置涉及到你的管理帐号',
     'mysettings:menu_label'=>'我的设置',
+
     'page:access_denied:cms_link'=>'返回后台',
     'page:access_denied:help'=>'你没有访问这个页面需要的权限.',
     'page:access_denied:label'=>'访问拒绝',
@@ -455,6 +491,7 @@ lucid::add_phrases([
     'page:not_found_name'=>'页面 \':name\' 找不到',
     'page:unsaved_label'=>'未保存页面',
     'page:untitled'=>'未命名',
+
     'partial:delete_confirm_multiple'=>'你真的想要删除选择的部件?',
     'partial:delete_confirm_single'=>'你真的想要删除这个部件?',
     'partial:invalid_name'=>'不合法的部件名: :name.',
@@ -463,6 +500,7 @@ lucid::add_phrases([
     'partial:no_list_records'=>'找不到部件',
     'partial:not_found_name'=>'部件 \':name\' 没找到.',
     'partial:unsaved_label'=>'未保存的部件',
+
     'permissions:access_logs'=>'查看访问日志',
     'permissions:manage_assets'=>'管理资源',
     'permissions:manage_branding'=>'自定义后台',
@@ -478,10 +516,12 @@ lucid::add_phrases([
     'permissions:manage_themes'=>'管理主题',
     'permissions:name'=>'CMS',
     'permissions:view_the_dashboard'=>'查看仪表盘',
+
     'plugin:label'=>'插件',
     'plugin:name:help'=>'插件的唯一名称，例如：RainLab.Blog',
     'plugin:name:label'=>'插件名称',
     'plugin:unnamed'=>'未命名的插件',
+
     'plugins:disable_confirm'=>'你确定吗?',
     'plugins:disable_success'=>'成功禁用了这些插件.',
     'plugins:disabled_help'=>'被禁用的插件被应用程序忽略了.',
@@ -506,6 +546,7 @@ lucid::add_phrases([
     'plugins:search'=>'搜索插件...',
     'plugins:selected_amount'=>'选中的插件: :数目',
     'plugins:unknown_plugin'=>'插件从文件系统中移除了.',
+
     'project:attach'=>'增加项目',
     'project:detach'=>'删除项目',
     'project:detach_confirm'=>'你确定要删除这个项目吗?',
@@ -516,6 +557,7 @@ lucid::add_phrases([
     'project:none'=>'没有',
     'project:owner_label'=>'拥有者',
     'project:unbind_success'=>'项目删除成功。',
+
     'relation:add'=>'增加',
     'relation:add_a_new'=>'增加一个新的 :name',
     'relation:add_name'=>'增加 :name',
@@ -547,6 +589,7 @@ lucid::add_phrases([
     'relation:unlink_name'=>'取消关联 :name',
     'relation:update'=>'更新',
     'relation:update_name'=>'更新 :name',
+
     'request_log:count'=>'次数',
     'request_log:empty_link'=>'清空请求日志',
     'request_log:empty_loading'=>'清空请求日志...',
@@ -560,20 +603,24 @@ lucid::add_phrases([
     'request_log:return_link'=>'返回请求日志',
     'request_log:status_code'=>'状态',
     'request_log:url'=>'URL',
+
     'server:connect_error'=>'连接服务器失败.',
     'server:file_corrupt'=>'服务器下载文件校验失败.',
     'server:file_error'=>'服务器下载文件失败.',
     'server:response_empty'=>'服务器返回为空.',
     'server:response_invalid'=>'服务器返回异常.',
     'server:response_not_found'=>'找不到更新服务器.',
+
     'settings:menu_label'=>'设置',
     'settings:missing_model'=>'设置页缺少模型定义.',
     'settings:not_found'=>'不能找到特定的设置.',
     'settings:return'=>'返回系统设置',
     'settings:search'=>'搜索',
     'settings:update_success'=>':name 的设置更新成功了.',
+
     'sidebar:add'=>'增加',
     'sidebar:search'=>'搜索...',
+
     'system:categories:articles'=>'用户',
     'system:categories:cms'=>'内容管理',
     'system:categories:customers'=>'自定义',
@@ -588,9 +635,11 @@ lucid::add_phrases([
     'system:categories:team'=>'团队',
     'system:menu_label'=>'系统',
     'system:name'=>'系统',
+
     'template:invalid_type'=>'未知模板类型.',
     'template:not_found'=>'请求模板找不到.',
     'template:saved'=>'模板保存成功.',
+
     'theme:activate_button'=>'激活',
     'theme:active:not_found'=>'活动主题找不到.',
     'theme:active:not_set'=>'活动主题没设置.',
@@ -658,13 +707,16 @@ lucid::add_phrases([
     'theme:theme_label'=>'主题',
     'theme:theme_title'=>'主题',
     'theme:unnamed'=>'未命名主题',
+
     'themes:install'=>'安装主题',
     'themes:installed'=>'已安装主题',
     'themes:no_themes'=>'市场上没有已安装的主题。',
     'themes:recommended'=>'推荐',
     'themes:remove_confirm'=>'你确定要删除这些主题吗？',
     'themes:search'=>'搜索主题...',
+
     'tooltips:preview_website'=>'预览网站',
+
     'updates:check_label'=>'检查更新',
     'updates:core_build'=>'当前版本',
     'updates:core_build_new'=>'版本 :build',
@@ -717,6 +769,7 @@ lucid::add_phrases([
     'updates:update_label'=>'更新软件',
     'updates:update_loading'=>'正在检查可用更新...',
     'updates:update_success'=>'更新完成.',
+
     'user:account'=>'帐号',
     'user:allow'=>'允许',
     'user:avatar'=>'头像',
@@ -756,6 +809,7 @@ lucid::add_phrases([
     'user:send_invite_comment'=>'发送一封包含用户名和密码的欢迎邮件',
     'user:superuser'=>'超级用户',
     'user:superuser_comment'=>'选中并允许这个人访问全部区域.',
+
     'validation:accepted'=>':attribute 必须被接受.',
     'validation:active_url'=>':attribute 不是一个有效的URL.',
     'validation:after'=>':attribute 必须是 :date 之后的一个日期.',
@@ -804,11 +858,14 @@ lucid::add_phrases([
     'validation:size:string'=>':attribute 必须是 :size 字符.',
     'validation:unique'=>':attribute 已占用.',
     'validation:url'=>':attribute 格式无效.',
+
     'warnings:extension'=>'PHP扩展 :name 没安装，请安装这个库并且激活扩展.',
     'warnings:permissions'=>'目录 :name 或子目录对PHP不可写. 请在服务器上对这个目录设置正确的权限.',
     'warnings:tips'=>'系统配置技巧',
     'warnings:tips_description'=>'你需要注意下面的问题, 以使系统更好的工作。',
+
     'widget:not_bound'=>'部件 \':name\' 没绑到控制器',
     'widget:not_registered'=>'部件 \':name\' 还没注册',
+
     'zip:extract_failed'=>'不能解压文件 \':file\'。',
 ]);

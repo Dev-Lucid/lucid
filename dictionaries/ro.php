@@ -4,6 +4,7 @@
 # https://octobercms.com
 
 lucid::add_phrases([
+
     'access_log:created_at'=>'Data & Ora',
     'access_log:email'=>'Email',
     'access_log:first_name'=>'Prenume',
@@ -13,6 +14,7 @@ lucid::add_phrases([
     'access_log:login'=>'Login',
     'access_log:menu_description'=>'Vizualizati o lista de conectari reusite, realizate de catre administratori.',
     'access_log:menu_label'=>'Jurnal acces',
+
     'account:apply'=>'Aplicare',
     'account:cancel'=>'Anulare',
     'account:delete'=>'Stergere',
@@ -34,12 +36,16 @@ lucid::add_phrases([
     'account:restore_error'=>'Utilizatorul \':login\' nu a fost gasit in sistem.',
     'account:restore_success'=>'Un mesaj a fost trimis catre adresa de email cu instructiuni pentru resetarea parolei.',
     'account:sign_out'=>'Deconectare',
+
     'ajax_handler:invalid_name'=>'Nume Functie AJAX invalid: :name.',
     'ajax_handler:not_found'=>'Functia AJAX \':name\' nu a fost gasita.',
+
     'alert:cancel_button_text'=>'Anulează',
     'alert:confirm_button_text'=>'OK',
+
     'app:name'=>'October CMS',
     'app:tagline'=>'Intoarcerea la elementele de baza',
+
     'asset:already_exists'=>'Fisierul sau directorul cu acest nume exista deja',
     'asset:create_directory'=>'Creare director',
     'asset:create_file'=>'Creare fisier',
@@ -76,12 +82,16 @@ lucid::add_phrases([
     'asset:too_large'=>'Fisierul incarcat este prea mare. Dimensiunea maxima permisa este: :max_size',
     'asset:type_not_allowed'=>'Doar urmatoarele tipuri de fisiere sunt permise: :allowed_types',
     'asset:upload_files'=>'Incarcare fisier(e)',
+
     'backend_preferences:locale'=>'Limba',
     'backend_preferences:locale_comment'=>'Selectati limba dorita.',
     'backend_preferences:menu_description'=>'Gestionati preferinte limba si setari aspect panou de administrare.',
     'backend_preferences:menu_label'=>'Preferinte administrare',
+
     'behavior:missing_property'=>'Clasa :class trebuie sa defineasca proprietatea $:property folosita pentru caracteristica :behavior.',
+
     'cms:menu_label'=>'CMS',
+
     'cms_object:delete_success'=>'Sabloanele au fost sterse cu succes, in total: :count.',
     'cms_object:error_creating_directory'=>'Eroare la crearea directorului :name. Verificati permisiunile de scriere.',
     'cms_object:error_deleting'=>'Eroare la stergerea fisierului sablon \":name\". Verificati permisiunile de scriere.',
@@ -91,7 +101,9 @@ lucid::add_phrases([
     'cms_object:invalid_file'=>'Nume de fisier invalid: :name. Numele de fisiere pot sa contina doar caractere alfanumerice, linii si puncte. Unele exemple de nume de fisiere corecte: pagina_1.htm, pagina-2, subdirector/pagina',
     'cms_object:invalid_file_extension'=>'Extensie de fisier invalida: :invalid. Extensiile permise sunt: :allowed.',
     'cms_object:invalid_property'=>'Proprietatea \":name\" nu poate fi setata',
+
     'combiner:not_found'=>'Fisierul compus \':name\' nu a fost gasit.',
+
     'component:alias'=>'Alias',
     'component:alias_description'=>'Numele unic dat acestei componente atunci cand este folosita intr-o pagina sau intr-o macheta.',
     'component:invalid_request'=>'Sablonul nu a putut fi salvat din cauza datelor invalide ale componentei.',
@@ -102,14 +114,17 @@ lucid::add_phrases([
     'component:not_found'=>'Componenta \':name\' nu a fost gasita.',
     'component:unnamed'=>'Fara nume',
     'component:validation_message'=>'Aliasul componentei este necesar si poate sa contina doar caractere latine, cifre si caractere underscore. Denumirile are trebui sa inceapa cu un caracter latin.',
+
     'config:not_found'=>'Nu a fost gasit fisierul de configurare :file definit pentru :location.',
     'config:required'=>'Configuratia folosita in :location trebuie sa furnizeze o valoare \':property\'.',
+
     'content:delete_confirm_multiple'=>'Vreti sa stergeti fisierele si directoarele cu continut?',
     'content:delete_confirm_single'=>'Vreti sa stergeti acest fisier cu continut?',
     'content:menu_label'=>'Continut',
     'content:new'=>'Fisier nou cu continut',
     'content:no_list_records'=>'Nu au fost gasite fisiere de continut',
     'content:not_found_name'=>'Fisierul de continut \':name\' nu a fost gasit.',
+
     'dashboard:add_widget'=>'Adauga widget',
     'dashboard:columns'=>'{1} coloana|[2,Inf] coloane',
     'dashboard:menu_label'=>'Dashboard',
@@ -127,7 +142,9 @@ lucid::add_phrases([
     'dashboard:widget_title_error'=>'Titlul widget-ului este necesar.',
     'dashboard:widget_title_label'=>'Titlu widget',
     'dashboard:widget_width'=>'Latime',
+
     'directory:create_fail'=>'Nu se poate crea directorul: :name',
+
     'editor:auto_closing'=>'Inchide automat tag-uri si caractere speciale',
     'editor:code'=>'Cod',
     'editor:code_folding'=>'Code folding',
@@ -158,6 +175,7 @@ lucid::add_phrases([
     'editor:url'=>'URL',
     'editor:use_hard_tabs'=>'Indentare folosind tab-uri',
     'editor:word_wrap'=>'Word wrap',
+
     'event_log:created_at'=>'Data & Ora',
     'event_log:empty_link'=>'Golire jurnal de evenimente',
     'event_log:empty_loading'=>'Se goleste jurnalul de evenimente...',
@@ -170,9 +188,12 @@ lucid::add_phrases([
     'event_log:menu_label'=>'Jurnal evenimente',
     'event_log:message'=>'Mesaj',
     'event_log:return_link'=>'Intoarcere la jurnalul de evenimente',
+
     'field:invalid_type'=>'Tipul campului folosit este invalid - :type.',
     'field:options_method_not_exists'=>'Clasa model :model trebuie sa defineasca o metoda :method() returnand optiuni pentru campul \":field\".',
+
     'file:create_fail'=>'Nu se poate crea fisierul: :name',
+
     'form:add'=>'Adaugare',
     'form:apply'=>'Aplicare',
     'form:behavior_not_ready'=>'Setarile initiale ale formularului nu au fost definite, verificati existenta functiei initForm() in controller.',
@@ -206,17 +227,20 @@ lucid::add_phrases([
     'form:undefined_tab'=>'Altele',
     'form:update_success'=>':name a fost actualizat cu succes',
     'form:update_title'=>'Editare :name',
+
     'install:install_completing'=>'Se finalizeaza procesul de instalare',
     'install:install_success'=>'Acest plugin a fost instalat cu succes.',
     'install:missing_plugin_name'=>'Va rugam sa specificati un nume de Plugin pentru instalare.',
     'install:plugin_label'=>'Instalare Plugin',
     'install:project_label'=>'Atasare la Proiect',
+
     'layout:delete_confirm_multiple'=>'Vreti sa stergeti machetele selectate?',
     'layout:delete_confirm_single'=>'Vreti sa stergeti macheta selectata?',
     'layout:menu_label'=>'Machete',
     'layout:new'=>'Macheta noua',
     'layout:no_list_records'=>'Nu au fost gasite machete',
     'layout:not_found_name'=>'Macheta \':name\' nu a fost gasita',
+
     'list:apply_changes'=>'Aplicare schimbari',
     'list:behavior_not_ready'=>'Setarile initiale ale listei nu au fost definite, verificati existenta functiei makeLists() in controller.',
     'list:cancel'=>'Anulare',
@@ -233,6 +257,7 @@ lucid::add_phrases([
     'list:search_prompt'=>'Cautare...',
     'list:setup_help'=>'Folositi bife pentru a selecta coloanele pe care doriti sa le vedeti in lista. Puteti modifica pozitia coloanelor glisandu-le in sus sau in jos.',
     'list:setup_title'=>'Setare lista',
+
     'locale:cs'=>'Czech',
     'locale:de'=>'Germana',
     'locale:en'=>'Engleza',
@@ -246,6 +271,7 @@ lucid::add_phrases([
     'locale:ru'=>'Rusa',
     'locale:sv'=>'Suedeza',
     'locale:tr'=>'Turca',
+
     'mail:general'=>'General',
     'mail:menu_description'=>'Administrare configuratie email.',
     'mail:menu_label'=>'Configuratie Email',
@@ -263,6 +289,7 @@ lucid::add_phrases([
     'mail:smtp_port'=>'Port SMTP',
     'mail:smtp_ssl'=>'Conexiune SSL necesara',
     'mail:smtp_username'=>'Utilizator',
+
     'mail_templates:code'=>'Cod',
     'mail_templates:code_comment'=>'Cod unic folosit ca referinta la acest sablon',
     'mail_templates:content_css'=>'CSS',
@@ -285,6 +312,7 @@ lucid::add_phrases([
     'mail_templates:templates'=>'Sabloane',
     'mail_templates:test_send'=>'Trimitere mesaj de test',
     'mail_templates:test_success'=>'Mesajul de test a fost trimis cu succes.',
+
     'markdowneditor:bold'=>'Îngroșat',
     'markdowneditor:code'=>'Cod',
     'markdowneditor:formatting'=>'Formatare',
@@ -304,6 +332,7 @@ lucid::add_phrases([
     'markdowneditor:quote'=>'Citat',
     'markdowneditor:unorderedlist'=>'Listă neordonată',
     'markdowneditor:video'=>'Video',
+
     'mediamanager:insert_audio'=>'Introdu audio',
     'mediamanager:insert_image'=>'Introdu image',
     'mediamanager:insert_link'=>'Introdu link',
@@ -313,17 +342,21 @@ lucid::add_phrases([
     'mediamanager:invalid_file_single_insert'=>'Selectează un singur fișier.',
     'mediamanager:invalid_image_empty_insert'=>'Alege imaginile pentru a fi introduse.',
     'mediamanager:invalid_video_empty_insert'=>'Alege un fișier video pentru a fi introdus.',
+
     'model:invalid_class'=>'Modelul :model folosit in clasa :class nu este valid, trebuie sa mosteneasca clasa \\Model.',
     'model:mass_assignment_failed'=>'Atribuirea in masa a esuat pentru atributul modelului \':attribute\'.',
     'model:missing_id'=>'Nu exista niciun ID specificat pentru care sa se realizeze cautarea inregistrarii modelului.',
     'model:missing_relation'=>'Modelul \':class\' nu contine o definitie pentru relatia \':relation\'.',
     'model:name'=>'Model',
     'model:not_found'=>'Modelul \':class\' cu ID-ul :id nu a putut fi gasit',
+
     'myaccount:menu_description'=>'Actualizati datele contului, precum nume, adresa de email si parola.',
     'myaccount:menu_keywords'=>'securitate login',
     'myaccount:menu_label'=>'Contul meu',
+
     'mysettings:menu_description'=>'Setarile in legatura cu contul de administrare',
     'mysettings:menu_label'=>'Setarile mele',
+
     'page:access_denied:cms_link'=>'Inapoi in panoul de administrare',
     'page:access_denied:help'=>'Nu aveti permisiuni pentru a vizualiza aceasta pagina.',
     'page:access_denied:label'=>'Acces restrictionat',
@@ -339,6 +372,7 @@ lucid::add_phrases([
     'page:not_found:help'=>'Pagina cautata nu a putut fi gasita.',
     'page:not_found:label'=>'Pagina negasita',
     'page:untitled'=>'Fara titlu',
+
     'partial:delete_confirm_multiple'=>'Vreti sa stergeti componentele partiale selectate?',
     'partial:delete_confirm_single'=>'Vreti sa stergeti aceasta componenta partiala?',
     'partial:invalid_name'=>'Nume invalid pentru componenta partiala: :name.',
@@ -346,6 +380,7 @@ lucid::add_phrases([
     'partial:new'=>'Componenta partiala noua',
     'partial:no_list_records'=>'Nu au fost gasite componente partiale',
     'partial:not_found_name'=>'Partialul \':name\' nu a fost gasit.',
+
     'permissions:manage_assets'=>'Gestioneaza fisiere design',
     'permissions:manage_content'=>'Gestioneaza continut',
     'permissions:manage_layouts'=>'Gestioneaza machete',
@@ -357,9 +392,11 @@ lucid::add_phrases([
     'permissions:manage_system_settings'=>'Gestioneaza setarile sistemului',
     'permissions:manage_themes'=>'Gestioneaza teme',
     'permissions:view_the_dashboard'=>'Vizualizare panou de control',
+
     'plugin:name:help'=>'Denumiti plugin-ul dupa codul sau unic. De exemplu, RainLab.Blog',
     'plugin:name:label'=>'Nume Plugin',
     'plugin:unnamed'=>'Plugin fara nume',
+
     'plugins:disable_success'=>'Plugin-urile respective au fost dezactivate cu succes.',
     'plugins:disabled_help'=>'Plugin-urile care sunt dezactivate sunt ignorate de catre aplicatie.',
     'plugins:disabled_label'=>'Dezactivat',
@@ -373,6 +410,7 @@ lucid::add_phrases([
     'plugins:remove_success'=>'Plugin-urile respective au fost inlaturate cu succes din sistem.',
     'plugins:selected_amount'=>'Plugin-uri selectate: :amount',
     'plugins:unknown_plugin'=>'Plugin-ul a fost inlaturat din sistemul de fisiere.',
+
     'project:attach'=>'Atasare Proiect',
     'project:detach'=>'Detasare Proiect',
     'project:detach_confirm'=>'Sunteti sigur(a) ca doriti sa detasati acest proiect?',
@@ -383,6 +421,7 @@ lucid::add_phrases([
     'project:none'=>'Niciunul',
     'project:owner_label'=>'Proprietar',
     'project:unbind_success'=>'Proiectul a fost detasat cu succes.',
+
     'relation:add'=>'Adaugare',
     'relation:add_name'=>'Adaugare :name',
     'relation:create'=>'Creare',
@@ -397,6 +436,7 @@ lucid::add_phrases([
     'relation:remove_name'=>'Inlaturare :name',
     'relation:update'=>'Actualizare',
     'relation:update_name'=>'Actualizare :name',
+
     'request_log:count'=>'Contor',
     'request_log:empty_link'=>'Golire jurnal de cereri',
     'request_log:empty_loading'=>'Se goleste jurnalul de cereri...',
@@ -410,19 +450,23 @@ lucid::add_phrases([
     'request_log:return_link'=>'Intoarcere la jurnal de cereri',
     'request_log:status_code'=>'Status',
     'request_log:url'=>'URL',
+
     'server:connect_error'=>'Eroare la conectarea la server.',
     'server:file_corrupt'=>'Fisierul de pe server este corupt.',
     'server:file_error'=>'Serverul a esuat sa livreze pachetul software.',
     'server:response_empty'=>'Raspuns gol de la server.',
     'server:response_invalid'=>'Raspuns invalid de la server.',
     'server:response_not_found'=>'Serverul de actualizari nu a putut fi contactat.',
+
     'settings:menu_label'=>'Setari',
     'settings:missing_model'=>'Paginii de setari ii lipseste o definitie de Model.',
     'settings:return'=>'Intoarcere la setarile sistemului.',
     'settings:search'=>'Cautare',
     'settings:update_success'=>'Setarile pentru :name au fost actualizate cu succes.',
+
     'sidebar:add'=>'Adaugare',
     'sidebar:search'=>'Cautare...',
+
     'system:categories:cms'=>'CMS',
     'system:categories:customers'=>'Clienti',
     'system:categories:events'=>'Evenimente',
@@ -437,9 +481,11 @@ lucid::add_phrases([
     'system:categories:users'=>'Utilizatori',
     'system:menu_label'=>'Sistem',
     'system:name'=>'Sistem',
+
     'template:invalid_type'=>'Tip de sablon necunoscut.',
     'template:not_found'=>'Sablonul solicitat nu a fost gasit.',
     'template:saved'=>'Sablonul a fost salvat cu succes.',
+
     'theme:activate_button'=>'Activare',
     'theme:active:not_found'=>'Tema activa nu a fost gasita.',
     'theme:active:not_set'=>'Tema activa nu este setata.',
@@ -450,7 +496,9 @@ lucid::add_phrases([
     'theme:find_more_themes'=>'Gasiti mai multe teme in \"Piata OctoberCMS\".',
     'theme:settings_menu'=>'Tema Front-end',
     'theme:settings_menu_description'=>'Previzualizati lista de teme instalate si selectati o tema activa.',
+
     'tooltips:preview_website'=>'Previzualizare site',
+
     'updates:check_label'=>'Cauta actualizari disponibile',
     'updates:core_build'=>'Versiune :build',
     'updates:core_build_help'=>'Ultima versiune este disponibila.',
@@ -482,6 +530,7 @@ lucid::add_phrases([
     'updates:update_label'=>'Actualizare software',
     'updates:update_loading'=>'Se incarca actualizarile disponibile...',
     'updates:update_success'=>'Procesul de actualizare a fost finalizat cu succes.',
+
     'user:avatar'=>'Avatar',
     'user:delete_confirm'=>'Sunteti sigur(a) ca vreti sa stergeti acest administrator?',
     'user:email'=>'Email',
@@ -511,6 +560,7 @@ lucid::add_phrases([
     'user:send_invite_comment'=>'Folositi aceasta bifa pentru a trimite o invitatie prin email catre utilizator',
     'user:superuser'=>'Super Utilizator',
     'user:superuser_comment'=>'Bifati aceasta bifa pentru a permite acestei persoane sa aiba acces deplin.',
+
     'validation:accepted'=>'Atributul :attribute trebuie sa fie acceptat.',
     'validation:active_url'=>'Atributul :attribute nu este un URL valid.',
     'validation:after'=>'Atributul :attribute trebuie sa fie o data dupa data de :date.',
@@ -558,11 +608,14 @@ lucid::add_phrases([
     'validation:size:string'=>'Atributul :attribute trebuie sa aiba :size caractere.',
     'validation:unique'=>'Atributul :attribute exista deja.',
     'validation:url'=>'Formatul atributului :attribute este invalid.',
+
     'warnings:extension'=>'Libraria PHP :name nu este instalata. Va rugam sa instalati aceasta librarie si apoi sa activati extensia.',
     'warnings:permissions'=>'Directorul :name si subdirectoarele sale nu au permisiuni de scriere pentru PHP. Va rugam sa setati permisiunile corespunzatoare pentru acest director.',
     'warnings:tips'=>'Sfaturi pentru configurarea sistemului',
     'warnings:tips_description'=>'Exista anumite conditii care necesita atentie pentru a configura sistemul corect.',
+
     'widget:not_bound'=>'Un widget cu numele de clasa \':name\' nu a fost mapat la controller',
     'widget:not_registered'=>'Un nume de clasa de widget \':name\' nu a fost inregistrat',
+
     'zip:extract_failed'=>'Nu s-a putut extrage fisierul de baza \':file\'.',
 ]);

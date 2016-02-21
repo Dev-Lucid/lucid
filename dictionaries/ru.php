@@ -4,6 +4,7 @@
 # https://octobercms.com
 
 lucid::add_phrases([
+
     'access_log:created_at'=>'Дата & Время',
     'access_log:email'=>'Почта',
     'access_log:first_name'=>'Имя',
@@ -13,6 +14,7 @@ lucid::add_phrases([
     'access_log:login'=>'Логин',
     'access_log:menu_description'=>'Просмотр списка успешных авторизаций администраторов.',
     'access_log:menu_label'=>'Журнал доступа',
+
     'account:apply'=>'Применить',
     'account:cancel'=>'Отменить',
     'account:delete'=>'Удалить',
@@ -34,12 +36,16 @@ lucid::add_phrases([
     'account:restore_error'=>'Пользователь с логином \':login\' не найден.',
     'account:restore_success'=>'На вашу электронную почту отправлено сообщение с инструкциями для восстановления пароля.',
     'account:sign_out'=>'Выйти',
+
     'ajax_handler:invalid_name'=>'Ошибка в имени обработчика AJAX: :name.',
     'ajax_handler:not_found'=>'Обработчик AJAX не найден: \':name\'.',
+
     'alert:cancel_button_text'=>'Отмена',
     'alert:confirm_button_text'=>'Ок',
+
     'app:name'=>'October CMS',
     'app:tagline'=>'Возвращение к истокам',
+
     'asset:already_exists'=>'Файл или директория с таким именем уже существует',
     'asset:create_directory'=>'Создать директорию',
     'asset:create_file'=>'Создать файл',
@@ -80,12 +86,16 @@ lucid::add_phrases([
     'asset:type_not_allowed'=>'Разрешены только файлы следующих типов: :allowed_types',
     'asset:unsaved_label'=>'Несохранённый(е) файл(ы)',
     'asset:upload_files'=>'Загрузить файл(ы)',
+
     'auth:title'=>'Панель управления',
+
     'backend_preferences:locale'=>'Язык',
     'backend_preferences:locale_comment'=>'Выберите желаемый язык панели управления.',
     'backend_preferences:menu_description'=>'Управление языком и внешним видом панели управления.',
     'backend_preferences:menu_label'=>'Настройки панели управления',
+
     'behavior:missing_property'=>'Класс :class должен содержать свойство $:property, используемое расширением :behavior.',
+
     'branding:app_name'=>'Название приложения',
     'branding:app_name_description'=>'Это имя отображается в заголовке панели управления',
     'branding:app_tagline'=>'Слоган приложения',
@@ -102,7 +112,9 @@ lucid::add_phrases([
     'branding:secondary_dark'=>'Вторичный (Тёмный)',
     'branding:secondary_light'=>'Вторичный (Светлый)',
     'branding:styles'=>'Стили',
+
     'cms:menu_label'=>'CMS',
+
     'cms_object:delete_success'=>'Шаблоны были успешно удалены: :count.',
     'cms_object:error_creating_directory'=>'Ошибка создания директории :name. Пожалуйста, проверьте права на запись.',
     'cms_object:error_deleting'=>'Невозможно удалить файл шаблона \':name\'. Пожалуйста, проверьте права на запись.',
@@ -112,7 +124,9 @@ lucid::add_phrases([
     'cms_object:invalid_file'=>'Ошибка в имени файла: :name. Имена файлов могут содержать только латинские буквы, цифры, знаки подчеркивания и точки. Пример правильных имен файлов: page.htm, page, subdirectory/page',
     'cms_object:invalid_file_extension'=>'Указано неправильное расширение файла: :invalid. Разрешенные расширения: :allowed.',
     'cms_object:invalid_property'=>'Параметр \':name\' нельзя изменить.',
+
     'combiner:not_found'=>'Сборщик ресурсов не может найти файл \':name\'.',
+
     'component:alias'=>'Псевдоним',
     'component:alias_description'=>'Псевдоним компонента определяет его имя, под которым он доступен в коде страницы или шаблона.',
     'component:invalid_request'=>'Шаблон не может быть сохранен, так как запрос содержит поврежденную информацию о компонентах.',
@@ -123,8 +137,10 @@ lucid::add_phrases([
     'component:not_found'=>'Компонент \':name\' не найден.',
     'component:unnamed'=>'Безымянный',
     'component:validation_message'=>'Псевдонимы обязательны и могут содержать только латинские буквы, цифры и знаки подчеркивания. Псевдонимы должны начинаться с латинской буквы.',
+
     'config:not_found'=>'Не удалось найти конфигурационный файл :file, ожидаемый для :location.',
     'config:required'=>'Для конфигурации, используемой в :location не указано свойство \':property\'.',
+
     'content:delete_confirm_multiple'=>'Вы действительно хотите удалить выделенные файлы?',
     'content:delete_confirm_single'=>'Вы действительно хотите удалить этот файл?',
     'content:menu_label'=>'Содержимое',
@@ -132,6 +148,7 @@ lucid::add_phrases([
     'content:no_list_records'=>'Файлы с содержимым не найдены',
     'content:not_found_name'=>'Не удалось найти файл содержимого (content file): \':name\'.',
     'content:unsaved_label'=>'Несохранённое содержимое',
+
     'dashboard:add_widget'=>'Добавить виджет',
     'dashboard:columns'=>'{1} колонка|[2,4] колонки|[5,Inf] колонок',
     'dashboard:full_width'=>'полная ширина',
@@ -151,7 +168,9 @@ lucid::add_phrases([
     'dashboard:widget_title_error'=>'Заголовок виджета обязателен.',
     'dashboard:widget_title_label'=>'Заголовок',
     'dashboard:widget_width'=>'Ширина',
+
     'directory:create_fail'=>'Невозможно создать директорию: :name',
+
     'editor:auto_closing'=>'Автоматическое закрытие тегов и специальных символов',
     'editor:code'=>'Код',
     'editor:code_folding'=>'Свертывание кода',
@@ -182,6 +201,7 @@ lucid::add_phrases([
     'editor:url'=>'Адрес',
     'editor:use_hard_tabs'=>'Использовать табуляцию для индентации',
     'editor:word_wrap'=>'Перенос слов',
+
     'event_log:created_at'=>'Дата & Время',
     'event_log:empty_link'=>'Очистить журнал событий',
     'event_log:empty_loading'=>'Очищение журнала событий...',
@@ -194,9 +214,12 @@ lucid::add_phrases([
     'event_log:menu_label'=>'Журнал событий',
     'event_log:message'=>'Сообщение',
     'event_log:return_link'=>'Вернуться в журнал событий',
+
     'field:invalid_type'=>'Использован неверный тип поля: :type.',
     'field:options_method_not_exists'=>'Класс модели :model должен содержать метод :method(), возвращающий опции для поля формы \':field\'.',
+
     'file:create_fail'=>'Невозможно создать файл: :name',
+
     'fileupload:attachment'=>'Приложение',
     'fileupload:attachment_url'=>'Привязать URL',
     'fileupload:default_prompt'=>'Кликните по %s или перетащите файл сюда для загрузки',
@@ -207,7 +230,9 @@ lucid::add_phrases([
     'fileupload:title_label'=>'Название',
     'fileupload:upload_error'=>'Ошибка загрузки',
     'fileupload:upload_file'=>'Загрузить файл',
+
     'filter:all'=>'все',
+
     'form:action_confirm'=>'Вы уверены, что хотите сделать это?',
     'form:add'=>'Добавить',
     'form:apply'=>'Применить',
@@ -258,6 +283,7 @@ lucid::add_phrases([
     'form:undefined_tab'=>'Разное',
     'form:update_success'=>':name был успешно сохранен',
     'form:update_title'=>'Редактирование :name',
+
     'install:install_completing'=>'Завершение процесса установки',
     'install:install_success'=>'Плагин был успешно установлен.',
     'install:missing_plugin_name'=>'Пожалуйста, укажите название плагина для установки.',
@@ -265,6 +291,7 @@ lucid::add_phrases([
     'install:plugin_label'=>'Установить плагин',
     'install:project_label'=>'Присоединить к проекту',
     'install:theme_label'=>'Установить тему',
+
     'layout:delete_confirm_multiple'=>'Вы действительно хотите удалить выделенные шаблоны?',
     'layout:delete_confirm_single'=>'Вы действительно хотите удалить этот шаблон?',
     'layout:menu_label'=>'Шаблоны',
@@ -272,6 +299,7 @@ lucid::add_phrases([
     'layout:no_list_records'=>'Шаблоны не найдены',
     'layout:not_found_name'=>'Не удалось найти шаблон (layout) с именем :name.',
     'layout:unsaved_label'=>'Несохранённый(е) макет(ы)',
+
     'list:behavior_not_ready'=>'Поведение списка не было инициализировано, проверьте вызов makeLists() в вашем контроллере.',
     'list:column_switch_false'=>'Нет',
     'list:column_switch_true'=>'Да',
@@ -295,6 +323,7 @@ lucid::add_phrases([
     'list:search_prompt'=>'Поиск...',
     'list:setup_help'=>'Используйте флажки для выбора колонок, которые вы хотите видеть в списке. Вы можете изменить положение столбцов, перетаскивая их вверх или вниз.',
     'list:setup_title'=>'Настройка списка',
+
     'locale:cs'=>'Czech',
     'locale:de'=>'German',
     'locale:el'=>'Greek',
@@ -319,6 +348,7 @@ lucid::add_phrases([
     'locale:tr'=>'Turkish',
     'locale:zh-cn'=>'Chinese (China)',
     'locale:zh-tw'=>'Chinese (Taiwan)',
+
     'mail:drivers_hint_content'=>'Этот почтовый метод требует плагин \":plugin\", установленный прежде, чем можно будет отправлять почту.',
     'mail:drivers_hint_header'=>'Драйвера не установлены',
     'mail:general'=>'Общее',
@@ -352,6 +382,7 @@ lucid::add_phrases([
     'mail:smtp_port'=>'SMTP порт',
     'mail:smtp_ssl'=>'Использовать SSL',
     'mail:smtp_username'=>'SMTP логин',
+
     'mail_templates:code'=>'Код',
     'mail_templates:code_comment'=>'Уникальный код, используемый для обозначения этого шаблона',
     'mail_templates:content_css'=>'CSS',
@@ -378,10 +409,12 @@ lucid::add_phrases([
     'mail_templates:test_confirm'=>'Тестовое сообщение будет отправлено на :email. Продолжить?',
     'mail_templates:test_send'=>'Отправить тестовое сообщение',
     'mail_templates:test_success'=>'Тестовое сообщение было успешно отправлено.',
+
     'maintenance:is_enabled'=>'Включить режим обслуживания',
     'maintenance:is_enabled_comment'=>'При активации этого режима посетители сайта увидят страницу выбранную ниже.',
     'maintenance:settings_menu'=>'Режим обслуживания',
     'maintenance:settings_menu_description'=>'Управление режимом обслуживания сайта.',
+
     'markdowneditor:bold'=>'Жирный шрифт',
     'markdowneditor:code'=>'Код',
     'markdowneditor:formatting'=>'Форматирование',
@@ -401,6 +434,7 @@ lucid::add_phrases([
     'markdowneditor:quote'=>'Цитата',
     'markdowneditor:unorderedlist'=>'Ненумерованный список',
     'markdowneditor:video'=>'Видео',
+
     'media:add_folder'=>'Создать папку',
     'media:click_here'=>'Нажмите здесь',
     'media:crop_and_insert'=>'Обрезать и вставить',
@@ -460,7 +494,9 @@ lucid::add_phrases([
     'media:uploading_error'=>'Ошибка загрузки',
     'media:uploading_file_num'=>'Загрузка файлов: :number',
     'media:width'=>'Ширина',
+
     'mediafinder:default_prompt'=>'Кликните на %s кнопку, чтобы найти медиафайл',
+
     'mediamanager:insert_audio'=>'Вставить медиа-аудио',
     'mediamanager:insert_image'=>'Вставить медиа-изображение',
     'mediamanager:insert_link'=>'Вставить медиа-ссылку',
@@ -470,6 +506,7 @@ lucid::add_phrases([
     'mediamanager:invalid_file_single_insert'=>'Пожалуйста, выберите один файл.',
     'mediamanager:invalid_image_empty_insert'=>'Пожалуйста, выберите изображения для вставки.',
     'mediamanager:invalid_video_empty_insert'=>'Пожалуйста, выберите видео для вставки.',
+
     'model:invalid_class'=>'Модель :model используемая в :class не допустима, она должна наследовать класс \\Model.',
     'model:mass_assignment_failed'=>'Массовое заполнение недоступно для атрибута модели \':attribute\'.',
     'model:missing_id'=>'Нет идентификатора для поиска модели записи.',
@@ -477,11 +514,14 @@ lucid::add_phrases([
     'model:missing_relation'=>'Модель \':class\' не содержит определения для \':relation\'',
     'model:name'=>'Модель',
     'model:not_found'=>'Модель \':class\' с идентификатором :id не найдена',
+
     'myaccount:menu_description'=>'Управление личной информацией (имя, почта, пароль)',
     'myaccount:menu_keywords'=>'безопасность логин',
     'myaccount:menu_label'=>'Мой аккаунт',
+
     'mysettings:menu_description'=>'Управление настройками учетной записи администратора.',
     'mysettings:menu_label'=>'Мои настройки',
+
     'page:access_denied:cms_link'=>'Перейти к CMS',
     'page:access_denied:help'=>'У вас нет необходимых прав для просмотра этой страницы.',
     'page:access_denied:label'=>'Доступ запрещен',
@@ -500,6 +540,7 @@ lucid::add_phrases([
     'page:not_found_name'=>'Страница \':name\' не найдена',
     'page:unsaved_label'=>'Несохранённая(е) страница(ы)',
     'page:untitled'=>'Без названия',
+
     'partial:delete_confirm_multiple'=>'Вы действительно хотите удалить выделенные фрагменты?',
     'partial:delete_confirm_single'=>'Вы действительно хотите удалить этот фрагмент?',
     'partial:invalid_name'=>'Ошибка в имени шаблона (partial) :name.',
@@ -508,6 +549,7 @@ lucid::add_phrases([
     'partial:no_list_records'=>'Фрагменты не найдены',
     'partial:not_found_name'=>'Не удалось найти шаблон (partial) с именем :name.',
     'partial:unsaved_label'=>'Несохранённый(е) фрагмент(ы)',
+
     'permissions:access_logs'=>'Просмотр системных логов',
     'permissions:manage_assets'=>'Управление файлами',
     'permissions:manage_branding'=>'Персонализация панели управления',
@@ -526,10 +568,12 @@ lucid::add_phrases([
     'permissions:manage_themes'=>'Управление темами',
     'permissions:name'=>'Управление CMS',
     'permissions:view_the_dashboard'=>'Просмотр панели управления',
+
     'plugin:label'=>'Плагин',
     'plugin:name:help'=>'Введите название плагина со своим уникальным кодом. Например, RainLab.Blog',
     'plugin:name:label'=>'Имя плагина',
     'plugin:unnamed'=>'Безымянный плагин',
+
     'plugins:disable_confirm'=>'Вы уверены?',
     'plugins:disable_success'=>'Плагин успешно отключен.',
     'plugins:disabled_help'=>'Отключенные плагины будут игнорироваться.',
@@ -554,6 +598,7 @@ lucid::add_phrases([
     'plugins:search'=>'поиск плагинов для установки...',
     'plugins:selected_amount'=>'Выбрано плагинов: :amount',
     'plugins:unknown_plugin'=>'Плагин был удален из файловой системы.',
+
     'project:attach'=>'Подключить проект',
     'project:detach'=>'Отсоединить проект',
     'project:detach_confirm'=>'Вы уверены, что хотите отсоединить этот проект?',
@@ -564,6 +609,7 @@ lucid::add_phrases([
     'project:none'=>'Не обнаружено',
     'project:owner_label'=>'Владелец',
     'project:unbind_success'=>'Проект был успешно отсоединен.',
+
     'relation:add'=>'Добавить',
     'relation:add_a_new'=>'Добавить новый :name',
     'relation:add_name'=>'Добавление :name',
@@ -595,8 +641,10 @@ lucid::add_phrases([
     'relation:unlink_name'=>'Разъединение :name',
     'relation:update'=>'Обновить',
     'relation:update_name'=>'Обновление :name',
+
     'reorder:default_title'=>'Сортировать записи',
     'reorder:no_records'=>'Нет доступных записей для сортировки.',
+
     'request_log:count'=>'Счетчик',
     'request_log:empty_link'=>'Очистить журнал запросов',
     'request_log:empty_loading'=>'Очищение журнала запросов...',
@@ -610,20 +658,24 @@ lucid::add_phrases([
     'request_log:return_link'=>'Вернуться к журналу запросов',
     'request_log:status_code'=>'Статус',
     'request_log:url'=>'Адрес',
+
     'server:connect_error'=>'Ошибка подключения к серверу.',
     'server:file_corrupt'=>'Загруженный файл поврежден.',
     'server:file_error'=>'Сервер не смог доставить пакет.',
     'server:response_empty'=>'Пустой ответ сервера.',
     'server:response_invalid'=>'Неверный ответ сервера.',
     'server:response_not_found'=>'Сервер обновления не найден.',
+
     'settings:menu_label'=>'Настройки',
     'settings:missing_model'=>'На странице настроек отсутствует определение модели.',
     'settings:not_found'=>'Не удается найти указанные настройки.',
     'settings:return'=>'Вернуться к системным настройкам',
     'settings:search'=>'Поиск',
     'settings:update_success'=>'Настройки для :name успешно обновлены.',
+
     'sidebar:add'=>'Добавить',
     'sidebar:search'=>'Поиск...',
+
     'system:categories:cms'=>'CMS',
     'system:categories:customers'=>'Клиентское',
     'system:categories:events'=>'События',
@@ -638,9 +690,11 @@ lucid::add_phrases([
     'system:categories:users'=>'Пользователи',
     'system:menu_label'=>'Система',
     'system:name'=>'Система',
+
     'template:invalid_type'=>'Неизвестный тип шаблона.',
     'template:not_found'=>'Запрошенный шаблон не найден.',
     'template:saved'=>'Шаблон был успешно сохранен.',
+
     'theme:activate_button'=>'Активировать',
     'theme:active:not_found'=>'Активная тема не найдена.',
     'theme:active:not_set'=>'Активная тема не установлена.',
@@ -708,13 +762,16 @@ lucid::add_phrases([
     'theme:theme_label'=>'Тема',
     'theme:theme_title'=>'Темы',
     'theme:unnamed'=>'Безымянная тема',
+
     'themes:install'=>'Установить темы',
     'themes:installed'=>'Установленные темы',
     'themes:no_themes'=>'Нет тем, установленных из магазина.',
     'themes:recommended'=>'Рекомендуется',
     'themes:remove_confirm'=>'Вы уверены, что хотите удалить выбранную тему?',
     'themes:search'=>'поиск тем для установки...',
+
     'tooltips:preview_website'=>'Просмотр сайта',
+
     'updates:check_label'=>'Проверить обновления ',
     'updates:core_build'=>'Сборка :build',
     'updates:core_build_help'=>'Последняя доступная сборка.',
@@ -767,6 +824,7 @@ lucid::add_phrases([
     'updates:update_label'=>'Обновить',
     'updates:update_loading'=>'Поиск доступных обновлений...',
     'updates:update_success'=>'Процесс обновления был успешно завершен.',
+
     'user:account'=>'Аккаунт',
     'user:allow'=>'Разрешить',
     'user:avatar'=>'Аватар',
@@ -806,6 +864,7 @@ lucid::add_phrases([
     'user:send_invite_comment'=>'Отправляет приветственное сообщение, содержащее информацию о логине и пароле.',
     'user:superuser'=>'Суперпользователь',
     'user:superuser_comment'=>'Предоставляет этому аккаунту неограниченный доступ ко всем областям.',
+
     'validation:accepted'=>'Вы должны принять :attribute.',
     'validation:active_url'=>'Поле :attribute недействительный URL.',
     'validation:after'=>'Поле :attribute должно быть датой после :date.',
@@ -854,11 +913,14 @@ lucid::add_phrases([
     'validation:size:string'=>'Поле :attribute должно быть длиной :size символов.',
     'validation:unique'=>'Такое значение поля :attribute уже существует.',
     'validation:url'=>'Поле :attribute имеет ошибочный формат.',
+
     'warnings:extension'=>'Расширение PHP :name не установлено. Установите эту библиотеку и активируйте расширение.',
     'warnings:permissions'=>'Каталог :name или его подкаталоги недоступны для записи. Укажите соответствующие разрешения для веб-сервера.',
     'warnings:tips'=>'Подсказки по конфигурации системы',
     'warnings:tips_description'=>'Есть проблемы, на которые стоит обратить внимание, чтобы правильно настроить систему.',
+
     'widget:not_bound'=>'Виджет с именем класса \':name\' не связан с контроллером.',
     'widget:not_registered'=>'Класс виджета \':name\' не зарегистрирован.',
+
     'zip:extract_failed'=>'Невозможно извлечь файл \':file\'.',
 ]);

@@ -108,8 +108,14 @@ function write_lucid_file($lucid_path, $language, $phrases)
     $string .= "# https://octobercms.com\n\n";
 
     $string .= "lucid::add_phrases([\n";
+    $current_section = null;
     foreach($phrases as $key=>$value)
     {
+        $this_section = substr($key,0,strpos($key, ':'));
+        if($this_section != $current_section){
+            $string .= "\n";
+            $current_section = $this_section;
+        }
         $string .= "    '$key'=>'".addslashes($value)."',\n";
     }
     $string .= "]);\n";

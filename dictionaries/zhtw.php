@@ -4,6 +4,7 @@
 # https://octobercms.com
 
 lucid::add_phrases([
+
     'access_log:created_at'=>'日期 & 時間',
     'access_log:email'=>'Email',
     'access_log:first_name'=>'名',
@@ -13,6 +14,7 @@ lucid::add_phrases([
     'access_log:login'=>'登入',
     'access_log:menu_description'=>'查看成功登入管理介面使用者日誌。',
     'access_log:menu_label'=>'訪問日誌',
+
     'account:apply'=>'套用',
     'account:cancel'=>'取消',
     'account:delete'=>'刪除',
@@ -34,10 +36,13 @@ lucid::add_phrases([
     'account:restore_error'=>'找不到使用者 \':login\'',
     'account:restore_success'=>'密碼重置的郵件已發送到您的電子信箱',
     'account:sign_out'=>'登出',
+
     'ajax_handler:invalid_name'=>'不合法的 AJAX 處理器: :name.',
     'ajax_handler:not_found'=>' AJAX 處理器 \':name\' 找不到.',
+
     'app:name'=>'October CMS',
     'app:tagline'=>'登入',
+
     'asset:already_exists'=>'檔案或目錄已存在',
     'asset:create_directory'=>'新建目錄',
     'asset:create_file'=>'新建檔案',
@@ -78,12 +83,16 @@ lucid::add_phrases([
     'asset:type_not_allowed'=>'只有下面的檔案類型是允許的: :allowed_types',
     'asset:unsaved_label'=>'未保存的資源',
     'asset:upload_files'=>'上傳檔案',
+
     'auth:title'=>'管理介面',
+
     'backend_preferences:locale'=>'語言',
     'backend_preferences:locale_comment'=>'選擇您希望使用的本地語言。',
     'backend_preferences:menu_description'=>'管理您的管理介面設定, 例如希望使用的語言。',
     'backend_preferences:menu_label'=>'管理介面設定',
+
     'behavior:missing_property'=>'Class :class 必須定義屬性 $:property 被 :behavior behavior 使用.',
+
     'branding:app_name'=>'網站名稱',
     'branding:app_name_description'=>'這個名稱顯示在管理介面的標題區域',
     'branding:app_tagline'=>'網站標語',
@@ -100,7 +109,9 @@ lucid::add_phrases([
     'branding:secondary_dark'=>'次要 (Dark)',
     'branding:secondary_light'=>'次要 (Light)',
     'branding:styles'=>'樣式',
+
     'cms:menu_label'=>'CMS',
+
     'cms_object:delete_success'=>'模板成功刪除: :count.',
     'cms_object:error_creating_directory'=>'建立檔案夾 :name 錯誤. 請檢查寫權限.',
     'cms_object:error_deleting'=>'刪除模板檔案 \':name\' 錯誤. 請檢查寫權限.',
@@ -110,7 +121,9 @@ lucid::add_phrases([
     'cms_object:invalid_file'=>'不合法的檔案名: :name. 檔案名只能包括字母或數字, _, - 和 .. 一些正確的檔案名: page.htm, page, subdirectory/page',
     'cms_object:invalid_file_extension'=>'不合法的檔案擴展: :invalid. 允許的擴展: :allowed.',
     'cms_object:invalid_property'=>'屬性 \':name\' 不能設定',
+
     'combiner:not_found'=>'混合檔案 \':name\' 沒找到.',
+
     'component:alias'=>'別名',
     'component:alias_description'=>'這個組件的唯一名稱, 在頁面或者佈局代碼中.',
     'component:invalid_request'=>'模板不能保存, 因為非法組件數據.',
@@ -121,8 +134,10 @@ lucid::add_phrases([
     'component:not_found'=>'組件 \':name\' 找不到.',
     'component:unnamed'=>'未命名的',
     'component:validation_message'=>'需要組件別名, 且只能包含拉丁字元, 數字和下劃線. 別名必須以拉丁字元開頭.',
+
     'config:not_found'=>'不能搜尋設定檔案 :file 為 :location 定義.',
     'config:required'=>'設定 :location 必須有 \':property\'.',
+
     'content:delete_confirm_multiple'=>'您真的想要刪除選取的檔案或目錄嗎?',
     'content:delete_confirm_single'=>'您真的想要刪除這個內容檔案?',
     'content:menu_label'=>'內容',
@@ -130,6 +145,7 @@ lucid::add_phrases([
     'content:no_list_records'=>'找不到內容檔案',
     'content:not_found_name'=>'內容檔案 \':name\' 找不到.',
     'content:unsaved_label'=>'未保存內容',
+
     'dashboard:add_widget'=>'新增元件',
     'dashboard:columns'=>'{1} 欄|[2,Inf] 欄',
     'dashboard:full_width'=>'全部寬度',
@@ -149,7 +165,9 @@ lucid::add_phrases([
     'dashboard:widget_title_error'=>'需要元件標題',
     'dashboard:widget_title_label'=>'元件標題',
     'dashboard:widget_width'=>'寬度',
+
     'directory:create_fail'=>'不能建立目錄: :name',
+
     'editor:code'=>'代碼',
     'editor:code_folding'=>'代碼摺疊',
     'editor:content'=>'內容',
@@ -179,6 +197,7 @@ lucid::add_phrases([
     'editor:url'=>'URL',
     'editor:use_hard_tabs'=>'使用tabs縮進',
     'editor:word_wrap'=>'自動換行',
+
     'event_log:created_at'=>'時間和日期',
     'event_log:empty_link'=>'清空事件日誌',
     'event_log:empty_loading'=>'清空事件日誌...',
@@ -191,14 +210,19 @@ lucid::add_phrases([
     'event_log:menu_label'=>'事件日誌',
     'event_log:message'=>'訊息',
     'event_log:return_link'=>'返回時間日誌',
+
     'field:invalid_type'=>'錯誤的字串類型 :type',
     'field:options_method_not_exists'=>'模型 :model 必須定義一個返回 \':field\' 表單字串選項的方法 :method()。',
+
     'file:create_fail'=>'不能建立檔案: :name',
+
     'fileupload:attachment'=>'附件',
     'fileupload:description_label'=>'描述',
     'fileupload:help'=>'給附件新增標題和描述',
     'fileupload:title_label'=>'標題',
+
     'filter:all'=>'全部',
+
     'form:action_confirm'=>'您確定?',
     'form:add'=>'增加',
     'form:apply'=>'應用',
@@ -246,6 +270,7 @@ lucid::add_phrases([
     'form:undefined_tab'=>'雜項',
     'form:update_success'=>':name 更新成功',
     'form:update_title'=>'編輯 :name',
+
     'install:install_completing'=>'完成安裝過程',
     'install:install_success'=>'外掛安裝成功。',
     'install:missing_plugin_name'=>'請輸入要安裝的外掛名稱。',
@@ -253,6 +278,7 @@ lucid::add_phrases([
     'install:plugin_label'=>'安裝外掛',
     'install:project_label'=>'加入產品',
     'install:theme_label'=>'安裝主題',
+
     'layout:delete_confirm_multiple'=>'您真的想要刪除選取的佈局?',
     'layout:delete_confirm_single'=>'您真的想要刪除這個佈局?',
     'layout:menu_label'=>'佈局',
@@ -260,6 +286,7 @@ lucid::add_phrases([
     'layout:no_list_records'=>'找不到佈局',
     'layout:not_found_name'=>'佈局 \':name\' 找不到',
     'layout:unsaved_label'=>'未保存佈局',
+
     'list:behavior_not_ready'=>'列表沒有初始化, 確認您的控制器中調用了makeLists()',
     'list:default_title'=>'列表',
     'list:delete_selected'=>'刪除選擇的',
@@ -281,6 +308,7 @@ lucid::add_phrases([
     'list:search_prompt'=>'搜尋...',
     'list:setup_help'=>'使用多選框選擇您想在列表中看到的欄. 您可以通過拖拽調整欄的位置',
     'list:setup_title'=>'建立列表',
+
     'locale:cs'=>'Czech',
     'locale:de'=>'German',
     'locale:en'=>'English',
@@ -304,6 +332,7 @@ lucid::add_phrases([
     'locale:tr'=>'Turkish',
     'locale:zh-cn'=>'Chinese (China)',
     'locale:zh-tw'=>'Chinese (Taiwan)',
+
     'mail:general'=>'常規',
     'mail:log_file'=>'日誌檔案',
     'mail:mailgun'=>'Mailgun',
@@ -331,6 +360,7 @@ lucid::add_phrases([
     'mail:smtp_port'=>'SMTP 端口',
     'mail:smtp_ssl'=>'需要SSL連接',
     'mail:smtp_username'=>'使用者名',
+
     'mail_templates:code'=>'代碼',
     'mail_templates:code_comment'=>'指向這個模板的唯一代碼',
     'mail_templates:content_css'=>'CSS',
@@ -353,10 +383,12 @@ lucid::add_phrases([
     'mail_templates:templates'=>'模板',
     'mail_templates:test_send'=>'發送測試訊息',
     'mail_templates:test_success'=>'測試訊息已經成功發送.',
+
     'maintenance:is_enabled'=>'啟用維護模式',
     'maintenance:is_enabled_comment'=>'當啟用時, 網站訪問者會看到下述頁面.',
     'maintenance:settings_menu'=>'維護模式',
     'maintenance:settings_menu_description'=>'設定維護模式頁面和開關設定.',
+
     'media:add_folder'=>'增加檔案夾',
     'media:click_here'=>'點選這裡',
     'media:crop_and_insert'=>'裁剪並插入',
@@ -415,6 +447,7 @@ lucid::add_phrases([
     'media:uploading_complete'=>'上傳完畢',
     'media:uploading_file_num'=>'上傳 :number 檔案...',
     'media:width'=>'寬度',
+
     'model:invalid_class'=>'Model :model 在 :class 中是錯誤的, 必須繼承 \\Model class.',
     'model:mass_assignment_failed'=>'針對Model屬性\':attribute\'的大量賦值失敗.',
     'model:missing_id'=>'沒有指定的ID搜尋model記錄',
@@ -422,11 +455,14 @@ lucid::add_phrases([
     'model:missing_relation'=>'Model \':class\' 不包含 \':relation\'.',
     'model:name'=>'Model',
     'model:not_found'=>'Model \':class\' ID :id 找不到',
+
     'myaccount:menu_description'=>'更新您的帳號細節, 例如名字, 郵件地址和密碼',
     'myaccount:menu_keywords'=>'安全登入',
     'myaccount:menu_label'=>'我的帳號',
+
     'mysettings:menu_description'=>'設定涉及到您的管理帳號',
     'mysettings:menu_label'=>'我的設定',
+
     'page:access_denied:cms_link'=>'返回管理介面',
     'page:access_denied:help'=>'您沒有訪問這個頁面需要的權限.',
     'page:access_denied:label'=>'拒絕訪問',
@@ -444,6 +480,7 @@ lucid::add_phrases([
     'page:not_found_name'=>'頁面 \':name\' 找不到',
     'page:unsaved_label'=>'未保存頁面',
     'page:untitled'=>'未命名',
+
     'partial:delete_confirm_multiple'=>'您真的想要刪除選擇的部件?',
     'partial:delete_confirm_single'=>'您真的想要刪除這個部件?',
     'partial:invalid_name'=>'不合法的部件名: :name.',
@@ -452,6 +489,7 @@ lucid::add_phrases([
     'partial:no_list_records'=>'找不到部件',
     'partial:not_found_name'=>'元件 \':name\' 找不到.',
     'partial:unsaved_label'=>'未保存的部件',
+
     'permissions:access_logs'=>'查看訪問日誌',
     'permissions:manage_assets'=>'管理資源',
     'permissions:manage_branding'=>'自訂後台',
@@ -467,9 +505,11 @@ lucid::add_phrases([
     'permissions:manage_themes'=>'管理主題',
     'permissions:name'=>'Cms',
     'permissions:view_the_dashboard'=>'查看儀表板',
+
     'plugin:name:help'=>'外掛的唯一名稱，例如：RainLab.Blog',
     'plugin:name:label'=>'外掛名稱',
     'plugin:unnamed'=>'未命名的外掛',
+
     'plugins:disable_confirm'=>'您確定嗎?',
     'plugins:disable_success'=>'成功停用了這些外掛.',
     'plugins:disabled_help'=>'被停用的外掛被應用程式忽略了.',
@@ -492,6 +532,7 @@ lucid::add_phrases([
     'plugins:search'=>'搜尋外掛...',
     'plugins:selected_amount'=>'選取的外掛: :數目',
     'plugins:unknown_plugin'=>'外掛從檔案系統中移除了.',
+
     'project:attach'=>'增加產品',
     'project:detach'=>'刪除產品',
     'project:detach_confirm'=>'您確定要刪除這個產品嗎?',
@@ -502,6 +543,7 @@ lucid::add_phrases([
     'project:none'=>'沒有',
     'project:owner_label'=>'擁有者',
     'project:unbind_success'=>'產品刪除成功.',
+
     'relation:add'=>'增加',
     'relation:add_a_new'=>'增加一個新的 :name',
     'relation:add_name'=>'增加 :name',
@@ -533,6 +575,7 @@ lucid::add_phrases([
     'relation:unlink_name'=>'取消關聯 :name',
     'relation:update'=>'更新',
     'relation:update_name'=>'更新 :name',
+
     'request_log:count'=>'次數',
     'request_log:empty_link'=>'清空請求日誌',
     'request_log:empty_loading'=>'清空請求日誌...',
@@ -546,20 +589,24 @@ lucid::add_phrases([
     'request_log:return_link'=>'返回請求日誌',
     'request_log:status_code'=>'狀態',
     'request_log:url'=>'URL',
+
     'server:connect_error'=>'連接伺服器失敗.',
     'server:file_corrupt'=>'伺服器下載檔案校驗失敗.',
     'server:file_error'=>'伺服器下載檔案失敗.',
     'server:response_empty'=>'伺服器返回為空.',
     'server:response_invalid'=>'伺服器返回異常.',
     'server:response_not_found'=>'找不到更新伺服器.',
+
     'settings:menu_label'=>'設定',
     'settings:missing_model'=>'設定頁缺少Model定義.',
     'settings:not_found'=>'不能找到特定的設定.',
     'settings:return'=>'返回系統設定',
     'settings:search'=>'搜尋',
     'settings:update_success'=>':name 的設定更新成功了.',
+
     'sidebar:add'=>'增加',
     'sidebar:search'=>'搜尋...',
+
     'system:categories:cms'=>'內容管理',
     'system:categories:customers'=>'自訂',
     'system:categories:events'=>'事件',
@@ -574,9 +621,11 @@ lucid::add_phrases([
     'system:categories:users'=>'使用者',
     'system:menu_label'=>'系統',
     'system:name'=>'系統',
+
     'template:invalid_type'=>'未知模板類型.',
     'template:not_found'=>'請求模板找不到.',
     'template:saved'=>'模板保存成功.',
+
     'theme:activate_button'=>'激活',
     'theme:active:not_found'=>'活動主題找不到.',
     'theme:active:not_set'=>'活動主題沒設定.',
@@ -643,13 +692,16 @@ lucid::add_phrases([
     'theme:theme_label'=>'主題',
     'theme:theme_title'=>'主題',
     'theme:unnamed'=>'未命名主題',
+
     'themes:install'=>'安裝主題',
     'themes:installed'=>'已安裝主題',
     'themes:no_themes'=>'市集上沒有已安裝的主題。',
     'themes:recommended'=>'推薦',
     'themes:remove_confirm'=>'您確定要刪除這些主題嗎？',
     'themes:search'=>'搜尋主題...',
+
     'tooltips:preview_website'=>'預覽網站',
+
     'updates:check_label'=>'檢查更新',
     'updates:core_build'=>'版本 :build',
     'updates:core_build_help'=>'新的版本可用.',
@@ -684,6 +736,7 @@ lucid::add_phrases([
     'updates:update_label'=>'更新軟件',
     'updates:update_loading'=>'加載可用更新...',
     'updates:update_success'=>'更新完成.',
+
     'user:account'=>'帳號',
     'user:allow'=>'允許',
     'user:avatar'=>'頭像',
@@ -722,6 +775,7 @@ lucid::add_phrases([
     'user:send_invite_comment'=>'發送一封包含使用者名和密碼的歡迎郵件',
     'user:superuser'=>'超級使用者',
     'user:superuser_comment'=>'選取並允許這個人訪問全部區域',
+
     'validation:accepted'=>':attribute 必須被接受.',
     'validation:active_url'=>':attribute 不是一個有效的URL.',
     'validation:after'=>':attribute 必須是 :date 之後的一個日期.',
@@ -769,11 +823,14 @@ lucid::add_phrases([
     'validation:size:string'=>':attribute 必須是 :size 字元.',
     'validation:unique'=>':attribute 已使用.',
     'validation:url'=>':attribute 格式無效.',
+
     'warnings:extension'=>'PHP外掛 :name 沒安裝. 請安裝這個庫並且啟用外掛',
     'warnings:permissions'=>'目錄 :name 或子目錄對PHP不可寫. 請對這個目錄上的webserver設定正確的權限',
     'warnings:tips'=>'系統設定技巧',
     'warnings:tips_description'=>'您需要注意那些issue, 以使系統設定正確',
+
     'widget:not_bound'=>'元件 \':name\' 沒綁到控制器',
     'widget:not_registered'=>'元件 \':name\' 還沒註冊',
+
     'zip:extract_failed'=>'不能解壓縮檔案 \':file\'.',
 ]);

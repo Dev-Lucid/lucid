@@ -4,6 +4,7 @@
 # https://octobercms.com
 
 lucid::add_phrases([
+
     'access_log:created_at'=>'Tarih & Saat',
     'access_log:email'=>'Email',
     'access_log:first_name'=>'İsim',
@@ -13,6 +14,7 @@ lucid::add_phrases([
     'access_log:login'=>'Giriş',
     'access_log:menu_description'=>'Yönetim paneline başarılı şekilde yapılan girişleri görüntüler.',
     'access_log:menu_label'=>'Yönetim paneli erişim kayıtları',
+
     'account:apply'=>'Onayla',
     'account:cancel'=>'İptal',
     'account:delete'=>'Sil',
@@ -34,10 +36,13 @@ lucid::add_phrases([
     'account:restore_error'=>'\':login\' kullanıcı adı bulunamadı.',
     'account:restore_success'=>'Email adresinize parolanızı nasıl sıfırlayacağınıza dair bilgiler gönderilmiştir.',
     'account:sign_out'=>'Çıkış',
+
     'ajax_handler:invalid_name'=>'Hatalı AJAX işleyici adı: :name.',
     'ajax_handler:not_found'=>'\':name\' isimli AJAX işleyici bulunamadı.',
+
     'app:name'=>'October CMS',
     'app:tagline'=>'Basitliğe dönüş...',
+
     'asset:already_exists'=>'Bu isimde dosya veya dizin zaten var',
     'asset:create_directory'=>'Klasör oluştur',
     'asset:create_file'=>'Dosya oluştur',
@@ -78,12 +83,16 @@ lucid::add_phrases([
     'asset:type_not_allowed'=>'İzin verilen dosya tipleri: :allowed_types',
     'asset:unsaved_label'=>'Kaydedilmemiş dosya(lar)',
     'asset:upload_files'=>'Dosya(lar) yükle',
+
     'auth:title'=>'Yönetim Paneli',
+
     'backend_preferences:locale'=>'Dil',
     'backend_preferences:locale_comment'=>'Yönetim Paneli dil seçiminizi belirleyin.',
     'backend_preferences:menu_description'=>'Hesabınızın tercih edilen dil ayarını değiştirebilirsiniz.',
     'backend_preferences:menu_label'=>'Panel Ayarları',
+
     'behavior:missing_property'=>':class sınıfı :behavior davranışı tarafından kullanılan $:property özelliğini tanımlamalı.',
+
     'branding:app_name'=>'Site Adı',
     'branding:app_name_description'=>'Bu isim, Yönetim Panelinde başlık olarak kullanılacaktır.',
     'branding:app_tagline'=>'Site Mottosu',
@@ -100,7 +109,9 @@ lucid::add_phrases([
     'branding:secondary_dark'=>'İkincil Renk (Koyu Ton)',
     'branding:secondary_light'=>'İkincil Renk (Açık Ton)',
     'branding:styles'=>'Stiller',
+
     'cms:menu_label'=>'Tasarım Ayarları',
+
     'cms_object:delete_success'=>':count şablon başarıyla silindi.',
     'cms_object:error_creating_directory'=>':name klasörü oluşturulurken hata oluştu',
     'cms_object:error_deleting'=>'\":name\" şablon dosyası silinirken hatayla karşılaşıldı.',
@@ -110,7 +121,9 @@ lucid::add_phrases([
     'cms_object:invalid_file'=>'Hatalı dosya adı: :name. Dosya isimleri sadece alfanümerik semboller, alt çizgiler, tire ve nokta içerebilir. Bazı doğru dosya adı örnekleri: sayfa.htm, sayfa, altdizin/sayfa',
     'cms_object:invalid_file_extension'=>'Hatalı dosya uzantısı: :invalid. İzin verilen uzantılar: :allowed.',
     'cms_object:invalid_property'=>'\":name\" özelliği ayarlanamadı',
+
     'combiner:not_found'=>'Kombine dosyası: \':name\' bulunamadı.',
+
     'component:alias'=>'Takma ad',
     'component:alias_description'=>'Bu bileşen için benzersiz bir isim. Sayfa veya şablonda kullanırken bu isim gerekecektir.',
     'component:invalid_request'=>'Şablonda hatalı bileşen verisi olduğu için kaydedilemedi.',
@@ -121,8 +134,10 @@ lucid::add_phrases([
     'component:not_found'=>'\':name\' isimli bileşen bulunamadı.',
     'component:unnamed'=>'İsimsiz',
     'component:validation_message'=>'Bileşen isimleri gerkelidir ve sadece Latin semboller, sayılar, ve alt çizgi içerebilir. Bileşen ismi ayrıca Latin harfle başlamalı.',
+
     'config:not_found'=>':location için tanımlanan :file adlı ayar dosyası bulunamadı.',
     'config:required'=>':location konumunda kullanılan :property ayarı bir değer içermelidir.',
+
     'content:delete_confirm_multiple'=>'Seçili içerik dosyaları veya klasörlerini silmek istediğinize emin misiniz?',
     'content:delete_confirm_single'=>'Bu içerik dosyasını silmek istediğinize emin misiniz?',
     'content:menu_label'=>'İçerik',
@@ -130,6 +145,7 @@ lucid::add_phrases([
     'content:no_list_records'=>'İçerik dosyası bulunamadı.',
     'content:not_found_name'=>'\':name\' isminde içerik dosyası bulunamadı.',
     'content:unsaved_label'=>'Kaydedilmemiş içerik',
+
     'dashboard:add_widget'=>'Eklenti ekle',
     'dashboard:columns'=>'{1} sütun|[2,Inf] sütun',
     'dashboard:full_width'=>'tam genişlik',
@@ -149,7 +165,9 @@ lucid::add_phrases([
     'dashboard:widget_title_error'=>'Eklenti Başlığı gerekli.',
     'dashboard:widget_title_label'=>'Eklenti başlığı',
     'dashboard:widget_width'=>'Genişlik',
+
     'directory:create_fail'=>'Klasör oluşturulamıyor: :name',
+
     'editor:auto_closing'=>'Etiketleri ve özel karakterleri otomatik kapat',
     'editor:code'=>'Kod',
     'editor:code_folding'=>'Kod katlama (Alt satıra inme)',
@@ -180,6 +198,7 @@ lucid::add_phrases([
     'editor:url'=>'URL',
     'editor:use_hard_tabs'=>'Tab girintisi',
     'editor:word_wrap'=>'Uzun kelimeleri yeni satırda göster',
+
     'event_log:created_at'=>'Tarih & Saat',
     'event_log:empty_link'=>'Olay kaydını temizle',
     'event_log:empty_loading'=>'Olay kaydı temizleniyor...',
@@ -192,9 +211,12 @@ lucid::add_phrases([
     'event_log:menu_label'=>'Olay kaydı',
     'event_log:message'=>'Mesaj',
     'event_log:return_link'=>'Olay kayıtlarına dön',
+
     'field:invalid_type'=>'Geçersiz alan tipi :type.',
     'field:options_method_not_exists'=>':model Model\'i \":field\" formuna geri dönüş için bir :method() metod tanımlamalıdır.',
+
     'file:create_fail'=>'Dosya oluşturulamıyor: :name',
+
     'fileupload:attachment'=>'Dosya Eki',
     'fileupload:attachment_url'=>'Ek URLsi',
     'fileupload:default_prompt'=>'%s e tıkla ya da bir dosya sürükleyin',
@@ -205,7 +227,9 @@ lucid::add_phrases([
     'fileupload:title_label'=>'Başlık',
     'fileupload:upload_error'=>'Dosya yükleme hatası',
     'fileupload:upload_file'=>'Dosya yükle',
+
     'filter:all'=>'tümü',
+
     'form:action_confirm'=>'Emin misiniz?',
     'form:add'=>'Ekle',
     'form:apply'=>'Uygula',
@@ -255,6 +279,7 @@ lucid::add_phrases([
     'form:undefined_tab'=>'Çeşitli',
     'form:update_success'=>':name başarıyla güncellendi',
     'form:update_title'=>':name Düzenle',
+
     'install:install_completing'=>'Kurulumu tamamla',
     'install:install_success'=>'Eklenti kurulumu tamamlandı.',
     'install:missing_plugin_name'=>'Yüklemek istediğiniz eklentinin adını giriniz.',
@@ -262,6 +287,7 @@ lucid::add_phrases([
     'install:plugin_label'=>'Eklenti Yükle',
     'install:project_label'=>'Projeye bağla',
     'install:theme_label'=>'Temayı yükle',
+
     'layout:delete_confirm_multiple'=>'Seçili şablonları silmek istediğinize emin misiniz?',
     'layout:delete_confirm_single'=>'Seçili şablonu silmek istediğinize emin misiniz?',
     'layout:menu_label'=>'Şablonlar',
@@ -269,6 +295,7 @@ lucid::add_phrases([
     'layout:no_list_records'=>'Şablon bulunamadı',
     'layout:not_found_name'=>'\':name\' isimli şablon bulunamadı',
     'layout:unsaved_label'=>'Kaydedilmemiş şablon(lar)',
+
     'list:behavior_not_ready'=>'Liste oluşturulamadı, controller da makeLists() metodunu kontrol edin.',
     'list:default_title'=>'Liste',
     'list:delete_selected'=>'Seçili olanı sil',
@@ -290,6 +317,7 @@ lucid::add_phrases([
     'list:search_prompt'=>'Arama...',
     'list:setup_help'=>'Listede görmek istediğiniz sütunları seçmek için onay kutularını kullanın. Sütunları yukarı veya aşağı sürükleyerek konumlarını değiştirebilirsiniz.',
     'list:setup_title'=>'Liste Ayarları',
+
     'locale:cs'=>'Czech',
     'locale:de'=>'Deutsch (Deutschland)',
     'locale:en'=>'English (United States)',
@@ -307,6 +335,7 @@ lucid::add_phrases([
     'locale:ru'=>'Русский (Россия - Russia)',
     'locale:sv'=>'Svenska (Sverige)',
     'locale:tr'=>'Türkçe (Türkiye)',
+
     'mail:drivers_hint_content'=>'Bu eposta yöntemiyle eposta gönderebilmeniz için \":plugin\" eklentisinin kurulmuş olması gerekir.',
     'mail:drivers_hint_header'=>'Sürücüler yüklenmemiş',
     'mail:general'=>'Genel',
@@ -340,6 +369,7 @@ lucid::add_phrases([
     'mail:smtp_port'=>'SMTP Port',
     'mail:smtp_ssl'=>'SSL bağlantısı kullan',
     'mail:smtp_username'=>'Kullanıcı Adı',
+
     'mail_templates:code'=>'Kod',
     'mail_templates:code_comment'=>'Bu şablona referans için benzersiz bir kod verin',
     'mail_templates:content_css'=>'CSS',
@@ -366,10 +396,12 @@ lucid::add_phrases([
     'mail_templates:test_confirm'=>'Deneme mesajı :email eposta adresine gönderilecek. Devam etmek istiyor musunuz?',
     'mail_templates:test_send'=>'Test mesajı gönder',
     'mail_templates:test_success'=>'Test mesajı başarılı şekilde gönderildi.',
+
     'maintenance:is_enabled'=>'Bakım modunu aktifleştir',
     'maintenance:is_enabled_comment'=>'Aktifleştirildiğinde, web sitesi ziyaretçileri aşağıdaki seçtiğiniz sayfayı görecektir.',
     'maintenance:settings_menu'=>'Bakım modu',
     'maintenance:settings_menu_description'=>'Bakım modu ayarlarını düzenleyip bakım sayfasını yapılandırabilirsiniz.',
+
     'media:add_folder'=>'Yeni Klasör',
     'media:click_here'=>'Buraya tıkla',
     'media:crop_and_insert'=>'Kırp ve Ekle',
@@ -428,7 +460,9 @@ lucid::add_phrases([
     'media:uploading_complete'=>'Yükleme tamamlandı',
     'media:uploading_file_num'=>':number adet dosya yükleniyor...',
     'media:width'=>'Genişlik',
+
     'mediafinder:default_prompt'=>'Bir medya öğesi bulmak için %s butonuna tıklayın',
+
     'model:invalid_class'=>':class da tanımlanan :model Model\'i geçerli değil, \\Model sınıfını extend almalı.',
     'model:mass_assignment_failed'=>'\':attribute\' Model değeri için toplu atama başarısız.',
     'model:missing_id'=>'Aranılan model için ID belirtilmedi.',
@@ -436,11 +470,14 @@ lucid::add_phrases([
     'model:missing_relation'=>'\':class\' Model\'i \':relation\' ilişkisi için tanımlanmamış.',
     'model:name'=>'Model',
     'model:not_found'=>'ID\'si :id olan \':class\' Model bulunamadı.',
+
     'myaccount:menu_description'=>'Hesabınızın ismi, email adresi ve şifresi gibi bilgilerini düzenleyebilirsiniz.',
     'myaccount:menu_keywords'=>'güvenli oturum açma',
     'myaccount:menu_label'=>'Kişisel Bilgilerim',
+
     'mysettings:menu_description'=>'Yönetim hesabı ile ilgili ayarlar',
     'mysettings:menu_label'=>'Ayarlarım',
+
     'page:access_denied:cms_link'=>'Ana sayfaya dön',
     'page:access_denied:help'=>'Bu sayfayı görüntülemek için gerekli izinlere sahip değilsiniz.',
     'page:access_denied:label'=>'Giriş engellendi',
@@ -459,6 +496,7 @@ lucid::add_phrases([
     'page:not_found_name'=>'\':name\' sayfası bulunamadı',
     'page:unsaved_label'=>'Kaydedilmemiş sayfa(lar)',
     'page:untitled'=>'Başlıksız',
+
     'partial:delete_confirm_multiple'=>'Seçili bölümleri silmek istediğinize emin misiniz?',
     'partial:delete_confirm_single'=>'Bu bölümü silmek istediğinize emin misiniz?',
     'partial:invalid_name'=>'Hatalı bölüm adı: :name.',
@@ -467,6 +505,7 @@ lucid::add_phrases([
     'partial:no_list_records'=>'Bölüm bulunamadı.',
     'partial:not_found_name'=>'\':name\' bölümü bulunamadı.',
     'partial:unsaved_label'=>'Kaydedilmemiş bölüm(ler)',
+
     'permissions:access_logs'=>'Sistem günlüğünü görüntüle',
     'permissions:manage_assets'=>'Dosyaları düzenleyebilsin',
     'permissions:manage_branding'=>'Back-end i özelleştir',
@@ -483,10 +522,12 @@ lucid::add_phrases([
     'permissions:manage_themes'=>'Temaları düzenleyebilsin',
     'permissions:name'=>'CMS Sistemi',
     'permissions:view_the_dashboard'=>'Panoyu görüntüleyebilsin',
+
     'plugin:label'=>'Eklenti',
     'plugin:name:help'=>'Eklenti adı eşsiz olmalıdır. Örneğin, RainLab.Blog',
     'plugin:name:label'=>'Eklenti Adı',
     'plugin:unnamed'=>'İsimsiz eklenti',
+
     'plugins:disable_confirm'=>'Are you sure?',
     'plugins:disable_success'=>'Eklentiler başarıyla pasifleştirildi.',
     'plugins:disabled_help'=>'Pasifleştirilmiş eklentiler, uygulama tarafından göz ardı edilir.',
@@ -511,6 +552,7 @@ lucid::add_phrases([
     'plugins:search'=>'eklenti ara...',
     'plugins:selected_amount'=>'Seçilen eklentiler: :amount',
     'plugins:unknown_plugin'=>'Eklenti sistemden başarıyla kaldırıldı.',
+
     'project:attach'=>'Projeyi Eşle',
     'project:detach'=>'Projeyi Ayır',
     'project:detach_confirm'=>'Bu projeyi ayırmak istediğinizden emin misiniz?',
@@ -521,6 +563,7 @@ lucid::add_phrases([
     'project:none'=>'Hiçbiri',
     'project:owner_label'=>'Proje Sahibi',
     'project:unbind_success'=>'Proje ayırma işlemi tamamlandı.',
+
     'relation:add'=>'Ekle',
     'relation:add_a_new'=>'Yeni bir :name ekle',
     'relation:add_name'=>':name Ekle',
@@ -551,8 +594,10 @@ lucid::add_phrases([
     'relation:unlink_name'=>':name bağlamasını kaldır',
     'relation:update'=>'Güncelle',
     'relation:update_name'=>':name Güncelle',
+
     'reorder:default_title'=>'Kayıtları yeniden sırala',
     'reorder:no_records'=>'Sıralamak için bir kayıt bulunamadı.',
+
     'request_log:count'=>'Sayaç',
     'request_log:empty_link'=>'İstek günlüğünü temizle',
     'request_log:empty_loading'=>'İstek günlüğü temizleniyor...',
@@ -566,20 +611,24 @@ lucid::add_phrases([
     'request_log:return_link'=>'İstek günlüğüne dön',
     'request_log:status_code'=>'Durum',
     'request_log:url'=>'URL',
+
     'server:connect_error'=>'Sunucuyla bağlantı kurulamadı.',
     'server:file_corrupt'=>'Sunucudaki dosya bozulmuş.',
     'server:file_error'=>'Paket teslim edilirken sunucuda hata meydana geldi.',
     'server:response_empty'=>'Sunucudan boş cevap geldi.',
     'server:response_invalid'=>'Sunucudan hatalı cevap geldi.',
     'server:response_not_found'=>'Güncelleme sunucusu bulunamadı.',
+
     'settings:menu_label'=>'Ayarlar',
     'settings:missing_model'=>'Ayarlar sayfasında Model tanımı eksik.',
     'settings:not_found'=>'Belirtilen ayarlar bulunamadı.',
     'settings:return'=>'Sistem ayarları sayfasına dön',
     'settings:search'=>'Ara',
     'settings:update_success'=>':name için ayarlar güncellendi.',
+
     'sidebar:add'=>'Ekle',
     'sidebar:search'=>'Ara...',
+
     'system:categories:cms'=>'CMS',
     'system:categories:customers'=>'Müşteriler',
     'system:categories:events'=>'Olaylar',
@@ -594,9 +643,11 @@ lucid::add_phrases([
     'system:categories:users'=>'Kullanıcılar',
     'system:menu_label'=>'Sistem',
     'system:name'=>'Sistem',
+
     'template:invalid_type'=>'Hatalı şablon tipi.',
     'template:not_found'=>'İstenilen şablon bulunamadı.',
     'template:saved'=>'Şablon başarıyla kaydedildi.',
+
     'theme:activate_button'=>'Aktifleştir',
     'theme:active:not_found'=>'Aktif tema bulunamadı.',
     'theme:active:not_set'=>'Aktif tema belirtilmedi.',
@@ -664,13 +715,16 @@ lucid::add_phrases([
     'theme:theme_label'=>'Tema',
     'theme:theme_title'=>'Temalar',
     'theme:unnamed'=>'İsimsiz tema',
+
     'themes:install'=>'Temaları yükle',
     'themes:installed'=>'Yüklü temalar',
     'themes:no_themes'=>'Mağazadan yüklenmiş bir tema bulunmamaktadır.',
     'themes:recommended'=>'Tavsiye edilen',
     'themes:remove_confirm'=>'Bu temayı silmek istediğinize emin misiniz?',
     'themes:search'=>'tema ara...',
+
     'tooltips:preview_website'=>'Websiteyi Önizle',
+
     'updates:check_label'=>'Güncellemeleri kontrol et',
     'updates:core_build'=>'Versiyon :build',
     'updates:core_build_help'=>'Son versiyon kullanılabilir.',
@@ -723,6 +777,7 @@ lucid::add_phrases([
     'updates:update_label'=>'Sistemi güncelle',
     'updates:update_loading'=>'Kullanılabilir güncellemeler kontrol ediliyor...',
     'updates:update_success'=>'Güncelleme işlemi başarıyla tamamlandı.',
+
     'user:account'=>'Hesap',
     'user:allow'=>'Yetki Var',
     'user:avatar'=>'Avatar',
@@ -762,6 +817,7 @@ lucid::add_phrases([
     'user:send_invite_comment'=>'Kullanıcının email adresine davet göndermek için burayı işaretleyin',
     'user:superuser'=>'Süper Kullanıcı',
     'user:superuser_comment'=>'Kullanıcıya her alanda yetki vermek için burayı işaretleyin.',
+
     'validation:accepted'=>':attribute kabul edilmelidir.',
     'validation:active_url'=>':attribute geçerli bir URL olmalıdır.',
     'validation:after'=>':attribute şundan daha eski bir tarih olmalıdır :date.',
@@ -811,11 +867,14 @@ lucid::add_phrases([
     'validation:size:string'=>':attribute :size karakter olmalıdır.',
     'validation:unique'=>':attribute daha önceden kayıt edilmiş.',
     'validation:url'=>':attribute biçimi geçersiz.',
+
     'warnings:extension'=>':name PHP eklentisi sistemde yüklü değil. Lütfen kütüphaneyi kurun ve eklentiyi aktifleştirin.',
     'warnings:permissions'=>':name dizini ve alt dizinleri PHP tarafından yazılabilir değil. Lütfen bu dizindeki webserver için gerekli yazma izinlerini verin.',
     'warnings:tips'=>'Sistem ayar ipuçları',
     'warnings:tips_description'=>'Sistemin düzgün çalışabilmesi için dikkat etmeniz gereken sorunlar var.',
+
     'widget:not_bound'=>'\':name\' isimli widget sınıfı controllerda tanımlanmamış',
     'widget:not_registered'=>'\':name\' isimli widget sınıfı sistemde kayıtlı değil',
+
     'zip:extract_failed'=>'\':file\' adlı çekirdek dosyası dosya paketinden çıkarılamadı.',
 ]);
