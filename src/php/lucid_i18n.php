@@ -9,8 +9,11 @@ class lucid_i18n
 
         $lang_major_pattern = lucid::$lang_major.'[._]*php';
         $lang_minor_pattern = lucid::$lang_major.lucid::$lang_minor.'*php';
-        $lang_major_files = array_merge($lang_major_files, glob(lucid::$paths['dictionaries'].'/'.$lang_major_pattern));
-        $lang_minor_files = array_merge($lang_minor_files, glob(lucid::$paths['dictionaries'].'/'.$lang_minor_pattern));
+        foreach(lucid::$paths['dictionaries'] as $dict_path)
+        {
+            $lang_major_files = array_merge($lang_major_files, glob($dict_path.'/'.$lang_major_pattern));
+            $lang_minor_files = array_merge($lang_minor_files, glob($dict_path.'/'.$lang_minor_pattern));
+        }
 
         foreach($lang_major_files as $file)
         {

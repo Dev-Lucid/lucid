@@ -25,7 +25,10 @@ class lucid
         lucid::$paths['controllers'] = lucid::$paths['app'].'/controllers';
         lucid::$paths['views']       = lucid::$paths['app'].'/views';
         lucid::$paths['models']      = realpath(__DIR__.'/../../../../../db/models/');
-        lucid::$paths['dictionaries']= realpath(__DIR__.'/../../../../../dictionaries/');
+        lucid::$paths['dictionaries']= [
+            realpath(__DIR__.'/../../dictionaries/'),
+            realpath(__DIR__.'/../../../../../dictionaries/'),
+        ];
 
         lucid::$request =& $_REQUEST;
         lucid::$actions = [
