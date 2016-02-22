@@ -22,6 +22,7 @@ class lucid
 
     public static $scss_files = [];
     public static $scss_production_build = null;
+    public static $scss_start_source = '';
 
     public static $js_files   = [];
     public static $js_production_build = null;

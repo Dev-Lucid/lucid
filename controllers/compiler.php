@@ -47,7 +47,7 @@ class lucid_controller_compiler extends lucid_controller
             $scss->addImportPath($path);
         }
 
-        $src = '';
+        $src = lucid::$scss_start_source;
         foreach(lucid::$scss_files as $file){
             $src .= "@import '$file';\n";
         }
