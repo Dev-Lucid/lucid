@@ -13,8 +13,8 @@ class lucid
 
     public static $request         = null;
     public static $default_request = null;
-    private static $actions        = [];
     public static $use_rewrite     = false;
+    private static $actions        = [];
 
     public static $lang_major = 'en';
     public static $lang_minor = 'us';
@@ -48,7 +48,7 @@ class lucid
         ];
         lucid::$paths['controllers'] = [
             lucid::$paths['lucid'].'/controllers/',
-            lucid::$paths['app'].'/controllers',
+            lucid::$paths['app'].'/controllers/',
         ];
         lucid::$paths['views'] = [
             lucid::$paths['lucid'].'/views/',
@@ -207,7 +207,7 @@ class lucid
         {
             foreach(lucid::$paths['controllers'] as $controller_path)
             {
-                $file_name = $controller_path.'/'.$name.'.php';
+                $file_name = $controller_path.$name.'.php';
                 if (file_exists($file_name))
                 {
                     include($file_name);
