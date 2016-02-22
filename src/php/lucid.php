@@ -20,14 +20,23 @@ class lucid
     public static $lang_supported = ['en'];
     public static $lang_phrases = [];
 
+    public static $scss_files = [];
+    public static $scss_production_build = null;
+
+    public static $js_files   = [];
+    public static $js_production_build = null;
+
     public static function init($configs=[])
     {
         # set the default paths. These can be overridden in a config file
         lucid::$paths['base']  = realpath(__DIR__.'/../../../../../');
         lucid::$paths['lucid'] = realpath(__DIR__.'/../../');
         lucid::$paths['app']   = lucid::$paths['base'].'/app/';
-        lucid::$paths['config']= lucid::$paths['base'].'/config/';
 
+        lucid::$paths['config']= [
+            lucid::$paths['lucid'].'/config/',
+            lucid::$paths['base'].'/config/',
+        ];
         lucid::$paths['controllers'] = [
             lucid::$paths['lucid'].'/controllers/',
             lucid::$paths['app'].'controllers',
@@ -40,9 +49,6 @@ class lucid
             lucid::$paths['lucid'].'/dictionaries/',
             lucid::$paths['base'].'/dictionaries/',
         ];
-
-        # there only needs to be one path for models since they are regenerated via a script anyway
-        lucid::$paths['models'] = lucid::$paths['base'].'/db/models/';
 
         lucid::$request =& $_REQUEST;
         lucid::$actions = [
@@ -59,7 +65,7 @@ class lucid
         lucid::$libs[] = __DIR__.'/lucid_i18n.php';
 
         foreach($configs as $config){
-            include($config);
+            lucid::config($config);
         }
 
         foreach(lucid::$libs as $lib)
@@ -84,8 +90,6 @@ class lucid
 
         lucid::$response = new lucid_response();
 
-
-
         if(is_null(lucid::$logger)){
             error_log('Logger is still null, instantiating default logger using psr-3 interface, output to error_log');
             lucid::$logger = new lucid_logger();
@@ -109,7 +113,12 @@ class lucid
         }else{
             $text = rtrim($text);
             if($text != ''){
-                lucid::$logger->debug($text);
+                if (is_object(lucid::$logger))
+                {
+                    lucid::$logger->debug($text);
+                }
+
+
             }
         }
     }
@@ -118,6 +127,18 @@ class lucid
     {
         $text = str_replace("'","\\'",$text);
         lucid::$response->javascript("console.log('".$text."');");
+    }
+
+    public static function config($name)
+    {
+        foreach(lucid::$paths['config'] as $config_path)
+        {
+            $file_name = $config_path.'/'.$name.'.php';
+            if (file_exists($file_name))
+            {
+                include($file_name);
+            }
+        }
     }
 
     public static function controller($name)
