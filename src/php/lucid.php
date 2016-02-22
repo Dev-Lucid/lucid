@@ -52,7 +52,7 @@ class lucid
         ];
         lucid::$paths['views'] = [
             lucid::$paths['lucid'].'/views/',
-            lucid::$paths['app'].'views/',
+            lucid::$paths['app'].'/views/',
         ];
         lucid::$paths['dictionaries'] = [
             lucid::$paths['lucid'].'/dictionaries/',
@@ -136,10 +136,14 @@ class lucid
         # startup error handling. Notably this class is replaceable with a custom class as long as it has a method named 'handle';
         if(class_exists(lucid::$error_class))
         {
-            lucid::$error = new lucid::$error_class();
-            if (method_exists(lucid::$error,'handle') === false)
+            if (in_array('i_lucid_error',class_implements(lucid::$error_class)))
             {
-                throw new Exception('For compatibility, any class that replaces lucid_error must implement one method: ->handle($exception).');
+                lucid::$error = new lucid::$error_class();
+                register_shutdown_function([lucid::$error_class,'shutdown']);
+            }
+            else
+            {
+                throw new Exception('For compatibility, any class that replaces lucid_error must implement the i_lucid_error interface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/lucid_error.php');
             }
         }
 
@@ -195,8 +199,8 @@ class lucid
 
     public static function controller($name)
     {
-        $name = lucid::_clean_file_name($name);
         $class_name = 'lucid_controller_'.$name;
+        $name = lucid::_clean_file_name($name);
 
         # only bother to load if the class isn't already loaded.
         if(!class_exists($class_name))
@@ -224,7 +228,7 @@ class lucid
 
         foreach(lucid::$paths['views'] as $view_path)
         {
-            $file_name = $view_path.'/'.$name.'.php';
+            $file_name = $view_path.$name.'.php';
             if (file_exists($file_name))
             {
                 foreach($parameters as $key=>$val)
@@ -311,6 +315,7 @@ class lucid
             catch(Exception $e)
             {
                 lucid::$error->handle($e);
+                return;
             }
         }
 

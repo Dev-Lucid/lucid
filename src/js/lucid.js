@@ -5,7 +5,6 @@ var lucid = {
 };
 
 lucid.init=function(){
-    console.log('lucid.js init called');
     $(window).bind( 'hashchange', function(e) {
         lucid.request(window.location.hash);
     });
@@ -23,6 +22,7 @@ lucid.request=function(url, data){
         data[parts.shift()] = parts.shift();
     }
 
+    console.log('Sending request to '+lucid.entryUrl+'?action='+data.action);
     jQuery.ajax(lucid.entryUrl,{
         'cache':false,
         'data':data,
@@ -87,6 +87,7 @@ lucid.getFormValues=function(form){
 };
 
 lucid.handleResponse=function(xhr, statusCode){
+    console.log('Response received: '+statusCode);
     if (statusCode == 'success'){
         var data = xhr.responseJSON;
 
@@ -124,14 +125,12 @@ lucid.handleResponse=function(xhr, statusCode){
         }
         lucid.handleErrors(data.errors);
     }else{
-        console.log('got response back, status='+statusCode);
+        lucid.handleErrors(['Invalid response from server: '+statusCode]);
         console.log(xhr);
     }
 };
 
 lucid.handleErrors=function(errorList){
-    console.log('handling errors:');
-    console.log(errorList);
     var error = jQuery('#lucid-error');
     if (error.length === 0){
         jQuery('body').append(lucid.errorHtml);
@@ -144,9 +143,12 @@ lucid.handleErrors=function(errorList){
     }else{
         // on all other stages, show the full list of errors
         for(var i=0;i<errorList.length;i++){
+            console.log('Error: ' + errorList[i]);
             msg += '<p>' + errorList[i] + '</p>';
         }
     }
-    error.find('#lucid-error-msg').html(msg);
-    error.fadeIn(200);
+    if(msg !== ''){
+        error.find('#lucid-error-msg').html(msg);
+        error.fadeIn(200);
+    }
 };

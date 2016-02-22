@@ -25,7 +25,7 @@ class lucid_i18n
         }
     }
 
-    function determine_best_user_language($user_lang)
+    public static function determine_best_user_language($user_lang)
     {
         # taken from http://stackoverflow.com/questions/6038236/using-the-php-http-accept-language-server-variable
         preg_match_all('/([a-z]{1,8}(-[a-z]{1,8})?)\s*(;\s*q\s*=\s*(1|0\.[0-9]+))?/i', $user_lang, $lang_parse);
@@ -44,7 +44,10 @@ class lucid_i18n
         $best_minor = null;
         foreach($user_languages as $code=>$rank)
         {
-            list($major, $minor) = explode('-',$code);
+            $code = explode('-',$code);
+            $major = array_shift($code);
+            $minor = (count($code) > 0)?array_shift($code):null;
+
             if (in_array($major,lucid::$lang_supported) or in_array($major.$minor,lucid::$lang_supported))
             {
                 if($major == $best_major and is_null($minor))
