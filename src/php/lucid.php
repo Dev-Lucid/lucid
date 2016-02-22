@@ -13,7 +13,8 @@ class lucid
 
     public static $request         = null;
     public static $default_request = null;
-    private static $actions         = [];
+    private static $actions        = [];
+    public static $use_rewrite     = false;
 
     public static $lang_major = 'en';
     public static $lang_minor = 'us';
@@ -29,6 +30,9 @@ class lucid
 
     public static function init($configs=[])
     {
+        # this array contains errors that are caught before logging is initialized.
+        $startup_errors = [];
+
         # set the default paths. These can be overridden in a config file
         lucid::$paths['base']  = realpath(__DIR__.'/../../../../../');
         lucid::$paths['lucid'] = realpath(__DIR__.'/../../');
@@ -65,35 +69,67 @@ class lucid
         lucid::$libs[] = __DIR__.'/lucid_logger.php';
         lucid::$libs[] = __DIR__.'/lucid_i18n.php';
 
+
         foreach($configs as $config){
-            lucid::config($config);
+            try
+            {
+                lucid::config($config);
+            }
+            catch(Exception $e)
+            {
+                $startup_errors[] = $e->getMessage();
+            }
         }
 
         foreach(lucid::$libs as $lib)
         {
-            include($lib);
+            try
+            {
+                include($lib);
+            }
+            catch(Exception $e)
+            {
+                $startup_errors[] = $e->getMessage();
+            }
         }
 
         # setup the action request
-        $action = lucid::$request['action'];
-        unset(lucid::$request['action']);
-        lucid::add_action('request', $action, lucid::$request);
-
-        if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
+        #if (lucid::$use_rewrite === true) # figure out how to do this using php development server
+        if (isset(lucid::$request['action']))
         {
-            $user_lang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
-            # Some test strings
-            # $user_lang = 'pt-br,pt;q=0.8,en-us;q=0.5,en,en-uk;q=0.3';
-            # $user_lang = 'ja;q=0.8,de-de;q=0.3';
-            lucid_i18n::determine_best_user_language($user_lang);
+            $action = lucid::$request['action'];
+            unset(lucid::$request['action']);
+            lucid::add_action('request', $action, lucid::$request);
         }
-        lucid_i18n::load_dictionaries();
+
+        try
+        {
+            if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
+            {
+                $user_lang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+                # Some test strings
+                # $user_lang = 'pt-br,pt;q=0.8,en-us;q=0.5,en,en-uk;q=0.3';
+                # $user_lang = 'ja;q=0.8,de-de;q=0.3';
+                lucid_i18n::determine_best_user_language($user_lang);
+            }
+            lucid_i18n::load_dictionaries();
+        }
+        catch(Exception $e)
+        {
+            $startup_errors[] = $e->getMessage();
+        }
 
         lucid::$response = new lucid_response();
 
         if(is_null(lucid::$logger)){
             error_log('Logger is still null, instantiating default logger using psr-3 interface, output to error_log');
             lucid::$logger = new lucid_logger();
+        }
+
+        # now that init is complete, send all errors that we caught to the Logger
+        foreach($startup_errors as $error)
+        {
+            lucid::$logger->error($startup_errors);
         }
     }
 
