@@ -1,5 +1,7 @@
 var lucid = {
-    'entryUrl':'app.php'
+    'entryUrl':'app.php',
+    'stage':'development',
+    'errorHtml':'<div id="lucid-error" class="alert alert-danger alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span id="lucid-error-msg"></span></div>',
 };
 
 lucid.init=function(){
@@ -16,7 +18,7 @@ lucid.request=function(url, data){
     url = String(url);
     url = url.substr(2,url.length);
     var parts = url.split('|');
-    data['action'] = parts.shift();
+    data.action = parts.shift();
     while(parts.length > 0){
         data[parts.shift()] = parts.shift();
     }
@@ -65,7 +67,7 @@ lucid.getFormValues=function(form){
             case 'select-multiple':
                 values[e.name] = [];
                 for(var j=0;j<e.options.length;j++){
-                    if(e.options[j].selected == true){
+                    if(e.options[j].selected === true){
                         values[e.name].push(e.options[j].value);
                     }
                 }
@@ -82,7 +84,7 @@ lucid.getFormValues=function(form){
         }
     }
     return values;
-}
+};
 
 lucid.handleResponse=function(xhr, statusCode){
     if (statusCode == 'success'){
@@ -98,18 +100,18 @@ lucid.handleResponse=function(xhr, statusCode){
             }
         }
 
-        if (data['title'] != null){
-            jQuery('title').html(data['title']);
+        if (data.title !== null){
+            jQuery('title').html(data.title);
         }
 
-        for(var key in data['replace']){
-            jQuery(key).html(data['replace'][key]);
+        for(var key in data.replace){
+            jQuery(key).html(data.replace[key]);
         }
-        for(var key in data['append']){
-            jQuery(key).append(data['append'][key]);
+        for(var key in data.append){
+            jQuery(key).append(data.append[key]);
         }
-        for(var key in data['prepend']){
-            jQuery(key).prepend(data['prepend'][key]);
+        for(var key in data.prepend){
+            jQuery(key).prepend(data.prepend[key]);
         }
         if (data.postJavascript !== ''){
             try{
@@ -120,9 +122,31 @@ lucid.handleResponse=function(xhr, statusCode){
                 console.log(data.postJavascript);
             }
         }
-
+        lucid.handleErrors(data.errors);
     }else{
         console.log('got response back, status='+statusCode);
         console.log(xhr);
     }
+};
+
+lucid.handleErrors=function(errorList){
+    console.log('handling errors:');
+    console.log(errorList);
+    var error = jQuery('#lucid-error');
+    if (error.length === 0){
+        jQuery('body').append(lucid.errorHtml);
+        error = jQuery('#lucid-error');
+    }
+
+    var msg = '';
+    if(lucid.stage == 'production'){
+        msg += errorList[0]; // only show the first error msg on development, presumed to be the general error msg
+    }else{
+        // on all other stages, show the full list of errors
+        for(var i=0;i<errorList.length;i++){
+            msg += '<p>' + errorList[i] + '</p>';
+        }
+    }
+    error.find('#lucid-error-msg').html(msg);
+    error.fadeIn(200);
 };

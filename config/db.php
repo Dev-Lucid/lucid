@@ -22,3 +22,5 @@ lucid::$orm_function = function($model_name)
 {
     return Model::factory($model_name);
 };
+
+throw new Exception('catchable!');

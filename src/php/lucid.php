@@ -28,6 +28,10 @@ class lucid
     public static $js_files   = [];
     public static $js_production_build = null;
 
+    public static $error = null;
+    public static $error_class = 'lucid_error';
+    public static $error_phrase = 'page:custom_error:help';
+
     public static function init($configs=[])
     {
         # this array contains errors that are caught before logging is initialized.
@@ -36,7 +40,7 @@ class lucid
         # set the default paths. These can be overridden in a config file
         lucid::$paths['base']  = realpath(__DIR__.'/../../../../../');
         lucid::$paths['lucid'] = realpath(__DIR__.'/../../');
-        lucid::$paths['app']   = lucid::$paths['base'].'/app/';
+        lucid::$paths['app']   = lucid::$paths['base'].'/app';
 
         lucid::$paths['config']= [
             lucid::$paths['lucid'].'/config/',
@@ -44,7 +48,7 @@ class lucid
         ];
         lucid::$paths['controllers'] = [
             lucid::$paths['lucid'].'/controllers/',
-            lucid::$paths['app'].'controllers',
+            lucid::$paths['app'].'/controllers',
         ];
         lucid::$paths['views'] = [
             lucid::$paths['lucid'].'/views/',
@@ -68,16 +72,17 @@ class lucid
         lucid::$libs[] = __DIR__.'/lucid_response.php';
         lucid::$libs[] = __DIR__.'/lucid_logger.php';
         lucid::$libs[] = __DIR__.'/lucid_i18n.php';
+        lucid::$libs[] = __DIR__.'/lucid_error.php';
 
-
-        foreach($configs as $config){
+        foreach($configs as $config)
+        {
             try
             {
                 lucid::config($config);
             }
             catch(Exception $e)
             {
-                $startup_errors[] = $e->getMessage();
+                $startup_errors[] = $e;
             }
         }
 
@@ -89,7 +94,7 @@ class lucid
             }
             catch(Exception $e)
             {
-                $startup_errors[] = $e->getMessage();
+                $startup_errors[] = $e;
             }
         }
 
@@ -102,6 +107,7 @@ class lucid
             lucid::add_action('request', $action, lucid::$request);
         }
 
+        # do language autodetect, and load all dictionaries for major/minor language
         try
         {
             if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
@@ -116,20 +122,31 @@ class lucid
         }
         catch(Exception $e)
         {
-            $startup_errors[] = $e->getMessage();
+            $startup_errors[] = $e;
         }
 
         lucid::$response = new lucid_response();
 
+        # if the configs did not instantiate a psr-3-compatible logger and store it in lucid::$logger,
+        # instantiate a basic one that sends all output to error_log
         if(is_null(lucid::$logger)){
-            error_log('Logger is still null, instantiating default logger using psr-3 interface, output to error_log');
             lucid::$logger = new lucid_logger();
+        }
+
+        # startup error handling. Notably this class is replaceable with a custom class as long as it has a method named 'handle';
+        if(class_exists(lucid::$error_class))
+        {
+            lucid::$error = new lucid::$error_class();
+            if (method_exists(lucid::$error,'handle') === false)
+            {
+                throw new Exception('For compatibility, any class that replaces lucid_error must implement one method: ->handle($exception).');
+            }
         }
 
         # now that init is complete, send all errors that we caught to the Logger
         foreach($startup_errors as $error)
         {
-            lucid::$logger->error($startup_errors);
+            lucid::$error->handle($error);
         }
     }
 
@@ -154,8 +171,6 @@ class lucid
                 {
                     lucid::$logger->debug($text);
                 }
-
-
             }
         }
     }
@@ -197,7 +212,7 @@ class lucid
         }
         if(!class_exists($class_name))
         {
-            throw new Exception('Unable to create controller: '.$name.'. Either no controller file was found, or the file did not contain a class named '.$class_name);
+            throw new Exception('Unable to load controller: '.$name.'. Either no controller file was found, or the file did not contain a class named '.$class_name);
         }
         $new_obj = new $class_name();
         return $new_obj;
@@ -289,29 +304,50 @@ class lucid
         # 'view' is a special controller that just loads files. No reflection necessary
         if($controller_name == 'view'){
             lucid::log()->info($controller_name.'->'.$method.'()');
-            return $controller->$method($passed_params);
+            try
+            {
+                return $controller->$method($passed_params);
+            }
+            catch(Exception $e)
+            {
+                lucid::$error->handle($e);
+            }
         }
 
         # using reflection, determine the name of each of the parameters of the method.
-        $r = new ReflectionMethod(get_class($controller), $method);
-        $params = $r->getParameters();
-
-        # construct an array of parameters in the right order using the passed parameters
-        $bound_params = [];
-        foreach($params as $param)
+        try
         {
-            if (isset($passed_params[$param->name]))
+            $r = new ReflectionMethod(get_class($controller), $method);
+            $params = $r->getParameters();
+
+            # construct an array of parameters in the right order using the passed parameters
+            $bound_params = [];
+            foreach($params as $param)
             {
-                $bound_params[] = $passed_params[$param->name];
+                if (isset($passed_params[$param->name]))
+                {
+                    $bound_params[] = $passed_params[$param->name];
+                }
+                else
+                {
+                    $bound_params[] = null;
+                }
             }
-            else
+
+            # finally, call the controller method with the bound parameters
+            lucid::log()->info($controller_name.'->'.$method.'()');
+            try
             {
-                $bound_params[] = null;
+                return call_user_func_array( [$controller, $method],  $bound_params);
+            }
+            catch(Exception $e)
+            {
+                lucid::$error->handle($e);
             }
         }
-
-        # finally, call the controller method with the bound parameters
-        lucid::log()->info($controller_name.'->'.$method.'()');
-        return call_user_func_array( [$controller, $method],  $bound_params);
+        catch(Exception $e)
+        {
+            lucid::$error->handle($e);
+        }
     }
 }

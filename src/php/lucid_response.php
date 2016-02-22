@@ -17,6 +17,7 @@ class lucid_response
             'append'=>[],
             'prepend'=>[],
             'data'=>[],
+            'errors'=>[],
         ];
     }
 
@@ -43,6 +44,11 @@ class lucid_response
     public function javascript($js, $run_before = false)
     {
         $this->data[ (($run_before)?'pre':'post') . 'Javascript' ] .= $js;
+    }
+    
+    public function error($msg)
+    {
+        $this->data['errors'][] = $msg;
     }
 
     public function replace($area, $content=null)
