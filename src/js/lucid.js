@@ -2,12 +2,16 @@ var lucid = {
     'entryUrl':'app.php',
     'stage':'development',
     'errorHtml':'<div id="lucid-error" class="alert alert-danger alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span id="lucid-error-msg"></span></div>',
+    'lastFormSubmit':''
 };
 
 lucid.init=function(){
     $(window).bind( 'hashchange', function(e) {
         lucid.request(window.location.hash);
     });
+    if (window.location.hash != ''){
+        lucid.request(window.location.hash);
+    }
 };
 
 lucid.request=function(url, data){
@@ -34,7 +38,14 @@ lucid.request=function(url, data){
 
 lucid.submit=function(form){
     $form = jQuery(form);
-    lucid.request($form.attr('action'), lucid.getFormValues(form));
+    var data = lucid.getFormValues(form);
+    lucid.ruleset.clearErrors(form);
+    var result = lucid.ruleset.process($form.attr('name'), data);
+
+    if (result === true){
+        data['__form_name'] = $form.attr('name');
+        lucid.request($form.attr('action'), data);
+    }
     return false;
 };
 

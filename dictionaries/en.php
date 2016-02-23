@@ -976,4 +976,6 @@ lucid::add_phrases([
     'widget:not_registered'=>'A widget class name \':name\' has not been registered',
 
     'zip:extract_failed'=>'Unable to extract core file \':file\'.',
+
+    'validation:length_range'=>':label must be between :min and :max characters long',
 ]);

@@ -44,26 +44,26 @@ class lucid
 
         lucid::$paths['config']= [
             lucid::$paths['lucid'].'/config/',
-            lucid::$paths['base'].'/config/',
+            lucid::$paths['base']. '/config/',
         ];
         lucid::$paths['controllers'] = [
             lucid::$paths['lucid'].'/controllers/',
-            lucid::$paths['app'].'/controllers/',
+            lucid::$paths['app'].  '/controllers/',
         ];
         lucid::$paths['views'] = [
             lucid::$paths['lucid'].'/views/',
-            lucid::$paths['app'].'/views/',
+            lucid::$paths['app'].  '/views/',
         ];
         lucid::$paths['dictionaries'] = [
             lucid::$paths['lucid'].'/dictionaries/',
-            lucid::$paths['base'].'/dictionaries/',
+            lucid::$paths['base']. '/dictionaries/',
         ];
 
         lucid::$request =& $_REQUEST;
         lucid::$actions = [
-            'pre' => [],
+            'pre'     => [],
             'request' => [],
-            'post' => [],
+            'post'    => [],
         ];
 
         # set the default libs to include. These can be overridden in a config file
@@ -73,6 +73,8 @@ class lucid
         lucid::$libs[] = __DIR__.'/lucid_logger.php';
         lucid::$libs[] = __DIR__.'/lucid_i18n.php';
         lucid::$libs[] = __DIR__.'/lucid_error.php';
+        lucid::$libs[] = __DIR__.'/lucid_ruleset.php';
+        lucid::$libs[] = __DIR__.'/lucid_rule.php';
 
         foreach($configs as $config)
         {

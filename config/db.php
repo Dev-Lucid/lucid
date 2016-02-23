@@ -4,6 +4,9 @@
 lucid::$paths['models'] = lucid::$paths['base'].'/db/models/';
 Model::$auto_prefix_models = 'lucid_model_';
 ORM::configure('logging', true);
+ORM::configure('logger', function($log_string, $query_time) {
+    \lucid::log($log_string . ' in ' . $query_time);
+});
 
 # setup an autoloader for our model path
 spl_autoload_register(function($model_name){
