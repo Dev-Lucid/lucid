@@ -77,6 +77,9 @@ lucid.getFormValues=function(form){
             case 'submit':
                 // don't need to do anything for these types
                 break;
+            case 'fieldset':
+                //ignore these
+                break;
             default:
                 console.log('lucid.getFormValues doesn\'t have a switch statement to handle inputs of type \'' + e.type+'\', but will try to use this element\'s .value property as a default. ');
                 values[e.name] = e.value;

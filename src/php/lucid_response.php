@@ -45,7 +45,7 @@ class lucid_response
     {
         $this->data[ (($run_before)?'pre':'post') . 'Javascript' ] .= $js;
     }
-    
+
     public function error($msg)
     {
         $this->data['errors'][] = $msg;
@@ -62,6 +62,10 @@ class lucid_response
             ob_start();
         }
 
+        if (is_object($content))
+        {
+            $content = $content->__toString();
+        }
         $this->data['replace'][$area] = $content;
     }
 
@@ -76,6 +80,10 @@ class lucid_response
             ob_start();
         }
 
+        if (is_object($content))
+        {
+            $content = $content->__toString();
+        }
         $this->data['append'][$area] = $content;
     }
 
@@ -90,6 +98,10 @@ class lucid_response
             ob_start();
         }
 
+        if (is_object($content))
+        {
+            $content = $content->__toString();
+        }
         $this->data['prepend'][$area] = $content;
     }
 
