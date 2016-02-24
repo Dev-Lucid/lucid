@@ -14,7 +14,7 @@ lucid.init=function(){
     }
 };
 
-lucid.request=function(url, data){
+lucid.request=function(url, data, callback){
     if(typeof(data) != 'object'){
         data = {};
     }
@@ -32,7 +32,12 @@ lucid.request=function(url, data){
         'data':data,
         'dataType':'json',
         'method':'POST',
-        'complete':lucid.handleResponse
+        'complete':function(jqXHR, statusCode){
+            lucid.handleResponse(jqXHR, statusCode);
+            if(typeof(callback) == 'function'){
+                callback(jqXHR, statusCode);
+            }
+        }
     });
 };
 
