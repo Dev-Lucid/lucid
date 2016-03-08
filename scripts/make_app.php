@@ -16,7 +16,7 @@ foreach($initial_files as $file)
 
 $options = [
     'action'=>'make',
-    'initial_directories'=>'app,app/controllers,app/media,app/media/js,app/media/scss,app/media/fonts,app/media/images,config,db,db/models,dictionaries,tests',
+    'initial_directories'=>'app,app/controllers,app/media,app/media/js,app/media/scss,app/media/fonts,app/media/images,config,db,db/models,db/build,dictionaries,tests',
 ];
 
 
@@ -41,6 +41,7 @@ $destination = ($options['action'] == 'update')?$path_template:$path_base;
 
 if($options['action'] == 'make')
 {
+    echo("\nCreating directories...\n");
     $dirs = explode(',',$options['initial_directories']);
     foreach($dirs as $dir)
     {
@@ -50,8 +51,10 @@ if($options['action'] == 'make')
             mkdir($path_base.'/'.$dir);
         }
     }
+    echo("Done creating directories.\n");
 }
 
+echo("\nCopying files...\n");
 foreach($files as $file)
 {
     ensure_path_exists($destination.'/'.$file);
@@ -61,9 +64,25 @@ foreach($files as $file)
         copy($origin.'/'.$file, $destination.'/'.$file);
     }
 }
+echo("Done copying files.\n");
 
 
+# build the database and models
+if($options['action'] == 'make')
+{
+    echo("\nBuilding database...\n");
+    shell_exec($path_base.'/scripts/build_db.sh');
+    echo("Building models...\n");
+    shell_exec('php -f '.$path_base.'/scripts/generate_models.php');
+    echo("Done with database.\n");
+}
 
+# build the database and models
+if($options['action'] == 'make')
+{
+    shell_exec('php -f '.$path_base.'/scripts/copy_fonts.php');
+}
 
+exit("\nComplete.");
 
 

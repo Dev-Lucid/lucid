@@ -14,6 +14,10 @@ dictionaries/en__navigation.json
 dictionaries/en__validation.json
 dictionaries/en.json
 
+db/build/sqlite.regions.sql
+db/build/sqlite.main.sql
+db/build/sqlite.views.sql
+
 tests/base_tests.php
 tests/address_Test.php
 tests/countries_Test.php
