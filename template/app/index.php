@@ -20,7 +20,7 @@ lucid::config('scss');
         <meta name="author" content="" />
         <link rel="icon" href="../../favicon.ico" />
         <title>Jumbotron Template for Bootstrap</title>
-        <? if(lucid::$stage == 'developmnt'){?>
+        <? if(lucid::$stage == 'development'){?>
         <link href="app.php?action=compiler.scss" rel="stylesheet" />
         <?}else{?>
         <link href="<?=str_replace(lucid::$paths['app'],'',lucid::$scss_production_build)?>" rel="stylesheet" />
