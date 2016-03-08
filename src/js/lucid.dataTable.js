@@ -1,8 +1,8 @@
 lucid.dataTable={};
 
 lucid.dataTable.sort=function(tableId,newCol){
-    var table = jQuery('#' + tableId);
-    var sortSelector = '#' + tableId + ' > thead > tr > th:nth-child(';
+    var table = jQuery('#' + tableId + ' > table');
+    var sortSelector = '#' + tableId + ' > table > thead > tr > th:nth-child(';
     var sortDir = table.attr('data-sort-dir');
     var sortCol = parseInt(table.attr('data-sort-col'));
     if(sortCol == newCol){
@@ -20,7 +20,7 @@ lucid.dataTable.sort=function(tableId,newCol){
 };
 
 lucid.dataTable.changePage=function(tableId, page){
-    var table   = jQuery('#' + tableId);
+    var table   = jQuery('#' + tableId + ' > table');
     var curPage = parseInt(table.attr('data-page'));
     var maxPage = parseInt(table.attr('data-page-count'));
     var newPage = null;
@@ -52,7 +52,7 @@ lucid.dataTable.changePage=function(tableId, page){
 }
 
 lucid.dataTable.requestData=function(tableId){
-    var table = jQuery('#'+tableId);
+    var table = jQuery('#'+tableId+' > table');
     var url   = table.attr('data-url');
     var data  = {
         'sort_col':table.attr('data-sort-col'),
@@ -67,18 +67,18 @@ lucid.dataTable.requestData=function(tableId){
 }
 
 lucid.dataTable.rebuildPager=function(tableId){
-    var table = jQuery('#'+tableId);
-    var btn   = jQuery('#'+tableId+' > tfoot > tr > td > div > button.dropdown-toggle');
-    var menu  = jQuery('#'+tableId+' > tfoot > tr > td > div > div.dropdown-menu');
+    var table = jQuery('#'+tableId +' > table');
+    var btn   = jQuery('#'+tableId+' > div.card-footer > div.btn-group > button.dropdown-toggle');
+    var menu  = jQuery('#'+tableId+' > div.card-footer > div.btn-group > div.dropdown-menu');
     var currentPage  = parseInt(table.attr('data-page'));
     var newPageCount = parseInt(table.attr('data-page-count'));
     var oldPageCount = parseInt(menu.find(' > a').length);
     if(newPageCount != oldPageCount){
         var html = '';
         for(var i=0; i<newPageCount; i++){
-            html += '<a href="javascript:lucid.dataTable.changePage(\''+table_id+'\','+i+')" class="dropdown-item">' + _('lucid:data_table:page_display', {'current':(i + 1), 'max':newPageCount})+ '</a>';
+            html += '<a href="javascript:lucid.dataTable.changePage(\''+tableId+'\','+i+')" class="dropdown-item">' + _('data_table:page', {'current':(i + 1), 'max':newPageCount})+ '</a>';
         }
         menu.html(html);
     }
-    btn.html(_('lucid:data_table:page_display', {'current':(currentPage + 1), 'max':newPageCount}));
+    btn.html(_('data_table:page', {'current':(currentPage + 1), 'max':newPageCount}));
 }

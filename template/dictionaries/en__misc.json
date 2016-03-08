@@ -1,0 +1,5 @@
+{
+    "data_table:page":"Page :current of :max",
+    "form:edit_existing": "Editing :name",
+    "form:edit_new": "Adding :type"
+}

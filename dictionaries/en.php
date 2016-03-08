@@ -978,4 +978,6 @@ lucid::add_phrases([
     'zip:extract_failed'=>'Unable to extract core file \':file\'.',
 
     'validation:length_range'=>':label must be between :min and :max characters long',
+    'error:data_not_found'=>'Data could not be found',
+    'error:permission_denied'=>'Permission denied',
 ]);

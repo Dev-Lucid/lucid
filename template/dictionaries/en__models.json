@@ -1,0 +1,17 @@
+{
+    "model:organizations:name": "Name",
+    "model:regions:name": "Name",
+    "model:roles:name": "Name",
+    "model:addresses:name": "Name",
+    "model:addresses:street_1": "Street 1",
+    "model:addresses:street_2": "Street 2",
+    "model:addresses:city": "City",
+    "model:regions:abbreviation": "Abbreviation",
+    "model:countries:name": "Name",
+    "model:countries:common_name": "Common Name",
+    "model:countries:alpha_3": "Alpha 3",
+    "model:users:first_name": "First Name",
+    "model:users:last_name": "Last Name",
+    "model:users:email": "Email",
+    "model:users:password": "Password"
+}

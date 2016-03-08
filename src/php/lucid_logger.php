@@ -7,7 +7,7 @@ class lucid_logger
 
     }
 
-    public function __call($type,$args)
+    public function __call($type, $args)
     {
         error_log($type.': '.$args[0]);
     }

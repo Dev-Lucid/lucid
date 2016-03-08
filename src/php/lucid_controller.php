@@ -5,16 +5,34 @@ class lucid_controller
     public function __construct()
     {
     }
-}
 
-class lucid_controller_view extends lucid_controller
-{
-    public function __call($view_name,$parameters=[])
+    public function _call_method_with_parameters($method, $passed_parameters)
     {
-        if(!isset($parameters[0]))
+        $this_class = get_class($this);
+
+        if(strpos($method, '_') === 0)
         {
-            $parameters[0] = [];
+            throw new Exception('Cannot call method of controller starting with an underscore via requests. If you absolutely need to call such a method, write a method in the controller whose name does not start with an underscore and call the original method from that. This functionality allows you to mark methods as non-callable from requests simply by starting their name with an underscore.');
         }
-        return lucid::view($view_name,$parameters[0]);
+
+        $r = new ReflectionMethod($this_class, $method);
+        $method_parameters = $r->getParameters();
+
+        # construct an array of parameters in the right order using the passed parameters
+        $bound_parameters = [];
+        foreach($method_parameters as $method_parameter)
+        {
+            if (isset($passed_parameters[$method_parameter->name]))
+            {
+                $bound_parameters[] = $passed_parameters[$method_parameter->name];
+            }
+            else
+            {
+                $bound_parameters[] = $method_parameter->getDefaultValue();
+            }
+        }
+
+        # finally, call the controller method with the bound parameter
+        return call_user_func_array( [$this, $method],  $bound_parameters);
     }
 }

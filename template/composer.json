@@ -1,0 +1,79 @@
+{
+    "config": {
+        "bin-dir": "scripts"
+    },
+    "minimum-stability": "alpha",
+    "repositories": [
+        {
+            "type":"package",
+            "package": {
+                "name": "devlucid/lucid",
+                "version":"master",
+                "source": {
+                    "url": "git@github.com:Dev-Lucid/lucid",
+                    "type": "git",
+                    "reference":"master"
+                },
+                "bin": [
+                    "scripts/copy_fonts.php",
+                    "scripts/launch.sh",
+                    "scripts/tail-log.sh"
+                ],
+                "autoload": {
+                    "classmap": ["src/php/lucid.php"]
+                },
+                "autoload-dev": {
+                    "classmap": ["src/php/lucid.php"]
+                }
+            }
+        },
+        {
+            "type":"package",
+            "package": {
+                "name": "devlucid/factory",
+                "version":"master",
+                "source": {
+                    "url": "git@github.com:Dev-Lucid/factory.git",
+                    "type": "git",
+                    "reference":"master"
+                },
+                "bin": [
+                ],
+                "autoload": {
+                    "classmap": ["factory.php"]
+                },
+                "autoload-dev": {
+                    "classmap": ["factory.php"]
+                }
+            }
+        },
+        {
+            "type":"package",
+            "package": {
+                "name": "twbs/bootstrap",
+                "version": "4.0.0-alpha.2",
+                "source": {
+                    "url": "git@github.com:twbs/bootstrap.git",
+                    "type": "git",
+                    "reference":"v4-dev"
+                }
+            }
+        }
+    ],
+    "require":{
+        "j4mie/paris": "^1.5",
+        "leafo/scssphp": "^0.6.3",
+        "monolog/monolog": "^1.17",
+        "fortawesome/font-awesome": "^4.5",
+        "twbs/bootstrap": "4.0.0-alpha.2"
+    },
+    "require-dev": {
+        "devlucid/lucid": "master@dev",
+        "devlucid/factory": "master@dev",
+        "phpunit/phpunit": "4.8.*"
+    },
+    "scripts": {
+        "post-install-cmd": [
+         ]
+   }
+}

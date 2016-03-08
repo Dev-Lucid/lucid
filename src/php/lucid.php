@@ -4,8 +4,18 @@ class lucid
 {
     public static $stage        = 'production';
 
-    public static $logger       = null;
-    public static $response     = null;
+    # these properties contain objects which must implement certain interfaces. They can be set by a
+    # config file passed to lucid::init(), and if they are blank after all config files are loaded then
+    # a default object is instantiated.
+    public static $logger   = null; # must implement psr-3 logging
+    public static $response = null; # must implement i_lucid_response
+    public static $security = null; # must implement i_lucid_security
+    public static $session  = null; # must implement i_lucid_session
+    public static $error    = null; # must implement i_lucid_error
+    public static $i18n     = null; # must implement i_lucid_i18n
+
+    public static $error_phrase = 'page:custom_error:help';
+
     public static $db           = null;
     public static $orm_function = null;
     public static $paths        = [];
@@ -16,10 +26,7 @@ class lucid
     public static $use_rewrite     = false;
     private static $actions        = [];
 
-    public static $lang_major = 'en';
-    public static $lang_minor = 'us';
     public static $lang_supported = ['en'];
-    public static $lang_phrases = [];
 
     public static $scss_files = [];
     public static $scss_production_build = null;
@@ -27,10 +34,6 @@ class lucid
 
     public static $js_files   = [];
     public static $js_production_build = null;
-
-    public static $error = null;
-    public static $error_class = 'lucid_error';
-    public static $error_phrase = 'page:custom_error:help';
 
     public static function init($configs=[])
     {
@@ -66,7 +69,6 @@ class lucid
             'post'    => [],
         ];
 
-        # set the default libs to include. These can be overridden in a config file
         lucid::$libs[] = __DIR__.'/lucid_controller.php';
         lucid::$libs[] = __DIR__.'/lucid_model.php';
         lucid::$libs[] = __DIR__.'/lucid_response.php';
@@ -74,7 +76,20 @@ class lucid
         lucid::$libs[] = __DIR__.'/lucid_i18n.php';
         lucid::$libs[] = __DIR__.'/lucid_error.php';
         lucid::$libs[] = __DIR__.'/lucid_ruleset.php';
-        lucid::$libs[] = __DIR__.'/lucid_rule.php';
+        lucid::$libs[] = __DIR__.'/lucid_session.php';
+        lucid::$libs[] = __DIR__.'/lucid_security.php';
+
+        foreach(lucid::$libs as $lib)
+        {
+            try
+            {
+                lucid::include_if_exists($lib);
+            }
+            catch(Exception $e)
+            {
+                $startup_errors[] = $e;
+            }
+        }
 
         foreach($configs as $config)
         {
@@ -88,16 +103,79 @@ class lucid
             }
         }
 
-        foreach(lucid::$libs as $lib)
+        # if the configs did not instantiate a session object and place it into lucid::$session,
+        # instantiate a basic one. Any class that replaces this must implement the i_lucid_session interface
+        if(is_null(lucid::$session))
         {
-            try
+            lucid::$session = new lucid_session();
+        }
+        if(!in_array('i_lucid_session', class_implements(lucid::$session)))
+        {
+            throw new Exception('For compatibility, any class that replaces lucid::$session must implement the i_lucid_session interface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/lucid_session.php');
+        }
+
+        # if the configs did not instantiate a security object and place it into lucid::$security,
+        # instantiate a basic one. Any class that replaces this must implement the i_lucid_security interface
+        if(is_null(lucid::$security))
+        {
+            lucid::$security = new lucid_security();
+        }
+        if(!in_array('i_lucid_security', class_implements(lucid::$security)))
+        {
+            throw new Exception('For compatibility, any class that replaces lucid::$security must implement the i_lucid_security interface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/lucid_security.php');
+        }
+
+        # if the configs did not instantiate an error object and place it into lucid::$error,
+        # instantiate a basic one. Any class that replaces this must implement the i_lucid_error interface
+        if(is_null(lucid::$error))
+        {
+            lucid::$error = new lucid_error();
+        }
+        if(!in_array('i_lucid_error', class_implements(lucid::$error)))
+        {
+            throw new Exception('For compatibility, any class that replaces lucid::$error must implement the i_lucid_error interface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/lucid_error.php');
+        }
+
+        # if the configs did not instantiate a response object and place it into lucid::$response,
+        # instantiate the default one. Any class that replaces this must implement the i_lucid_response interface
+        if(is_null(lucid::$response))
+        {
+            lucid::$response = new lucid_response();
+        }
+        if(!in_array('i_lucid_response', class_implements(lucid::$response)))
+        {
+            throw new Exception('For compatibility, any class that replaces lucid::$response must implement the i_lucid_response interface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/lucid_response.php');
+        }
+
+        # if the configs did not instantiate a response object and place it into lucid::$response,
+        # instantiate the default one. Any class that replaces this must implement the i_lucid_response interface
+        if(is_callable('_') === false)
+        {
+            if(is_null(lucid::$i18n))
             {
-                include($lib);
+                lucid::$i18n = new lucid_i18n();
             }
-            catch(Exception $e)
+            if(!in_array('i_lucid_i18n', class_implements(lucid::$i18n)))
             {
-                $startup_errors[] = $e;
+                throw new Exception('For compatibility, any class that replaces lucid::$i18n must implement the i_lucid_i18n interface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/lucid_i18n.php');
             }
+            if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
+            {
+                lucid::$i18n->determine_best_user_language($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+                lucid::$i18n->load_dictionaries(lucid::$paths['dictionaries']);
+            }
+
+            function _($phrase, $parameters=[])
+            {
+                return lucid::$i18n->translate($phrase, $parameters);
+            }
+        }
+
+        # if the configs did not instantiate a psr-3-compatible logger and store it in lucid::$logger,
+        # instantiate a basic one that sends all output to error_log
+        if(is_null(lucid::$logger))
+        {
+            lucid::$logger = new lucid_logger();
         }
 
         # setup the action request
@@ -109,50 +187,31 @@ class lucid
             lucid::add_action('request', $action, lucid::$request);
         }
 
-        # do language autodetect, and load all dictionaries for major/minor language
-        try
-        {
-            if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
-            {
-                $user_lang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
-                # Some test strings
-                # $user_lang = 'pt-br,pt;q=0.8,en-us;q=0.5,en,en-uk;q=0.3';
-                # $user_lang = 'ja;q=0.8,de-de;q=0.3';
-                lucid_i18n::determine_best_user_language($user_lang);
-            }
-            lucid_i18n::load_dictionaries();
-        }
-        catch(Exception $e)
-        {
-            $startup_errors[] = $e;
-        }
-
-        lucid::$response = new lucid_response();
-
-        # if the configs did not instantiate a psr-3-compatible logger and store it in lucid::$logger,
-        # instantiate a basic one that sends all output to error_log
-        if(is_null(lucid::$logger)){
-            lucid::$logger = new lucid_logger();
-        }
-
-        # startup error handling. Notably this class is replaceable with a custom class as long as it has a method named 'handle';
-        if(class_exists(lucid::$error_class))
-        {
-            if (in_array('i_lucid_error',class_implements(lucid::$error_class)))
-            {
-                lucid::$error = new lucid::$error_class();
-                register_shutdown_function([lucid::$error_class,'shutdown']);
-            }
-            else
-            {
-                throw new Exception('For compatibility, any class that replaces lucid_error must implement the i_lucid_error interface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/lucid_error.php');
-            }
-        }
-
         # now that init is complete, send all errors that we caught to the Logger
         foreach($startup_errors as $error)
         {
             lucid::$error->handle($error);
+        }
+    }
+
+    private static function include_if_exists($file, $paths = null)
+    {
+        if(is_null($paths) === true)
+        {
+            if(file_exists($file) === true)
+            {
+                include($file);
+            }
+        }
+        else if(is_array($paths) === true)
+        {
+            foreach($paths as $path)
+            {
+                if(file_exists($path.$file) === true)
+                {
+                    include($path.$file);
+                }
+            }
         }
     }
 
@@ -189,14 +248,7 @@ class lucid
 
     public static function config($name)
     {
-        foreach(lucid::$paths['config'] as $config_path)
-        {
-            $file_name = $config_path.'/'.$name.'.php';
-            if (file_exists($file_name))
-            {
-                include($file_name);
-            }
-        }
+        return lucid::include_if_exists($name.'.php', lucid::$paths['config']);
     }
 
     public static function controller($name)
@@ -207,14 +259,7 @@ class lucid
         # only bother to load if the class isn't already loaded.
         if(!class_exists($class_name))
         {
-            foreach(lucid::$paths['controllers'] as $controller_path)
-            {
-                $file_name = $controller_path.$name.'.php';
-                if (file_exists($file_name))
-                {
-                    include($file_name);
-                }
-            }
+            lucid::include_if_exists($name.'.php', lucid::$paths['controllers']);
         }
         if(!class_exists($class_name))
         {
@@ -226,6 +271,7 @@ class lucid
 
     public static function view($name, $parameters=[])
     {
+        lucid::log()->info('view->'.$name.'()');
         $name = lucid::_clean_file_name($name);
 
         foreach(lucid::$paths['views'] as $view_path)
@@ -251,9 +297,7 @@ class lucid
 
     private static function _clean_file_name($name)
     {
-        $name = preg_replace('/[^a-z0-9_-\s]+/i', '', $name);
-        $name = str_replace('-','/',$name);
-        $name = str_replace('_','/',$name);
+        $name = preg_replace('#[^a-z0-9_-\s\/]+#i', '', $name);
         return $name;
     }
 
@@ -264,13 +308,34 @@ class lucid
         return $name;
     }
 
-    public static function model($name)
+    public static function model($name, $id=null, $set_id_on_create = true)
     {
         if(is_callable(lucid::$orm_function)){
             $func = lucid::$orm_function;
-            return $func($name);
-        }else{
-            throw new Exception('No orm function defined');
+            $model = $func($name);
+
+            if(is_null($id) === true)
+            {
+                return $model;
+            }
+            if(strval($id) == '0' || $id === false)
+            {
+                $model = $model->create();
+                if ($set_id_on_create === true)
+                {
+                    $class = get_class($model);
+                    $id_col = $class::$_id_column;
+                    $model->$id_col = 0;
+                }
+                return $model;
+            }
+            else
+            {
+                return $model->find_one($id);
+            }
+        }else
+        {
+            throw new Exception('No ORM function defined');
         }
     }
 
@@ -279,18 +344,18 @@ class lucid
         lucid::$actions[$when][] = [$controller_method, $parameters];
     }
 
-    public static function add_phrases($phrases)
-    {
-        foreach($phrases as $key=>$value)
-        {
-            lucid::$lang_phrases[$key] = $value;
-        }
-    }
-
     public static function process_actions()
     {
         lucid::process_action_list('pre');
-        lucid::process_action_list('request');
+        try
+        {
+            lucid::process_action_list('request');
+        }
+        catch (Lucid_Silent_Exception $e)
+        {
+
+        }
+
         lucid::process_action_list('post');
     }
 
@@ -305,56 +370,35 @@ class lucid
     {
         list($controller_name, $method) = explode('.',$action);
 
-        $controller = lucid::controller($controller_name);
-
-        # 'view' is a special controller that just loads files. No reflection necessary
-        if($controller_name == 'view'){
-            lucid::log()->info($controller_name.'->'.$method.'()');
-            try
-            {
-                return $controller->$method($passed_params);
-            }
-            catch(Exception $e)
-            {
-                lucid::$error->handle($e);
-                return;
-            }
-        }
-
-        # using reflection, determine the name of each of the parameters of the method.
         try
         {
-            $r = new ReflectionMethod(get_class($controller), $method);
-            $params = $r->getParameters();
-
-            # construct an array of parameters in the right order using the passed parameters
-            $bound_params = [];
-            foreach($params as $param)
+            if($controller_name == 'view')
             {
-                if (isset($passed_params[$param->name]))
-                {
-                    $bound_params[] = $passed_params[$param->name];
-                }
-                else
-                {
-                    $bound_params[] = null;
-                }
+                # 'view' isn't a real controller
+                return lucid::view($method, $passed_params);
             }
-
-            # finally, call the controller method with the bound parameters
-            lucid::log()->info($controller_name.'->'.$method.'()');
-            try
+            else
             {
-                return call_user_func_array( [$controller, $method],  $bound_params);
+                $controller = lucid::controller($controller_name);
+                lucid::log()->info($controller_name.'->'.$method.'()');
+                return $controller->_call_method_with_parameters($method, $passed_params);
             }
-            catch(Exception $e)
-            {
-                lucid::$error->handle($e);
-            }
+        }
+        catch(Lucid_Silent_Exception $e)
+        {
+            lucid::log('Caught silent error: '.$e->getMessage());
+            return;
         }
         catch(Exception $e)
         {
             lucid::$error->handle($e);
+            return;
         }
+    }
+
+    public static function redirect($new_view)
+    {
+        lucid::view($new_view);
+        lucid::$response->javascript('lucid.updateHash(\'#!view.'.$new_view.'\');');
     }
 }

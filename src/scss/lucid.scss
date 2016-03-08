@@ -9,9 +9,18 @@
 }
 
 table.lucid-data-table{
-
 }
 
 th.lucid-data-column-sortable{
     cursor: pointer;
+}
+
+div.card > table.table{
+    border-collapse: collapse;
+    margin-bottom:0px;
+    border-width: 0px 1px 0px 1px;
+}
+
+div.card-footer-data-table{
+    padding: 0.25rem 0.25rem;
 }

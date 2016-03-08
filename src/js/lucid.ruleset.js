@@ -51,7 +51,7 @@ lucid.ruleset.process=function(name, data){
 lucid.ruleset.showErrors=function(name,errors){
     var form = document.forms[name];
     var data = lucid.getFormValues(form);
-    var formErrorId = form.name+'-errors';
+    var formErrorId = window.jQuery(form).attr('name')+'-errors';
     if (jQuery('#'+formErrorId).length ==0){
         jQuery(form).prepend(lucid.ruleset.formAlert.replace(':id',formErrorId));
     }
@@ -60,7 +60,7 @@ lucid.ruleset.showErrors=function(name,errors){
 }
 
 lucid.ruleset.clearErrors=function(form){
-    var formErrorId = form.name+'-errors';
+    var formErrorId = jQuery(form).attr('name')+'-errors';
     jQuery('#'+formErrorId).hide();
 }
 

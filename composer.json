@@ -4,10 +4,16 @@
   "repo": "devlucid/lucid",
   "description": "",
   "authors": [
-    "Mike Thorn <mthorn@devlucid.com>"
+      {
+          "name":     "Mike Thorn",
+          "email":    "mthorn@devlucid.com"
+      }
   ],
   "maintainers": [
-    "Mike Thorn <mthorn@devlucid.com>"
+      {
+          "name":     "Mike Thorn",
+          "email":    "mthorn@devlucid.com"
+      }
   ],
   "autoload": {
       "classmap": ["src/php/lucid.php"]
@@ -17,8 +23,13 @@
   },
   "license": "MIT",
   "bin": [
+      "scripts/make_app.php",
+      "scripts/update_template.php",
+      "scripts/generate_models.php",
+      "scripts/generate_vc.php",
       "scripts/copy_fonts.php",
       "scripts/launch.sh",
+      "scripts/unittest.sh",
       "scripts/tail-log.sh"
   ]
 }

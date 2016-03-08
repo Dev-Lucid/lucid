@@ -1,0 +1,9 @@
+{
+    "button:login":"Login",
+    "button:register":"Register",
+    "button:save":"Save",
+    "button:cancel":"Cancel",
+    "button:add_new":"<i class=\"fa fa-plus\"></i> Add New",
+    "button:delete":"<i class=\"fa fa-trash\"></i>",
+    "button:confirm_delete":"Are you sure you want to delete this item?"
+}

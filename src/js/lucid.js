@@ -2,19 +2,24 @@ var lucid = {
     'entryUrl':'app.php',
     'stage':'development',
     'errorHtml':'<div id="lucid-error" class="alert alert-danger alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span id="lucid-error-msg"></span></div>',
-    'lastFormSubmit':''
+    'lastFormSubmit':'',
+    'currentView':null
 };
 
 lucid.init=function(){
     $(window).bind( 'hashchange', function(e) {
-        lucid.request(window.location.hash);
+        if (window.location.hash != '' && window.location.hash != lucid.currentView){
+            lucid.currentView = window.location.hash;
+            lucid.request(window.location.hash);
+        }
     });
-    if (window.location.hash != ''){
-        lucid.request(window.location.hash);
-    }
+    lucid.request(window.location.hash);
 };
 
 lucid.request=function(url, data, callback){
+    if(url == ''){
+        return;
+    }
     if(typeof(data) != 'object'){
         data = {};
     }
@@ -170,4 +175,9 @@ lucid.handleErrors=function(errorList){
         error.find('#lucid-error-msg').html(msg);
         error.fadeIn(200);
     }
+};
+
+lucid.updateHash=function(newHash){
+    lucid.currentView = newHash;
+    window.location.hash = newHash;
 };

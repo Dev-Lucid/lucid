@@ -1,6 +1,21 @@
 <?php
 
-class lucid_response
+interface i_lucid_response
+{
+    public function title($title);
+    public function description($description);
+    public function keywords($keywords);
+    public function data($key, $data);
+    public function javascript($js, $run_before);
+    public function error($error);
+    public function replace($area, $content);
+    public function append($area, $content);
+    public function prepend($area, $content);
+    public function send();
+
+}
+
+class lucid_response implements i_lucid_response
 {
     public $data = [];
     public $default_position = null;
@@ -69,7 +84,7 @@ class lucid_response
         $this->data['replace'][$area] = $content;
     }
 
-    public function append($area, $content)
+    public function append($area, $content=null)
     {
         if(!isset($area) and !is_null($this->default_position)){
             $area = $this->default_position;
@@ -87,7 +102,7 @@ class lucid_response
         $this->data['append'][$area] = $content;
     }
 
-    public function prepend($area, $content)
+    public function prepend($area, $content=null)
     {
         if(!isset($area) and !is_null($this->default_position)){
             $area = $this->default_position;
@@ -118,7 +133,7 @@ class lucid_response
     {
         ob_clean();
         header('Content-Type: application/json');
-        $output = json_encode($this->data);
+        $output = json_encode($this->data, JSON_PRETTY_PRINT);
         exit($output);
     }
 }

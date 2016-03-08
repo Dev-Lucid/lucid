@@ -3,6 +3,8 @@
 # there only needs to be one path for models since they are regenerated via a script anyway
 lucid::$paths['models'] = lucid::$paths['base'].'/db/models/';
 Model::$auto_prefix_models = 'lucid_model_';
+ORM::configure('caching', true);
+ORM::configure('caching_auto_clear', true);
 ORM::configure('logging', true);
 ORM::configure('logger', function($log_string, $query_time) {
     \lucid::log($log_string . ' in ' . $query_time);

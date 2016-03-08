@@ -1,7 +1,5 @@
 lucid.i18n = {
-    'phrases':{
-        'lucid:data_table:page_display':'Page :current of :max'
-    }
+    'phrases':{}
 }
 
 function _(phrase, parameters){
