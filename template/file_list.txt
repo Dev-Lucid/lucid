@@ -46,6 +46,8 @@ app/views/regions-edit.php
 app/views/regions-table.php
 app/views/roles-edit.php
 app/views/roles-table.php
+app/views/users-edit.php
+app/views/users-table.php
 app/views/login.php
 app/views/dashboard.php
 app/views/form-authentication.php
