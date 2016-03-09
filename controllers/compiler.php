@@ -20,7 +20,6 @@ class lucid_controller_compiler extends lucid_controller
 
     public function javascript()
     {
-        $this->headers('javascript');
         lucid::config('js');
 
         $uncompressed = '';
@@ -32,12 +31,10 @@ class lucid_controller_compiler extends lucid_controller
         $compressed = $uncompressed;
 
         $this->write_build(lucid::$js_production_build, $compressed);
-        exit($uncompressed);
     }
 
     public function scss()
     {
-        $this->headers('css');
         lucid::config('scss');
 
         $scss = new Leafo\ScssPhp\Compiler();
@@ -54,6 +51,5 @@ class lucid_controller_compiler extends lucid_controller
 
         $css = $scss->compile($src);
         $this->write_build(lucid::$scss_production_build, $css);
-        exit($css);
     }
 }

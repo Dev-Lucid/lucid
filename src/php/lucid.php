@@ -339,6 +339,19 @@ class lucid
         }
     }
 
+    public static function process_command_line_action($argv)
+    {
+        array_shift($argv);
+        $action = array_shift($argv);
+        $parameters = [];
+        while(count($argv) > 0)
+        {
+            list($key, $value) = explode('=', array_shift($argv));
+            $parameters[$key] = $value;
+        }
+        lucid::add_action('request', $action, $parameters);
+    }
+
     public static function add_action($when, $controller_method, $parameters = [])
     {
         lucid::$actions[$when][] = [$controller_method, $parameters];
