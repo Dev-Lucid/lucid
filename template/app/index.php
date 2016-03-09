@@ -20,11 +20,7 @@ lucid::config('scss');
         <meta name="author" content="" />
         <link rel="icon" href="../../favicon.ico" />
         <title>Jumbotron Template for Bootstrap</title>
-        <? if(lucid::$stage == 'development'){?>
-        <link href="app.php?action=compiler.scss" rel="stylesheet" />
-        <?}else{?>
         <link href="<?=str_replace(lucid::$paths['app'],'',lucid::$scss_production_build)?>" rel="stylesheet" />
-        <?}?>
     </head>
     <body onload="app.init();">
         <nav class="navbar navbar-static-top navbar-dark bg-inverse">
@@ -61,11 +57,7 @@ lucid::config('scss');
                 <p>&copy; Company 2015</p>
             </footer>
         </div>
-        <? if(lucid::$stage == 'development'){?>
-        <script src="app.php?action=compiler.javascript"></script>
-        <?}else{?>
         <script src="<?=str_replace(lucid::$paths['app'],'',lucid::$js_production_build)?>"></script>
-        <?}?>
         <script language="Javascript">
         lucid.stage = '<?=lucid::$stage?>';
         lucid.i18n.phrases['data_table:page'] = '<?=_('data_table:page')?>';
