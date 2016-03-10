@@ -3,6 +3,7 @@ global $parser, $content;
 include(__DIR__.'/../../../../bootstrap.php');
 
 $parser = new Parsedown();
+$parser->setBreaksEnabled(false);
 $page = (isset($_REQUEST['page']))?$_REQUEST['page']:'start';
 $content = [
     'nav1'=>'',
@@ -17,6 +18,9 @@ function build_doc($page)
     $paths = [__DIR__.'/../../../../docs', __DIR__.'/../docs', ];
     $replaces = [
         '{{card-end}}'=>'</div></div>',
+        '{{card-list-end}}'=>'</ul></div>',
+        '{{navbar-end}}'=>'</ul></nav>',
+        'href="!'=>'href="index.php?page=',
     ];
 
     $final_file_path = null;
@@ -36,9 +40,20 @@ function build_doc($page)
 
     $html = $parser->text(file_get_contents($final_file_path));
 
+    # strip the start/end <p> tags that parsedown puts in >_<;
+    #
+
     foreach($replaces as $key=>$value)
     {
         $html = str_replace($key, $value, $html);
+    }
+
+    # first do all includes
+    preg_match_all('/{{include (..+)}}/', $html, $matches);
+    for($i=0; $i<count($matches[1]); $i++)
+    {
+        $file = $matches[1][$i];
+        $html = str_replace('{{include '.$file.'}}', build_doc($file), $html);
     }
 
     preg_match_all('/{{([^\\s\\\\]+) (.+?)}}/', $html, $matches);
@@ -53,6 +68,16 @@ function build_doc($page)
             case 'danger':
                 $html = str_replace('{{'.$action.' '.$value.'}}', '<div class="alert alert-'.$action.'"><strong>'.ucwords($action).': </strong> '.$value.'</div>', $html);
                 break;
+            case 'navbar-start':
+                $html = str_replace('{{'.$action.' '.$value.'}}', '<nav class="navbar navbar-light bg-faded navbar-fixed-top"><a class="navbar-brand" href="!start">'.$value.'</a><ul class="nav navbar-nav">', $html);
+                $html = str_replace('<a href=', '<li class="nav-item"><a class="nav-link" href=', $html);
+                $html = str_replace('</a>', '</a></li>', $html);
+                break;
+            case 'card-list-start':
+                $html = str_replace('{{'.$action.' '.$value.'}}', '<div class="card"><div class="card-header">'.$value.'</div><ul class="list-group list-group-flush">', $html);
+                $html = str_replace('<a href=', '<li class="list-group-item"><a href=', $html);
+                $html = str_replace('</a>', '</a></li>', $html);
+                break;
             case 'card-start':
                 $html = str_replace('{{'.$action.' '.$value.'}}', '<div class="card"><div class="card-header">'.$value.'</div><div class="card-block">', $html);
                 break;
@@ -61,15 +86,18 @@ function build_doc($page)
                 $html = str_replace('{{'.$action.' '.$value.'}}', '', $html);
                 $content[$action] = build_doc($value);
                 break;
-            case 'include':
-                $html = str_replace('{{'.$action.' '.$value.'}}', build_doc($value), $html);
-                break;
         }
+    }
+    $html = str_replace("<p>\n</p>",'', $html);
+    if(strpos($html, '<p>') === 0)
+    {
+        $html = substr($html, 3, -4);
     }
     return $html;
 }
 
-?><html>
+?><!DOCTYPE html>
+<html lang="en">
     <head>
         <title>Documentation</title>
         <style type="text/css">
