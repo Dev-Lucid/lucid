@@ -77,7 +77,8 @@
         "devlucid/factory": "master@dev",
         "henrikbjorn/lurker": "^1.1.0",
         "robmorgan/phinx": "0.5.3",
-        "swiftmailer/swiftmailer": "5.4.1"
+        "swiftmailer/swiftmailer": "5.4.1",
+        "erusev/parsedown": "^1.6.0"
     },
     "require-dev": {
         "devlucid/lucid": "master@dev",

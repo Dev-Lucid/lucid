@@ -16,7 +16,7 @@ foreach($initial_files as $file)
 
 $options = [
     'action'=>'make',
-    'initial_directories'=>'app,app/controllers,app/media,app/media/js,app/media/scss,app/media/fonts,app/media/images,config,db,db/models,db/build,db/migrations,dictionaries,tests',
+    'initial_directories'=>'app,app/controllers,app/media,app/media/js,app/media/scss,app/media/fonts,docs,app/media/images,config,db,db/models,db/build,db/migrations,dictionaries,tests',
 ];
 
 

@@ -15,6 +15,8 @@ dictionaries/en__navigation.json
 dictionaries/en__validation.json
 dictionaries/en.json
 
+docs/index.php
+
 db/build/sqlite.regions.sql
 db/build/sqlite.main.sql
 db/build/sqlite.views.sql
