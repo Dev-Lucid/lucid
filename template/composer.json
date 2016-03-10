@@ -15,8 +15,15 @@
                     "reference":"master"
                 },
                 "bin": [
+                    "scripts/build_db.sh",
+                    "scripts/make_app.php",
+                    "scripts/update_template.php",
+                    "scripts/watcher.php",
+                    "scripts/generate_models.php",
+                    "scripts/generate_vc.php",
                     "scripts/copy_fonts.php",
                     "scripts/launch.sh",
+                    "scripts/unittest.sh",
                     "scripts/tail-log.sh"
                 ],
                 "autoload": {
@@ -65,7 +72,12 @@
         "leafo/scssphp": "^0.6.3",
         "monolog/monolog": "^1.17",
         "fortawesome/font-awesome": "^4.5",
-        "twbs/bootstrap": "4.0.0-alpha.2"
+        "twbs/bootstrap": "4.0.0-alpha.2",
+        "devlucid/lucid": "master@dev",
+        "devlucid/factory": "master@dev",
+        "henrikbjorn/lurker": "^1.1.0",
+        "robmorgan/phinx": "0.5.3",
+        "swiftmailer/swiftmailer": "5.4.1"
     },
     "require-dev": {
         "devlucid/lucid": "master@dev",

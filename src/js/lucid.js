@@ -162,8 +162,11 @@ lucid.handleErrors=function(errorList){
     }
 
     var msg = '';
+
     if(lucid.stage == 'production'){
-        msg += errorList[0]; // only show the first error msg on development, presumed to be the general error msg
+        if(errorList.length > 0){
+            msg += errorList[0]; // only show the first error msg on development, presumed to be the general error msg
+        }
     }else{
         // on all other stages, show the full list of errors
         for(var i=0;i<errorList.length;i++){

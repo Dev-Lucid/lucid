@@ -39,8 +39,10 @@ lucid::config('scss');
                 </ul>
             </div>
             <div class="hidden-lg-up col-xs-12">
-                <ul class="nav nav-pills nav2">
-                </ul>
+                <div class="card">
+                    <ul class="nav nav-pills nav2">
+                    </ul>
+                </div>
                 <br />
             </div>
             <div class="col-xs-12 col-lg-8 col-xl-9" id="body">

@@ -17,6 +17,7 @@ dictionaries/en.json
 db/build/sqlite.regions.sql
 db/build/sqlite.main.sql
 db/build/sqlite.views.sql
+db/phinx.yml
 
 tests/base_tests.php
 tests/address_Test.php

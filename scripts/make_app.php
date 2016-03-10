@@ -16,7 +16,7 @@ foreach($initial_files as $file)
 
 $options = [
     'action'=>'make',
-    'initial_directories'=>'app,app/controllers,app/media,app/media/js,app/media/scss,app/media/fonts,app/media/images,config,db,db/models,db/build,dictionaries,tests',
+    'initial_directories'=>'app,app/controllers,app/media,app/media/js,app/media/scss,app/media/fonts,app/media/images,config,db,db/models,db/build,db/migrations,dictionaries,tests',
 ];
 
 
@@ -74,6 +74,8 @@ if($options['action'] == 'make')
     shell_exec($path_base.'/scripts/build_db.sh');
     echo("Building models...\n");
     shell_exec('php -f '.$path_base.'/scripts/generate_models.php');
+    echo("Initing migrations...\n");
+    shell_exec('php -f '.$path_base.'/scripts/phinx init ./db');
     echo("Done with database.\n");
 }
 

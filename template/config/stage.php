@@ -10,8 +10,13 @@
 # and config/db.php (for determining which db to connect to).
 
 $stage = 'production';
-if (isset($_SERVER['SERVER_SOFTWARE']) and strpos($_SERVER['SERVER_SOFTWARE'],'Development Server') !== false)
+if (isset($_SERVER['APP_STAGE']))
 {
-    $stage = 'development';
+    $stage = $_SERVER['APP_STAGE'];
 }
+if (isset($_ENV['APP_STAGE']))
+{
+    $stage = $_ENV['APP_STAGE'];
+}
+
 lucid::$stage = $stage;

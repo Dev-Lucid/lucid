@@ -17,6 +17,7 @@ class lucid
     public static $error_phrase = 'page:custom_error:help';
 
     public static $db           = null;
+    public static $db_stages    = [];
     public static $orm_function = null;
     public static $paths        = [];
     public static $libs         = [];
