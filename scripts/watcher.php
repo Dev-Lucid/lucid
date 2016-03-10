@@ -5,8 +5,8 @@ lucid::config('js');
 ob_end_clean();
 
 # perform compilations on first load
-#lucid::controller('compiler')->scss();
-#lucid::controller('compiler')->javascript();
+lucid::controller('compiler')->scss();
+lucid::controller('compiler')->javascript();
 
 
 use Lurker\Event\FilesystemEvent;

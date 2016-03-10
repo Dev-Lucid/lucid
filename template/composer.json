@@ -17,7 +17,6 @@
                 "bin": [
                     "scripts/build_db.sh",
                     "scripts/make_app.php",
-                    "scripts/update_template.php",
                     "scripts/watcher.php",
                     "scripts/generate_models.php",
                     "scripts/generate_vc.php",
