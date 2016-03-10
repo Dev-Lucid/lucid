@@ -1,0 +1,9 @@
+vendor/
+scripts/
+app/media/fonts/*.eot
+app/media/fonts/*.svg
+app/media/fonts/*.ttf
+app/media/fonts/*.woff
+app/media/fonts/*.woff2
+app/media/fonts/*.otf
+debug.log

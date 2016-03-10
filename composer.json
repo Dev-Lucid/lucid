@@ -23,6 +23,7 @@
   },
   "license": "MIT",
   "bin": [
+      "scripts/deploy",
       "scripts/build_db.sh",
       "scripts/make_app.php",
       "scripts/update_template.php",

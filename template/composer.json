@@ -15,6 +15,7 @@
                     "reference":"master"
                 },
                 "bin": [
+                    "scripts/deploy",
                     "scripts/build_db.sh",
                     "scripts/make_app.php",
                     "scripts/watcher.php",
