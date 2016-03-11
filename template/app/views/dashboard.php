@@ -1,27 +1,7 @@
 <?php
 lucid::controller('navigation')->render('view.dashboard');
 
-/*
-$card = html::card();
-$card->header('testing header');
-$card->block()->add('hi 1');
-$card->block()->add('hi 2');
-$card->footer('testing footer');
-
-$nav = html::nav()->tabs(true);
-
-$nav->add(html::nav_anchor('tab1', 'Tab 1'));
-$nav->add_pane(html::tab_pane('tab1'));
-$nav->last_pane()->add('hiya from tab 1');
-
-$nav->add(html::nav_anchor('tab2', 'Tab 2'));
-$nav->add_pane(html::tab_pane('tab2'));
-$nav->last_pane()->add('hiya from tab 2');
-
-$nav->add(html::nav_anchor('tab3', 'Tab 3'));
-$nav->add_pane(html::tab_pane('tab3'));
-$nav->last_pane()->add('hiya from tab 3');
-*/
+lucid::$security->require_role_name('admin');
 
 $card_tabs = html::card_tabs();
 

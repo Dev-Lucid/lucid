@@ -12,19 +12,17 @@ $header_msg = _('form:edit_'.(($data->country_id == 0)?'new':'existing'), [
 ]);
 
 $form = html::form('countries-edit', '#!countries.save');
-lucid::controller('countries')->ruleset()->send('countries-edit');
+lucid::controller('countries')->ruleset()->send($form->name);
 
-$card = $form->add(html::card())->last_child();
+$card = html::card();
 $card->header()->add($header_msg);
-$block = $card->block();
-$block->add(html::form_group(_('model:countries:name'), html::input('text', 'name', $data->name)));
-$block->add(html::form_group(_('model:countries:common_name'), html::input('text', 'common_name', $data->common_name)));
-$block->add(html::form_group(_('model:countries:alpha_3'), html::input('text', 'alpha_3', $data->alpha_3)));
+$card->block()->add([
+	html::form_group(_('model:countries:name'), html::input('text', 'name', $data->name)),
+	html::form_group(_('model:countries:common_name'), html::input('text', 'common_name', $data->common_name)),
+	html::form_group(_('model:countries:alpha3'), html::input('text', 'alpha3', $data->alpha3)),
+    html::input('hidden', 'country_id', $data->country_id),
+]);
+$card->footer(html::form_buttons());
 
-$block->add(html::input('hidden', 'country_id', $data->country_id));
-$group = $card->footer()->add(html::button_group())->last_child();
-$group->pull('right');
-$group->add(html::button(_('button:cancel'), 'secondary', 'history.go(-1);'));
-$group->add(html::submit(_('button:save')));
-
+$form->add($card);
 lucid::$response->replace('#body', $form);

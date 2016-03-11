@@ -56,7 +56,7 @@ foreach($cols as $col)
     $save_actions    .= "        ".'$data->'.str_pad($col, $max_length) . ' = $'.$col.';'."\n";
 
     # for the edit form
-    $inputs .= '$block->add(html::form_group(_(\'model:'.$table.':'.$col.'\'), html::input(\'text\', \''.$col.'\', $data->'.$col.')));'."\n";
+    $inputs .= "\t".'html::form_group(_(\'model:'.$table.':'.$col.'\'), html::input(\'text\', \''.$col.'\', $data->'.$col.')),'."\n";
 
     # for the table view
     $table_cols .= '$table->add(html::data_column(_(\'model:'.$table.':'.$col.'\'), \''.$col.'\', \''.(ceil(80 / count($cols))).'\', true, function($data){
@@ -119,18 +119,16 @@ $header_msg = _(\'form:edit_\'.(($data->'.$id.' == 0)?\'new\':\'existing\'), [
 ]);
 
 $form = html::form(\''.$table.'-edit\', \'#!'.$table.'.save\');
-lucid::controller(\''.$table.'\')->ruleset()->send(\''.$table.'-edit\');
+lucid::controller(\''.$table.'\')->ruleset()->send($form->name);
 
-$card = $form->add(html::card())->last_child();
+$card = html::card();
 $card->header()->add($header_msg);
-$block = $card->block();
-'.$inputs.'
-$block->add(html::input(\'hidden\', \''.$id.'\', $data->'.$id.'));
-$group = $card->footer()->add(html::button_group())->last_child();
-$group->pull(\'right\');
-$group->add(html::button(_(\'button:cancel\'), \'secondary\', \'history.go(-1);\'));
-$group->add(html::submit(_(\'button:save\')));
+$card->block()->add([
+'.$inputs.'    html::input(\'hidden\', \''.$id.'\', $data->'.$id.'),
+]);
+$card->footer()->add(html::form_buttons());
 
+$form->add($card);
 lucid::$response->replace(\'#body\', $form);';
 
 echo("Building table view...\n");

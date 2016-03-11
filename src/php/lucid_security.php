@@ -16,6 +16,8 @@ interface i_lucid_security
 
     public function get_permissions_list();
     public function set_permissions_list($names);
+
+    public function __call($name, $parameters);
 }
 
 class lucid_security implements i_lucid_security
@@ -35,6 +37,40 @@ class lucid_security implements i_lucid_security
         {
             lucid::$error->permission_denied();
         }
+        return $this;
+    }
+
+    public function __call($name, $parameters)
+    {
+        if(strpos($name, 'require_') === 0)
+        {
+            $name = substr($name, 8);
+            $value = lucid::$session->get($name);
+            if($parameters[0]  != $value)
+            {
+                lucid::$error->permission_denied();
+            }
+            return $this;
+        }
+        else
+        {
+            throw new Exception('Unknown security function call: '.$name.'.');
+        }
+    }
+
+    public function require_session($name, $req_value)
+    {
+        $sess_value = lucid::$session->get($name);
+        if($req_value != $sess_value)
+        {
+            lucid::$error->permission_denied();
+        }
+        return $this;
+    }
+
+    public function require_role($value)
+    {
+        return lucid::$security->require_session('role_name', $value);
     }
 
     public function has_permission($names)
@@ -61,6 +97,7 @@ class lucid_security implements i_lucid_security
         {
             lucid::$error->permission_denied();
         }
+        return $this;
     }
 
     public function has_any_permission($names)
@@ -87,6 +124,7 @@ class lucid_security implements i_lucid_security
         {
             lucid::$error->permission_denied();
         }
+        return $this;
     }
 
     public function get_permissions_list()

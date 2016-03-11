@@ -12,15 +12,15 @@ $header_msg = _('form:edit_'.(($data->role_id == 0)?'new':'existing'), [
 ]);
 
 $form = html::form('roles-edit', '#!roles.save');
-lucid::controller('roles')->ruleset()->send('roles-edit');
+lucid::controller('roles')->ruleset()->send($form->name);
 
-$card = $form->add(html::card())->last_child();
-$card->header($header_msg);
-$card->block()->add(html::form_group(_('model:roles:name'), html::input('text', 'name', $data->name)));
-$card->block()->add(html::input('hidden', 'role_id', $data->role_id));
-$group = $card->footer()->add(html::button_group())->last_child();
-$group->pull('right');
-$group->add(html::button(_('button:cancel'), 'secondary', 'history.go(-1);'));
-$group->add(html::submit(_('button:save')));
+$card = html::card();
+$card->header()->add($header_msg);
+$card->block()->add([
+	html::form_group(_('model:roles:name'), html::input('text', 'name', $data->name)),
+    html::input('hidden', 'role_id', $data->role_id),
+]);
+$card->footer(html::form_buttons());
 
+$form->add($card);
 lucid::$response->replace('#body', $form);

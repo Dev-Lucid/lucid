@@ -13,5 +13,13 @@
     "model:users:first_name": "First Name",
     "model:users:last_name": "Last Name",
     "model:users:email": "Email",
-    "model:users:password": "Password"
+    "model:users:password": "Password",
+    "model:roles:user_id": "User Id",
+    "model:roles:first_name": "First Name",
+    "model:roles:last_name": "Last Name",
+    "model:roles:email": "Email",
+    "model:roles:password": "Password",
+    "model:roles:org_id": "Org Id",
+    "model:countries:alpha3": "Alpha3",
+    "model:regions:country_id": "Country Id"
 }

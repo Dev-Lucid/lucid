@@ -7,6 +7,7 @@ class regions_test extends PHPUnit_Framework_TestCase_MyCase
     public static $controller   = 'regions';
 
     public static $insert_values = [
+        'country_id'=>'test-val',
         'name'=>'test-val',
         'abbreviation'=>'test-val',
     ];

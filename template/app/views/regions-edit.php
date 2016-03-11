@@ -8,22 +8,21 @@ $data = lucid::model('regions', $region_id);
 lucid::$error->not_found($data, '#body');
 $header_msg = _('form:edit_'.(($data->region_id == 0)?'new':'existing'), [
     'type'=>'regions',
-    'name'=>$data->name,
+    'name'=>$data->country_id,
 ]);
 
 $form = html::form('regions-edit', '#!regions.save');
-lucid::controller('regions')->ruleset()->send('regions-edit');
+lucid::controller('regions')->ruleset()->send($form->name);
 
-$card = $form->add(html::card())->last_child();
+$card = html::card();
 $card->header()->add($header_msg);
-$block = $card->block();
-$block->add(html::form_group(_('model:regions:name'), html::input('text', 'name', $data->name)));
-$block->add(html::form_group(_('model:regions:abbreviation'), html::input('text', 'abbreviation', $data->abbreviation)));
+$card->block()->add([
+	html::form_group(_('model:regions:country_id'), html::input('text', 'country_id', $data->country_id)),
+	html::form_group(_('model:regions:name'), html::input('text', 'name', $data->name)),
+	html::form_group(_('model:regions:abbreviation'), html::input('text', 'abbreviation', $data->abbreviation)),
+    html::input('hidden', 'region_id', $data->region_id),
+]);
+$card->footer(html::form_buttons());
 
-$block->add(html::input('hidden', 'region_id', $data->region_id));
-$group = $card->footer()->add(html::button_group())->last_child();
-$group->pull('right');
-$group->add(html::button(_('button:cancel'), 'secondary', 'history.go(-1);'));
-$group->add(html::submit(_('button:save')));
-
+$form->add($card);
 lucid::$response->replace('#body', $form);
