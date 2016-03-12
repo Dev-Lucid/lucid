@@ -21,11 +21,12 @@ if(count($cols) == 0)
 }
 
 
-$files['controller'] = realpath($base.'app/controllers/').'/'.$table.'.php';
-$files['view-edit']  = realpath($base.'app/views/').'/'.$table.'-edit.php';
-$files['view-table'] = realpath($base.'app/views/').'/'.$table.'-table.php';
-$files['phpunit']    = realpath($base.'tests/').'/'.$table.'_Test.php';
-$files['dictionary'] = realpath($base.'dictionaries').'/en__models.json';
+$files['controller']  = realpath($base.'app/controllers/').'/'.$table.'.php';
+$files['view-edit']   = realpath($base.'app/views/').'/'.$table.'-edit.php';
+$files['view-table']  = realpath($base.'app/views/').'/'.$table.'-table.php';
+$files['phpunit']     = realpath($base.'tests/').'/'.$table.'_Test.php';
+$files['dictionary1'] = realpath($base.'dictionaries').'/en__models.json';
+$files['dictionary2'] = realpath($base.'dictionaries').'/en__navigation.json';
 
 
 $rules           = '';
@@ -59,7 +60,7 @@ foreach($cols as $col)
     $inputs .= "\t".'html::form_group(_(\'model:'.$table.':'.$col.'\'), html::input(\'text\', \''.$col.'\', $data->'.$col.')),'."\n";
 
     # for the table view
-    $table_cols .= '$table->add(html::data_column(_(\'model:'.$table.':'.$col.'\'), \''.$col.'\', \''.(ceil(80 / count($cols))).'\', true, function($data){
+    $table_cols .= '$table->add(html::data_column(_(\'model:'.$table.':'.$col.'\'), \''.$col.'\', \''.(ceil(80 / count($cols))).'%\', true, function($data){
     return html::anchor(\'#!view.'.$table.'-edit|'.$id.'|\'.$data->'.$id.', $data->'.$col.');
 }));'."\n";
 
@@ -138,7 +139,7 @@ lucid::$security->require_login();
 
 lucid::controller(\'navigation\')->render(\'view.'.$table.'-table\');
 
-$table = html::data_table(_(\'table:'.$table.'\'), \''.$table.'-table\', lucid::model(\''.$table.'\'), \'app.php?action=view.'.$table.'-table\');
+$table = html::data_table(_(\'navigation:'.$table.'\'), \''.$table.'-table\', lucid::model(\''.$table.'\'), \'app.php?action=view.'.$table.'-table\');
 
 '.$table_cols.'
 $table->add(html::data_column(\'\', null, \'20%\', false, function($data){
@@ -203,9 +204,9 @@ file_put_contents($files['phpunit'], $phpunit);
 
 # read in the existing model dictionary entries (assuming they're in dictionaries/en__models.json)
 echo("Building dictionary entries...\n");
-if(file_exists($files['dictionary']))
+if(file_exists($files['dictionary1']))
 {
-    $dictionary_entries = json_decode(file_get_contents($files['dictionary']), true);
+    $dictionary_entries = json_decode(file_get_contents($files['dictionary1']), true);
 }
 else
 {
@@ -221,7 +222,25 @@ foreach($cols as $col)
 }
 
 $dictionary_entries = json_encode($dictionary_entries, JSON_PRETTY_PRINT);
-file_put_contents($files['dictionary'], $dictionary_entries);
+file_put_contents($files['dictionary1'], $dictionary_entries);
+
+if(file_exists($files['dictionary2']))
+{
+    $dictionary_entries = json_decode(file_get_contents($files['dictionary2']), true);
+}
+else
+{
+    $dictionary_entries = [];
+}
+
+if(!isset($dictionary_entries['navigation:'.$table]))
+{
+    $dictionary_entries['navigation:'.$table] = ucwords(str_replace('_',' ', $table));
+}
+
+$dictionary_entries = json_encode($dictionary_entries, JSON_PRETTY_PRINT);
+file_put_contents($files['dictionary2'], $dictionary_entries);
+
 
 echo("----------------------------------\nBuild complete.\n\n");
 

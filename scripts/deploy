@@ -19,6 +19,10 @@ switch($action)
     case 'db-rollback':
         wrap_phinx_command('rollback', $argv, true);
         break;
+    default:
+        echo("Unknown action. Supported actions are: db-status, db-create, db-migrate, db-rollback\n");
+        exit();
+        break;
 }
 
 function wrap_phinx_command($command, $params, $include_stage = true)
@@ -31,6 +35,13 @@ function wrap_phinx_command($command, $params, $include_stage = true)
     }
 
 
-    echo(shell_exec($cmd));
+    try
+    {
+        echo(shell_exec($cmd));
+    }
+    catch(Exception $e)
+    {
+        exit($e->getMessage()."\n");
+    }
 }
 

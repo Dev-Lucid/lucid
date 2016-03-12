@@ -11,14 +11,16 @@ interface i_lucid_response
     public function replace($area, $content);
     public function append($area, $content);
     public function prepend($area, $content);
+    public function clear($areas=null);
     public function send();
-
 }
 
 class lucid_response implements i_lucid_response
 {
     public $data = [];
     public $default_position = null;
+    public $default_clears = ['#body', 'ul.nav2', '#full-width'];
+
     public function __construct()
     {
         ob_start();
@@ -126,6 +128,16 @@ class lucid_response implements i_lucid_response
             $this->replace('#'.$area,$args[0]);
         }else{
             $this->replace('#'.$area);
+        }
+    }
+
+    public function clear($areas=null)
+    {
+        $areas = (is_null($areas) === true)?$this->default_clears:$areas;
+        $areas = (is_array($areas) === false)?[$areas]:$areas;
+        foreach($areas as $area)
+        {
+            $this->replace($area,'');
         }
     }
 
