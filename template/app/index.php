@@ -24,45 +24,46 @@ lucid::config('scss');
     </head>
     <body onload="app.init();">
         <nav class="navbar navbar-static-top navbar-dark bg-inverse">
-            <a class="navbar-brand" href="#"><?=_('branding:app_name')?></a>
-            <ul class="nav navbar-nav" id="nav1">
-                <li class="nav-item">
-                    <a class="nav-link" href="#!view.login"><?=_('navigation:login')?></a>
-                </li>
-            </ul>
+            <a class="navbar-brand" href="#!view.home"><?=_('branding:app_name')?></a>
+            <ul class="nav navbar-nav pull-right" id="nav1"></ul>
         </nav>
 
-        <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="container-fluid" style="margin-top: 5px;">
-            <div class="hidden-md-down col-lg-4 col-xl-3">
-                <ul class="nav nav-pills nav-stacked nav2">
-                </ul>
-            </div>
-            <div class="hidden-lg-up col-xs-12">
-                <div class="card">
-                    <ul class="nav nav-pills nav2">
-                    </ul>
+            <div class="row" id="layout-two-col">
+                <div class="hidden-md-down col-lg-4 col-xl-3">
+                    <ul class="nav nav-pills nav-stacked nav2"></ul>
                 </div>
-                <br />
-            </div>
-            <div class="col-xs-12 col-lg-8 col-xl-9" id="body">
-                <div class="jumbotron">
-                    <div class="container">
-                        <h1 class="display-3">Hello, world!</h1>
-                        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-                        <p><a class="btn btn-primary btn-lg" href="#!view.login|param1|test2" role="button"><i class="fa fa-bolt"></i> Learn more &raquo;</a></p>
-                        <p id="testarea"></p>
-                    </div>
+                <div class="hidden-lg-up col-xs-12">
+                    <ul class="nav nav-pills nav2"></ul>
+                    <br />
                 </div>
+                <div class="col-xs-12 col-lg-8 col-xl-9" id="body"></div>
             </div>
-            <footer>
-                <p>&copy; Company 2015</p>
-            </footer>
+            <div class="row" id="layout-full-width">
+                <div class="col-xs-12" id="full-width"></div>
+            </div>
         </div>
+        <nav class="navbar navbar-fixed-bottom">
+            <footer>
+                <p>&copy; <?=_('branding::app_name')?> 2016</p>
+            </footer>
+        </nav>
         <script src="<?=str_replace(lucid::$paths['app'],'',lucid::$js_production_build)?>"></script>
         <script language="Javascript">
         lucid.stage = '<?=lucid::$stage?>';
+        lucid.defaultRequest = '#!view.home';
         lucid.i18n.phrases['data_table:page'] = '<?=_('data_table:page')?>';
+        lucid.addHandler('pre-handleResponse', function(parameters){
+            var data = parameters.jqxhr.responseJSON;
+            if(typeof(data.replace['#full-width']) != 'undefined' && typeof(data.replace['#body']) == 'undefined'){
+                jQuery('#layout-full-width').show();
+                jQuery('#layout-two-col').hide();
+            }
+            if(typeof(data.replace['#full-width']) == 'undefined' && typeof(data.replace['#body']) != 'undefined'){
+                jQuery('#layout-full-width').hide();
+                jQuery('#layout-two-col').show();
+            }
+        })
         </script>
     </body>
 </html>

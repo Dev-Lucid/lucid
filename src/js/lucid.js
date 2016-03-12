@@ -1,9 +1,11 @@
 var lucid = {
+    'defaultRequest': '',
     'entryUrl':'app.php',
     'stage':'development',
     'errorHtml':'<div id="lucid-error" class="alert alert-danger alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span id="lucid-error-msg"></span></div>',
     'lastFormSubmit':'',
-    'currentView':null
+    'currentView':null,
+    'handlers':{}
 };
 
 lucid.init=function(){
@@ -13,11 +15,27 @@ lucid.init=function(){
             lucid.request(window.location.hash);
         }
     });
+    lucid.request((window.location.hash == '')?lucid.defaultRequest:window.location.hash);
     lucid.request(window.location.hash);
 };
 
+lucid.addHandler=function(action, callback){
+    if(typeof(lucid.handlers[action]) != 'object'){
+        lucid.handlers[action] = [];
+    }
+    lucid.handlers[action].push(callback);
+};
+
+lucid.callHandlers=function(action, parameters){
+    if(typeof(lucid.handlers[action]) == 'object'){
+        for(var i=0;i<lucid.handlers[action].length;i++){
+            lucid.handlers[action][i](parameters);
+        }
+    }
+};
+
 lucid.request=function(url, data, callback){
-    if(url == ''){
+    if(url === ''){
         return;
     }
     if(typeof(data) != 'object'){
@@ -53,7 +71,7 @@ lucid.submit=function(form){
     var result = lucid.ruleset.process($form.attr('name'), data);
 
     if (result === true){
-        data['__form_name'] = $form.attr('name');
+        data.__form_name = $form.attr('name');
         lucid.request($form.attr('action'), data);
     }
     return false;
@@ -111,7 +129,7 @@ lucid.getFormValues=function(form){
 };
 
 lucid.handleResponse=function(xhr, statusCode){
-    console.log('Response received: '+statusCode);
+    lucid.callHandlers('pre-handleResponse', {'jqxhr':xhr, 'statusCode':statusCode});
     if (statusCode == 'success'){
         var data = xhr.responseJSON;
 
@@ -152,6 +170,7 @@ lucid.handleResponse=function(xhr, statusCode){
         lucid.handleErrors(['Invalid response from server: '+statusCode]);
         console.log(xhr);
     }
+    lucid.callHandlers('post-handleResponse', {'jqxhr':xhr, 'statusCode':statusCode});
 };
 
 lucid.handleErrors=function(errorList){
