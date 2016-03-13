@@ -33,8 +33,7 @@ class lucid_security implements i_lucid_security
 
     public function require_login()
     {
-        if($this->is_logged_in() === false)
-        {
+        if ($this->is_logged_in() === false) {
             lucid::$error->permission_denied();
         }
         return $this;
@@ -42,12 +41,10 @@ class lucid_security implements i_lucid_security
 
     public function __call($name, $parameters)
     {
-        if(strpos($name, 'require_') === 0)
-        {
+        if (strpos($name, 'require_') === 0) {
             $name = substr($name, 8);
             $value = lucid::$session->get($name);
-            if($parameters[0]  != $value)
-            {
+            if ($parameters[0]  != $value) {
                 lucid::$error->permission_denied();
             }
             return $this;
@@ -61,8 +58,7 @@ class lucid_security implements i_lucid_security
     public function require_session($name, $req_value)
     {
         $sess_value = lucid::$session->get($name);
-        if($req_value != $sess_value)
-        {
+        if ($req_value != $sess_value) {
             lucid::$error->permission_denied();
         }
         return $this;
@@ -75,16 +71,13 @@ class lucid_security implements i_lucid_security
 
     public function has_permission($names)
     {
-        if(is_array($names) === false)
-        {
+        if (is_array($names) === false) {
             $names = [$names];
         }
         $perms = $this->get_permissions_list();
         $all_good = true;
-        foreach($names as $name)
-        {
-            if(in_array($name, $perms) === false)
-            {
+        foreach ($names as $name) {
+            if (in_array($name, $perms) === false) {
                 $all_good = false;
             }
         }
@@ -93,8 +86,7 @@ class lucid_security implements i_lucid_security
 
     public function require_permission($names)
     {
-        if($this->has_permission($names) == false)
-        {
+        if ($this->has_permission($names) === false) {
             lucid::$error->permission_denied();
         }
         return $this;
@@ -102,16 +94,14 @@ class lucid_security implements i_lucid_security
 
     public function has_any_permission($names)
     {
-        if(is_array($names) === false)
-        {
+        if (is_array($names) === false) {
             $names = [$names];
         }
         $perms = $this->get_permissions_list();
         $all_good = false;
-        foreach($names as $name)
-        {
-            if(in_array($name, $perms) === true)
-            {
+
+        foreach ($names as $name) {
+            if (in_array($name, $perms) === true) {
                 $all_good = true;
             }
         }
@@ -120,8 +110,7 @@ class lucid_security implements i_lucid_security
 
     public function require_any_permission($names)
     {
-        if($this->has_any_permission($names) == false)
-        {
+        if ($this->has_any_permission($names) === false) {
             lucid::$error->permission_denied();
         }
         return $this;
@@ -129,8 +118,7 @@ class lucid_security implements i_lucid_security
 
     public function get_permissions_list()
     {
-        if(isset(lucid::$session->permissions) === false || is_array(lucid::$session->permissions) === false)
-        {
+        if (isset(lucid::$session->permissions) === false || is_array(lucid::$session->permissions) === false) {
             lucid::$session->permissions = [];
         }
         return lucid::$session->permissions;
@@ -138,12 +126,10 @@ class lucid_security implements i_lucid_security
 
     public function set_permissions_list($names=[])
     {
-        if(isset(lucid::$session->permissions) === false || is_array(lucid::$session->permissions) === false)
-        {
+        if (isset(lucid::$session->permissions) === false || is_array(lucid::$session->permissions) === false) {
             lucid::$session->permissions = [];
         }
-        if (is_array($names) === false)
-        {
+        if (is_array($names) === false) {
             $names = [];
         }
         lucid::$session->permissions = $names;
@@ -152,14 +138,10 @@ class lucid_security implements i_lucid_security
     public function grant($names)
     {
         $current = $this->get_permissions_list();
-        if (is_array($names) === false)
-        {
+        if (is_array($names) === false) {
             array_push($current,$names);
-        }
-        else
-        {
-            foreach($names as $name)
-            {
+        } else {
+            foreach ($names as $name) {
                 array_push($current,$name);
             }
         }
@@ -168,17 +150,14 @@ class lucid_security implements i_lucid_security
 
     public function revoke($names)
     {
-        if (is_array($names) === false)
-        {
+        if (is_array($names) === false) {
             $names = [$names];
         }
 
         $new_perms = [];
         $old_perms = $this->get_permissions_list();
-        foreach($old_perms as $old_perm)
-        {
-            if(in_array($old_perm, $new_perms) === false)
-            {
+        foreach ($old_perms as $old_perm) {
+            if (in_array($old_perm, $new_perms) === false) {
                 $new_perms[] = $old_perm;
             }
         }

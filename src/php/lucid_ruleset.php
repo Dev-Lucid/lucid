@@ -6,47 +6,43 @@ class lucid_ruleset
     public $name  = '';
     public static $_handlers = [];
 
-    public function __construct($rules)
+    public function __construct ($rules)
     {
         $this->rules = $rules;
     }
 
-    public function send($form_name = 'edit')
+    public function send ($form_name = 'edit')
     {
-        foreach($this->rules as $key=>$value)
-        {
-            $this->rules[$key]['message'] = _('validation:'.$this->rules[$key]['type'],$this->rules[$key]);
+        foreach ($this->rules as $key=>$value) {
+            $this->rules[$key]['message'] = __('validation:'.$this->rules[$key]['type'], $this->rules[$key]);
         }
         $js = 'lucid.ruleset.add(\''.$form_name.'\','.json_encode($this->rules).');';
         lucid::$response->javascript($js);
     }
 
-    public function has_errors($data = null)
+    public function has_errors ($data = null)
     {
-        if(is_null($data))
-        {
+        if (is_null($data)) {
             $data = lucid::$request;
+        } elseif(is_array($data)) {
+            $data = new lucid_request($data);
         }
+        lucid::log($data->get_array());
         $errors = [];
-        foreach($this->rules as $rule)
-        {
-            if (isset(lucid_ruleset::$_handlers[$rule['type']]) and is_callable(lucid_ruleset::$_handlers[$rule['type']]))
-            {
+        foreach ($this->rules as $rule) {
+            if (isset(lucid_ruleset::$_handlers[$rule['type']]) === true && is_callable(lucid_ruleset::$_handlers[$rule['type']]) === true) {
                 $func = lucid_ruleset::$_handlers[$rule['type']];
                 $result = $func($rule, $data);
-                if ($result === false)
-                {
-                    if (!isset($errors[$rule['label']]))
-                    {
+                if ($result === false) {
+                    if (isset($errors[$rule['label']]) === false) {
                         $errors[$rule['label']] = [];
                     }
-                    $errors[$rule['label']][] = _('validation:'.$rule['type'],$rule);
+                    $errors[$rule['label']][] = __('validation:'.$rule['type'],$rule);
                 }
             }
         }
 
-        if (count($errors) > 0)
-        {
+        if (count($errors) > 0) {
             lucid::log('Validation failure: ');
             lucid::log($errors);
             return $errors;
@@ -62,7 +58,7 @@ class lucid_ruleset
             return;
         }
         lucid::log('attempting to build error response');
-        lucid::$response->javascript('lucid.ruleset.showErrors(\''.$this->name.'\','.json_encode($errors).');');
+        lucid::$response->javascript('lucid.ruleset.showErrors(\''.lucid::$request->string('__form_name').'\','.json_encode($errors).');');
         lucid::$response->send();
     }
 
@@ -76,8 +72,7 @@ class lucid_ruleset
         $function_parameters = $r->getParameters();
 
         $final_parameters = [];
-        for($i=0; $i<count($function_parameters); $i++)
-        {
+        for ($i=0; $i<count($function_parameters); $i++) {
             $final_parameters[$function_parameters[$i]->name] = (isset($passed_parameters[$i]))?$passed_parameters[$i]:null;
         }
         return $this->send_errors($final_parameters);
@@ -85,18 +80,17 @@ class lucid_ruleset
 
     public static function send_error($field, $msg = null)
     {
-        if (is_null($msg))
-        {
+        if (is_null($msg) === true) {
             $msg = $field;
             $field = '';
         }
         $errors = [$field=>[$msg]];
-        lucid::$response->javascript('lucid.ruleset.showErrors(\''.lucid::$request['__form_name'].'\','.json_encode($errors).');');
+        lucid::$response->javascript('lucid.ruleset.showErrors(\''.lucid::$request->string('__form_name').'\', '.json_encode($errors).');');
         lucid::$response->send();
     }
 }
 
-lucid_ruleset::$_handlers['length_range'] = function($rule, $data){
-    $rule['last_value'] = strval($data[$rule['field']]);
+lucid_ruleset::$_handlers['length_range'] = function ($rule, $data) {
+    $rule['last_value'] = $data->string($rule['field']);
     return (strlen($rule['last_value']) >= $rule['min'] && strlen($rule['last_value']) < $rule['max']);
 };

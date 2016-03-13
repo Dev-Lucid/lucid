@@ -22,17 +22,14 @@ class lucid_error implements i_lucid_error
         # transform the exception object into an array if necessary. This lets this code be called from
         # either a catch or a shutdown function
         $error = null;
-        if (!is_array($e))
-        {
+        if (is_array($e) === false) {
             $array_error = [];
             $array_error['type'] = $e->getCode();
             $array_error['file'] = $e->getFile();
             $array_error['line'] = $e->getLine();
             $array_error['message'] = $e->getMessage();
             $error = $array_error;
-        }
-        else
-        {
+        } else {
             $error = $e;
         }
         return $error['message'].' on line '.$error['line'].' in '.$error['file'];
@@ -42,15 +39,11 @@ class lucid_error implements i_lucid_error
     {
         $error = error_get_last();
 
-        if (!is_null($error))
-        {
-            try
-            {
+        if (!is_null($error)) {
+            try {
                 lucid::$error->handle($error);
                 lucid::$response->send();
-            }
-            catch(Exception $e)
-            {
+            } catch (Exception $e) {
                 exit(print_r($error,true));
             }
         }
@@ -60,23 +53,18 @@ class lucid_error implements i_lucid_error
     {
         $msg = lucid::$error->build_error_string($e);
         lucid::$logger->error($msg);
-        if ($send_message === true)
-        {
-            if (lucid::$stage === 'development')
-            {
+        if ($send_message === true) {
+            if (lucid::$stage === 'development') {
                 lucid::$response->error($msg);
-            }
-            else
-            {
-                lucid::$response->error(_(lucid::$error_phrase));
+            } else {
+                lucid::$response->error(__(lucid::$error_phrase));
             }
         }
     }
 
     public function not_found($data, $replace_selector = '#body')
     {
-        if($data === false)
-        {
+        if ($data === false) {
             lucid::view('error_data_not_found', ['replace_selector'=>$replace_selector]);
             throw new Lucid_Silent_Exception('Data not found');
         }

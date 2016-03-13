@@ -70,17 +70,16 @@ class lucid_response implements i_lucid_response
 
     public function replace($area, $content=null)
     {
-        if(!isset($area) and !is_null($this->default_position)){
+        if (!isset($area) and !is_null($this->default_position)) {
             $area = $this->default_position;
         }
 
-        if(!isset($content) || is_null($content)){
+        if (!isset($content) || is_null($content)) {
             $content = ob_get_clean();
             ob_start();
         }
 
-        if (is_object($content))
-        {
+        if (is_object($content)) {
             $content = $content->__toString();
         }
         $this->data['replace'][$area] = $content;
@@ -88,17 +87,16 @@ class lucid_response implements i_lucid_response
 
     public function append($area, $content=null)
     {
-        if(!isset($area) and !is_null($this->default_position)){
+        if (!isset($area) and !is_null($this->default_position)) {
             $area = $this->default_position;
         }
 
-        if(!isset($content)){
+        if (!isset($content)) {
             $content = ob_get_clean();
             ob_start();
         }
 
-        if (is_object($content))
-        {
+        if (is_object($content)) {
             $content = $content->__toString();
         }
         $this->data['append'][$area] = $content;
@@ -106,17 +104,16 @@ class lucid_response implements i_lucid_response
 
     public function prepend($area, $content=null)
     {
-        if(!isset($area) and !is_null($this->default_position)){
+        if (isset($area) === false and is_null($this->default_position) === false) {
             $area = $this->default_position;
         }
 
-        if(!isset($content)){
+        if (isset($content) === false) {
             $content = ob_get_clean();
             ob_start();
         }
 
-        if (is_object($content))
-        {
+        if (is_object($content) === true) {
             $content = $content->__toString();
         }
         $this->data['prepend'][$area] = $content;
@@ -124,9 +121,9 @@ class lucid_response implements i_lucid_response
 
     public function __call($area, $args)
     {
-        if (isset($args[0])){
+        if (isset($args[0]) === true) {
             $this->replace('#'.$area,$args[0]);
-        }else{
+        } else {
             $this->replace('#'.$area);
         }
     }
@@ -135,8 +132,7 @@ class lucid_response implements i_lucid_response
     {
         $areas = (is_null($areas) === true)?$this->default_clears:$areas;
         $areas = (is_array($areas) === false)?[$areas]:$areas;
-        foreach($areas as $area)
-        {
+        foreach ($areas as $area) {
             $this->replace($area,'');
         }
     }

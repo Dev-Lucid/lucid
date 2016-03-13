@@ -67,12 +67,9 @@ class lucid_session implements i_lucid_session
 
     public function __call($property, $params)
     {
-        if(count($params) == 0)
-        {
+        if (count($params) == 0) {
             return $this->get($property);
-        }
-        else
-        {
+        } else {
             return $this->set($property, $params[0]);
         }
     }
@@ -90,8 +87,7 @@ class lucid_session implements i_lucid_session
 
     public function set_array($new_vals)
     {
-        foreach($new_vals as $key=>$value)
-        {
+        foreach ($new_vals as $key=>$value) {
             $_SESSION[$key] = $value;
         }
     }
@@ -103,8 +99,7 @@ class lucid_session implements i_lucid_session
 
     public function restart()
     {
-        foreach($_SESSION as $key=>$value)
-        {
+        foreach ($_SESSION as $key=>$value) {
             unset($_SESSION[$key]);
         }
         session_regenerate_id(true);
