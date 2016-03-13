@@ -1,5 +1,7 @@
 <?php
 
+namespace DevLucid;
+
 interface i_lucid_request
 {
     public function __construct($source);

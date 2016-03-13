@@ -16,10 +16,10 @@
       }
   ],
   "autoload": {
-      "classmap": ["src/php/lucid.php"]
+      "psr-4": {"DevLucid\\": "/src/php/"}
   },
   "autoload-dev": {
-      "classmap": ["src/php/lucid.php"]
+      "psr-4": {"DevLucid\\": "/src/php/"}
   },
   "license": "MIT",
   "bin": [

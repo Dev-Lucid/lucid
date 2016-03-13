@@ -1,5 +1,7 @@
 <?php
 
+namespace DevLucid;
+
 class lucid
 {
     public static $stage        = 'production';
@@ -72,6 +74,7 @@ class lucid
             'post'    => [],
         ];
 
+        
         lucid::$libs[] = __DIR__.'/lucid_controller.php';
         lucid::$libs[] = __DIR__.'/lucid_model.php';
         lucid::$libs[] = __DIR__.'/lucid_response.php';
@@ -82,6 +85,7 @@ class lucid
         lucid::$libs[] = __DIR__.'/lucid_ruleset.php';
         lucid::$libs[] = __DIR__.'/lucid_session.php';
         lucid::$libs[] = __DIR__.'/lucid_security.php';
+
 
         foreach (lucid::$libs as $lib) {
             try {
@@ -104,8 +108,9 @@ class lucid
         if (is_null(lucid::$session) === true) {
             lucid::$session = new lucid_session();
         }
-        if (in_array('i_lucid_session', class_implements(lucid::$session)) === false){
-            throw new Exception('For compatibility, any class that replaces lucid::$session must implement the i_lucid_session interface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/lucid_session.php');
+
+        if (in_array('DevLucid\\i_lucid_session', class_implements(lucid::$session)) === false){
+            throw new \Exception('For compatibility, any class that replaces lucid::$session must implement the DevLucid\\i_lucid_session interface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/lucid_session.php');
         }
 
         # if the configs did not instantiate a security object and place it into lucid::$security,
@@ -113,8 +118,8 @@ class lucid
         if( is_null(lucid::$security) === true) {
             lucid::$security = new lucid_security();
         }
-        if (in_array('i_lucid_security', class_implements(lucid::$security)) === false) {
-            throw new Exception('For compatibility, any class that replaces lucid::$security must implement the i_lucid_security interface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/lucid_security.php');
+        if (in_array('DevLucid\\i_lucid_security', class_implements(lucid::$security)) === false) {
+            throw new \Exception('For compatibility, any class that replaces lucid::$security must implement the DevLucid\\i_lucid_security interface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/lucid_security.php');
         }
 
         # if the configs did not instantiate an error object and place it into lucid::$error,
@@ -122,8 +127,8 @@ class lucid
         if(is_null(lucid::$error) === true) {
             lucid::$error = new lucid_error();
         }
-        if (in_array('i_lucid_error', class_implements(lucid::$error)) === false) {
-            throw new Exception('For compatibility, any class that replaces lucid::$error must implement the i_lucid_error interface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/lucid_error.php');
+        if (in_array('DevLucid\\i_lucid_error', class_implements(lucid::$error)) === false) {
+            throw new \Exception('For compatibility, any class that replaces lucid::$error must implement the DevLucid\\i_lucid_error interface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/lucid_error.php');
         }
 
         # if the configs did not instantiate a response object and place it into lucid::$response,
@@ -131,8 +136,8 @@ class lucid
         if (is_null(lucid::$response) === true) {
             lucid::$response = new lucid_response();
         }
-        if (in_array('i_lucid_response', class_implements(lucid::$response)) === false) {
-            throw new Exception('For compatibility, any class that replaces lucid::$response must implement the i_lucid_response interface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/lucid_response.php');
+        if (in_array('DevLucid\\i_lucid_response', class_implements(lucid::$response)) === false) {
+            throw new \Exception('For compatibility, any class that replaces lucid::$response must implement the DevLucid\\i_lucid_response interface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/lucid_response.php');
         }
 
         # if the configs did not instantiate a request object and place it into lucid::$request,
@@ -140,26 +145,26 @@ class lucid
         if (is_null(lucid::$request) === true){
             lucid::$request = new lucid_request();
         }
-        if (in_array('i_lucid_request', class_implements(lucid::$request)) === false) {
-            throw new Exception('For compatibility, any class that replaces lucid::$request must implement the i_lucid_request interface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/lucid_request.php');
+        if (in_array('DevLucid\\i_lucid_request', class_implements(lucid::$request)) === false) {
+            throw new \Exception('For compatibility, any class that replaces lucid::$request must implement the DevLucid\\i_lucid_request interface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/lucid_request.php');
         }
 
         # if the configs did not instantiate a response object and place it into lucid::$response,
         # instantiate the default one. Any class that replaces this must implement the i_lucid_response interface
-        if (is_callable('__') === false) {
+        if (is_callable('DevLucid\\_') === false) {
             if (is_null(lucid::$i18n) === true) {
                 lucid::$i18n = new lucid_i18n();
             }
-            if (in_array('i_lucid_i18n', class_implements(lucid::$i18n)) === false){
-                throw new Exception('For compatibility, any class that replaces lucid::$i18n must implement the i_lucid_i18n interface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/lucid_i18n.php');
+            if (in_array('DevLucid\\i_lucid_i18n', class_implements(lucid::$i18n)) === false){
+                throw new \Exception('For compatibility, any class that replaces lucid::$i18n must implement the DevLucid\\i_lucid_i18n interface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/lucid_i18n.php');
             }
             if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) === true){
                 lucid::$i18n->determine_best_user_language($_SERVER['HTTP_ACCEPT_LANGUAGE']);
                 lucid::$i18n->load_dictionaries(lucid::$paths['dictionaries']);
             }
 
-            lucid::log('defining _()!');
-            function __($phrase, $parameters=[])
+            lucid::log('defining __()!');
+            function _($phrase, $parameters=[])
             {
                 return lucid::$i18n->translate($phrase, $parameters);
             }
@@ -236,7 +241,7 @@ class lucid
 
     public static function controller($name)
     {
-        $class_name = 'lucid_controller_'.$name;
+        $class_name = 'DevLucid\\lucid_controller_'.$name;
         $name = lucid::_clean_file_name($name);
 
         # only bother to load if the class isn't already loaded.
@@ -244,7 +249,7 @@ class lucid
             lucid::include_if_exists($name.'.php', lucid::$paths['controllers']);
         }
         if (class_exists($class_name) === false) {
-            throw new Exception('Unable to load controller: '.$name.'. Either no controller file was found, or the file did not contain a class named '.$class_name);
+            throw new \Exception('Unable to load controller: '.$name.'. Either no controller file was found, or the file did not contain a class named '.$class_name);
         }
         $new_obj = new $class_name();
         return $new_obj;

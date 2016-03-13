@@ -1,12 +1,14 @@
 <?php
 
-DevLucid\factory::init('bootstrap',[
+
+
+\DevLucid\html::init('bootstrap',[
     'prefix'=>'lucid',
-    'path'=>realpath(__DIR__.'/../factory/')
+    'path'=>realpath(__DIR__.'/../html/')
 ]);
 
-DevLucid\factory::$logger = lucid::$logger;
+\DevLucid\html::$logger = \DevLucid\lucid::$logger;
 
-DevLucid\factory::$hooks['form__create'] = function ($obj) {
+\DevLucid\html::$hooks['form__create'] = function ($obj) {
     $obj->onsubmit = 'return lucid.submit(this);';
 };

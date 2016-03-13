@@ -1,5 +1,7 @@
 <?php
 
+namespace DevLucid;
+
 interface i_lucid_i18n
 {
     public function get_major_language();

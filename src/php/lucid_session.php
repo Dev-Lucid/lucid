@@ -1,6 +1,8 @@
 <?php
 
-interface i_lucid_session extends Iterator
+namespace DevLucid;
+
+interface i_lucid_session extends \Iterator
 {
     public function __isset($property);
     public function __unset($property);

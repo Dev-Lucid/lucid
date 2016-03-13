@@ -1,5 +1,7 @@
 <?php
 
+namespace DevLucid;
+
 lucid::$paths['scss'] = [
     lucid::$paths['base'].'/vendor/twbs/bootstrap/scss/',
     lucid::$paths['base'].'/vendor/fortawesome/font-awesome/scss/',

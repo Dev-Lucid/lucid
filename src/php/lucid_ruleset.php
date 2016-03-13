@@ -1,5 +1,7 @@
 <?php
 
+namespace DevLucid;
+
 class lucid_ruleset
 {
     public $rules = [];

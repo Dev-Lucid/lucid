@@ -1,5 +1,7 @@
 <?php
 
+namespace DevLucid;
+
 lucid::$js_files = [
     lucid::$paths['base'].'/vendor/twbs/bootstrap/docs/assets/js/vendor/jquery.min.js',
     lucid::$paths['base'].'/vendor/twbs/bootstrap/docs/assets/js/vendor/tether.min.js',

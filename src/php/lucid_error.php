@@ -1,5 +1,7 @@
 <?php
 
+namespace DevLucid;
+
 interface i_lucid_error
 {
     public function build_error_string($e);
@@ -57,7 +59,7 @@ class lucid_error implements i_lucid_error
             if (lucid::$stage === 'development') {
                 lucid::$response->error($msg);
             } else {
-                lucid::$response->error(__(lucid::$error_phrase));
+                lucid::$response->error(_(lucid::$error_phrase));
             }
         }
     }
@@ -83,7 +85,7 @@ class lucid_error implements i_lucid_error
     }
 }
 
-class Lucid_Silent_Exception extends Exception
+class Lucid_Silent_Exception extends \Exception
 {
 
 }

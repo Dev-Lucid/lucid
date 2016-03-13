@@ -1,5 +1,7 @@
 <?php
 
+namespace DevLucid;
+
 interface i_lucid_security
 {
     public function is_logged_in();

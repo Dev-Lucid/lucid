@@ -1,5 +1,7 @@
 <?php
 
+namespace DevLucid;
+
 class lucid_controller
 {
     public function __construct()

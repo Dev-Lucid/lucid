@@ -1,5 +1,7 @@
 <?php
 
+namespace DevLucid;
+
 class lucid_logger
 {
     public function __construct()
