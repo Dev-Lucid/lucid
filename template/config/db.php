@@ -21,8 +21,7 @@ lucid::$db_stages = [
 ];
 
 
-switch(lucid::$stage)
-{
+switch (lucid::$stage) {
     case 'development':
         ORM::configure('sqlite:'.lucid::$db_stages['development']['name']);
         break;

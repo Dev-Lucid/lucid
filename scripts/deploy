@@ -5,8 +5,7 @@ include(__DIR__.'/../../../../bootstrap.php');
 array_shift($argv);
 $action = array_shift($argv);
 
-switch($action)
-{
+switch ($action) {
     case 'db-status':
         wrap_phinx_command('status', $argv, true);
         break;
@@ -29,18 +28,14 @@ function wrap_phinx_command($command, $params, $include_stage = true)
 {
     $cmd = 'scripts/phinx '.$command.' '.implode(' ',$params).' --configuration vendor/devlucid/lucid/config/phinx.php';
 
-    if($include_stage === true)
-    {
+    if ($include_stage === true) {
         $cmd .= ' -e '.lucid::$stage;
     }
 
 
-    try
-    {
+    try {
         echo(shell_exec($cmd));
-    }
-    catch(Exception $e)
-    {
+    } catch(Exception $e) {
         exit($e->getMessage()."\n");
     }
 }

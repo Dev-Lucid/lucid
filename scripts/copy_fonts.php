@@ -5,7 +5,7 @@ $files = glob($src.'/*.*');
 
 echo("Copying fonts...\n");
 
-foreach($files as $file){
+foreach ($files as $file) {
     $file_to_go = str_replace($src,$dst,$file);
     copy($file, $file_to_go);
 }

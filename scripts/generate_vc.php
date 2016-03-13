@@ -2,8 +2,7 @@
 $base = __DIR__.'/../../../../';
 include($base.'bootstrap.php');
 
-if($argc < 4)
-{
+if ($argc < 4) {
     exit("Usage:\n\tgenerate_vc.php [table] [id-col] [....additional columns]\n");
 }
 
@@ -11,12 +10,10 @@ array_shift($argv);
 $table = array_shift($argv);
 $id    = array_shift($argv);
 $cols = [];
-while(count($argv) > 0)
-{
+while (count($argv) > 0) {
     $cols[] = array_shift($argv);
 }
-if(count($cols) == 0)
-{
+if (count($cols) == 0) {
     $cols[] = 'name';
 }
 
@@ -39,16 +36,13 @@ $test_inserts    = '';
 
 # used to setup some alignment
 $max_length = 0;
-foreach($cols as $col)
-{
-    if(strlen($col) > $max_length)
-    {
+foreach ($cols as $col) {
+    if(strlen($col) > $max_length) {
         $max_length = strlen($col);
     }
 }
 
-foreach($cols as $col)
-{
+foreach ($cols as $col) {
     # these go into the controller
     $rules .= "            ".'[\'type\'=>\'length_range\', \'label\'=>_(\'model:'.$table.':'.$col.'\'), \'field\'=>\''.$col.'\', \'min\'=>\'2\', \'max\'=>\'255\', ],'."\n";
 
@@ -204,19 +198,14 @@ file_put_contents($files['phpunit'], $phpunit);
 
 # read in the existing model dictionary entries (assuming they're in dictionaries/en__models.json)
 echo("Building dictionary entries...\n");
-if(file_exists($files['dictionary1']))
-{
+if (file_exists($files['dictionary1']) === true) {
     $dictionary_entries = json_decode(file_get_contents($files['dictionary1']), true);
-}
-else
-{
+} else {
     $dictionary_entries = [];
 }
 
-foreach($cols as $col)
-{
-    if(!isset($dictionary_entries['model:'.$table.':'.$col]))
-    {
+foreach ($cols as $col) {
+    if (isset($dictionary_entries['model:'.$table.':'.$col]) === false) {
         $dictionary_entries['model:'.$table.':'.$col] = ucwords(str_replace('_',' ',$col));
     }
 }
@@ -224,17 +213,13 @@ foreach($cols as $col)
 $dictionary_entries = json_encode($dictionary_entries, JSON_PRETTY_PRINT);
 file_put_contents($files['dictionary1'], $dictionary_entries);
 
-if(file_exists($files['dictionary2']))
-{
+if(file_exists($files['dictionary2']) === true) {
     $dictionary_entries = json_decode(file_get_contents($files['dictionary2']), true);
-}
-else
-{
+} else {
     $dictionary_entries = [];
 }
 
-if(!isset($dictionary_entries['navigation:'.$table]))
-{
+if (isset($dictionary_entries['navigation:'.$table]) === false) {
     $dictionary_entries['navigation:'.$table] = ucwords(str_replace('_',' ', $table));
 }
 
@@ -245,8 +230,7 @@ file_put_contents($files['dictionary2'], $dictionary_entries);
 echo("----------------------------------\nBuild complete.\n\n");
 
 echo("The following files have been created or updated:\n");
-foreach($files as $file)
-{
+foreach ($files as $file) {
     echo("\t".str_replace(realpath($base), '', $file)."\n");
 }
 

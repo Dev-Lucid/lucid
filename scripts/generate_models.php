@@ -3,17 +3,13 @@
 include(__DIR__.'/../../../../bootstrap.php');
 
 $tables = get_tables();
-foreach($tables as $table)
-{
+foreach ($tables as $table) {
     $file_path = lucid::$paths['models'].'/'.$table.'.php';
-    if (!file_exists($file_path))
-    {
+    if (file_exists($file_path) === false) {
         $id = get_id_col($table);
         echo("Need to create model file for $table/$id\n");
         file_put_contents($file_path, make_model($table,$id));
-    }
-    else
-    {
+    } else {
         echo("model file already exists for $table\n");
     }
 }
@@ -33,8 +29,7 @@ function make_model($table, $id_col)
 function get_tables()
 {
     $db_type = ORM::get_db()->getAttribute(PDO::ATTR_DRIVER_NAME);
-    switch($db_type)
-    {
+    switch ($db_type) {
         case 'sqlite':
             $tables = [];
             foreach(ORM::get_db()->query('SELECT name FROM sqlite_master WHERE type in (\'table\', \'view\');') as $table)
@@ -51,30 +46,23 @@ function get_tables()
 function get_id_col($table)
 {
     $db_type = ORM::get_db()->getAttribute(PDO::ATTR_DRIVER_NAME);
-    switch($db_type)
-    {
+    switch ($db_type) {
         case 'sqlite':
             $lines    = [];
             $result   = ORM::get_db()->query('SELECT sql FROM sqlite_master WHERE tbl_name = \''.$table.'\' AND type = \'table\';')->fetchAll();
 
-            if(count($result) === 0)
-            {
+            if (count($result) === 0) {
                 $result   = ORM::get_db()->query('select * from '.$table)->fetchAll();
                 $col_name = null;
-                foreach($result as $row)
-                {
-                    foreach($row as $col=>$value)
-                    {
-                        if(is_null($col_name))
-                        {
+                foreach ($result as $row) {
+                    foreach ($row as $col=>$value) {
+                        if (is_null($col_name) === true) {
                             $col_name = $col;
                         }
                     }
                 }
                 return $col_name;
-            }
-            else
-            {
+            } else {
                 $sql = $result[0]['sql'];
                 $colsql   = substr($sql, strpos($sql,'(') +1, strpos($sql,')'));
                 $colsql   = trim(str_replace("\n",'',$colsql));
