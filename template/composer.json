@@ -27,17 +27,17 @@
                     "scripts/tail-log.sh"
                 ],
                 "autoload": {
-                    "classmap": ["src/php/lucid.php"]
+                    "psr-4": {"DevLucid\\": "/src/php/"}
                 },
                 "autoload-dev": {
-                    "classmap": ["src/php/lucid.php"]
+                    "psr-4": {"DevLucid\\": "/src/php/"}
                 }
             }
         },
         {
             "type":"package",
             "package": {
-                "name": "devlucid/factory",
+                "name": "devlucid/html",
                 "version":"master",
                 "source": {
                     "url": "git@github.com:Dev-Lucid/factory.git",
@@ -47,10 +47,10 @@
                 "bin": [
                 ],
                 "autoload": {
-                    "classmap": ["factory.php"]
+                    "psr-4": {"DevLucid\\": "/"}
                 },
                 "autoload-dev": {
-                    "classmap": ["factory.php"]
+                    "psr-4": {"DevLucid\\": "/"}
                 }
             }
         },
