@@ -151,8 +151,8 @@ class lucid
                 throw new \Exception('For compatibility, any class that replaces lucid::$i18n must implement the DevLucid\\I18nInterface interface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/I18nInterface.php');
             }
             if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) === true){
-                lucid::$i18n->determine_best_user_language($_SERVER['HTTP_ACCEPT_LANGUAGE']);
-                lucid::$i18n->load_dictionaries(lucid::$paths['dictionaries']);
+                lucid::$i18n->determineBestUserLanguage($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+                lucid::$i18n->loadDictionaries(lucid::$paths['dictionaries']);
             }
 
             function _($phrase, $parameters=[]) {
@@ -332,7 +332,7 @@ class lucid
         lucid::process_action_list('pre');
         try {
             lucid::process_action_list('request');
-        } catch (Lucid_Silent_Exception $e) {
+        } catch (Exception\Silent $e) {
 
         }
 
@@ -357,9 +357,9 @@ class lucid
             } else {
                 $controller = lucid::controller($controller_name);
                 lucid::log()->info($controller_name.'->'.$method.'()');
-                return $controller->_call_method_with_parameters($method, $passed_params);
+                return $controller->_callMethodWithParameters($method, $passed_params);
             }
-        } catch(Lucid_Silent_Exception $e) {
+        } catch(Exception\Silent $e) {
             lucid::log('Caught silent error: '.$e->getMessage());
             return;
         } catch(Exception $e) {

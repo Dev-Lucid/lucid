@@ -16,10 +16,10 @@
       }
   ],
   "autoload": {
-      "psr-4": {"DevLucid\\": "/src/php/"}
+      "psr-4": {"DevLucid\\": "/src/php/", "DevLucid\\Exception\\":"/src/php/Exception/"}
   },
   "autoload-dev": {
-      "psr-4": {"DevLucid\\": "/src/php/"}
+      "psr-4": {"DevLucid\\": "/src/php/", "DevLucid\\Exception\\":"/src/php/Exception/"}
   },
   "license": "MIT",
   "bin": [

@@ -16,7 +16,7 @@ class Security implements SecurityInterface
     public function require_login()
     {
         if ($this->is_logged_in() === false) {
-            lucid::$error->permission_denied();
+            lucid::$error->permissionDenied();
         }
         return $this;
     }
@@ -27,7 +27,7 @@ class Security implements SecurityInterface
             $name = substr($name, 8);
             $value = lucid::$session->get($name);
             if ($parameters[0]  != $value) {
-                lucid::$error->permission_denied();
+                lucid::$error->permissionDenied();
             }
             return $this;
         }
@@ -41,7 +41,7 @@ class Security implements SecurityInterface
     {
         $sess_value = lucid::$session->get($name);
         if ($req_value != $sess_value) {
-            lucid::$error->permission_denied();
+            lucid::$error->permissionDenied();
         }
         return $this;
     }
@@ -69,7 +69,7 @@ class Security implements SecurityInterface
     public function require_permission($names)
     {
         if ($this->has_permission($names) === false) {
-            lucid::$error->permission_denied();
+            lucid::$error->permissionDenied();
         }
         return $this;
     }
@@ -93,7 +93,7 @@ class Security implements SecurityInterface
     public function require_any_permission($names)
     {
         if ($this->has_any_permission($names) === false) {
-            lucid::$error->permission_denied();
+            lucid::$error->permissionDenied();
         }
         return $this;
     }

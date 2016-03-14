@@ -4,10 +4,10 @@ namespace DevLucid;
 
 interface I18nInterface
 {
-    public function get_major_language();
-    public function get_minor_language();
-    public function add_phrases($contents);
-    public function translate($phrase, $parameters);
-    public function load_dictionaries($dict_paths=[]);
-    public function determine_best_user_language($user_lang);
+    public function getMajorLanguage();
+    public function getMinorLanguage();
+    public function addPhrases(array $contents);
+    public function translate(string $phrase, $parameters);
+    public function loadDictionaries(array $dict_paths=[]);
+    public function determineBestUserLanguage(string $user_lang);
 }

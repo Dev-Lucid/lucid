@@ -9,18 +9,18 @@ class Error implements ErrorInterface
         register_shutdown_function([$this, 'shutdown']);
     }
 
-    public function build_error_string($e)
+    private function buildErrorString($e)
     {
         # transform the exception object into an array if necessary. This lets this code be called from
         # either a catch or a shutdown function
         $error = null;
         if (is_array($e) === false) {
-            $array_error = [];
-            $array_error['type'] = $e->getCode();
-            $array_error['file'] = $e->getFile();
-            $array_error['line'] = $e->getLine();
-            $array_error['message'] = $e->getMessage();
-            $error = $array_error;
+            $arrayError = [];
+            $arrayError['type'] = $e->getCode();
+            $arrayError['file'] = $e->getFile();
+            $arrayError['line'] = $e->getLine();
+            $arrayError['message'] = $e->getMessage();
+            $error = $arrayError;
         } else {
             $error = $e;
         }
@@ -31,19 +31,19 @@ class Error implements ErrorInterface
     {
         $error = error_get_last();
 
-        if (!is_null($error)) {
+        if (is_null($error) === false) {
             try {
                 lucid::$error->handle($error);
                 lucid::$response->send();
             } catch (Exception $e) {
-                exit(print_r($error,true));
+                exit(print_r($error, true));
             }
         }
     }
 
-    public function handle($e, $send_message=true)
+    public function handle($e, bool $send_message=true)
     {
-        $msg = lucid::$error->build_error_string($e);
+        $msg = lucid::$error->buildErrorString($e);
         lucid::$logger->error($msg);
         if ($send_message === true) {
             if (lucid::$stage === 'development') {
@@ -54,28 +54,23 @@ class Error implements ErrorInterface
         }
     }
 
-    public function not_found($data, $replace_selector = '#body')
+    public function notFound($data, string $replace_selector = '#body')
     {
         if ($data === false) {
             lucid::view('error_data_not_found', ['replace_selector'=>$replace_selector]);
-            throw new Lucid_Silent_Exception('Data not found');
+            throw new Exception\Silent('Data not found');
         }
     }
 
-    public function permission_denied($replace_selector = '#body')
+    public function permissionDenied(string $replace_selector = '#body')
     {
         lucid::view('error_permission_denied', ['replace_selector'=>$replace_selector]);
-        throw new Lucid_Silent_Exception('Permission denied');
+        throw new Exception\Silent('Permission denied');
     }
 
-    public function login_required($replace_selector = '#body')
+    public function loginRequired(string $replace_selector = '#body')
     {
         lucid::view('error_login_required', ['replace_selector'=>$replace_selector]);
-        throw new Lucid_Silent_Exception('Login required');
+        throw new Exception\Silent('Login required');
     }
-}
-
-class Lucid_Silent_Exception extends \Exception
-{
-
 }
