@@ -1,4 +1,7 @@
 <?php
+
+namespace DevLucid;
+
 lucid::$security->require_login();
 # lucid::$security->require_permission([]); # add required permissions to this array
 

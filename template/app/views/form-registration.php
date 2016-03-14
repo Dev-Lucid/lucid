@@ -1,5 +1,7 @@
 <?php
 
+namespace DevLucid;
+
 #lucid::controller('authentication')->ruleset()->send();
 
 $card = html::card();

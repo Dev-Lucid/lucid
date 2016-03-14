@@ -1,4 +1,7 @@
 <?php
+
+namespace DevLucid;
+
 class lucid_controller_countries extends lucid_controller
 {
     public function ruleset()
@@ -6,11 +9,10 @@ class lucid_controller_countries extends lucid_controller
         return new lucid_ruleset([
             ['type'=>'length_range', 'label'=>_('model:countries:name'), 'field'=>'name', 'min'=>'2', 'max'=>'255', ],
             ['type'=>'length_range', 'label'=>_('model:countries:common_name'), 'field'=>'common_name', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:countries:alpha3'), 'field'=>'alpha3', 'min'=>'2', 'max'=>'255', ],
       ]);
     }
 
-    public function save($country_id, $name, $common_name, $alpha3, $do_redirect=true)
+    public function save($country_id, $name, $common_name, $alpha_3, $do_redirect=true)
     {
         lucid::$security->require_login();
         # lucid::$security->require_permission([]); # add required permissions to this array
@@ -20,7 +22,7 @@ class lucid_controller_countries extends lucid_controller
 
         $data->name        = $name;
         $data->common_name = $common_name;
-        $data->alpha3      = $alpha3;
+        $data->alpha_3      = $alpha_3;
         $data->save();
 
         if ($do_redirect) lucid::redirect('countries-table');

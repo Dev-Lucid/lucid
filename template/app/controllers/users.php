@@ -1,4 +1,7 @@
 <?php
+
+namespace DevLucid;
+
 class lucid_controller_users extends lucid_controller
 {
     public function ruleset()

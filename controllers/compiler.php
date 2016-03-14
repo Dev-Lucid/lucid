@@ -1,5 +1,7 @@
 <?php
 
+namespace DevLucid;
+
 class lucid_controller_compiler extends lucid_controller
 {
     private function headers($type)
@@ -37,7 +39,7 @@ class lucid_controller_compiler extends lucid_controller
     {
         lucid::config('scss');
 
-        $scss = new Leafo\ScssPhp\Compiler();
+        $scss = new \Leafo\ScssPhp\Compiler();
         $scss->setFormatter('Leafo\ScssPhp\Formatter\Compressed');
 
         foreach(lucid::$paths['scss'] as $path){

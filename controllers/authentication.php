@@ -1,5 +1,7 @@
 <?php
 
+namespace DevLucid;
+
 class lucid_controller_authentication extends lucid_controller
 {
     public function ruleset()
@@ -9,7 +11,7 @@ class lucid_controller_authentication extends lucid_controller
         ]);
     }
 
-    public function process($email, $password)
+    public function process(string $email, string $password)
     {
         lucid::log('Attempting to authenticate user: '.$email);
         $this->ruleset()->send_errors();

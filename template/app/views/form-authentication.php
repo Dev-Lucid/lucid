@@ -1,5 +1,6 @@
 <?php
 
+namespace DevLucid;
 
 $card = html::card();
 $card->add(html::card_header(_('navigation:login')));

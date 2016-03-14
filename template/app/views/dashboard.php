@@ -1,4 +1,7 @@
 <?php
+
+namespace DevLucid;
+
 lucid::controller('navigation')->render('view.dashboard');
 
 lucid::$security->require_role_name('admin');

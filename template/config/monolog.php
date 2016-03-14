@@ -1,6 +1,6 @@
 <?php
 
-lucid::$logger = new Monolog\Logger('lucid');
+DevLucid\lucid::$logger = new Monolog\Logger('lucid');
 
 $handler = new Monolog\Handler\StreamHandler(__DIR__.'/../debug.log');
 
@@ -13,6 +13,6 @@ $format .= '['.str_pad($ip,15,' ',STR_PAD_RIGHT).'] ';
 $format .= "%level_name%: %message%\n";
 
 $handler->setFormatter(new Monolog\Formatter\LineFormatter($format));
-lucid::$logger->pushHandler($handler);
+DevLucid\lucid::$logger->pushHandler($handler);
 
-lucid::log()->info('------------------------------------------------');
+DevLucid\lucid::log()->info('------------------------------------------------');

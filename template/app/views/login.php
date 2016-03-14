@@ -1,4 +1,7 @@
 <?php
+
+namespace DevLucid;
+
 lucid::controller('navigation')->render('view.login');
 
 $row = html::row();

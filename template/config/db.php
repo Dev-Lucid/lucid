@@ -5,31 +5,31 @@
 # certainly unsuitable for a production environment where you should be using
 # an ACID compliant database. Try out Postgresql or Mysql!
 
-lucid::$db_stages = [
+DevLucid\lucid::$db_stages = [
     'development'=>[
         'adapter'=>'sqlite',
-        'name'=>lucid::$paths['base'].'/db/development.sqlite',
+        'name'=>DevLucid\lucid::$paths['base'].'/db/development.sqlite',
     ],
     'qa'=>[
         'adapter'=>'sqlite',
-        'name'=>lucid::$paths['base'].'/db/development.sqlite',
+        'name'=>DevLucid\lucid::$paths['base'].'/db/development.sqlite',
     ],
     'production'=>[
         'adapter'=>'sqlite',
-        'name'=>lucid::$paths['base'].'/db/development.sqlite',
+        'name'=>DevLucid\lucid::$paths['base'].'/db/development.sqlite',
     ],
 ];
 
 
-switch (lucid::$stage) {
+switch (DevLucid\lucid::$stage) {
     case 'development':
-        ORM::configure('sqlite:'.lucid::$db_stages['development']['name']);
+        \ORM::configure('sqlite:'.DevLucid\lucid::$db_stages['development']['name']);
         break;
     case 'qa':
-        ORM::configure('sqlite:'.lucid::$db_stages['qa']['name']);
+        \ORM::configure('sqlite:'.DevLucid\lucid::$db_stages['qa']['name']);
         break;
     case 'production':
-        ORM::configure('sqlite:'.lucid::$db_stages['production']['name']);
+        \ORM::configure('sqlite:'.DevLucid\lucid::$db_stages['production']['name']);
         break;
 }
 

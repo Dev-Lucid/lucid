@@ -16,7 +16,7 @@ class lucid_ruleset
     public function send ($form_name = 'edit')
     {
         foreach ($this->rules as $key=>$value) {
-            $this->rules[$key]['message'] = __('validation:'.$this->rules[$key]['type'], $this->rules[$key]);
+            $this->rules[$key]['message'] = _('validation:'.$this->rules[$key]['type'], $this->rules[$key]);
         }
         $js = 'lucid.ruleset.add(\''.$form_name.'\','.json_encode($this->rules).');';
         lucid::$response->javascript($js);
@@ -39,7 +39,7 @@ class lucid_ruleset
                     if (isset($errors[$rule['label']]) === false) {
                         $errors[$rule['label']] = [];
                     }
-                    $errors[$rule['label']][] = __('validation:'.$rule['type'],$rule);
+                    $errors[$rule['label']][] = _('validation:'.$rule['type'],$rule);
                 }
             }
         }
@@ -70,7 +70,7 @@ class lucid_ruleset
         # named, then rebuilds the numerically indexed array of parameters into an associative array,
         # and then calls send_errors.
         $caller =  debug_backtrace()[1];
-        $r = new ReflectionMethod($caller['class'], $caller['function']);
+        $r = new \ReflectionMethod($caller['class'], $caller['function']);
         $function_parameters = $r->getParameters();
 
         $final_parameters = [];

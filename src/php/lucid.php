@@ -74,7 +74,7 @@ class lucid
             'post'    => [],
         ];
 
-        
+
         lucid::$libs[] = __DIR__.'/lucid_controller.php';
         lucid::$libs[] = __DIR__.'/lucid_model.php';
         lucid::$libs[] = __DIR__.'/lucid_response.php';
@@ -277,7 +277,7 @@ class lucid
                 return $result;
             }
         }
-        throw new Exception('Unable to load view '.$file_name.', file does not exist');
+        throw new \Exception('Unable to load view '.$file_name.', file does not exist');
     }
 
     private static function _clean_file_name($name)

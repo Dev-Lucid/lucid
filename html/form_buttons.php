@@ -13,7 +13,7 @@ class lucid_form_buttons extends base_tag
         $this->add_class('pull-right');
         $this->attributes['role'] = 'group';
 
-        $this->add(factory::button(_('button:cancel'), 'secondary', 'history.go(-1);'));
-        $this->add(factory::submit(_('button:save')));
+        $this->add(html::button(_('button:cancel'), 'secondary', 'history.go(-1);'));
+        $this->add(html::submit(_('button:save')));
     }
 }

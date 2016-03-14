@@ -17,4 +17,4 @@ if (isset($_ENV['APP_STAGE']) === true) {
     $stage = $_ENV['APP_STAGE'];
 }
 
-lucid::$stage = $stage;
+DevLucid\lucid::$stage = $stage;

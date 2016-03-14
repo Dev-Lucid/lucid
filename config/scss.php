@@ -6,7 +6,7 @@ lucid::$paths['scss'] = [
     lucid::$paths['base'].'/vendor/twbs/bootstrap/scss/',
     lucid::$paths['base'].'/vendor/fortawesome/font-awesome/scss/',
     lucid::$paths['lucid'].'/src/scss/',
-    lucid::$paths['base'].'/vendor/devlucid/factory/src/bootstrap/scss/',
+    lucid::$paths['base'].'/vendor/devlucid/html/src/bootstrap/scss/',
     lucid::$paths['app'].'/media/scss/',
 ];
 

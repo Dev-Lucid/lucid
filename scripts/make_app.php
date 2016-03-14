@@ -6,7 +6,7 @@ $path_template = realpath(__DIR__.'/../template/');
 $files = [];
 $initial_files = explode("\n",file_get_contents(__DIR__.'/../template/file_list.txt'));
 
-foreach ($initial_files as $file {
+foreach ($initial_files as $file) {
     $file = trim($file);
     if ($file != '') {
         $files[] = $file;

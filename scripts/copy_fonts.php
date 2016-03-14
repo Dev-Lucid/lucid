@@ -1,4 +1,4 @@
-<?
+<?php
 $src = __DIR__.'/../../../fortawesome/font-awesome/fonts/';
 $dst = __DIR__.'/../../../../app/media/fonts/';
 $files = glob($src.'/*.*');

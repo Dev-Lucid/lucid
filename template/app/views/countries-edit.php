@@ -1,4 +1,7 @@
 <?php
+
+namespace DevLucid;
+
 lucid::$security->require_login();
 # lucid::$security->require_permission([]); # add required permissions to this array
 
@@ -19,7 +22,7 @@ $card->header()->add($header_msg);
 $card->block()->add([
 	html::form_group(_('model:countries:name'), html::input('text', 'name', $data->name)),
 	html::form_group(_('model:countries:common_name'), html::input('text', 'common_name', $data->common_name)),
-	html::form_group(_('model:countries:alpha3'), html::input('text', 'alpha3', $data->alpha3)),
+	html::form_group(_('model:countries:alpha_3'), html::input('text', 'alpha_3', $data->alpha3)),
     html::input('hidden', 'country_id', $data->country_id),
 ]);
 $card->footer(html::form_buttons());

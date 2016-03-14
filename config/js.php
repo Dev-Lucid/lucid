@@ -11,8 +11,8 @@ lucid::$js_files = [
     lucid::$paths['base'].'/vendor/devlucid/lucid/src/js/lucid.ruleset.js',
     lucid::$paths['base'].'/vendor/devlucid/lucid/src/js/lucid.dataTable.js',
     lucid::$paths['base'].'/vendor/devlucid/lucid/src/js/lucid.i18n.js',
-    lucid::$paths['base'].'/vendor/devlucid/factory/src/base/js/factory.js',
-    lucid::$paths['base'].'/vendor/devlucid/factory/src/base/js/factory.dataTable.js',
+    lucid::$paths['base'].'/vendor/devlucid/html/src/base/js/html.js',
+    lucid::$paths['base'].'/vendor/devlucid/html/src/base/js/html.dataTable.js',
     lucid::$paths['app'].'/media/js/app.js',
 ];
 

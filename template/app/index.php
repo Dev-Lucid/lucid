@@ -1,7 +1,10 @@
 <?php
+namespace DevLucid;
+
 # no need to load the database connection or the logger, so define constants that prevent their loading
 define('__LOAD_DB__',false);
 define('__LOAD_LOGGER__',false);
+
 
 include(__DIR__.'/../bootstrap.php');
 
@@ -51,7 +54,7 @@ lucid::config('scss');
         <script src="<?=str_replace(lucid::$paths['app'],'',lucid::$js_production_build)?>"></script>
         <script language="Javascript">
         lucid.stage = '<?=lucid::$stage?>';
-        lucid.defaultRequest = '#!view.home';
+        lucid.defaultRequest = '#!view.login';
         lucid.i18n.phrases['data_table:page'] = '<?=_('data_table:page')?>';
         lucid.addHandler('pre-handleResponse', function(parameters){
             var data = parameters.jqxhr.responseJSON;
