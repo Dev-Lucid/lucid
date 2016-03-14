@@ -1,8 +1,11 @@
 {
-    "navigation:login":"Login",
-    "navigation:logout":"Logout",
-    "navigation:dashboard":"Dashboard",
-    "navigation:users":"Users",
-    "navigation:organizations":"Organizations",
-    "navigation:registration":"Registration"
+    "navigation:login": "Login",
+    "navigation:logout": "Logout",
+    "navigation:dashboard": "Dashboard",
+    "navigation:users": "Users",
+    "navigation:organizations": "Organizations",
+    "navigation:registration": "Registration",
+    "navigation:roles": "Roles",
+    "navigation:countries": "Countries",
+    "navigation:regions": "Regions"
 }

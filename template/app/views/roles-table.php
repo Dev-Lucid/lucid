@@ -2,14 +2,14 @@
 
 namespace DevLucid;
 
-lucid::$security->require_login();
-# lucid::$security->require_permission([]); # add required permissions to this array
+lucid::$security->requireLogin();
+# lucid::$security->requirePermission([]); # add required permissions to this array
 
-lucid::controller('navigation')->render('view.roles-table', 'view.roles-table');
+lucid::controller('navigation')->render('view.roles-table');
 
-$table = html::data_table(_('table:roles'), 'roles-table', lucid::model('roles'), 'app.php?action=view.roles-table');
+$table = html::data_table(_('navigation:roles'), 'roles-table', lucid::model('roles'), 'app.php?action=view.roles-table');
 
-$table->add(html::data_column(_('model:roles:name'), 'name', '80', true, function($data){
+$table->add(html::data_column(_('model:roles:name'), 'name', '80%', true, function($data){
     return html::anchor('#!view.roles-edit|role_id|'.$data->role_id, $data->name);
 }));
 

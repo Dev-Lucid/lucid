@@ -22,7 +22,7 @@ class Ruleset
         lucid::$response->javascript($js);
     }
 
-    public function has_errors ($data = null)
+    public function hasErrors ($data = null)
     {
         if (is_null($data)) {
             $data = lucid::$request;
@@ -52,9 +52,9 @@ class Ruleset
         return false;
     }
 
-    public function send_errors($data = null)
+    public function sendErrors($data = null)
     {
-        if(($errors = $this->has_errors($data)) == false)
+        if(($errors = $this->hasErrors($data)) == false)
         {
             lucid::log('no errors found');
             return;
@@ -64,23 +64,23 @@ class Ruleset
         lucid::$response->send();
     }
 
-    public function check_parameters($passed_parameters)
+    public function checkParameters($passedParameters)
     {
         # this function determines what the names of the parameters sent to the function calling this should have been
         # named, then rebuilds the numerically indexed array of parameters into an associative array,
-        # and then calls send_errors.
+        # and then calls sendErrors.
         $caller =  debug_backtrace()[1];
         $r = new \ReflectionMethod($caller['class'], $caller['function']);
         $function_parameters = $r->getParameters();
 
-        $final_parameters = [];
+        $finalParameters = [];
         for ($i=0; $i<count($function_parameters); $i++) {
-            $final_parameters[$function_parameters[$i]->name] = (isset($passed_parameters[$i]))?$passed_parameters[$i]:null;
+            $finalParameters[$function_parameters[$i]->name] = (isset($passedParameters[$i]))?$passedParameters[$i]:null;
         }
-        return $this->send_errors($final_parameters);
+        return $this->sendErrors($finalParameters);
     }
 
-    public static function send_error($field, $msg = null)
+    public static function sendError($field, $msg = null)
     {
         if (is_null($msg) === true) {
             $msg = $field;

@@ -9,7 +9,7 @@ class Error implements ErrorInterface
         register_shutdown_function([$this, 'shutdown']);
     }
 
-    private function buildErrorString($e)
+    private function buildErrorString($e): string
     {
         # transform the exception object into an array if necessary. This lets this code be called from
         # either a catch or a shutdown function

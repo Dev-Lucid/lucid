@@ -2,14 +2,14 @@
 
 namespace DevLucid;
 
-lucid::$security->require_login();
-# lucid::$security->require_permission([]); # add required permissions to this array
+lucid::$security->requireLogin();
+# lucid::$security->requirePermission([]); # add required permissions to this array
 
 lucid::controller('navigation')->render('view.organizations-table');
 
-$table = html::data_table(_('table:organizations'), 'organizations-table', lucid::model('organizations'), 'app.php?action=view.organizations-table');
+$table = html::data_table(_('navigation:organizations'), 'organizations-table', lucid::model('organizations'), 'app.php?action=view.organizations-table');
 
-$table->add(html::data_column(_('model:organizations:name'), 'name', '80', true, function($data){
+$table->add(html::data_column(_('model:organizations:name'), 'name', '80%', true, function($data){
     return html::anchor('#!view.organizations-edit|org_id|'.$data->org_id, $data->name);
 }));
 

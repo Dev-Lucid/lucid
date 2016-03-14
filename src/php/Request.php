@@ -11,27 +11,27 @@ class Request implements RequestInterface
         $this->_source = (is_null($source) === true)?$_REQUEST:$source;
     }
 
-    public function is_set($property)
+    public function is_set(string $property)
     {
         return isset($this->_source[$property]);
     }
 
-    public function un_set($property)
+    public function un_set(string $property)
     {
         unset($this->_source[$property]);
     }
 
-    public function raw($name, $default_val = null)
+    public function raw(string $name, $defaultValue = null)
     {
-        return (isset($this->_source[$name]) === true)?$this->_source[$name]:$default_val;
+        return (isset($this->_source[$name]) === true)?$this->_source[$name]:$defaultValue;
     }
 
-    public function string($name, $default_val=null)
+    public function string(string $name, $defaultValue=null): string
     {
-        return (isset($this->_source[$name]) === true)?strval($this->_source[$name]):$default_val;
+        return (isset($this->_source[$name]) === true)?strval($this->_source[$name]):$defaultValue;
     }
 
-    public function int($name, $default_val=null)
+    public function int(string $name, $defaultValue=null): int
     {
         if (isset($this->_source[$name]) === true) {
             if (is_numeric($this->_source[$name]) === false) {
@@ -39,16 +39,16 @@ class Request implements RequestInterface
             }
             return intval($this->_source[$name]);
         } else {
-            return $default_val;
+            return $defaultValue;
         }
     }
 
-    public function integer($name, $default_val=null)
+    public function integer(string $name, $defaultValue=null): int
     {
-        return $this->int($name, $default_val);
+        return $this->int($name, $defaultValue);
     }
 
-    public function float($name, $default_val=null)
+    public function float(string $name, $defaultValue=null): float
     {
         if (isset($this->_source[$name]) === true) {
             if (is_numeric($this->_source[$name]) === false) {
@@ -56,21 +56,21 @@ class Request implements RequestInterface
             }
             return floatval($this->_source[$name]);
         } else {
-            return $default_val;
+            return $defaultValue;
         }
     }
 
-    public function bool($name, $default_val=null, $allow_string_on=true, $allow_string_true = true, $allow_string_1 = true)
+    public function bool(string $name, $defaultValue=null, $allowStringOn=true, $allowStringTrue = true, $allowString1 = true): bool
     {
         $val = null;
         if (isset($this->_source[$name]) === true) {
 
             $val = false;
-            if ($allow_string_on === true && strval($this->_source[$name]) === 'on') {
+            if ($allowStringOn === true && strval($this->_source[$name]) === 'on') {
                 $val = true;
-            } elseif ($allow_string_true === true && strval($this->_source[$name]) === 'true') {
+            } elseif ($allowStringTrue === true && strval($this->_source[$name]) === 'true') {
                 $val = true;
-            } elseif ($allow_string_1 === true && strval($this->_source[$name]) === '1') {
+            } elseif ($allowString1 === true && strval($this->_source[$name]) === '1') {
                 $val = true;
             } elseif ($this->_source[$name] === true) {
                 $val = true;
@@ -78,24 +78,24 @@ class Request implements RequestInterface
         }
 
         if (is_null($val) === true) {
-            $val = $default_val;
+            $val = $defaultValue;
         }
 
         return $val;
     }
 
-    public function boolean($name, $default_val=null, $allow_string_on=true, $allow_string_true = true, $allow_string_1 = true)
+    public function boolean(string $name, $defaultValue=null, $allowStringOn=true, $allowStringTrue = true, $allowString1 = true): bool
     {
-        return $this->bool($name, $default_val, $allow_string_on, $allow_string_true, $allow_string_1);
+        return $this->bool($name, $defaultValue, $allowStringOn, $allowStringTrue, $allowString1);
     }
 
-    public function set($name, $new_value)
+    public function set(string $name, $new_value)
     {
         $this->_source[$name] = $new_value;
         return $this;
     }
 
-    public function get_array()
+    public function get_array(): array
     {
         return $this->_source;
     }

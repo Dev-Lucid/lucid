@@ -2,11 +2,11 @@
 
 namespace DevLucid;
 
-class lucid_controller_addresses extends lucid_controller
+class lucid_controller_addresses extends Controller
 {
     public function ruleset()
     {
-        return new lucid_ruleset([
+        return new Ruleset([
             ['type'=>'length_range', 'label'=>_('model:addresses:name'), 'field'=>'name', 'min'=>'2', 'max'=>'255', ],
             ['type'=>'length_range', 'label'=>_('model:addresses:street_1'), 'field'=>'street_1', 'min'=>'2', 'max'=>'255', ],
             ['type'=>'length_range', 'label'=>_('model:addresses:street_2'), 'field'=>'street_2', 'min'=>'2', 'max'=>'255', ],
@@ -19,7 +19,7 @@ class lucid_controller_addresses extends lucid_controller
         lucid::$security->require_login();
         # lucid::$security->require_permission([]); # add required permissions to this array
 
-        $this->ruleset()->check_parameters(func_get_args());
+        $this->ruleset()->checkParameters(func_get_args());
         $data = lucid::model('addresses', $address_id, false);
 
         $data->name     = $name;

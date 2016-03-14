@@ -6,8 +6,8 @@ namespace DevLucid;
 class Response implements ResponseInterface
 {
     public $data = [];
-    public $default_position = null;
-    public $default_clears = ['#body', 'ul.nav2', '#full-width'];
+    public $defaultPosition = null;
+    public $defaultClear = [];
 
     public function __construct()
     {
@@ -46,9 +46,9 @@ class Response implements ResponseInterface
         $this->data['data'][$key] = $data;
     }
 
-    public function javascript($js, $run_before = false)
+    public function javascript($js, $runBefore = false)
     {
-        $this->data[ (($run_before)?'pre':'post') . 'Javascript' ] .= $js;
+        $this->data[ (($runBefore)?'pre':'post') . 'Javascript' ] .= $js;
     }
 
     public function error($msg)
@@ -58,16 +58,16 @@ class Response implements ResponseInterface
 
     public function replace($area, $content=null)
     {
-        if (!isset($area) and !is_null($this->default_position)) {
-            $area = $this->default_position;
+        if (isset($area) === false and is_null($this->defaultPosition) === false) {
+            $area = $this->defaultPosition;
         }
 
-        if (!isset($content) || is_null($content)) {
+        if (isset($content) === false || is_null($content) === true) {
             $content = ob_get_clean();
             ob_start();
         }
 
-        if (is_object($content)) {
+        if (is_object($content) === true) {
             $content = $content->__toString();
         }
         $this->data['replace'][$area] = $content;
@@ -75,16 +75,16 @@ class Response implements ResponseInterface
 
     public function append($area, $content=null)
     {
-        if (!isset($area) and !is_null($this->default_position)) {
-            $area = $this->default_position;
+        if (isset($area) === false and is_null($this->defaultPosition) === false) {
+            $area = $this->defaultPosition;
         }
 
-        if (!isset($content)) {
+        if (isset($content) === false) {
             $content = ob_get_clean();
             ob_start();
         }
 
-        if (is_object($content)) {
+        if (is_object($content) === true) {
             $content = $content->__toString();
         }
         $this->data['append'][$area] = $content;
@@ -92,8 +92,8 @@ class Response implements ResponseInterface
 
     public function prepend($area, $content=null)
     {
-        if (isset($area) === false and is_null($this->default_position) === false) {
-            $area = $this->default_position;
+        if (isset($area) === false and is_null($this->defaultPosition) === false) {
+            $area = $this->defaultPosition;
         }
 
         if (isset($content) === false) {
@@ -110,7 +110,7 @@ class Response implements ResponseInterface
     public function __call($area, $args)
     {
         if (isset($args[0]) === true) {
-            $this->replace('#'.$area,$args[0]);
+            $this->replace('#'.$area, $args[0]);
         } else {
             $this->replace('#'.$area);
         }
@@ -118,10 +118,10 @@ class Response implements ResponseInterface
 
     public function clear($areas=null)
     {
-        $areas = (is_null($areas) === true)?$this->default_clears:$areas;
+        $areas = (is_null($areas) === true)?$this->defaultClear:$areas;
         $areas = (is_array($areas) === false)?[$areas]:$areas;
         foreach ($areas as $area) {
-            $this->replace($area,'');
+            $this->replace($area, '');
         }
     }
 

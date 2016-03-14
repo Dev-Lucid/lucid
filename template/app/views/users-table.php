@@ -2,23 +2,23 @@
 
 namespace DevLucid;
 
-lucid::$security->require_login();
-# lucid::$security->require_permission([]); # add required permissions to this array
+lucid::$security->requireLogin();
+# lucid::$security->requirePermission([]); # add required permissions to this array
 
 lucid::controller('navigation')->render('view.users-table');
 
-$table = html::data_table(_('table:users'), 'users-table', lucid::model('users'), 'app.php?action=view.users-table');
+$table = html::data_table(_('navigation:users'), 'users-table', lucid::model('users'), 'app.php?action=view.users-table');
 
-$table->add(html::data_column(_('model:users:first_name'), 'first_name', '20', true, function($data){
+$table->add(html::data_column(_('model:users:first_name'), 'first_name', '20%', true, function($data){
     return html::anchor('#!view.users-edit|user_id|'.$data->user_id, $data->first_name);
 }));
-$table->add(html::data_column(_('model:users:last_name'), 'last_name', '20', true, function($data){
+$table->add(html::data_column(_('model:users:last_name'), 'last_name', '20%', true, function($data){
     return html::anchor('#!view.users-edit|user_id|'.$data->user_id, $data->last_name);
 }));
-$table->add(html::data_column(_('model:users:email'), 'email', '20', true, function($data){
+$table->add(html::data_column(_('model:users:email'), 'email', '20%', true, function($data){
     return html::anchor('#!view.users-edit|user_id|'.$data->user_id, $data->email);
 }));
-$table->add(html::data_column(_('model:users:password'), 'password', '20', true, function($data){
+$table->add(html::data_column(_('model:users:password'), 'password', '20%', true, function($data){
     return html::anchor('#!view.users-edit|user_id|'.$data->user_id, $data->password);
 }));
 

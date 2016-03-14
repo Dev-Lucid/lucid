@@ -6,16 +6,16 @@ class Security implements SecurityInterface
 {
     public static $id_field = 'user_id';
 
-    public function is_logged_in()
+    public function isLoggedIn(): bool
     {
         $class = get_class($this);
         $id = intval(lucid::$session->get($class::$id_field));
         return ($id > 0);
     }
 
-    public function require_login()
+    public function requireLogin()
     {
-        if ($this->is_logged_in() === false) {
+        if ($this->isLoggedIn() === false) {
             lucid::$error->permissionDenied();
         }
         return $this;
@@ -23,7 +23,7 @@ class Security implements SecurityInterface
 
     public function __call($name, $parameters)
     {
-        if (strpos($name, 'require_') === 0) {
+        if (strpos($name, 'require_') === 0 && isset($parameters[0]) === true) {
             $name = substr($name, 8);
             $value = lucid::$session->get($name);
             if ($parameters[0]  != $value) {
@@ -33,30 +33,31 @@ class Security implements SecurityInterface
         }
         else
         {
-            throw new Exception('Unknown security function call: '.$name.'.');
+            throw new \Exception('Unknown security function call: '.$name.'. The DevLucid\Security class does allow calls to undefined methods if the follow the pattern ->require_$variable($value); (ex: ->require_role_id(5)). When the security object is used in this way, it looks for an offset named $variable in lucid::$session, and throws an error if its value does not equal $value. Calling the security object in this manner requires that the function name you\'re accessing start with require_, and be passed 1 argument (the value to check against).');
         }
     }
 
-    public function require_session($name, $req_value)
+    public function hasSession($name, $value): bool
     {
-        $sess_value = lucid::$session->get($name);
-        if ($req_value != $sess_value) {
+        $sess_value = $this->get($name, null);
+        return ($value == $sess_value);
+    }
+
+    public function requireSession($name, $reqValue)
+    {
+        if ($this->hasSession($name, $reqValue) === false) {
             lucid::$error->permissionDenied();
         }
-        return $this;
     }
 
-    public function require_role($value)
+    public function requireRole($value)
     {
-        return lucid::$security->require_session('role_name', $value);
+        return lucid::$security->requireSession('role_name', $value);
     }
 
-    public function has_permission($names)
+    public function hasPermission(string ...$names): bool
     {
-        if (is_array($names) === false) {
-            $names = [$names];
-        }
-        $perms = $this->get_permissions_list();
+        $perms = $this->getPermissionsList();
         $all_good = true;
         foreach ($names as $name) {
             if (in_array($name, $perms) === false) {
@@ -66,39 +67,36 @@ class Security implements SecurityInterface
         return $all_good;
     }
 
-    public function require_permission($names)
+    public function requirePermission(string ...$names)
     {
-        if ($this->has_permission($names) === false) {
+        if ($this->hasPermission($names) === false) {
             lucid::$error->permissionDenied();
         }
         return $this;
     }
 
-    public function has_any_permission($names)
+    public function hasAnyPermission(string ...$names): bool
     {
-        if (is_array($names) === false) {
-            $names = [$names];
-        }
-        $perms = $this->get_permissions_list();
-        $all_good = false;
+        $perms = $this->getPermissionsList();
+        $allGood = false;
 
         foreach ($names as $name) {
             if (in_array($name, $perms) === true) {
-                $all_good = true;
+                $allGood = true;
             }
         }
-        return $all_good;
+        return $allGood;
     }
 
-    public function require_any_permission($names)
+    public function requireAnyPermission(string ...$names)
     {
-        if ($this->has_any_permission($names) === false) {
+        if ($this->hasAnyPermission($names) === false) {
             lucid::$error->permissionDenied();
         }
         return $this;
     }
 
-    public function get_permissions_list()
+    public function getPermissionsList(): array
     {
         if (isset(lucid::$session->permissions) === false || is_array(lucid::$session->permissions) === false) {
             lucid::$session->permissions = [];
@@ -106,43 +104,33 @@ class Security implements SecurityInterface
         return lucid::$session->permissions;
     }
 
-    public function set_permissions_list($names=[])
+    public function setPermissionsList(array $names=[])
     {
         if (isset(lucid::$session->permissions) === false || is_array(lucid::$session->permissions) === false) {
             lucid::$session->permissions = [];
         }
-        if (is_array($names) === false) {
-            $names = [];
-        }
+
         lucid::$session->permissions = $names;
     }
 
-    public function grant($names)
+    public function grant(string ...$names)
     {
         $current = $this->get_permissions_list();
-        if (is_array($names) === false) {
-            array_push($current,$names);
-        } else {
-            foreach ($names as $name) {
-                array_push($current,$name);
-            }
+        foreach ($names as $name) {
+            array_push($current, $name);
         }
         $this->set_permissions_list($current);
     }
 
-    public function revoke($names)
+    public function revoke(string ...$names)
     {
-        if (is_array($names) === false) {
-            $names = [$names];
-        }
-
-        $new_perms = [];
-        $old_perms = $this->get_permissions_list();
-        foreach ($old_perms as $old_perm) {
-            if (in_array($old_perm, $new_perms) === false) {
-                $new_perms[] = $old_perm;
+        $newPerms = [];
+        $oldPerms = $this->get_permissions_list();
+        foreach ($oldPerms as $oldPerm) {
+            if (in_array($oldPerm, $names) === false) {
+                $newPerms[] = $oldPerm;
             }
         }
-        $this->set_permissions_list($new_perms);
+        $this->setPermissionsList($newPerms);
     }
 }

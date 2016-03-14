@@ -67,20 +67,22 @@ foreach ($cols as $col) {
 
 echo("Building controller...\n");
 $controller = '<'.'?php
-class lucid_controller_'.$table.' extends lucid_controller
+
+namespace DevLucid;
+class lucid_controller_'.$table.' extends Controller
 {
     public function ruleset()
     {
-        return new lucid_ruleset([
+        return new Ruleset([
 '.$rules.'      ]);
     }
 
     public function save($'.$id.', '.$save_parameters.'$do_redirect=true)
     {
-        lucid::$security->require_login();
-        # lucid::$security->require_permission([]); # add required permissions to this array
+        lucid::$security->requireLogin();
+        # lucid::$security->requirePermission([]); # add required permissions to this array
 
-        $this->ruleset()->check_parameters(func_get_args());
+        $this->ruleset()->checkParameters(func_get_args());
         $data = lucid::model(\''.$table.'\', $'.$id.', false);
 
 '.$save_actions.'        $data->save();
@@ -90,8 +92,8 @@ class lucid_controller_'.$table.' extends lucid_controller
 
     public function delete($'.$id.', $do_redirect=true)
     {
-        lucid::$security->require_login();
-        # lucid::$security->require_permission([]); # add required permissions to this array
+        lucid::$security->requireLogin();
+        # lucid::$security->requirePermission(\'delete\'); # add required permissions to this array
 
         lucid::model(\''.$table.'\')->where(\''.$id.'\', $'.$id.')->delete_many();
         if ($do_redirect) lucid::redirect(\''.$table.'-table\');
@@ -101,14 +103,17 @@ class lucid_controller_'.$table.' extends lucid_controller
 
 echo("Building edit view...\n");
 $view_edit = '<'.'?php
-lucid::$security->require_login();
-# lucid::$security->require_permission([]); # add required permissions to this array
+
+namespace DevLucid;
+
+lucid::$security->requireLogin();
+# lucid::$security->requirePermission(\'select\'); # add required permissions to this array
 
 lucid::controller(\'navigation\')->render(\'view.'.$table.'-table\', \'view.'.$table.'-edit\');
 
 $data = lucid::model(\''.$table.'\', $'.$id.');
-lucid::$error->not_found($data, \'#body\');
-$header_msg = _(\'form:edit_\'.(($data->'.$id.' == 0)?\'new\':\'existing\'), [
+lucid::$error->notFound($data, \'#body\');
+$headerMsg = _(\'form:edit_\'.(($data->'.$id.' == 0)?\'new\':\'existing\'), [
     \'type\'=>\''.$table.'\',
     \'name\'=>$data->'.$cols[0].',
 ]);
@@ -117,7 +122,7 @@ $form = html::form(\''.$table.'-edit\', \'#!'.$table.'.save\');
 lucid::controller(\''.$table.'\')->ruleset()->send($form->name);
 
 $card = html::card();
-$card->header()->add($header_msg);
+$card->header()->add($headerMsg);
 $card->block()->add([
 '.$inputs.'    html::input(\'hidden\', \''.$id.'\', $data->'.$id.'),
 ]);
@@ -128,8 +133,11 @@ lucid::$response->replace(\'#body\', $form);';
 
 echo("Building table view...\n");
 $view_table = '<'.'?php
-lucid::$security->require_login();
-# lucid::$security->require_permission([]); # add required permissions to this array
+
+namespace DevLucid;
+
+lucid::$security->requireLogin();
+# lucid::$security->requirePermission([]); # add required permissions to this array
 
 lucid::controller(\'navigation\')->render(\'view.'.$table.'-table\');
 
@@ -149,6 +157,9 @@ lucid::$response->replace(\'#body\', $table->render());';
 
 echo("Building unit test...\n");
 $phpunit = '<'.'?php
+
+namespace DevLucid;
+
 include_once(\'Base_Tests.php\');
 
 class '.$table.'_test extends PHPUnit_Framework_TestCase_MyCase

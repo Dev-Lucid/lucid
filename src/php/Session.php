@@ -35,24 +35,24 @@ class Session implements SessionInterface
       return key($_SESSION) !== null;
     }
 
-    public function __isset($property)
+    public function __isset(string $property)
     {
         return isset($_SESSION[$property]);
     }
 
-    public function __unset($property)
+    public function __unset(string $property)
     {
         unset($_SESSION[$property]);
     }
 
-    public function __get($property)
+    public function __get(string $property)
     {
         return $this->get($property);
     }
 
-    public function __set($property, $value)
+    public function __set(string $property, $newValue)
     {
-        return $this->set($property, $value);
+        return $this->set($property, $newValue);
     }
 
     public function __call($property, $params)
@@ -64,25 +64,25 @@ class Session implements SessionInterface
         }
     }
 
-    public function get($name, $default_val = null)
+    public function get(string $name, $defaultValue = null)
     {
-        return (isset($_SESSION[$name]))?$_SESSION[$name]:$default_val;
+        return (isset($_SESSION[$name]))?$_SESSION[$name]:$defaultValue;
     }
 
-    public function set($name, $new_val)
+    public function set(string $name, $newValue)
     {
-        $_SESSION[$name] = $new_val;
+        $_SESSION[$name] = $newValue;
         return $this;
     }
 
-    public function set_array($new_vals)
+    public function setArray(array $newValues)
     {
-        foreach ($new_vals as $key=>$value) {
+        foreach ($newValues as $key=>$value) {
             $_SESSION[$key] = $value;
         }
     }
 
-    public function get_array()
+    public function getArray(): array
     {
         return $_SESSION;
     }

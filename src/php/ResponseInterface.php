@@ -8,7 +8,7 @@ interface ResponseInterface
     public function description($description);
     public function keywords($keywords);
     public function data($key, $data);
-    public function javascript($js, $run_before);
+    public function javascript($js, $runBefore);
     public function error($error);
     public function replace($area, $content);
     public function append($area, $content);

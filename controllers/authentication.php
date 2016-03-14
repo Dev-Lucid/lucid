@@ -14,21 +14,21 @@ class lucid_controller_authentication extends Controller
     public function process(string $email, string $password)
     {
         lucid::log('Attempting to authenticate user: '.$email);
-        $this->ruleset()->send_errors();
+        $this->ruleset()->sendErrors();
 
         $user = lucid::model('vw_users_details')
             ->where_raw('LOWER(email) = ?',strtolower($email))
             ->find_one();
 
         if ($user === false) {
-            lucid_ruleset::send_error(_('error:authentication:failed1'));
+            lucid_ruleset::sendError(_('error:authentication:failed1'));
         }
 
         if (password_verify($password, $user->password) === false) {
-            lucid_ruleset::send_error(_('error:authentication:failed2'));
+            lucid_ruleset::sendError(_('error:authentication:failed2'));
         }
 
-        lucid::$session->set_array($user->as_array());
+        lucid::$session->setArray($user->as_array());
 
         lucid::log('Successful authentication for '.lucid::$session->email);
         lucid::redirect('dashboard');

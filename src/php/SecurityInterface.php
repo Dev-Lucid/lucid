@@ -4,20 +4,23 @@ namespace DevLucid;
 
 interface SecurityInterface
 {
-    public function is_logged_in();
-    public function require_login();
+    public function isLoggedIn(): bool;
+    public function requireLogin();
 
-    public function has_permission($names);
-    public function require_permission($names);
+    public function hasPermission(string ...$names): bool;
+    public function requirePermission(string ...$names);
 
-    public function has_any_permission($names);
-    public function require_any_permission($names);
+    public function hasAnyPermission(string ...$names): bool;
+    public function requireAnyPermission(string ...$names);
 
-    public function grant($names);
-    public function revoke($names);
+    public function hasSession($name, $value): bool;
+    public function requireSession($name, $reqValue);
+    
+    public function grant(string ...$names);
+    public function revoke(string ...$names);
 
-    public function get_permissions_list();
-    public function set_permissions_list($names);
+    public function getPermissionsList(): array;
+    public function setPermissionsList(array $names);
 
     public function __call($name, $parameters);
 }

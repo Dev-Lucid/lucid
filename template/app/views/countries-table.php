@@ -2,21 +2,21 @@
 
 namespace DevLucid;
 
-lucid::$security->require_login();
-# lucid::$security->require_permission([]); # add required permissions to this array
+lucid::$security->requireLogin();
+# lucid::$security->requirePermission([]); # add required permissions to this array
 
-lucid::controller('navigation')->render('view.roles-table', 'view.countries-table');
+lucid::controller('navigation')->render('view.countries-table');
 
-$table = html::data_table(_('table:countries'), 'countries-table', lucid::model('countries'), 'app.php?action=view.countries-table');
+$table = html::data_table(_('navigation:countries'), 'countries-table', lucid::model('countries'), 'app.php?action=view.countries-table');
 
-$table->add(html::data_column(_('model:countries:name'), 'name', '27', true, function($data){
+$table->add(html::data_column(_('model:countries:name'), 'name', '27%', true, function($data){
     return html::anchor('#!view.countries-edit|country_id|'.$data->country_id, $data->name);
 }));
-$table->add(html::data_column(_('model:countries:common_name'), 'common_name', '27', true, function($data){
+$table->add(html::data_column(_('model:countries:common_name'), 'common_name', '27%', true, function($data){
     return html::anchor('#!view.countries-edit|country_id|'.$data->country_id, $data->common_name);
 }));
-$table->add(html::data_column(_('model:countries:alpha_3'), 'alpha_3', '27', true, function($data){
-    return html::anchor('#!view.countries-edit|country_id|'.$data->country_id, $data->alpha3);
+$table->add(html::data_column(_('model:countries:alpha_3'), 'alpha_3', '27%', true, function($data){
+    return html::anchor('#!view.countries-edit|country_id|'.$data->country_id, $data->alpha_3);
 }));
 
 $table->add(html::data_column('', null, '20%', false, function($data){

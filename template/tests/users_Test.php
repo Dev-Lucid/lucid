@@ -1,4 +1,7 @@
 <?php
+
+namespace DevLucid;
+
 include_once('Base_Tests.php');
 
 class users_test extends PHPUnit_Framework_TestCase_MyCase

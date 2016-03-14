@@ -1,4 +1,7 @@
 <?php
+
+namespace DevLucid;
+
 include_once('Base_Tests.php');
 
 class regions_test extends PHPUnit_Framework_TestCase_MyCase
@@ -9,7 +12,6 @@ class regions_test extends PHPUnit_Framework_TestCase_MyCase
     public static $insert_values = [
         'country_id'=>'test-val',
         'name'=>'test-val',
-        'abbreviation'=>'test-val',
     ];
 
     public static $existing_id    = null;

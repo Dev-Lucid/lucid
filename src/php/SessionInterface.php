@@ -4,14 +4,14 @@ namespace DevLucid;
 
 interface SessionInterface extends \Iterator
 {
-    public function __isset($property);
-    public function __unset($property);
-    public function __get($property);
+    public function __isset(string $property);
+    public function __unset(string $property);
+    public function __get(string $property);
     public function __call($property, $parameters);
-    public function __set($property, $new_value);
-    public function get($property, $default_value);
-    public function set($property, $new_value);
-    public function get_array();
-    public function set_array($value_array);
+    public function __set(string $property, $newValue);
+    public function get(string $property, $defaultValue);
+    public function set(string $property, $newValue);
+    public function getArray(): array;
+    public function setArray(array $newValues);
     public function restart();
 }

@@ -2,13 +2,13 @@
 
 namespace DevLucid;
 
-lucid::$security->require_login();
+lucid::$security->requireLogin();
 # lucid::$security->require_permission([]); # add required permissions to this array
 
 lucid::controller('navigation')->render('view.addresses-table', 'view.addresses-edit');
 
 $data = lucid::model('addresses', $address_id);
-lucid::$error->not_found($data, '#body');
+lucid::$error->notFound($data, '#body');
 $header_msg = _('form:edit_'.(($data->address_id == 0)?'new':'existing'), [
     'type'=>'addresses',
     'name'=>$data->name,
