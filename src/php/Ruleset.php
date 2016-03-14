@@ -8,28 +8,28 @@ class Ruleset
     public $name  = '';
     public static $_handlers = [];
 
-    public function __construct ($rules)
+    public function __construct (array $rules)
     {
         $this->rules = $rules;
     }
 
-    public function send ($form_name = 'edit')
+    public function send ($formName = 'edit')
     {
         foreach ($this->rules as $key=>$value) {
             $this->rules[$key]['message'] = _('validation:'.$this->rules[$key]['type'], $this->rules[$key]);
         }
-        $js = 'lucid.ruleset.add(\''.$form_name.'\','.json_encode($this->rules).');';
+        $js = 'lucid.ruleset.add(\''.$formName.'\', '.json_encode($this->rules).');';
         lucid::$response->javascript($js);
     }
 
-    public function hasErrors ($data = null)
+    public function hasErrors ($data = null): bool
     {
         if (is_null($data)) {
             $data = lucid::$request;
         } elseif(is_array($data)) {
             $data = new Request($data);
         }
-        lucid::log($data->get_array());
+
         $errors = [];
         foreach ($this->rules as $rule) {
             if (isset(Ruleset::$_handlers[$rule['type']]) === true && is_callable(Ruleset::$_handlers[$rule['type']]) === true) {
@@ -64,23 +64,23 @@ class Ruleset
         lucid::$response->send();
     }
 
-    public function checkParameters($passedParameters)
+    public function checkParameters(array $passedParameters)
     {
         # this function determines what the names of the parameters sent to the function calling this should have been
         # named, then rebuilds the numerically indexed array of parameters into an associative array,
         # and then calls sendErrors.
         $caller =  debug_backtrace()[1];
         $r = new \ReflectionMethod($caller['class'], $caller['function']);
-        $function_parameters = $r->getParameters();
+        $functionParameters = $r->getParameters();
 
         $finalParameters = [];
-        for ($i=0; $i<count($function_parameters); $i++) {
-            $finalParameters[$function_parameters[$i]->name] = (isset($passedParameters[$i]))?$passedParameters[$i]:null;
+        for ($i=0; $i<count($functionParameters); $i++) {
+            $finalParameters[$functionParameters[$i]->name] = (isset($passedParameters[$i]))?$passedParameters[$i]:null;
         }
         return $this->sendErrors($finalParameters);
     }
 
-    public static function sendError($field, $msg = null)
+    public static function sendError(string $field, $msg = null)
     {
         if (is_null($msg) === true) {
             $msg = $field;
@@ -92,7 +92,7 @@ class Ruleset
     }
 }
 
-Ruleset::$_handlers['length_range'] = function ($rule, $data) {
+Ruleset::$_handlers['length_range'] = function (array $rule, $data) {
     $rule['last_value'] = $data->string($rule['field']);
     return (strlen($rule['last_value']) >= $rule['min'] && strlen($rule['last_value']) < $rule['max']);
 };

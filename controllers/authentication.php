@@ -2,7 +2,7 @@
 
 namespace DevLucid;
 
-class lucid_controller_authentication extends Controller
+class AuthenticationController extends Controller
 {
     public function ruleset()
     {

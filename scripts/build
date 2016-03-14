@@ -1,0 +1,136 @@
+#!/usr/local/bin/php
+<?php
+
+namespace DevLucid;
+
+$base_dir = __DIR__.'/../../../../';
+include($base_dir.'bootstrap.php');
+
+array_shift($argv);
+if (count($argv) === 0) {
+    exit("\nUsage: scripts/build [table_name]\n\nEx: scripts/build users\n");
+}
+
+function swapTemplate($source, $keys)
+{
+    echo("Building $source...\n");
+    $source = file_get_contents(__DIR__.'/templates/'.$source.'.php');
+    foreach ($keys as $key=>$value) {
+        $source = str_replace('{{'.$key.'}}', $value, $source);
+    }
+    return $source;
+}
+
+function mergeDictionary(string $path, array $keys)
+{
+    $current = json_decode(file_get_contents($path), true);
+    foreach ($keys as $key=>$value) {
+        $value = ucwords(str_replace('_', ' ', $value));
+        if (isset($current[$key]) === false) {
+            $current[$key] = $value;
+        }
+    }
+    ksort($current);
+    file_put_contents($path, json_encode($current, JSON_PRETTY_PRINT));
+}
+
+
+$meta = new Metabase(\ORM::get_db());
+
+$table = array_shift($argv);
+if($meta->isTable($table, true) === false)
+{
+    exit("$table is not a table or view in your database.");
+}
+
+$columns = $meta->getColumns($table);
+$template_keys = [
+    'table'=>$table,
+    'uc(table)'=>ucwords($table),
+    'id'=>$columns[0]['name'],
+    'save_actions'=>'',
+    'rules'=>'',
+    'form_fields'=>'',
+    'save_parameters'=>'',
+    'first_string_col'=>null,
+    'table_cols'=>'',
+    'search_cols'=>[],
+];
+$dictionary = [];
+$dictionary['model:'.$table] = $table;
+
+# determine max length of a column, useful for formatting
+$longest = 0;
+for ($i=1; $i<count($columns); $i++) {
+    if (strlen($columns[$i]['name']) > $longest) {
+        $longest = strlen($columns[$i]['name']);
+    }
+}
+
+
+foreach ($columns as $column) {
+
+    # build save parameters
+    $type = $column['type'];
+    $template_keys['save_parameters'] .= $type.' $'.$column['name'].', ';
+
+    # build save actions:
+    if ($column['index'] > 0) {
+        $template_keys['save_actions'] .= '        $data->'.str_pad($column['name'], $longest) .' = $'.$column['name'].";\n";
+    }
+
+    # build form form_fields
+    if ($column['index'] > 0) {
+        switch ($column['type']) {
+            case 'string':
+            case 'int':
+            case 'float':
+
+                if ($column['type'] == 'int' && strpos($column['name'], '_id') !== false) {
+                    # this is likely a foreign key for another table. make it a select list instead of a text field
+                    $template_keys['form_fields'] .= '    html::form_group(_(\'model:'.$table.':'.$column['name'].'\'), html::select(\''.$column['name'].'\', $data->'.$column['name'].', [])),'."\n";
+                } else {
+                    if ($column['type'] == 'string' && is_null($template_keys['first_string_col']) === true) {
+                        $template_keys['first_string_col'] = $column['name'];
+                    }
+                    $template_keys['form_fields'] .= '    html::form_group(_(\'model:'.$table.':'.$column['name'].'\'), html::input(\'text\', \''.$column['name'].'\', $data->'.$column['name'].')),'."\n";
+                }
+
+                break;
+            case 'bool':
+                $template_keys['form_fields'] .= '    html::form_group(_(\'model:'.$table.':'.$column['name'].'\'), html::input(\'checkbox\', \''.$column['name'].'\', ($data->'.$column['name'].' == 1 || $data->'.$column['name'].' === true))),'."\n";
+                break;
+        }
+    }
+
+    # build the list of table columns
+    if ($column['index'] > 0) {
+        $template_keys['table_cols'] .= '$table->add(html::data_column(_(\'model:'.$table.':'.$column['name'].'\'), \''.$column['name'].'\', \''. ceil(90 / (count($columns) - 1)) .'%\', true));'."\n";
+    }
+
+    # build the list of searchable fields
+    if ($column['index'] > 0) {
+        if ($column['type'] == 'string') {
+            $template_keys['search_cols'][] = "'".$column['name']."'";
+        }
+    }
+
+    # build the rules
+    if ($column['index'] > 0) {
+        if ($column['type'] == 'string') {
+            $template_keys['rules'] .= '            [\'type\'=>\'length_range\', \'label\'=>_(\'model:'.$table.':'.$column['name'].'\'), \'field\'=>\''.$column['name'].'\', \'min\'=>\'2\', \'max\'=>\'255\', ],'."\n";
+        }
+    }
+
+    # build dictionaries
+    $dictionary['model:'.$table.':'.$column['name']] = $column['name'];
+}
+$template_keys['search_cols'] = implode(',', $template_keys['search_cols']);
+
+file_put_contents($base_dir.'/db/models/'.$table.'.php', swapTemplate('model', $template_keys));
+file_put_contents($base_dir.'/app/controllers/'.$table.'.php', swapTemplate('controller', $template_keys));
+file_put_contents($base_dir.'/app/views/'.$table.'-edit.php', swapTemplate('edit', $template_keys));
+file_put_contents($base_dir.'/app/views/'.$table.'-table.php', swapTemplate('table', $template_keys));
+mergeDictionary($base_dir.'/dictionaries/en__models.json', $dictionary);
+
+exit("Complete\n");

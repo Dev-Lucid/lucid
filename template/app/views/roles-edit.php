@@ -20,7 +20,7 @@ lucid::controller('roles')->ruleset()->send($form->name);
 $card = html::card();
 $card->header()->add($headerMsg);
 $card->block()->add([
-	html::form_group(_('model:roles:name'), html::input('text', 'name', $data->name)),
+    html::form_group(_('model:roles:name'), html::input('text', 'name', $data->name)),
     html::input('hidden', 'role_id', $data->role_id),
 ]);
 $card->footer()->add(html::form_buttons());

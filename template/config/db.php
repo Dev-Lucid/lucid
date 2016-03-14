@@ -24,6 +24,7 @@ DevLucid\lucid::$db_stages = [
 switch (DevLucid\lucid::$stage) {
     case 'development':
         \ORM::configure('sqlite:'.DevLucid\lucid::$db_stages['development']['name']);
+        #\ORM::configure('pgsql:host=localhost;port=5432;dbname=sad_qa;user=mike;');
         break;
     case 'qa':
         \ORM::configure('sqlite:'.DevLucid\lucid::$db_stages['qa']['name']);

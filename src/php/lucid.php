@@ -23,7 +23,6 @@ class lucid
     public static $db_stages    = [];
     public static $orm_function = null;
     public static $paths        = [];
-    public static $libs         = [];
 
     public static $request         = null;
     public static $default_request = null;
@@ -73,19 +72,6 @@ class lucid
             'request' => [],
             'post'    => [],
         ];
-
-        lucid::$libs[] = __DIR__.'/lucid_controller.php';
-        lucid::$libs[] = __DIR__.'/lucid_model.php';
-        lucid::$libs[] = __DIR__.'/lucid_i18n.php';
-        lucid::$libs[] = __DIR__.'/lucid_ruleset.php';
-
-        foreach (lucid::$libs as $lib) {
-            try {
-                lucid::include_if_exists($lib);
-            } catch(Exception $e) {
-                $startup_errors[] = $e;
-            }
-        }
 
         foreach($configs as $config) {
             try {
@@ -199,7 +185,7 @@ class lucid
 
     public static function log($text = null)
     {
-        if (is_null($text) === true){
+        if (is_null($text) === true) {
             return lucid::$logger;
         }
 
@@ -222,7 +208,7 @@ class lucid
 
     public static function jslog($text)
     {
-        $text = str_replace("'","\\'",$text);
+        $text = str_replace("'", "\\'", $text);
         lucid::$response->javascript("console.log('".$text."');");
     }
 
@@ -233,7 +219,7 @@ class lucid
 
     public static function controller($name)
     {
-        $class_name = 'DevLucid\\lucid_controller_'.$name;
+        $class_name = 'DevLucid\\'.$name.'Controller';
         $name = lucid::_clean_file_name($name);
 
         # only bother to load if the class isn't already loaded.
@@ -281,13 +267,13 @@ class lucid
     private static function _clean_function_name($name)
     {
         $name = preg_replace('/[^a-z0-9_\-\s]+/i', '', $name);
-        $name = str_replace('-','_',$name);
+        $name = str_replace('-', '_', $name);
         return $name;
     }
 
     public static function model($name, $id=null, $set_id_on_create = true)
     {
-        if(is_callable(lucid::$orm_function)){
+        if (is_callable(lucid::$orm_function) === true) {
             $func = lucid::$orm_function;
             $model = $func($name);
 

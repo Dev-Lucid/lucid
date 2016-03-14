@@ -2,7 +2,7 @@
 
 namespace DevLucid;
 
-class lucid_controller_compiler extends Controller
+class CompilerController extends Controller
 {
     private function headers($type)
     {

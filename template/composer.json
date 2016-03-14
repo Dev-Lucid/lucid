@@ -16,11 +16,10 @@
                 },
                 "bin": [
                     "scripts/deploy",
+                    "scripts/build",
                     "scripts/build_db.sh",
                     "scripts/make_app.php",
                     "scripts/watcher.php",
-                    "scripts/generate_models.php",
-                    "scripts/generate_vc.php",
                     "scripts/copy_fonts.php",
                     "scripts/launch.sh",
                     "scripts/unittest.sh",
@@ -51,6 +50,26 @@
                 },
                 "autoload-dev": {
                     "psr-4": {"DevLucid\\": "/"}
+                }
+            }
+        },
+        {
+            "type":"package",
+            "package": {
+                "name": "devlucid/metabase",
+                "version":"master",
+                "source": {
+                    "url": "git@github.com:Dev-Lucid/metabase.git",
+                    "type": "git",
+                    "reference":"master"
+                },
+                "bin": [
+                ],
+                "autoload": {
+                    "psr-4": {"DevLucid\\": "/src/php/"}
+                },
+                "autoload-dev": {
+                    "psr-4": {"DevLucid\\": "/src/php/"}
                 }
             }
         },

@@ -1,16 +1,17 @@
 <?php
 
 namespace DevLucid;
-class lucid_controller_roles extends Controller
+
+class RolesController extends Controller
 {
-    public function ruleset()
+    public function ruleset(): Ruleset
     {
         return new Ruleset([
             ['type'=>'length_range', 'label'=>_('model:roles:name'), 'field'=>'name', 'min'=>'2', 'max'=>'255', ],
-      ]);
+        ]);
     }
 
-    public function save($role_id, $name, $do_redirect=true)
+    public function save(int $role_id, string $name, bool $do_redirect=true)
     {
         lucid::$security->requireLogin();
         # lucid::$security->requirePermission([]); # add required permissions to this array
@@ -24,7 +25,7 @@ class lucid_controller_roles extends Controller
         if ($do_redirect) lucid::redirect('roles-table');
     }
 
-    public function delete($role_id, $do_redirect=true)
+    public function delete(int $role_id, bool $do_redirect=true)
     {
         lucid::$security->requireLogin();
         # lucid::$security->requirePermission('delete'); # add required permissions to this array

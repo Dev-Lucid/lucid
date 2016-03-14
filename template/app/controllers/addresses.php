@@ -2,7 +2,7 @@
 
 namespace DevLucid;
 
-class lucid_controller_addresses extends Controller
+class AddressesController extends Controller
 {
     public function ruleset()
     {
