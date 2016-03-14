@@ -28,8 +28,6 @@ class Controller
                 $type = strval($methodParameter->getType());
             }
 
-            lucid::log('final type for parameter '.$methodParameter->name.' is: '.$type);
-
             if ($passedParameters->is_set($methodParameter->name)) {
                 if (is_null($type) === true || $type == '') {
                     $boundParameters[] = $passedParameters->raw($methodParameter->name);
