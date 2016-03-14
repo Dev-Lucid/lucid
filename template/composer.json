@@ -82,7 +82,7 @@
     },
     "require-dev": {
         "devlucid/lucid": "master@dev",
-        "devlucid/factory": "master@dev",
+        "devlucid/html": "master@dev",
         "phpunit/phpunit": "4.8.*"
     },
     "scripts": {
