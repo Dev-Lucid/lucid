@@ -21,11 +21,11 @@ class AuthenticationController extends Controller
             ->find_one();
 
         if ($user === false) {
-            lucid_ruleset::sendError(_('error:authentication:failed1'));
+            Ruleset::sendError(_('error:authentication:failed1'));
         }
 
         if (password_verify($password, $user->password) === false) {
-            lucid_ruleset::sendError(_('error:authentication:failed2'));
+            Ruleset::sendError(_('error:authentication:failed2'));
         }
 
         lucid::$session->setArray($user->as_array());
