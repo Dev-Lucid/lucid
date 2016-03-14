@@ -1,6 +1,8 @@
 <?php
 
-class lucid_model extends Model
+namespace DevLucid;
+
+class Model extends \Model
 {
     public function set_orm($orm)
     {

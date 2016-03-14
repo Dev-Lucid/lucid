@@ -2,7 +2,7 @@
 
 namespace DevLucid;
 
-class lucid_logger
+class Logger
 {
     public function __construct()
     {

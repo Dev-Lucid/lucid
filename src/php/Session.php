@@ -2,21 +2,9 @@
 
 namespace DevLucid;
 
-interface i_lucid_session extends \Iterator
-{
-    public function __isset($property);
-    public function __unset($property);
-    public function __get($property);
-    public function __call($property, $parameters);
-    public function __set($property, $new_value);
-    public function get($property, $default_value);
-    public function set($property, $new_value);
-    public function get_array();
-    public function set_array($value_array);
-    public function restart();
-}
 
-class lucid_session implements i_lucid_session
+
+class Session implements SessionInterface
 {
     public function __construct()
     {

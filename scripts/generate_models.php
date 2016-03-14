@@ -19,7 +19,7 @@ exit("-----------------------\nComplete\n");
 function make_model($table, $id_col)
 {
     $code = '<'."?php\n\n";
-    $code .= "class lucid_model_$table extends lucid_model\n{\n";
+    $code .= "class lucid_model_$table extends \DevLucid\Model\n{\n";
     $code .= "\tpublic static $"."_table = '$table';\n";
     $code .= "\tpublic static $"."_id_column = '$id_col';\n";
     $code .= "}\n";

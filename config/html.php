@@ -2,7 +2,7 @@
 
 
 
-\DevLucid\html::init('bootstrap',[
+\DevLucid\html::init('bootstrap', [
     'prefix'=>'lucid',
     'path'=>realpath(__DIR__.'/../html/')
 ]);

@@ -2,7 +2,7 @@
 
 namespace DevLucid;
 
-class lucid_controller_compiler extends lucid_controller
+class lucid_controller_compiler extends Controller
 {
     private function headers($type)
     {
@@ -14,7 +14,7 @@ class lucid_controller_compiler extends lucid_controller
 
     private function write_build($path, $content)
     {
-        if(file_Exists($path)){
+        if (file_Exists($path) === true) {
             unlink($path);
         }
         file_put_contents($path, $content);
@@ -25,7 +25,7 @@ class lucid_controller_compiler extends lucid_controller
         lucid::config('js');
 
         $uncompressed = '';
-        foreach(lucid::$js_files as $file){
+        foreach (lucid::$js_files as $file) {
             $uncompressed .= file_get_contents($file);
         }
 
@@ -42,12 +42,12 @@ class lucid_controller_compiler extends lucid_controller
         $scss = new \Leafo\ScssPhp\Compiler();
         $scss->setFormatter('Leafo\ScssPhp\Formatter\Compressed');
 
-        foreach(lucid::$paths['scss'] as $path){
+        foreach (lucid::$paths['scss'] as $path) {
             $scss->addImportPath($path);
         }
 
         $src = lucid::$scss_start_source;
-        foreach(lucid::$scss_files as $file){
+        foreach (lucid::$scss_files as $file) {
             $src .= "@import '$file';\n";
         }
 

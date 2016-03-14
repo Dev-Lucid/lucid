@@ -2,7 +2,7 @@
 
 namespace DevLucid;
 
-class lucid_controller
+class Controller
 {
     public function __construct()
     {

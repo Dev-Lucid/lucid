@@ -2,7 +2,7 @@
 
 namespace DevLucid;
 
-class lucid_ruleset
+class Ruleset
 {
     public $rules = [];
     public $name  = '';
@@ -27,13 +27,13 @@ class lucid_ruleset
         if (is_null($data)) {
             $data = lucid::$request;
         } elseif(is_array($data)) {
-            $data = new lucid_request($data);
+            $data = new Request($data);
         }
         lucid::log($data->get_array());
         $errors = [];
         foreach ($this->rules as $rule) {
-            if (isset(lucid_ruleset::$_handlers[$rule['type']]) === true && is_callable(lucid_ruleset::$_handlers[$rule['type']]) === true) {
-                $func = lucid_ruleset::$_handlers[$rule['type']];
+            if (isset(Ruleset::$_handlers[$rule['type']]) === true && is_callable(Ruleset::$_handlers[$rule['type']]) === true) {
+                $func = Ruleset::$_handlers[$rule['type']];
                 $result = $func($rule, $data);
                 if ($result === false) {
                     if (isset($errors[$rule['label']]) === false) {
@@ -92,7 +92,7 @@ class lucid_ruleset
     }
 }
 
-lucid_ruleset::$_handlers['length_range'] = function ($rule, $data) {
+Ruleset::$_handlers['length_range'] = function ($rule, $data) {
     $rule['last_value'] = $data->string($rule['field']);
     return (strlen($rule['last_value']) >= $rule['min'] && strlen($rule['last_value']) < $rule['max']);
 };

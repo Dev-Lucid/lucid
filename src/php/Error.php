@@ -2,17 +2,7 @@
 
 namespace DevLucid;
 
-interface i_lucid_error
-{
-    public function build_error_string($e);
-    public function shutdown();
-    public function handle($e, $send_message);
-    public function not_found($data);
-    public function permission_denied($replace_selector);
-    public function login_required($replace_selector);
-}
-
-class lucid_error implements i_lucid_error
+class Error implements ErrorInterface
 {
     public function __construct()
     {

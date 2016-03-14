@@ -2,11 +2,11 @@
 
 namespace DevLucid;
 
-class lucid_controller_authentication extends lucid_controller
+class lucid_controller_authentication extends Controller
 {
     public function ruleset()
     {
-        return new lucid_ruleset([
+        return new Ruleset([
             ['type'=>'length_range','label'=>'E-mail', 'field'=>'email','min'=>'5','max'=>'255'],
         ]);
     }
@@ -20,13 +20,11 @@ class lucid_controller_authentication extends lucid_controller
             ->where_raw('LOWER(email) = ?',strtolower($email))
             ->find_one();
 
-        if($user === false)
-        {
+        if ($user === false) {
             lucid_ruleset::send_error(_('error:authentication:failed1'));
         }
 
-        if (!password_verify($password, $user->password))
-        {
+        if (password_verify($password, $user->password) === false) {
             lucid_ruleset::send_error(_('error:authentication:failed2'));
         }
 

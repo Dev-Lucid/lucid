@@ -1,4 +1,7 @@
 <?php
+
+namespace DevLucid;
+
 include(__DIR__.'/../../../../bootstrap.php');
 lucid::config('scss');
 lucid::config('js');

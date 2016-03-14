@@ -2,27 +2,7 @@
 
 namespace DevLucid;
 
-interface i_lucid_security
-{
-    public function is_logged_in();
-    public function require_login();
-
-    public function has_permission($names);
-    public function require_permission($names);
-
-    public function has_any_permission($names);
-    public function require_any_permission($names);
-
-    public function grant($names);
-    public function revoke($names);
-
-    public function get_permissions_list();
-    public function set_permissions_list($names);
-
-    public function __call($name, $parameters);
-}
-
-class lucid_security implements i_lucid_security
+class Security implements SecurityInterface
 {
     public static $id_field = 'user_id';
 

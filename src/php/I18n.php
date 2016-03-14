@@ -2,17 +2,7 @@
 
 namespace DevLucid;
 
-interface i_lucid_i18n
-{
-    public function get_major_language();
-    public function get_minor_language();
-    public function add_phrases($contents);
-    public function translate($phrase, $parameters);
-    public function load_dictionaries($dict_paths=[]);
-    public function determine_best_user_language($user_lang);
-}
-
-class lucid_i18n implements i_lucid_i18n
+class I18n implements I18nInterface
 {
     private $major_lang = null;
     private $minor_lang = null;
