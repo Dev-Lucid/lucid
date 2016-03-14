@@ -40,7 +40,7 @@
                 "name": "devlucid/html",
                 "version":"master",
                 "source": {
-                    "url": "git@github.com:Dev-Lucid/factory.git",
+                    "url": "git@github.com:Dev-Lucid/html.git",
                     "type": "git",
                     "reference":"master"
                 },
