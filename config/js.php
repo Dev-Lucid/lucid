@@ -2,7 +2,7 @@
 
 namespace DevLucid;
 
-lucid::$js_files = [
+lucid::$jsFiles = [
     lucid::$paths['base'].'/vendor/twbs/bootstrap/docs/assets/js/vendor/jquery.min.js',
     lucid::$paths['base'].'/vendor/twbs/bootstrap/docs/assets/js/vendor/tether.min.js',
     lucid::$paths['base'].'/vendor/twbs/bootstrap/docs/assets/js/ie10-viewport-bug-workaround.js',
@@ -16,4 +16,4 @@ lucid::$js_files = [
     lucid::$paths['app'].'/media/js/app.js',
 ];
 
-lucid::$js_production_build = lucid::$paths['app'].'/media/js/production.js';
+lucid::$jsProductionBuild = lucid::$paths['app'].'/media/js/production.js';

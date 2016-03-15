@@ -2,7 +2,7 @@
 
 namespace DevLucid;
 
-class UsersController extends Controller
+class ControllerUsers extends Controller
 {
     public function ruleset(): Ruleset
     {

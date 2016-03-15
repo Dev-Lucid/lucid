@@ -2,7 +2,7 @@
 
 namespace DevLucid;
 
-class AuthenticationController extends Controller
+class ControllerAuthentication extends Controller
 {
     public function ruleset()
     {

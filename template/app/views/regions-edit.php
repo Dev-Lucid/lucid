@@ -2,9 +2,11 @@
 
 namespace DevLucid;
 
+lucid::requireParameters('region_id');
 lucid::$security->requireLogin();
-# lucid::$security->requirePermission('select'); # add required permissions to this array
+# lucid::$security->requirePermission('regions-select'); # add required permissions to this array
 
+lucid::$response->title(_('branding:app_name').' - Regions');
 lucid::controller('navigation')->render('view.regions-table', 'view.regions-edit');
 
 $data = lucid::model('regions', $region_id);

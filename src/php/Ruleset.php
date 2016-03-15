@@ -54,8 +54,7 @@ class Ruleset
 
     public function sendErrors($data = null)
     {
-        if(($errors = $this->hasErrors($data)) == false)
-        {
+        if (($errors = $this->hasErrors($data)) == false){
             lucid::log('no errors found');
             return;
         }

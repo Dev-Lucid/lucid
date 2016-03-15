@@ -2,9 +2,11 @@
 
 namespace DevLucid;
 
+lucid::requireParameters('user_id');
 lucid::$security->requireLogin();
-# lucid::$security->requirePermission('select'); # add required permissions to this array
+# lucid::$security->requirePermission('users-select'); # add required permissions to this array
 
+lucid::$response->title(_('branding:app_name').' - Users');
 lucid::controller('navigation')->render('view.users-table', 'view.users-edit');
 
 $data = lucid::model('users', $user_id);

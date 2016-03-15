@@ -5,10 +5,10 @@ namespace DevLucid;
 include(__DIR__.'/../bootstrap.php');
 
 if (isset($argv[0]) === true) {
-    lucid::process_command_line_action($argv);
-    lucid::process_actions();
+    lucid::processCommandLineAction($argv);
+    lucid::processActions();
 } else {
-    lucid::process_actions();
+    lucid::processActions();
     lucid::$response->send();
 }
 

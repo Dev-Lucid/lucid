@@ -2,7 +2,7 @@
 
 namespace DevLucid;
 
-class CountriesController extends Controller
+class ControllerCountries extends Controller
 {
     public function ruleset(): Ruleset
     {

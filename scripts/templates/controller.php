@@ -2,7 +2,7 @@
 
 namespace DevLucid;
 
-class {{uc(table)}}Controller extends Controller
+class Controller{{uc(table)}} extends Controller
 {
     public function ruleset(): Ruleset
     {

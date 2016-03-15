@@ -14,5 +14,6 @@ interface ResponseInterface
     public function append($area, $content);
     public function prepend($area, $content);
     public function clear($areas=null);
+    public function handleEscapedFragment();
     public function send();
 }

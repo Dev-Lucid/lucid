@@ -21,7 +21,7 @@ class lucid
 
     public static $db           = null;
     public static $db_stages    = [];
-    public static $orm_function = null;
+    public static $ormFunction = null;
     public static $paths        = [];
 
     public static $request         = null;
@@ -31,19 +31,19 @@ class lucid
 
     public static $lang_supported = ['en'];
 
-    public static $scss_files = [];
-    public static $scss_production_build = null;
-    public static $scss_start_source = '';
+    public static $scssFiles = [];
+    public static $scssProductionBuild = null;
+    public static $scssStartSource = '';
 
-    public static $js_files   = [];
-    public static $js_production_build = null;
+    public static $jsFiles   = [];
+    public static $jsProductionBuild = null;
 
     public static function init($configs=[])
     {
         lucid::$php = explode('.', PHP_VERSION);
 
         # this array contains errors that are caught before logging is initialized.
-        $startup_errors = [];
+        $startupErrors = [];
 
         # set the default paths. These can be overridden in a config file
         lucid::$paths['base']  = realpath(__DIR__.'/../../../../../');
@@ -77,7 +77,7 @@ class lucid
             try {
                 lucid::config($config);
             } catch(Exception $e) {
-                $startup_errors[] = $e;
+                $startupErrors[] = $e;
             }
         }
 
@@ -159,16 +159,16 @@ class lucid
         if (lucid::$request->string('action', false)) {
             $action = lucid::$request->string('action');
             lucid::$request->un_set('action');
-            lucid::add_action('request', $action, lucid::$request->get_array());
+            lucid::addAction('request', $action, lucid::$request->get_array());
         }
 
         # now that init is complete, send all errors that we caught to the Logger
-        foreach ($startup_errors as $error) {
+        foreach ($startupErrors as $error) {
             lucid::$error->handle($error);
         }
     }
 
-    private static function include_if_exists($file, $paths = null)
+    private static function includeIfExists($file, $paths = null)
     {
         if (is_null($paths) === true) {
             if (file_exists($file) === true) {
@@ -214,17 +214,17 @@ class lucid
 
     public static function config($name)
     {
-        return lucid::include_if_exists($name.'.php', lucid::$paths['config']);
+        return lucid::includeIfExists($name.'.php', lucid::$paths['config']);
     }
 
-    public static function controller($name)
+    public static function controller(string $name)
     {
-        $class_name = 'DevLucid\\'.$name.'Controller';
-        $name = lucid::_clean_file_name($name);
+        $class_name = 'DevLucid\\Controller'.$name;
+        $name = lucid::cleanFileName($name);
 
         # only bother to load if the class isn't already loaded.
         if (class_exists($class_name) === false) {
-            lucid::include_if_exists($name.'.php', lucid::$paths['controllers']);
+            lucid::includeIfExists($name.'.php', lucid::$paths['controllers']);
         }
         if (class_exists($class_name) === false) {
             throw new \Exception('Unable to load controller: '.$name.'. Either no controller file was found, or the file did not contain a class named '.$class_name);
@@ -233,22 +233,22 @@ class lucid
         return $new_obj;
     }
 
-    public static function view($name, $parameters=[])
+    public static function view(string $name, $parameters=[])
     {
         lucid::log()->info('view->'.$name.'()');
-        $name = lucid::_clean_file_name($name);
+        $name = lucid::cleanFileName($name);
         if (is_object($parameters) === true) {
             $parameters = $parameters->get_array();
         }
 
-        foreach (lucid::$paths['views'] as $view_path) {
-            $file_name = $view_path.$name.'.php';
-            if (file_exists($file_name) === true) {
+        foreach (lucid::$paths['views'] as $viewPath) {
+            $fileName = $viewPath . $name . '.php';
+            if (file_exists($fileName) === true) {
                 foreach ($parameters as $key=>$val) {
                     global $$key;
                     $$key = $val;
                 }
-                $result = include($file_name);
+                $result = include($fileName);
                 foreach ($parameters as $key=>$val) {
                     unset($GLOBALS[$key]);
                 }
@@ -258,23 +258,38 @@ class lucid
         throw new \Exception('Unable to load view '.$file_name.', file does not exist');
     }
 
-    private static function _clean_file_name($name)
+    public static function requireParameters(string ...$names)
+    {
+        $notFound = [];
+        foreach ($names as $name) {
+            if (isset($GLOBALS[$name]) === false) {
+                $notFound[] = $name;
+            }
+        }
+
+        if (count($notFound) > 0) {
+            $view = basename(debug_backtrace()[0]['file']);
+            throw new \Exception('View '.basename($view, '.php').' requires the following unset parameters: ['.implode(', ', $notFound).']');
+        }
+    }
+
+    private static function cleanFileName(string $name): string
     {
         $name = preg_replace('/[^a-z0-9_\-\/]+/i', '', $name);
         return $name;
     }
 
-    private static function _clean_function_name($name)
+    private static function cleanFunctionName(string $name): string
     {
         $name = preg_replace('/[^a-z0-9_\-\s]+/i', '', $name);
         $name = str_replace('-', '_', $name);
         return $name;
     }
 
-    public static function model($name, $id=null, $set_id_on_create = true)
+    public static function model(string $name, int $id=null, bool $setIdOnCreate = true)
     {
-        if (is_callable(lucid::$orm_function) === true) {
-            $func = lucid::$orm_function;
+        if (is_callable(lucid::$ormFunction) === true) {
+            $func = lucid::$ormFunction;
             $model = $func($name);
 
             if (is_null($id) === true) {
@@ -282,21 +297,21 @@ class lucid
             }
             if (strval($id) == '0' || $id === false) {
                 $model = $model->create();
-                if ($set_id_on_create === true) {
+                if ($setIdOnCreate === true) {
                     $class = get_class($model);
-                    $id_col = $class::$_id_column;
-                    $model->$id_col = 0;
+                    $idCol = $class::$_id_column;
+                    $model->$idCol = 0;
                 }
                 return $model;
             } else {
                 return $model->find_one($id);
             }
         } else {
-            throw new Exception('No ORM function defined');
+            throw new \Exception('No ORM function defined');
         }
     }
 
-    public static function process_command_line_action($argv)
+    public static function processCommandLineAction($argv)
     {
         array_shift($argv);
         $action = array_shift($argv);
@@ -305,45 +320,47 @@ class lucid
             list($key, $value) = explode('=', array_shift($argv));
             $parameters[$key] = $value;
         }
-        lucid::add_action('request', $action, $parameters);
+        lucid::addAction('request', $action, $parameters);
     }
 
-    public static function add_action($when, $controller_method, $parameters = [])
+    public static function addAction($when, $controllerMethod, $parameters = [])
     {
-        lucid::$actions[$when][] = [$controller_method, new Request($parameters)];
+        lucid::$actions[$when][] = [$controllerMethod, new Request($parameters)];
     }
 
-    public static function process_actions()
+    public static function processActions()
     {
-        lucid::process_action_list('pre');
+        lucid::processActionList('pre');
         try {
-            lucid::process_action_list('request');
+            lucid::processActionList('request');
         } catch (Exception\Silent $e) {
-
+            lucid::log('Exception: '.$e->getMessage());
+        } catch (\Exception $e) {
+            lucid::log('Exception: '.$e->getMessage());
         }
 
-        lucid::process_action_list('post');
+        lucid::processActionList('post');
     }
 
-    private static function process_action_list($name)
+    private static function processActionList($name)
     {
         for ($i=0; $i<count(lucid::$actions[$name]); $i++) {
-            lucid::call_action(lucid::$actions[$name][$i][0], lucid::$actions[$name][$i][1]);
+            lucid::callAction(lucid::$actions[$name][$i][0], lucid::$actions[$name][$i][1]);
         }
     }
 
-    public static function call_action($action, $passed_params=[])
+    public static function callAction($action, $passedParameters=[])
     {
-        list($controller_name, $method) = explode('.',$action);
+        list($controllerName, $method) = explode('.',$action);
 
         try {
-            if ($controller_name == 'view') {
+            if ($controllerName == 'view') {
                 # 'view' isn't a real controller
-                return lucid::view($method, $passed_params);
+                return lucid::view($method, $passedParameters);
             } else {
-                $controller = lucid::controller($controller_name);
-                lucid::log()->info($controller_name.'->'.$method.'()');
-                return $controller->_callMethodWithParameters($method, $passed_params);
+                $controller = lucid::controller($controllerName);
+                lucid::log()->info($controllerName.'->'.$method.'()');
+                return $controller->_callMethodWithParameters($method, $passedParameters);
             }
         } catch(Exception\Silent $e) {
             lucid::log('Caught silent error: '.$e->getMessage());

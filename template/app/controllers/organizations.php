@@ -2,7 +2,7 @@
 
 namespace DevLucid;
 
-class OrganizationsController extends Controller
+class ControllerOrganizations extends Controller
 {
     public function ruleset(): Ruleset
     {
@@ -11,7 +11,7 @@ class OrganizationsController extends Controller
         ]);
     }
 
-    public function save(int $org_id, int $role_id, string $name, bool $is_enabled, int $created_on, bool $is_active, bool $do_redirect=true)
+    public function save(int $org_id, int $role_id, string $name, bool $is_enabled, int $created_on, bool $do_redirect=true)
     {
         lucid::$security->requireLogin();
         # lucid::$security->requirePermission([]); # add required permissions to this array
@@ -23,7 +23,6 @@ class OrganizationsController extends Controller
         $data->name       = $name;
         $data->is_enabled = $is_enabled;
         $data->created_on = $created_on;
-        $data->is_active  = $is_active;
         $data->save();
 
         if ($do_redirect) lucid::redirect('organizations-table');

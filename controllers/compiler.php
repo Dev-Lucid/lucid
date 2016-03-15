@@ -2,7 +2,7 @@
 
 namespace DevLucid;
 
-class CompilerController extends Controller
+class ControllerCompiler extends Controller
 {
     private function headers($type)
     {
@@ -12,7 +12,7 @@ class CompilerController extends Controller
         header("Pragma: no-cache");
     }
 
-    private function write_build($path, $content)
+    private function writeBuild($path, $content)
     {
         if (file_Exists($path) === true) {
             unlink($path);
@@ -25,14 +25,14 @@ class CompilerController extends Controller
         lucid::config('js');
 
         $uncompressed = '';
-        foreach (lucid::$js_files as $file) {
+        foreach (lucid::$jsFiles as $file) {
             $uncompressed .= file_get_contents($file);
         }
 
         # compression code goes here
         $compressed = $uncompressed;
 
-        $this->write_build(lucid::$js_production_build, $compressed);
+        $this->writeBuild(lucid::$jsProductionBuild, $compressed);
     }
 
     public function scss()
@@ -46,12 +46,12 @@ class CompilerController extends Controller
             $scss->addImportPath($path);
         }
 
-        $src = lucid::$scss_start_source;
-        foreach (lucid::$scss_files as $file) {
+        $src = lucid::$scssStartSource;
+        foreach (lucid::$scssFiles as $file) {
             $src .= "@import '$file';\n";
         }
 
         $css = $scss->compile($src);
-        $this->write_build(lucid::$scss_production_build, $css);
+        $this->writeBuild(lucid::$scssProductionBuild, $css);
     }
 }

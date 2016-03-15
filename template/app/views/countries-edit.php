@@ -2,9 +2,11 @@
 
 namespace DevLucid;
 
+lucid::requireParameters('country_id');
 lucid::$security->requireLogin();
-# lucid::$security->requirePermission('select'); # add required permissions to this array
+# lucid::$security->requirePermission('countries-select'); # add required permissions to this array
 
+lucid::$response->title(_('branding:app_name').' - Countries');
 lucid::controller('navigation')->render('view.countries-table', 'view.countries-edit');
 
 $data = lucid::model('countries', $country_id);

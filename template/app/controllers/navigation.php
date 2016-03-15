@@ -2,7 +2,7 @@
 
 namespace DevLucid;
 
-class NavigationController extends Controller
+class ControllerNavigation extends Controller
 {
     public function render($nav1_href = '', $nav2_href = '', $nav3_href = '')
     {

@@ -58,6 +58,7 @@ function perform_build(string $table, bool $build_model = true, bool $build_tabl
 
     $columns = $meta->getColumns($table);
     $template_keys = [
+        'title'=>ucwords($table),
         'table'=>$table,
         'uc(table)'=>ucwords($table),
         'id'=>$columns[0]['name'],

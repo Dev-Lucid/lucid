@@ -16,7 +16,6 @@ lucid.init=function(){
         }
     });
     lucid.request((window.location.hash == '')?lucid.defaultRequest:window.location.hash);
-    lucid.request(window.location.hash);
 };
 
 lucid.addHandler=function(action, callback){
@@ -100,18 +99,23 @@ lucid.getFormValues=function(form){
                 values[e.name] = (e.checked);
                 break;
             case 'select-one':
-                values[e.name] = e.options[e.selectedIndex].value;
+                if(e.options.length > 0){
+                    values[e.name] = e.options[e.selectedIndex].value;
+                }else{
+                    values[e.name] = null;
+                }
                 break;
 
             case 'select-multiple':
                 values[e.name] = [];
-                for(var j=0;j<e.options.length;j++){
-                    if(e.options[j].selected === true){
-                        values[e.name].push(e.options[j].value);
+                if(e.options.length >0){
+                    for(var j=0;j<e.options.length;j++){
+                        if(e.options[j].selected === true){
+                            values[e.name].push(e.options[j].value);
+                        }
                     }
                 }
                 break;
-
             case 'button':
             case 'submit':
                 // don't need to do anything for these types
@@ -145,6 +149,14 @@ lucid.handleResponse=function(xhr, statusCode){
 
         if (data.title !== null){
             jQuery('title').html(data.title);
+        }
+
+        if (data.keywords !== null){
+            jQuery('meta[name=keywords]').attr('content', data.keywords);
+        }
+
+        if (data.description !== null){
+            jQuery('meta[name=description]').attr('content', data.description);
         }
 
         for(var key in data.replace){

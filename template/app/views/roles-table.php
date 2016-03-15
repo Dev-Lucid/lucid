@@ -5,6 +5,7 @@ namespace DevLucid;
 lucid::$security->requireLogin();
 # lucid::$security->requirePermission([]); # add required permissions to this array
 
+lucid::$response->title(_('branding:app_name').' - Roles');
 lucid::controller('navigation')->render('view.roles-table');
 
 $table = html::data_table(_('model:roles'), 'roles-table', lucid::model('roles'), 'app.php?action=view.roles-table');

@@ -16,10 +16,11 @@
                 },
                 "bin": [
                     "scripts/deploy",
-                    "scripts/build",
                     "scripts/build_db.sh",
                     "scripts/make_app.php",
                     "scripts/watcher.php",
+                    "scripts/generate_models.php",
+                    "scripts/generate_vc.php",
                     "scripts/copy_fonts.php",
                     "scripts/launch.sh",
                     "scripts/unittest.sh",

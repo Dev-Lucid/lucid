@@ -2,7 +2,7 @@
 
 namespace DevLucid;
 
-class ErrorController extends Controller
+class ControllerError extends Controller
 {
     public function not_found_message($data)
     {

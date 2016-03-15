@@ -5,6 +5,7 @@ namespace DevLucid;
 lucid::$security->requireLogin();
 # lucid::$security->requirePermission([]); # add required permissions to this array
 
+lucid::$response->title(_('branding:app_name').' - Regions');
 lucid::controller('navigation')->render('view.regions-table');
 
 $table = html::data_table(_('model:regions'), 'regions-table', lucid::model('regions'), 'app.php?action=view.regions-table');

@@ -2,9 +2,11 @@
 
 namespace DevLucid;
 
+lucid::requireParameters('role_id');
 lucid::$security->requireLogin();
-# lucid::$security->requirePermission('select'); # add required permissions to this array
+# lucid::$security->requirePermission('roles-select'); # add required permissions to this array
 
+lucid::$response->title(_('branding:app_name').' - Roles');
 lucid::controller('navigation')->render('view.roles-table', 'view.roles-edit');
 
 $data = lucid::model('roles', $role_id);

@@ -26,7 +26,7 @@ foreach (lucid::$paths['scss'] as $path) {
 
 $js_paths = [];
 $js_tracker_count = 0;
-foreach (lucid::$js_files as $js_file) {
+foreach (lucid::$jsFiles as $js_file) {
     $js_paths[dirname( $js_file)] = true;
 }
 foreach (array_keys($js_paths) as $path) {
@@ -36,7 +36,7 @@ foreach (array_keys($js_paths) as $path) {
 }
 
 $scss_event = function (FilesystemEvent $event) {
-    if ($event->getResource() != lucid::$scss_production_build) {
+    if ($event->getResource() != lucid::$scssProductionBuild) {
         lucid::controller('compiler')->scss();
         echo $event->getResource() . ':' . $event->getTypeString()." - SCSS compilation complete\n";
     }
@@ -44,7 +44,7 @@ $scss_event = function (FilesystemEvent $event) {
 
 $js_event = function (FilesystemEvent $event) {
     echo("change to ".$event->getResource()."\n");
-    if($event->getResource() != lucid::$js_production_build) {
+    if($event->getResource() != lucid::$jsProductionBuild) {
         lucid::controller('compiler')->javascript();
         echo $event->getResource() . ':' . $event->getTypeString()." - Javascript compilation complete\n";
     }

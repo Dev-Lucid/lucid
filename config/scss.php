@@ -10,11 +10,11 @@ lucid::$paths['scss'] = [
     lucid::$paths['app'].'/media/scss/',
 ];
 
-lucid::$scss_files = [
+lucid::$scssFiles = [
     'bootstrap','font-awesome','factory_bootstrap','lucid','app',
 ];
 
-lucid::$scss_production_build = lucid::$paths['app'].'/media/scss/production.css';
+lucid::$scssProductionBuild = lucid::$paths['app'].'/media/scss/production.css';
 
 # This is needed to fix the path for font-awesome.
-lucid::$scss_start_source = '$fa-font-path: "/media/fonts";'."\n";
+lucid::$scssStartSource = '$fa-font-path: "/media/fonts";'."\n";
