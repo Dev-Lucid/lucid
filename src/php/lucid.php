@@ -286,7 +286,7 @@ class lucid
         return $name;
     }
 
-    public static function model(string $name, int $id=null, bool $setIdOnCreate = true)
+    public static function model(string $name, $id=null, bool $setIdOnCreate = true)
     {
         if (is_callable(lucid::$ormFunction) === true) {
             $func = lucid::$ormFunction;
