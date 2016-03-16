@@ -69,6 +69,11 @@ function perform_build(string $table, bool $build_model = true, bool $build_tabl
         'first_string_col'=>null,
         'table_cols'=>'',
         'search_cols'=>[],
+
+        'select_options'=>'',
+
+        'phpdoc_save_summary'=>'',
+        'phpdoc_save_params'=>'',
     ];
     $dictionary = [];
     $dictionary['model:'.$table] = $table;
@@ -81,15 +86,32 @@ function perform_build(string $table, bool $build_model = true, bool $build_tabl
         }
     }
 
+    $template_keys['phpdoc_save_summary'] .= '      * This method is used to save data to the '.$table.' table. It can be used to '."\n";
+    $template_keys['phpdoc_save_summary'] .= '      * insert or update. If $'.$template_keys['id'].' is set to zero, then a new row '."\n";
+    $template_keys['phpdoc_save_summary'] .= '      * will be created. The final parameter (bool $do_redirect) will determine if '."\n";
+    $template_keys['phpdoc_save_summary'] .= '      * the response will be redirected to the data table for '.$table.'. ';
+
     foreach ($columns as $column) {
 
         # build save parameters
         $type = $column['type'];
+        if ($type == 'timestamp') {
+            $type = '\DateTime';
+        }
         $template_keys['save_parameters'] .= $type.' $'.$column['name'].', ';
+
+        # build phpdoc save parameters
+        $template_keys['phpdoc_save_params'] .= '      * @param '.$type.' $'.$column['name'].' Corresponds to database column '.$table.'.'.$column['name'].".\n";
 
         # build save actions:
         if ($column['index'] > 0) {
-            $template_keys['save_actions'] .= '        $data->'.str_pad($column['name'], $longest) .' = $'.$column['name'].";\n";
+            $template_keys['save_actions'] .= '        $data->'.str_pad($column['name'], $longest) .' = $'.$column['name'];
+
+            # timestamps need a little extra formatting before saving
+            if($column['type'] == 'timestamp') {
+                $template_keys['save_actions'] .= '->format(\DateTime::ISO8601)';
+            }
+            $template_keys['save_actions'] .= ";\n";
         }
 
         # build form form_fields
@@ -100,8 +122,20 @@ function perform_build(string $table, bool $build_model = true, bool $build_tabl
                 case 'float':
 
                     if ($column['type'] == 'int' && strpos($column['name'], '_id') !== false) {
+                        echo ("trying to find options for ".$column['name']."\n");
                         # this is likely a foreign key for another table. make it a select list instead of a text field
-                        $template_keys['form_fields'] .= '    html::form_group(_(\'model:'.$table.':'.$column['name'].'\'), html::select(\''.$column['name'].'\', $data->'.$column['name'].', [])),'."\n";
+                        $source = '[]';
+                        list($keyTable, $idColumn, $labelColumn) = findTableForKey($table, $column['name'], $meta);
+                        if ($keyTable !== false) {
+                            $source = '$'.$column['name'].'_options';
+                            $template_keys['select_options'] .= '$'.$column['name'].'_options = lucid::model(\''.$keyTable.'\')';
+                            $template_keys['select_options'] .= "\n    ->select('$idColumn', 'value')";
+                            $template_keys['select_options'] .= "\n    ->select('$labelColumn', 'label')";
+                            $template_keys['select_options'] .= "\n    ->order_by_asc('$labelColumn')";
+                            $template_keys['select_options'] .= "\n    ->find_array();\n\n";
+                        }
+
+                        $template_keys['form_fields'] .= '    html::form_group(_(\'model:'.$table.':'.$column['name'].'\'), html::select(\''.$column['name'].'\', $data->'.$column['name'].', '.$source.')),'."\n";
                     } else {
                         if ($column['type'] == 'string' && is_null($template_keys['first_string_col']) === true) {
                             $template_keys['first_string_col'] = $column['name'];
@@ -111,7 +145,13 @@ function perform_build(string $table, bool $build_model = true, bool $build_tabl
 
                     break;
                 case 'bool':
-                    $template_keys['form_fields'] .= '    html::form_group(_(\'model:'.$table.':'.$column['name'].'\'), html::input(\'checkbox\', \''.$column['name'].'\', ($data->'.$column['name'].' == 1 || $data->'.$column['name'].' === true))),'."\n";
+                    $template_keys['form_fields'] .= '    html::form_group(_(\'model:'.$table.':'.$column['name'].'\'), html::input(\'checkbox\', \''.$column['name'].'\', $data->'.$column['name'].')),'."\n";
+                    break;
+                case 'timestamp':
+                    $template_keys['form_fields'] .= '    html::form_group(_(\'model:'.$table.':'.$column['name'].'\'), html::input(\'date\', \''.$column['name'].'\', (new \DateTime($data->'.$column['name'].'))->format(\'Y-m-d H:i\'))),'."\n";
+                    break;
+                default:
+                    echo("no logic for rendering type ". $column['type']."\n");
                     break;
             }
         }
@@ -200,4 +240,32 @@ function printUsage()
     echo("Ex: scripts/build users model=t table=f\n");
     echo("Ex: scripts/build all model=f table=f edit=f controller=f dictionary=t\n");
     exit("\n");
+}
+
+function findTableForKey($table, $key, $meta)
+{
+    $tables = $meta->getTables(false);
+
+    for ($i=0; $i<count($tables); $i++) {
+        $tableCols = $meta->getColumns($tables[$i]);
+        if ($tableCols[0]['name'] == $key) {
+            $return = [
+                $tables[$i],
+                $tableCols[0]['name'],
+            ];
+
+            for ($j = 1; $j<count($tableCols); $j++) {
+                if ($tableCols[$j]['type'] == 'string'){
+                    $return[] = $tableCols[$j]['name'];
+                    return $return;
+                }
+
+            }
+            lucid::log('Could not find a label column in table '.$tables[$i].'. Build script looks for the first column that is of a string type (varchar, char, text, etc).');
+            return [false, false, false];
+        }
+    }
+
+    lucid::log('Could not find a table to use as a source for '.$key.' select.');
+    return [false, false, false];
 }

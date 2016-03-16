@@ -1,5 +1,4 @@
 <?php
-
 namespace DevLucid;
 
 lucid::requireParameters('region_id');
@@ -27,7 +26,7 @@ $card->block()->add([
     html::form_group(_('model:regions:name'), html::input('text', 'name', $data->name)),
     html::form_group(_('model:regions:type'), html::input('text', 'type', $data->type)),
     html::form_group(_('model:regions:parent'), html::input('text', 'parent', $data->parent)),
-    html::form_group(_('model:regions:is_parent'), html::input('checkbox', 'is_parent', ($data->is_parent == 1 || $data->is_parent === true))),
+    html::form_group(_('model:regions:is_parent'), html::input('checkbox', 'is_parent', $data->is_parent)),
     html::input('hidden', 'region_id', $data->region_id),
 ]);
 $card->footer()->add(html::form_buttons());

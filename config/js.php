@@ -13,6 +13,8 @@ lucid::$jsFiles = [
     lucid::$paths['base'].'/vendor/devlucid/lucid/src/js/lucid.i18n.js',
     lucid::$paths['base'].'/vendor/devlucid/html/src/base/js/html.js',
     lucid::$paths['base'].'/vendor/devlucid/html/src/base/js/html.dataTable.js',
+    lucid::$paths['base'].'/vendor/kartik-v/php-date-formatter/js/php-date-formatter.js',
+    lucid::$paths['base'].'/vendor/devlucid/datetimepicker/jquery.datetimepicker.js',
     lucid::$paths['app'].'/media/js/app.js',
 ];
 

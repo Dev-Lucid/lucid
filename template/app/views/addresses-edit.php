@@ -1,5 +1,4 @@
 <?php
-
 namespace DevLucid;
 
 lucid::requireParameters('address_id');
@@ -19,10 +18,16 @@ $headerMsg = _('form:edit_'.(($data->address_id == 0)?'new':'existing'), [
 $form = html::form('addresses-edit', '#!addresses.save');
 lucid::controller('addresses')->ruleset()->send($form->name);
 
+$org_id_options = lucid::model('organizations')
+    ->select('org_id', 'value')
+    ->select('name', 'label')
+    ->order_by_asc('name')
+    ->find_array();
+
 $card = html::card();
 $card->header()->add($headerMsg);
 $card->block()->add([
-    html::form_group(_('model:addresses:org_id'), html::select('org_id', $data->org_id, [])),
+    html::form_group(_('model:addresses:org_id'), html::select('org_id', $data->org_id, $org_id_options)),
     html::form_group(_('model:addresses:name'), html::input('text', 'name', $data->name)),
     html::form_group(_('model:addresses:street_1'), html::input('text', 'street_1', $data->street_1)),
     html::form_group(_('model:addresses:street_2'), html::input('text', 'street_2', $data->street_2)),

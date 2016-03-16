@@ -1,5 +1,4 @@
 <?php
-
 namespace DevLucid;
 
 lucid::requireParameters('{{id}}');
@@ -19,7 +18,7 @@ $headerMsg = _('form:edit_'.(($data->{{id}} == 0)?'new':'existing'), [
 $form = html::form('{{table}}-edit', '#!{{table}}.save');
 lucid::controller('{{table}}')->ruleset()->send($form->name);
 
-$card = html::card();
+{{select_options}}$card = html::card();
 $card->header()->add($headerMsg);
 $card->block()->add([
 {{form_fields}}    html::input('hidden', '{{id}}', $data->{{id}}),

@@ -110,6 +110,23 @@ function build_doc($page)
             border-color: #e1e1e1 #e1e1e1 #e1e1e1 #bbb;
             padding: 6px 8px;
         }
+
+        table {
+            border: #ccc 1px solid;
+            width: 80%;
+            margin-bottom: 40px;
+        }
+        table > tbody > tr > td, table > thead > tr > th {
+            border: #ccc 1px solid;
+            padding: 2px 5px;
+        }
+        table > thead > tr > th {
+            font-weight: bold;
+            background-color: #eee;
+        }
+        table > thead > tr > th:first-child {
+            width: 20%;
+        }
         </style>
     </head>
     <body style="padding-top:62px;">

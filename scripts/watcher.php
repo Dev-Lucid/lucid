@@ -10,6 +10,9 @@ ob_end_clean();
 # perform compilations on first load
 lucid::controller('compiler')->scss();
 lucid::controller('compiler')->javascript();
+lucid::controller('compiler')->documentation('models');
+lucid::controller('compiler')->documentation('views');
+lucid::controller('compiler')->documentation('controllers');
 
 
 use Lurker\Event\FilesystemEvent;
@@ -50,11 +53,39 @@ $js_event = function (FilesystemEvent $event) {
     }
 };
 
+$models_event = function (FilesystemEvent $event) {
+    echo("change to ".$event->getResource()."\n");
+    lucid::controller('compiler')->documentation('models');
+    lucid::controller('compiler')->documentation('tables');
+    echo $event->getResource() . ':' . $event->getTypeString()." - Models documentation compilation complete\n";
+};
+
+$views_event = function (FilesystemEvent $event) {
+    echo("change to ".$event->getResource()."\n");
+    lucid::controller('compiler')->documentation('views');
+    echo $event->getResource() . ':' . $event->getTypeString()." - Views documentation compilation complete\n";
+};
+
+$controllers_event = function (FilesystemEvent $event) {
+    echo("change to ".$event->getResource()."\n");
+    lucid::controller('compiler')->documentation('controllers');
+    echo $event->getResource() . ':' . $event->getTypeString()." - Controllers documentation compilation complete\n";
+};
+
 for ($i=0;$i<$js_tracker_count; $i++) {
     $watcher->addListener('js'.strval($i), $js_event);
 }
 for ($i=0;$i<$scss_tracker_count; $i++) {
     $watcher->addListener('scss'.strval($i), $scss_event);
 }
+
+$watcher->track('controllers', lucid::$paths['app'].'/controllers/');
+$watcher->track('views', lucid::$paths['app'].'/views/');
+$watcher->track('models1', lucid::$paths['base'].'/db/models/');
+$watcher->track('models2', lucid::$paths['base'].'/db/migrations/');
+$watcher->addListener('models1', $models_event);
+$watcher->addListener('models2', $models_event);
+$watcher->addListener('views', $views_event);
+$watcher->addListener('controllers', $controllers_event);
 
 $watcher->start();

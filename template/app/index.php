@@ -65,7 +65,9 @@ lucid::$response->handleEscapedFragment();
                 jQuery('#layout-full-width').hide();
                 jQuery('#layout-two-col').show();
             }
-        })
+        });
+        $.datetimepicker.setLocale('<?=lucid::$i18n->getMajorLanguage()?>');
+
         </script>
     </body>
 </html>

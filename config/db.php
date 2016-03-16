@@ -14,7 +14,9 @@ lucid::$paths['models'] = lucid::$paths['base'].'/db/models/';
 
 # setup an autoloader for our model path
 spl_autoload_register( function ($modelName) {
+
     if (strpos($modelName, \Model::$auto_prefix_models) === 0) {
+
         $modelName = substr(
             $modelName,
             strlen(\Model::$auto_prefix_models),

@@ -11,7 +11,7 @@ create table organizations (
     role_id integer,
     name varchar(50),
     is_enabled bool default true,
-    created_on int default null,
+    created_on timestamp default CURRENT_TIMESTAMP,
     FOREIGN KEY(role_id) REFERENCES roles(role_id)
 );
 CREATE INDEX organizations_idx1 ON organizations(role_id);
@@ -23,7 +23,7 @@ insert into organizations (role_id,name) values (2,'British General Products');
 insert into organizations (role_id,name) values (2,'Canadian Stuff Manufacturing');
 insert into organizations (role_id,name) values (2,'Dutch Processing inc');
 insert into organizations (role_id,name) values (2,'East Timor Export Co.');
-update organizations set created_on = strftime('%s','now');
+update organizations set created_on = CURRENT_TIMESTAMP;
 
 create table users (
     user_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -32,10 +32,10 @@ create table users (
     password varchar(255),
     first_name varchar(255),
     last_name varchar(255),
-    is_enabled bool default 1,
-    last_login int default null,
-    created_on int default null,
-    force_password_change bool default 0,
+    is_enabled bool default true,
+    last_login timestamp default null,
+    created_on timestamp default CURRENT_TIMESTAMP,
+    force_password_change bool default false,
     register_key varchar(255) default '',
     FOREIGN KEY(org_id) REFERENCES organizations(org_id)
 );
@@ -73,7 +73,7 @@ insert into users (org_id,email,password,first_name,last_name) values (4,'user12
 insert into users (org_id,email,password,first_name,last_name) values (5,'user13@localhost.com','$2y$10$wHDMMT8IfEa9lEMzd2kQAuZvA2BwKNKPtwSE7ZNpQOBlO9Zlz0ORi','Nancy','Newark');
 insert into users (org_id,email,password,first_name,last_name) values (5,'user14@localhost.com','$2y$10$wHDMMT8IfEa9lEMzd2kQAuZvA2BwKNKPtwSE7ZNpQOBlO9Zlz0ORi','Oliver','Omaha');
 
-update users set created_on = strftime('%s','now'), force_password_change = 0;
+update users set created_on = CURRENT_TIMESTAMP;
 
 create table patches (
     patch_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -104,7 +104,7 @@ create table addresses (
 CREATE INDEX addresses_idx1 ON addresses(org_id);
 
 insert into addresses (org_id,name,street_1,street_2,city,region_id,postal_code,country_id,phone_number_1,phone_number_2)
-    values 
+    values
     (1, 'Admin office','100 Alpha St','Suite A','Atlanta','US-AL','30303-0001','US','(111) 111-1111','(111) 111-1111 ext 111'),
     (1, 'Adjunct office','100 Aleph Ave','Apt A','Atlanta','US-AL','30301-0001','US','(111) 111-2222','(111) 111-2222 ext 111'),
     (2, 'Base Camp','200 Base St','Suite B','Birmingham','GB-BIR','B74','GB','(020) 2222 2222','(020) 2222 2222 ext 222'),

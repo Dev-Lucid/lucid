@@ -1,5 +1,4 @@
 <?php
-
 namespace DevLucid;
 
 lucid::requireParameters('country_id');

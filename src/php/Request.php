@@ -66,13 +66,13 @@ class Request implements RequestInterface
         if (isset($this->_source[$name]) === true) {
 
             $val = false;
-            if ($allowStringOn === true && strval($this->_source[$name]) === 'on') {
+            if ($this->_source[$name] === true) {
+                $val = true;
+            } elseif ($allowStringOn === true && strval($this->_source[$name]) === 'on') {
                 $val = true;
             } elseif ($allowStringTrue === true && strval($this->_source[$name]) === 'true') {
                 $val = true;
             } elseif ($allowString1 === true && strval($this->_source[$name]) === '1') {
-                $val = true;
-            } elseif ($this->_source[$name] === true) {
                 $val = true;
             }
         }
@@ -87,6 +87,15 @@ class Request implements RequestInterface
     public function boolean(string $name, $defaultValue=null, $allowStringOn=true, $allowStringTrue = true, $allowString1 = true): bool
     {
         return $this->bool($name, $defaultValue, $allowStringOn, $allowStringTrue, $allowString1);
+    }
+
+    public function DateTime(string $name, $defaultValue=null, $allowStringOn=true, $allowStringTrue = true, $allowString1 = true): \DateTime
+    {
+        $val = null;
+        if (isset($this->_source[$name]) === true) {
+            $val = \DateTime::createFromFormat('Y-m-d H:i', $this->_source[$name]);
+        }
+        return $val;
     }
 
     public function set(string $name, $new_value)

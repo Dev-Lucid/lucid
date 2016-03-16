@@ -77,6 +77,20 @@
         {
             "type":"package",
             "package": {
+                "name": "devlucid/datetimepicker",
+                "version":"master",
+                "source": {
+                    "url": "git@github.com:Dev-Lucid/datetimepicker.git",
+                    "type": "git",
+                    "reference":"master"
+                },
+                "bin": [
+                ]
+            }
+        },
+        {
+            "type":"package",
+            "package": {
                 "name": "twbs/bootstrap",
                 "version": "4.0.0-alpha.2",
                 "source": {
@@ -95,10 +109,12 @@
         "twbs/bootstrap": "4.0.0-alpha.2",
         "devlucid/lucid": "master@dev",
         "devlucid/html": "master@dev",
+        "devlucid/datetimepicker": "master@dev",
         "henrikbjorn/lurker": "^1.1.0",
         "robmorgan/phinx": "0.5.3",
         "swiftmailer/swiftmailer": "5.4.1",
-        "erusev/parsedown": "^1.6.0"
+        "erusev/parsedown": "^1.6.0",
+        "kartik-v/php-date-formatter": "@dev"
     },
     "require-dev": {
         "devlucid/lucid": "master@dev",

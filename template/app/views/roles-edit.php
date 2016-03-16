@@ -1,5 +1,4 @@
 <?php
-
 namespace DevLucid;
 
 lucid::requireParameters('role_id');
