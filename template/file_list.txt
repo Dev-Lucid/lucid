@@ -45,6 +45,20 @@ app/controllers/navigation.php
 app/controllers/vw_users_details.php
 app/controllers/vw_organizations_details.php
 
+
+
+db/models/addresses.php
+db/models/countries.php
+db/models/organizations.php
+db/models/regions.php
+db/models/patches.php
+db/models/roles.php
+db/models/users.php
+db/models/user_auth_tokens.php
+db/models/navigation.php
+db/models/vw_users_details.php
+db/models/vw_organizations_details.php
+
 app/media/js/app.js
 app/media/scss/app.scss
 
