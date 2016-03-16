@@ -37,9 +37,13 @@ app/controllers/addresses.php
 app/controllers/countries.php
 app/controllers/organizations.php
 app/controllers/regions.php
+app/controllers/patches.php
 app/controllers/roles.php
 app/controllers/users.php
+app/controllers/user_auth_tokens.php
 app/controllers/navigation.php
+app/controllers/vw_users_details.php
+app/controllers/vw_organizations_details.php
 
 app/media/js/app.js
 app/media/scss/app.scss
@@ -56,6 +60,16 @@ app/views/roles-edit.php
 app/views/roles-table.php
 app/views/users-edit.php
 app/views/users-table.php
+
+app/views/patches-edit.php
+app/views/patches-table.php
+app/views/user_auth_tokens-edit.php
+app/views/user_auth_tokens-table.php
+app/views/vw_users_details-edit.php
+app/views/vw_users_details-table.php
+app/views/vw_organizations_details-edit.php
+app/views/vw_organizations_details-table.php
+
 app/views/login.php
 app/views/dashboard.php
 app/views/form-authentication.php
