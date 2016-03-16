@@ -13,6 +13,7 @@ lucid::controller('compiler')->javascript();
 lucid::controller('compiler')->documentation('models');
 lucid::controller('compiler')->documentation('views');
 lucid::controller('compiler')->documentation('controllers');
+lucid::controller('compiler')->documentation('tables');
 
 
 use Lurker\Event\FilesystemEvent;
