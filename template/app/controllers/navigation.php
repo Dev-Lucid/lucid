@@ -60,9 +60,9 @@ class ControllerNavigation extends Controller
         $structure = (isset($this->structure[$structure_index]) === true)?$this->structure[$structure_index]:false;
 
         if ($structure === false) {
-            lucid::log()->debug('Navigation controller was unable to find any navigation structure for path '.$structure_index);
             return;
         }
+        lucid::log()->debug('Rendering navigation for path '.$structure_index);
 
         $html = '';
         foreach ($structure['links'] as $url=>$allowed) {

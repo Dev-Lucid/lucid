@@ -6,7 +6,7 @@ class Ruleset
 {
     public $rules = [];
     public $name  = '';
-    public static $_handlers = [];
+    public static $handlers = [];
 
     public function __construct (array $rules)
     {
@@ -22,7 +22,7 @@ class Ruleset
         lucid::$response->javascript($js);
     }
 
-    public function hasErrors ($data = null): bool
+    public function hasErrors ($data = null)
     {
         if (is_null($data)) {
             $data = lucid::$request;
@@ -32,8 +32,8 @@ class Ruleset
 
         $errors = [];
         foreach ($this->rules as $rule) {
-            if (isset(Ruleset::$_handlers[$rule['type']]) === true && is_callable(Ruleset::$_handlers[$rule['type']]) === true) {
-                $func = Ruleset::$_handlers[$rule['type']];
+            if (isset(Ruleset::$handlers[$rule['type']]) === true && is_callable(Ruleset::$handlers[$rule['type']]) === true) {
+                $func = Ruleset::$handlers[$rule['type']];
                 $result = $func($rule, $data);
                 if ($result === false) {
                     if (isset($errors[$rule['label']]) === false) {
@@ -91,7 +91,7 @@ class Ruleset
     }
 }
 
-Ruleset::$_handlers['length_range'] = function (array $rule, $data) {
+Ruleset::$handlers['length_range'] = function (array $rule, $data) {
     $rule['last_value'] = $data->string($rule['field']);
     return (strlen($rule['last_value']) >= $rule['min'] && strlen($rule['last_value']) < $rule['max']);
 };

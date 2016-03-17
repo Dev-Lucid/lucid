@@ -3,15 +3,15 @@
 namespace DevLucid;
 
 $card = html::card();
-$card->add(html::card_header(_('navigation:login')));
-$card->add(html::card_block());
+$card->add(html::cardHeader(_('navigation:views.login')));
+$card->add(html::cardBlock());
 
-$card->last_child()->add(html::form('authform','#!authentication.process'));
-lucid::controller('authentication')->ruleset()->send('auth-form');
-$form = $card->last_child()->last_child();
+$card->lastChild()->add(html::form('authform','#!authentication.process'));
+lucid::controller('authentication')->ruleset()->send('authform');
+$form = $card->lastChild()->lastChild();
 
-$form->add(html::form_group(_('model:users:email'), html::input('email', 'email')->pre_addon('@')));
-$form->add(html::form_group(_('model:users:password'), html::input('password', 'password')->pre_addon(html::icon('lock'))));
+$form->add(html::formGroup(_('model:users:email'), html::input('email', 'email')->preAddon('@')));
+$form->add(html::formGroup(_('model:users:password'), html::input('password', 'password')->preAddon(html::icon('lock'))));
 
 $form->add(html::submit(_('button:login'))->pull('right'));
 /*

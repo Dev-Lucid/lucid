@@ -1,5 +1,7 @@
 {
-    "navigation:authentication.login": "Login",
+    "navigation:views.registration": "Register",
+    "navigation:views.login": "Login",
+    "navigation:views.login": "Login",
     "navigation:authentication.logout": "Logout",
     "navigation:view.dashboard": "Dashboard",
     "navigation:view.users-table": "Users",
