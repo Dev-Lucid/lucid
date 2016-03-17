@@ -4,71 +4,78 @@ namespace DevLucid;
 
 class ControllerNavigation extends Controller
 {
-    public function render($nav1_href = '', $nav2_href = '', $nav3_href = '')
+    public $structure = [];
+
+    public function __construct()
     {
-        $this->render_nav1($nav1_href);
-        $this->render_nav2($nav1_href, $nav2_href);
-        $this->render_nav3($nav1_href, $nav2_href, $nav3_href);
+        $this->structure['root'] = [
+            'selector'=>'#nav1',
+            'links'=>[
+                'view.dashboard'=>(lucid::$session->get('user_id',0) > 0),
+                'view.organizations-table'=>(lucid::$session->get('user_id',0) > 0),
+                'view.users-table'=>(lucid::$session->get('user_id',0) > 0),
+                'authentication.logout'=>(lucid::$session->get('user_id',0) > 0),
+                'views.login'=>(lucid::$session->get('user_id',0) == 0),
+            ]
+        ];
+
+        $this->structure['root/view.dashboard'] = [
+            'selector'=>'ul.nav2',
+            'links'=>[
+                'view.dashboard'=>true,
+                'view.regions-table'=>true,
+                'view.countries-table'=>true,
+                'view.roles-table'=>true,
+            ]
+        ];
     }
 
-    private function render_nav1($nav1_href = '')
+    public function render(...$paths)
     {
-        # Determine navigation for navbar
-        $nav1_links = [];
-        if (lucid::$session->get('user_id',0) == 0)
-        {
-            $nav1_links[] = html::nav_anchor('#!view.login',_('navigation:login'));
+        array_unshift($paths, 'root');
+
+        $allNavs = [];
+        foreach ($this->structure as $key=>$values) {
+            $allNavs[$values['selector']] = true;
         }
-        else
-        {
-            $nav1_links[] = html::nav_anchor('#!view.dashboard',_('navigation:dashboard'));
-            $nav1_links[] = html::nav_anchor('#!view.users-table',_('navigation:users'));
-            $nav1_links[] = html::nav_anchor('#!view.organizations-table',_('navigation:organizations'));
-            $nav1_links[] = html::nav_anchor('#!view.roles-table',_('navigation:configuration'));
-            $nav1_links[] = html::nav_anchor('#!authentication.logout',_('navigation:logout'));
+        foreach (array_keys($allNavs) as $selector) {
+            lucid::$response->replace($selector, '');
+        }
+        for ($i=0; $i<count($paths); $i++) {
+            $func = 'renderStructure'.$i;
+            $this->func($i, $paths);
+        }
+    }
+
+    public function __call($name, $parameters)
+    {
+        $index = array_shift($parameters);
+        $paths = array_shift($parameters);
+        $page = null;
+        if (isset($paths[$index + 1]) === true) {
+            $page = $paths[$index + 1];
+        };
+        $structure_index = implode('/',array_splice($paths, 0, $index + 1));
+
+        $structure = (isset($this->structure[$structure_index]) === true)?$this->structure[$structure_index]:false;
+
+        if ($structure === false) {
+            lucid::log()->debug('Navigation controller was unable to find any navigation structure for path '.$structure_index);
+            return;
         }
 
         $html = '';
-        foreach($nav1_links as $link)
-        {
-            $link->active(($link->href == '#!'.$nav1_href));
-            $html .= html::nav_item()->add($link)->render();
+        foreach ($structure['links'] as $url=>$allowed) {
+            if ($allowed === true) {
+                $link = html::navAnchor('#!'.$url, _('navigation:'.$url));
+                #lucid::log($url.'=='.$page);
+                if ($url == $page) {
+                    #lucid::log($url.' is the active link');
+                    $link->setactive(true);
+                }
+                $html .= html::navItem()->add($link)->render();
+            }
         }
-        lucid::$response->replace('#nav1',$html);
-    }
-
-    private function render_nav2($nav1_href = '', $nav2_href = '')
-    {
-        # Determine navigation for secondary list
-        $nav2_links = [];
-        switch($nav1_href)
-        {
-            case 'view.roles-table':
-                $nav2_links[] = html::nav_anchor('#!view.roles-table', _('navigation:roles'));
-                $nav2_links[] = html::nav_anchor('#!view.countries-table', _('navigation:countries'));
-                $nav2_links[] = html::nav_anchor('#!view.regions-table', _('navigation:regions'));
-                break;
-            default:
-                break;
-        }
-        $html = '';
-        foreach($nav2_links as $link)
-        {
-            $link->active(($link->href == '#!'.$nav2_href));
-            $html .= html::nav_item()->add($link)->render();
-        }
-        lucid::$response->replace('ul.nav2',$html);
-    }
-
-    private function render_nav3($nav1_href = '', $nav2_href = '', $nav3_href = '')
-    {
-        # Determine navigation for secondary list
-        switch($nav2_href)
-        {
-            case 'view.dashboard':
-                break;
-            default:
-                break;
-        }
+        lucid::$response->replace($structure['selector'], $html);
     }
 }

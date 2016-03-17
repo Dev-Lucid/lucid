@@ -32,14 +32,14 @@ lucid::$response->handleEscapedFragment();
 
         <div class="container-fluid" style="margin:5px 0px 50px 0px;">
             <div class="row" id="layout-two-col">
-                <div class="hidden-md-down col-lg-4 col-xl-3">
+                <div class="hidden-md-down col-lg-4 col-xl-3" id="left-col">
                     <ul class="nav nav-pills nav-stacked nav2"></ul>
                 </div>
                 <div class="hidden-lg-up col-xs-12">
                     <ul class="nav nav-pills nav2"></ul>
                     <br />
                 </div>
-                <div class="col-xs-12 col-lg-8 col-xl-9" id="body"></div>
+                <div class="col-xs-12 col-lg-8 col-xl-9" id="right-col"></div>
             </div>
             <div class="row" id="layout-full-width">
                 <div class="col-xs-12" id="full-width"></div>
@@ -47,7 +47,7 @@ lucid::$response->handleEscapedFragment();
         </div>
         <nav class="navbar navbar-fixed-bottom navbar-light bg-faded">
             <footer>
-                <p>&copy; <?=_('branding::app_name')?> 2016</p>
+                <p>&copy; <?=_('branding:app_name')?> 2016</p>
             </footer>
         </nav>
         <script src="<?=str_replace(lucid::$paths['app'],'',lucid::$jsProductionBuild)?>"></script>
@@ -57,17 +57,16 @@ lucid::$response->handleEscapedFragment();
         lucid.i18n.phrases['data_table:page'] = '<?=_('data_table:page')?>';
         lucid.addHandler('pre-handleResponse', function(parameters){
             var data = parameters.jqxhr.responseJSON;
-            if(typeof(data.replace['#full-width']) != 'undefined' && typeof(data.replace['#body']) == 'undefined'){
+            if(typeof(data.replace['#full-width']) != 'undefined' && typeof(data.replace['#right-col']) == 'undefined'){
                 jQuery('#layout-full-width').show();
                 jQuery('#layout-two-col').hide();
             }
-            if(typeof(data.replace['#full-width']) == 'undefined' && typeof(data.replace['#body']) != 'undefined'){
+            if(typeof(data.replace['#full-width']) == 'undefined' && typeof(data.replace['#right-col']) != 'undefined'){
                 jQuery('#layout-full-width').hide();
                 jQuery('#layout-two-col').show();
             }
         });
         $.datetimepicker.setLocale('<?=lucid::$i18n->getMajorLanguage()?>');
-
         </script>
     </body>
 </html>

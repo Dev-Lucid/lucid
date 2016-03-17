@@ -1,10 +1,7 @@
 <?php
-
-
-
 \DevLucid\html::init('bootstrap', [
     'prefix'=>'lucid',
-    'path'=>realpath(__DIR__.'/../html/')
+    'path'=>realpath(__DIR__.'/../html/').'/'
 ]);
 
 \DevLucid\html::$logger = \DevLucid\lucid::$logger;

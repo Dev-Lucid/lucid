@@ -29,6 +29,7 @@ class ControllerAuthentication extends Controller
         }
 
         lucid::$session->setArray($user->as_array());
+        \ORM::get_db()->query('update users set last_login=CURRENT_TIMESTAMP where user_id='.$user->user_id);
 
         lucid::log('Successful authentication for '.lucid::$session->email);
         lucid::redirect('dashboard');

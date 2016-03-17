@@ -1,5 +1,4 @@
 <?php
-
 class Model{{uc(table)}} extends \DevLucid\Model
 {
     public static $_table = '{{table}}';

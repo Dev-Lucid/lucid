@@ -1,5 +1,4 @@
 <?php
-
 class ModelUsers extends \DevLucid\Model
 {
     public static $_table = 'users';

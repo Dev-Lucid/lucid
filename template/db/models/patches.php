@@ -1,5 +1,4 @@
 <?php
-
 class ModelPatches extends \DevLucid\Model
 {
     public static $_table = 'patches';

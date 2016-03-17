@@ -1,5 +1,4 @@
 <?php
-
 class ModelCountries extends \DevLucid\Model
 {
     public static $_table = 'countries';

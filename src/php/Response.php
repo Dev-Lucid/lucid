@@ -132,7 +132,7 @@ class Response implements ResponseInterface
             $parameters = explode('|', lucid::$request->raw('_escaped_fragment_'));
             $action = array_shift($parameters);
             $passedParameters = [];
-            
+
             for ($i=0; $i<count($parameters); $i+=2) {
                 $passedParameters[$parameters[$i]] = $parameters[$i + 1];
             }

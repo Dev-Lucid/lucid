@@ -1,5 +1,4 @@
 <?php
-
 class ModelRoles extends \DevLucid\Model
 {
     public static $_table = 'roles';

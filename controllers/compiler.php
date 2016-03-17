@@ -1,5 +1,4 @@
 <?php
-
 namespace DevLucid;
 
 class ControllerCompiler extends Controller

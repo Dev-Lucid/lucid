@@ -1,5 +1,4 @@
 <?php
-
 namespace DevLucid;
 
 # there only needs to be one path for models since they are regenerated via a script anyway

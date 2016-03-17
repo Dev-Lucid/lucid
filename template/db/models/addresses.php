@@ -1,5 +1,4 @@
 <?php
-
 class ModelAddresses extends \DevLucid\Model
 {
     public static $_table = 'addresses';

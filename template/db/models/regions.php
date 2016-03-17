@@ -1,5 +1,4 @@
 <?php
-
 class ModelRegions extends \DevLucid\Model
 {
     public static $_table = 'regions';

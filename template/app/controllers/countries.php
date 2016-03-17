@@ -51,7 +51,7 @@ class ControllerCountries extends Controller
         # need to check if the data passes or not.
         $this->ruleset()->checkParameters(func_get_args());
 
-        # This loads the table row that you are trying to update. If $country_id contains 0, then the model's
+        # This loads the table row that you are trying to update. If $country_id === 0, then the model's
         # ->create() method will be called. This does not actually insert a row into the database until the
         # ->save() method is called.
         $data = lucid::model('countries', $country_id, false);
