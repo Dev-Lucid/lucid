@@ -18,11 +18,12 @@ class ControllerRegions extends Controller
     public function ruleset(): Ruleset
     {
         return new Ruleset([
-            ['type'=>'length_range', 'label'=>_('model:regions:country_id'), 'field'=>'country_id', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:regions:abbreviation'), 'field'=>'abbreviation', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:regions:name'), 'field'=>'name', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:regions:type'), 'field'=>'type', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:regions:parent'), 'field'=>'parent', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'anyValue', 'label'=>_('model:regions:country_id'), 'field'=>'country_id', ],
+            ['type'=>'lengthRange', 'label'=>_('model:regions:abbreviation'), 'field'=>'abbreviation', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'lengthRange', 'label'=>_('model:regions:name'), 'field'=>'name', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'lengthRange', 'label'=>_('model:regions:type'), 'field'=>'type', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'lengthRange', 'label'=>_('model:regions:parent'), 'field'=>'parent', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'checked', 'label'=>_('model:regions:is_parent'), 'field'=>'is_parent', ],
         ]);
     }
 

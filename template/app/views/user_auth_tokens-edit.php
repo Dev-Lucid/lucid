@@ -45,6 +45,7 @@ $user_id_options = lucid::model('users')
     ->select('email', 'label')
     ->order_by_asc('email')
     ->find_array();
+$user_id_options = array_merge([0, ''], $user_id_options);
 
 # create the main structure for the form
 $card = html::card();

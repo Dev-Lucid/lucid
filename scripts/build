@@ -132,7 +132,8 @@ function perform_build(string $table, bool $build_model = true, bool $build_tabl
                             $template_keys['select_options'] .= "\n    ->select('$idColumn', 'value')";
                             $template_keys['select_options'] .= "\n    ->select('$labelColumn', 'label')";
                             $template_keys['select_options'] .= "\n    ->order_by_asc('$labelColumn')";
-                            $template_keys['select_options'] .= "\n    ->find_array();\n\n";
+                            $template_keys['select_options'] .= "\n    ->find_array();";
+                            $template_keys['select_options'] .= "\n$".$column['name'].'_options = array_merge([0, \'\'], $'.$column['name']."_options);\n\n";
                         }
 
                         $template_keys['form_fields'] .= '    html::formGroup(_(\'model:'.$table.':'.$column['name'].'\'), html::select(\''.$column['name'].'\', $data->'.$column['name'].', '.$source.')),'."\n";
@@ -170,8 +171,20 @@ function perform_build(string $table, bool $build_model = true, bool $build_tabl
 
         # build the rules
         if ($column['index'] > 0) {
-            if ($column['type'] == 'string') {
-                $template_keys['rules'] .= '            [\'type\'=>\'length_range\', \'label\'=>_(\'model:'.$table.':'.$column['name'].'\'), \'field\'=>\''.$column['name'].'\', \'min\'=>\'2\', \'max\'=>\'255\', ],'."\n";
+            if (strpos(strrev($column['name']), 'di_') === 0) {
+                $template_keys['rules'] .= '            [\'type\'=>\'anyValue\', \'label\'=>_(\'model:'.$table.':'.$column['name'].'\'), \'field\'=>\''.$column['name'].'\', ],'."\n";
+            } elseif ($column['type'] == 'string') {
+                $template_keys['rules'] .= '            [\'type\'=>\'lengthRange\', \'label\'=>_(\'model:'.$table.':'.$column['name'].'\'), \'field\'=>\''.$column['name'].'\', \'min\'=>\'2\', \'max\'=>\'255\', ],'."\n";
+            } elseif ($column['type'] == 'bool') {
+                $template_keys['rules'] .= '            [\'type\'=>\'checked\', \'label\'=>_(\'model:'.$table.':'.$column['name'].'\'), \'field\'=>\''.$column['name'].'\', ],'."\n";
+            } elseif ($column['type'] == 'int') {
+                $template_keys['rules'] .= '            [\'type\'=>\'integerValue\', \'label\'=>_(\'model:'.$table.':'.$column['name'].'\'), \'field\'=>\''.$column['name'].'\', ],'."\n";
+            } elseif ($column['type'] == 'float') {
+                $template_keys['rules'] .= '            [\'type\'=>\'floatValue\', \'label\'=>_(\'model:'.$table.':'.$column['name'].'\'), \'field\'=>\''.$column['name'].'\', ],'."\n";
+            } elseif ($column['type'] == 'timestamp') {
+                $template_keys['rules'] .= '            [\'type\'=>\'validDate\', \'label\'=>_(\'model:'.$table.':'.$column['name'].'\'), \'field\'=>\''.$column['name'].'\', ],'."\n";
+            } else {
+                $template_keys['rules'] .= '            [\'type\'=>\'anyValue\', \'label\'=>_(\'model:'.$table.':'.$column['name'].'\'), \'field\'=>\''.$column['name'].'\', ],'."\n";
             }
         }
 

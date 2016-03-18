@@ -45,6 +45,7 @@ $role_id_options = lucid::model('roles')
     ->select('name', 'label')
     ->order_by_asc('name')
     ->find_array();
+$role_id_options = array_merge([0, ''], $role_id_options);
 
 # create the main structure for the form
 $card = html::card();

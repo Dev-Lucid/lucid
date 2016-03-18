@@ -17,7 +17,7 @@ function strval(str){
 
 lucid.ruleset.add=function(name,rules){
     lucid.ruleset.form[name] = rules;
-}
+};
 
 lucid.ruleset.process=function(name, data){
     if(typeof(lucid.ruleset.form[name]) == 'object'){
@@ -90,7 +90,79 @@ lucid.ruleset.buildErrorHtml =function(errors){
     return html;
 }
 
-lucid.ruleset.handlers['length_range'] = function($rule, $data){
-    $rule['last_value'] = strval($data[$rule['field']]);
+lucid.ruleset.handlers.lengthRange = function($rule, $data){
+    $rule.last_value = strval($data[$rule.field]);
     return (strlen($rule['last_value']) >= $rule['min'] && strlen($rule['last_value']) < $rule['max']);
+};
+
+lucid.ruleset.handlers.integerValue = function($rule, $data){
+    $rule.last_value = parseInt($data[$rule.field]);
+    if(isNaN($rule.last_value)){
+        return false;
+    }
+    return true;
+};
+
+
+lucid.ruleset.handlers.integerValueMin = function($rule, $data){
+    $rule.last_value = parseInt($data[$rule.field]);
+
+    if(isNaN($rule.last_value)){
+        return false;
+    }
+    if('min' in $rule && $rule.last_value < $rule.min){
+        return false;
+    }
+    return true;
+};
+
+lucid.ruleset.handlers.integerValueMax = function($rule, $data){
+    $rule.last_value = parseInt($data[$rule.field]);
+
+    if(isNaN($rule.last_value)){
+        return false;
+    }
+    if('max' in $rule && $rule.last_value > $rule.max){
+        return false;
+    }
+
+    return true;
+};
+
+lucid.ruleset.handlers.integerValueMinMax = function($rule, $data){
+    $rule.last_value = parseInt($data[$rule.field]);
+
+    if(isNaN($rule.last_value)){
+        return false;
+    }
+    if('min' in $rule && $rule.last_value < $rule.min){
+        return false;
+    }
+    if('max' in $rule && $rule.last_value > $rule.max){
+        return false;
+    }
+    return true;
+};
+
+lucid.ruleset.handlers.checked = function($rule, $data){
+    $rule.last_value = $data[$rule.field];
+    return ($rule.last_value === true);
+};
+
+lucid.ruleset.handlers.anyValue = function($rule, $data){
+    $rule.last_value = strval($data[$rule.field]);
+    return ($rule.last_value !== '' && $rule.last_value+'' != 'undefined');
+};
+
+lucid.ruleset.handlers.floatValue = function($rule, $data){
+    $rule.last_value = parseInt($data[$rule.field]);
+    if(isNaN($rule.last_value)){
+        return false;
+    }
+    return true;
+};
+
+lucid.ruleset.handlers.validDate = function($rule, $data){
+    console.log('validDate rule not implemented yet :(');
+    return true;
 };

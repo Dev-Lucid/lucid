@@ -48,7 +48,7 @@ $table->add(html::dataColumn(_('model:organizations:created_on'), 'created_on', 
 
 # Add a column specifically for deleting rows.
 $table->add(html::dataColumn('', null, '10%', false, function($data){
-    return html::button(_('button:delete'), 'danger', "if(confirm('"._('button:confirm_delete')."')){ lucid.request('#!roles.delete|role_id|".$data->role_id."');}")->size('sm')->pull('right');
+    return html::button(_('button:delete'), 'danger', "if(confirm('"._('button:confirm_delete')."')){ lucid.request('#!organizations.delete|org_id|".$data->org_id."');}")->size('sm')->pull('right');
 }));
 
 # Enable searching this table based on some of the fields

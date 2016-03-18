@@ -18,14 +18,14 @@ class ControllerVw_users_details extends Controller
     public function ruleset(): Ruleset
     {
         return new Ruleset([
-            ['type'=>'length_range', 'label'=>_('model:vw_users_details:email'), 'field'=>'email', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:vw_users_details:password'), 'field'=>'password', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:vw_users_details:first_name'), 'field'=>'first_name', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:vw_users_details:last_name'), 'field'=>'last_name', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:vw_users_details:org_id'), 'field'=>'org_id', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:vw_users_details:organization_name'), 'field'=>'organization_name', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:vw_users_details:role_id'), 'field'=>'role_id', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:vw_users_details:role_name'), 'field'=>'role_name', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'lengthRange', 'label'=>_('model:vw_users_details:email'), 'field'=>'email', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'lengthRange', 'label'=>_('model:vw_users_details:password'), 'field'=>'password', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'lengthRange', 'label'=>_('model:vw_users_details:first_name'), 'field'=>'first_name', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'lengthRange', 'label'=>_('model:vw_users_details:last_name'), 'field'=>'last_name', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'anyValue', 'label'=>_('model:vw_users_details:org_id'), 'field'=>'org_id', ],
+            ['type'=>'lengthRange', 'label'=>_('model:vw_users_details:organization_name'), 'field'=>'organization_name', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'anyValue', 'label'=>_('model:vw_users_details:role_id'), 'field'=>'role_id', ],
+            ['type'=>'lengthRange', 'label'=>_('model:vw_users_details:role_name'), 'field'=>'role_name', 'min'=>'2', 'max'=>'255', ],
         ]);
     }
 

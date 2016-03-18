@@ -18,7 +18,7 @@ class ControllerRoles extends Controller
     public function ruleset(): Ruleset
     {
         return new Ruleset([
-            ['type'=>'length_range', 'label'=>_('model:roles:name'), 'field'=>'name', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'lengthRange', 'label'=>_('model:roles:name'), 'field'=>'name', 'min'=>'2', 'max'=>'255', ],
         ]);
     }
 

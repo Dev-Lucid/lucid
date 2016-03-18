@@ -18,11 +18,16 @@ class ControllerUsers extends Controller
     public function ruleset(): Ruleset
     {
         return new Ruleset([
-            ['type'=>'length_range', 'label'=>_('model:users:email'), 'field'=>'email', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:users:password'), 'field'=>'password', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:users:first_name'), 'field'=>'first_name', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:users:last_name'), 'field'=>'last_name', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:users:register_key'), 'field'=>'register_key', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'anyValue', 'label'=>_('model:users:org_id'), 'field'=>'org_id', ],
+            ['type'=>'lengthRange', 'label'=>_('model:users:email'), 'field'=>'email', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'lengthRange', 'label'=>_('model:users:password'), 'field'=>'password', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'lengthRange', 'label'=>_('model:users:first_name'), 'field'=>'first_name', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'lengthRange', 'label'=>_('model:users:last_name'), 'field'=>'last_name', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'checked', 'label'=>_('model:users:is_enabled'), 'field'=>'is_enabled', ],
+            ['type'=>'validDate', 'label'=>_('model:users:last_login'), 'field'=>'last_login', ],
+            ['type'=>'validDate', 'label'=>_('model:users:created_on'), 'field'=>'created_on', ],
+            ['type'=>'checked', 'label'=>_('model:users:force_password_change'), 'field'=>'force_password_change', ],
+            ['type'=>'lengthRange', 'label'=>_('model:users:register_key'), 'field'=>'register_key', 'min'=>'2', 'max'=>'255', ],
         ]);
     }
 

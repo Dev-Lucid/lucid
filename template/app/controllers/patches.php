@@ -18,7 +18,8 @@ class ControllerPatches extends Controller
     public function ruleset(): Ruleset
     {
         return new Ruleset([
-            ['type'=>'length_range', 'label'=>_('model:patches:identifier'), 'field'=>'identifier', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'lengthRange', 'label'=>_('model:patches:identifier'), 'field'=>'identifier', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'validDate', 'label'=>_('model:patches:applied_on_date'), 'field'=>'applied_on_date', ],
         ]);
     }
 

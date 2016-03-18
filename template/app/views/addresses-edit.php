@@ -45,6 +45,7 @@ $org_id_options = lucid::model('organizations')
     ->select('name', 'label')
     ->order_by_asc('name')
     ->find_array();
+$org_id_options = array_merge([0, ''], $org_id_options);
 
 # create the main structure for the form
 $card = html::card();

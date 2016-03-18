@@ -18,15 +18,16 @@ class ControllerAddresses extends Controller
     public function ruleset(): Ruleset
     {
         return new Ruleset([
-            ['type'=>'length_range', 'label'=>_('model:addresses:name'), 'field'=>'name', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:addresses:street_1'), 'field'=>'street_1', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:addresses:street_2'), 'field'=>'street_2', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:addresses:city'), 'field'=>'city', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:addresses:region_id'), 'field'=>'region_id', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:addresses:postal_code'), 'field'=>'postal_code', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:addresses:country_id'), 'field'=>'country_id', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:addresses:phone_number_1'), 'field'=>'phone_number_1', 'min'=>'2', 'max'=>'255', ],
-            ['type'=>'length_range', 'label'=>_('model:addresses:phone_number_2'), 'field'=>'phone_number_2', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'anyValue', 'label'=>_('model:addresses:org_id'), 'field'=>'org_id', ],
+            ['type'=>'lengthRange', 'label'=>_('model:addresses:name'), 'field'=>'name', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'lengthRange', 'label'=>_('model:addresses:street_1'), 'field'=>'street_1', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'lengthRange', 'label'=>_('model:addresses:street_2'), 'field'=>'street_2', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'lengthRange', 'label'=>_('model:addresses:city'), 'field'=>'city', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'anyValue', 'label'=>_('model:addresses:region_id'), 'field'=>'region_id', ],
+            ['type'=>'lengthRange', 'label'=>_('model:addresses:postal_code'), 'field'=>'postal_code', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'anyValue', 'label'=>_('model:addresses:country_id'), 'field'=>'country_id', ],
+            ['type'=>'lengthRange', 'label'=>_('model:addresses:phone_number_1'), 'field'=>'phone_number_1', 'min'=>'2', 'max'=>'255', ],
+            ['type'=>'lengthRange', 'label'=>_('model:addresses:phone_number_2'), 'field'=>'phone_number_2', 'min'=>'2', 'max'=>'255', ],
         ]);
     }
 

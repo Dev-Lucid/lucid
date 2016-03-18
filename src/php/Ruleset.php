@@ -26,7 +26,7 @@ class Ruleset
     {
         if (is_null($data)) {
             $data = lucid::$request;
-        } elseif(is_array($data)) {
+        } elseif(is_array($data) === true) {
             $data = new Request($data);
         }
 
@@ -39,7 +39,13 @@ class Ruleset
                     if (isset($errors[$rule['label']]) === false) {
                         $errors[$rule['label']] = [];
                     }
-                    $errors[$rule['label']][] = _('validation:'.$rule['type'],$rule);
+
+                    if (isset($rule['message']) === true) {
+                        $message = _($rule['message'], $rule);
+                    } else {
+                        $message = _('validation:'.$rule['type'],$rule);
+                    }
+                    $errors[$rule['label']][] = $message;
                 }
             }
         }
@@ -91,7 +97,76 @@ class Ruleset
     }
 }
 
-Ruleset::$handlers['length_range'] = function (array $rule, $data) {
+Ruleset::$handlers['lengthRange'] = function (array $rule, $data) {
     $rule['last_value'] = $data->string($rule['field']);
     return (strlen($rule['last_value']) >= $rule['min'] && strlen($rule['last_value']) < $rule['max']);
+};
+
+
+Ruleset::$handlers['integerValue'] = function($rule, $data){
+    $rule['last_value'] =  $data->int($rule['field']);
+    if(is_numeric($rule.last_value) && intval($rule['last_value']) == $rule['last_value']){
+        return false;
+    }
+    return true;
+};
+
+
+Ruleset::$handlers['integerValueMin'] = function($rule, $data){
+    $rule['last_value'] = $data->int($rule['field']);
+    if(is_numeric($rule.last_value) && intval($rule['last_value']) == $rule['last_value']){
+        return false;
+    }
+    if (intval($rule['last_value']) < $rule['min']) {
+        return false;
+    }
+    return true;
+};
+
+Ruleset::$handlers['integerValueMax'] = function($rule, $data){
+    $rule['last_value'] = $data->int($rule['field']);
+    if(is_numeric($rule.last_value) && intval($rule['last_value']) == $rule['last_value']){
+        return false;
+    }
+    if (intval($rule['last_value']) > $rule['max']) {
+        return false;
+    }
+    return true;
+};
+
+Ruleset::$handlers['integerValueMinMax'] = function($rule, $data){
+    $rule['last_value'] = $data->int($rule['field']);
+    if(is_numeric($rule.last_value) && intval($rule['last_value']) == $rule['last_value']){
+        return false;
+    }
+    if (intval($rule['last_value']) < $rule['min']) {
+        return false;
+    }
+    if (intval($rule['last_value']) > $rule['max']) {
+        return false;
+    }
+    return true;
+};
+
+Ruleset::$handlers['checked'] = function($rule, $data){
+    lucid::log('trying to perform chedcked validation rule. Current value is: '.$data[$rule['field']]);
+    return true;
+};
+
+Ruleset::$handlers['anyValue'] = function($rule, $data){
+    $rule['last_value'] = $data->string($rule['field']);
+    return ($rule.last_value !== '' && $rule.last_value+'' != 'undefined');
+};
+
+Ruleset::$handlers['floatValue'] = function($rule, $data){
+    $rule['last_value'] =$data->string($rule['field']);
+    if(is_numeric($rule.last_value) && floatval($rule['last_value']) == $rule['last_value']){
+        return false;
+    }
+    return true;
+};
+
+Ruleset::$handlers['validDate'] = function($rule, $data){
+    lucid::log('validDate rule not implemented yet :(');
+    return true;
 };
