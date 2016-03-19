@@ -144,7 +144,7 @@ class Ruleset
 
 Ruleset::$handlers['lengthRange'] = function (array $rule, $data) {
     # Before rules are sent, they are called with null passed in $data. This is used so that you can check if the rule array contains
-    # all the keys that it needs to do its job. For example, this rule requires a min and max index be set in the rule array. Even if your
+    # all the keys that it needs to do its job. For example, this rule may require a min and max index be set in the rule array. Even if your
     # rule does not require any keys, call this function anyway as it will always check for the key 'field', and so that you don't forget
     # to call the function if you choose to modify your code later to add a required key.
     if(is_null($data) === true) {
@@ -157,7 +157,7 @@ Ruleset::$handlers['lengthRange'] = function (array $rule, $data) {
 
 Ruleset::$handlers['integerValue'] = function($rule, $data){
     # Before rules are sent, they are called with null passed in $data. This is used so that you can check if the rule array contains
-    # all the keys that it needs to do its job. For example, this rule requires a min and max index be set in the rule array. Even if your
+    # all the keys that it needs to do its job. For example, this rule may require a min and max index be set in the rule array. Even if your
     # rule does not require any keys, call this function anyway as it will always check for the key 'field', and so that you don't forget
     # to call the function if you choose to modify your code later to add a required key.
     if(is_null($data) === true) {
@@ -173,7 +173,7 @@ Ruleset::$handlers['integerValue'] = function($rule, $data){
 
 Ruleset::$handlers['integerValueMin'] = function($rule, $data){
     # Before rules are sent, they are called with null passed in $data. This is used so that you can check if the rule array contains
-    # all the keys that it needs to do its job. For example, this rule requires a min and max index be set in the rule array. Even if your
+    # all the keys that it needs to do its job. For example, this rule may require a min and max index be set in the rule array. Even if your
     # rule does not require any keys, call this function anyway as it will always check for the key 'field', and so that you don't forget
     # to call the function if you choose to modify your code later to add a required key.
     if(is_null($data) === true) {
@@ -191,7 +191,7 @@ Ruleset::$handlers['integerValueMin'] = function($rule, $data){
 
 Ruleset::$handlers['integerValueMax'] = function($rule, $data){
     # Before rules are sent, they are called with null passed in $data. This is used so that you can check if the rule array contains
-    # all the keys that it needs to do its job. For example, this rule requires a min and max index be set in the rule array. Even if your
+    # all the keys that it needs to do its job. For example, this rule may require a min and max index be set in the rule array. Even if your
     # rule does not require any keys, call this function anyway as it will always check for the key 'field', and so that you don't forget
     # to call the function if you choose to modify your code later to add a required key.
     if(is_null($data) === true) {
@@ -209,7 +209,7 @@ Ruleset::$handlers['integerValueMax'] = function($rule, $data){
 
 Ruleset::$handlers['integerValueMinMax'] = function($rule, $data){
     # Before rules are sent, they are called with null passed in $data. This is used so that you can check if the rule array contains
-    # all the keys that it needs to do its job. For example, this rule requires a min and max index be set in the rule array. Even if your
+    # all the keys that it needs to do its job. For example, this rule may require a min and max index be set in the rule array. Even if your
     # rule does not require any keys, call this function anyway as it will always check for the key 'field', and so that you don't forget
     # to call the function if you choose to modify your code later to add a required key.
     if(is_null($data) === true) {
@@ -230,7 +230,7 @@ Ruleset::$handlers['integerValueMinMax'] = function($rule, $data){
 
 Ruleset::$handlers['checked'] = function($rule, $data){
     # Before rules are sent, they are called with null passed in $data. This is used so that you can check if the rule array contains
-    # all the keys that it needs to do its job. For example, this rule requires a min and max index be set in the rule array. Even if your
+    # all the keys that it needs to do its job. For example, this rule may require a min and max index be set in the rule array. Even if your
     # rule does not require any keys, call this function anyway as it will always check for the key 'field', and so that you don't forget
     # to call the function if you choose to modify your code later to add a required key.
     if(is_null($data) === true) {
@@ -241,7 +241,7 @@ Ruleset::$handlers['checked'] = function($rule, $data){
 
 Ruleset::$handlers['anyValue'] = function($rule, $data){
     # Before rules are sent, they are called with null passed in $data. This is used so that you can check if the rule array contains
-    # all the keys that it needs to do its job. For example, this rule requires a min and max index be set in the rule array. Even if your
+    # all the keys that it needs to do its job. For example, this rule may require a min and max index be set in the rule array. Even if your
     # rule does not require any keys, call this function anyway as it will always check for the key 'field', and so that you don't forget
     # to call the function if you choose to modify your code later to add a required key.
     if(is_null($data) === true) {
@@ -253,7 +253,7 @@ Ruleset::$handlers['anyValue'] = function($rule, $data){
 
 Ruleset::$handlers['floatValue'] = function($rule, $data){
     # Before rules are sent, they are called with null passed in $data. This is used so that you can check if the rule array contains
-    # all the keys that it needs to do its job. For example, this rule requires a min and max index be set in the rule array. Even if your
+    # all the keys that it needs to do its job. For example, this rule may require a min and max index be set in the rule array. Even if your
     # rule does not require any keys, call this function anyway as it will always check for the key 'field', and so that you don't forget
     # to call the function if you choose to modify your code later to add a required key.
     if(is_null($data) === true) {
@@ -268,7 +268,7 @@ Ruleset::$handlers['floatValue'] = function($rule, $data){
 
 Ruleset::$handlers['validDate'] = function($rule, $data){
     # Before rules are sent, they are called with null passed in $data. This is used so that you can check if the rule array contains
-    # all the keys that it needs to do its job. For example, this rule requires a min and max index be set in the rule array. Even if your
+    # all the keys that it needs to do its job. For example, this rule may require a min and max index be set in the rule array. Even if your
     # rule does not require any keys, call this function anyway as it will always check for the key 'field', and so that you don't forget
     # to call the function if you choose to modify your code later to add a required key.
     if(is_null($data) === true) {
