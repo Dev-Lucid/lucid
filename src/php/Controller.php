@@ -16,6 +16,10 @@ class Controller
             throw new \Exception('Cannot call method of controller starting with an underscore via requests. If you absolutely need to call such a method, write a method in the controller whose name does not start with an underscore and call the original method from that. This functionality allows you to mark methods as non-callable from requests simply by starting their name with an underscore.');
         }
 
+        if (method_exists($this, $method) === false) {
+            throw new \Exception(get_class($this).' does not contain a method named '.$method.'. Valid methods are: '.implode(', ', get_class_methods($this)));
+        }
+
         $r = new \ReflectionMethod($thisClass, $method);
         $methodParameters = $r->getParameters();
 
