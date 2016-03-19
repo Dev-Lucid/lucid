@@ -17,7 +17,7 @@ class ControllerCountries extends Controller
       */
     public function ruleset(): Ruleset
     {
-        return new Ruleset([
+        return new Ruleset(__FILE__, __LINE__, [
             ['type'=>'lengthRange', 'label'=>_('model:countries:alpha_3'), 'field'=>'alpha_3', 'min'=>'2', 'max'=>'255', ],
             ['type'=>'lengthRange', 'label'=>_('model:countries:name'), 'field'=>'name', 'min'=>'2', 'max'=>'255', ],
             ['type'=>'lengthRange', 'label'=>_('model:countries:common_name'), 'field'=>'common_name', 'min'=>'2', 'max'=>'255', ],

@@ -17,7 +17,7 @@ class ControllerAddresses extends Controller
       */
     public function ruleset(): Ruleset
     {
-        return new Ruleset([
+        return new Ruleset(__FILE__, __LINE__, [
             ['type'=>'anyValue', 'label'=>_('model:addresses:org_id'), 'field'=>'org_id', ],
             ['type'=>'lengthRange', 'label'=>_('model:addresses:name'), 'field'=>'name', 'min'=>'2', 'max'=>'255', ],
             ['type'=>'lengthRange', 'label'=>_('model:addresses:street_1'), 'field'=>'street_1', 'min'=>'2', 'max'=>'255', ],

@@ -334,9 +334,10 @@ class lucid
         try {
             lucid::processActionList('request');
         } catch (Exception\Silent $e) {
-            lucid::log('Exception: '.$e->getMessage());
+            #lucid::log('Exception: '.$e->getMessage());
         } catch (\Exception $e) {
-            lucid::log('Exception: '.$e->getMessage());
+            #lucid::log('Exception: '.$e->getMessage());
+            lucid::$error->handle($e);
         }
 
         lucid::processActionList('post');

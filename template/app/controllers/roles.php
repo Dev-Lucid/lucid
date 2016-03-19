@@ -17,7 +17,7 @@ class ControllerRoles extends Controller
       */
     public function ruleset(): Ruleset
     {
-        return new Ruleset([
+        return new Ruleset(__FILE__, __LINE__, [
             ['type'=>'lengthRange', 'label'=>_('model:roles:name'), 'field'=>'name', 'min'=>'2', 'max'=>'255', ],
         ]);
     }

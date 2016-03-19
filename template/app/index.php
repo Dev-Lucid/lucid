@@ -56,7 +56,7 @@ lucid::$response->handleEscapedFragment();
         lucid.defaultRequest = '#!view.login';
         lucid.i18n.phrases['data_table:page'] = '<?=_('data_table:page')?>';
         lucid.addHandler('pre-handleResponse', function(parameters){
-            var data = parameters.jqxhr.responseJSON;
+            var data = parameters.jqxhr.responseJSON.data;
             if(typeof(data.replace['#full-width']) != 'undefined' && typeof(data.replace['#right-col']) == 'undefined'){
                 jQuery('#layout-full-width').show();
                 jQuery('#layout-two-col').hide();

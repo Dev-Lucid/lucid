@@ -17,7 +17,7 @@ class ControllerUsers extends Controller
       */
     public function ruleset(): Ruleset
     {
-        return new Ruleset([
+        return new Ruleset(__FILE__, __LINE__, [
             ['type'=>'anyValue', 'label'=>_('model:users:org_id'), 'field'=>'org_id', ],
             ['type'=>'lengthRange', 'label'=>_('model:users:email'), 'field'=>'email', 'min'=>'2', 'max'=>'255', ],
             ['type'=>'lengthRange', 'label'=>_('model:users:password'), 'field'=>'password', 'min'=>'2', 'max'=>'255', ],

@@ -17,7 +17,7 @@ class Controller{{uc(table)}} extends Controller
       */
     public function ruleset(): Ruleset
     {
-        return new Ruleset([
+        return new Ruleset(__FILE__, __LINE__, [
 {{rules}}        ]);
     }
 

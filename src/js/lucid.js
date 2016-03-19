@@ -135,7 +135,9 @@ lucid.getFormValues=function(form){
 lucid.handleResponse=function(xhr, statusCode){
     lucid.callHandlers('pre-handleResponse', {'jqxhr':xhr, 'statusCode':statusCode});
     if (statusCode == 'success'){
-        var data = xhr.responseJSON;
+        console.log(xhr.responseJSON);
+        var status = xhr.responseJSON.status;
+        var data = xhr.responseJSON.data;
 
         if (data.preJavascript !== ''){
             try{

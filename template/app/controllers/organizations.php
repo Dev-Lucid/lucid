@@ -17,7 +17,7 @@ class ControllerOrganizations extends Controller
       */
     public function ruleset(): Ruleset
     {
-        return new Ruleset([
+        return new Ruleset(__FILE__, __LINE__, [
             ['type'=>'anyValue', 'label'=>_('model:organizations:role_id'), 'field'=>'role_id', ],
             ['type'=>'lengthRange', 'label'=>_('model:organizations:name'), 'field'=>'name', 'min'=>'2', 'max'=>'255', ],
             ['type'=>'checked', 'label'=>_('model:organizations:is_enabled'), 'field'=>'is_enabled', ],

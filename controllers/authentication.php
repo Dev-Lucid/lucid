@@ -6,8 +6,8 @@ class ControllerAuthentication extends Controller
 {
     public function ruleset()
     {
-        return new Ruleset([
-            ['type'=>'length_range','label'=>'E-mail', 'field'=>'email','min'=>'5','max'=>'255'],
+        return new Ruleset(__FILE__, __LINE__, [
+            ['type'=>'lengthRange','label'=>'E-mail', 'field'=>'email','min'=>'5','max'=>'255'],
         ]);
     }
 

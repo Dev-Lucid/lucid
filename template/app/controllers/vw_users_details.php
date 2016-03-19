@@ -17,7 +17,7 @@ class ControllerVw_users_details extends Controller
       */
     public function ruleset(): Ruleset
     {
-        return new Ruleset([
+        return new Ruleset(__FILE__, __LINE__, [
             ['type'=>'lengthRange', 'label'=>_('model:vw_users_details:email'), 'field'=>'email', 'min'=>'2', 'max'=>'255', ],
             ['type'=>'lengthRange', 'label'=>_('model:vw_users_details:password'), 'field'=>'password', 'min'=>'2', 'max'=>'255', ],
             ['type'=>'lengthRange', 'label'=>_('model:vw_users_details:first_name'), 'field'=>'first_name', 'min'=>'2', 'max'=>'255', ],

@@ -52,6 +52,7 @@ lucid.dataTable.changePage=function(tableId, page){
 }
 
 lucid.dataTable.requestData=function(tableId){
+    console.log('requesting new data for table '+tableId);
     var table = jQuery('#'+tableId+' > table');
     var url   = table.attr('data-url');
     var data  = {
@@ -61,6 +62,7 @@ lucid.dataTable.requestData=function(tableId){
         'limit'   :table.attr('data-limit'),
         'refresh' :'please'
     };
+    console.log('about to call lucid.request:');
     lucid.request(url, data, function(){
         lucid.dataTable.rebuildPager(tableId);
     });

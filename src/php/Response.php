@@ -159,11 +159,11 @@ class Response implements ResponseInterface
         }
     }
 
-    public function send()
+    public function send($status='success')
     {
         ob_clean();
         header('Content-Type: application/json');
-        $output = json_encode($this->data, JSON_PRETTY_PRINT);
+        $output = json_encode(['status'=>$status, 'data'=>$this->data], JSON_PRETTY_PRINT);
         exit($output);
     }
 }

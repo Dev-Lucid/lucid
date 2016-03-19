@@ -17,7 +17,7 @@ class ControllerRegions extends Controller
       */
     public function ruleset(): Ruleset
     {
-        return new Ruleset([
+        return new Ruleset(__FILE__, __LINE__, [
             ['type'=>'anyValue', 'label'=>_('model:regions:country_id'), 'field'=>'country_id', ],
             ['type'=>'lengthRange', 'label'=>_('model:regions:abbreviation'), 'field'=>'abbreviation', 'min'=>'2', 'max'=>'255', ],
             ['type'=>'lengthRange', 'label'=>_('model:regions:name'), 'field'=>'name', 'min'=>'2', 'max'=>'255', ],

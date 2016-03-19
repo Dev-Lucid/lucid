@@ -17,7 +17,7 @@ class ControllerVw_organizations_details extends Controller
       */
     public function ruleset(): Ruleset
     {
-        return new Ruleset([
+        return new Ruleset(__FILE__, __LINE__, [
             ['type'=>'lengthRange', 'label'=>_('model:vw_organizations_details:name'), 'field'=>'name', 'min'=>'2', 'max'=>'255', ],
             ['type'=>'anyValue', 'label'=>_('model:vw_organizations_details:role_id'), 'field'=>'role_id', ],
             ['type'=>'lengthRange', 'label'=>_('model:vw_organizations_details:role_name'), 'field'=>'role_name', 'min'=>'2', 'max'=>'255', ],

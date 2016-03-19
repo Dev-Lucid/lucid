@@ -17,7 +17,7 @@ class ControllerUser_auth_tokens extends Controller
       */
     public function ruleset(): Ruleset
     {
-        return new Ruleset([
+        return new Ruleset(__FILE__, __LINE__, [
             ['type'=>'anyValue', 'label'=>_('model:user_auth_tokens:user_id'), 'field'=>'user_id', ],
             ['type'=>'lengthRange', 'label'=>_('model:user_auth_tokens:token'), 'field'=>'token', 'min'=>'2', 'max'=>'255', ],
             ['type'=>'integerValue', 'label'=>_('model:user_auth_tokens:created_on'), 'field'=>'created_on', ],
