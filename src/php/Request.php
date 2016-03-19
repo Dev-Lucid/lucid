@@ -11,7 +11,7 @@ class Request implements RequestInterface
         $this->_source = (is_null($source) === true)?$_REQUEST:$source;
     }
 
-    public function is_set(string $property)
+    public function is_set(string $property): bool
     {
         return isset($this->_source[$property]);
     }

@@ -4,15 +4,15 @@ namespace DevLucid;
 
 interface ResponseInterface
 {
-    public function title($title);
-    public function description($description);
-    public function keywords($keywords);
+    public function title(string $title);
+    public function description(string $description);
+    public function keywords(string $keywords);
     public function data($key, $data);
-    public function javascript($js, $runBefore);
-    public function error($error);
-    public function replace($area, $content);
-    public function append($area, $content);
-    public function prepend($area, $content);
+    public function javascript(string $js, $runBefore);
+    public function error(string $error);
+    public function replace(string $area, $content);
+    public function append(string $area, $content);
+    public function prepend(string $area, $content);
     public function clear($areas=null);
     public function handleEscapedFragment();
     public function send();

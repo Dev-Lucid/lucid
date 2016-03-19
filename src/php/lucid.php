@@ -38,7 +38,7 @@ class lucid
     public static $jsFiles   = [];
     public static $jsProductionBuild = null;
 
-    public static function init($configs=[])
+    public static function init(array $configs=[])
     {
         lucid::$php = explode('.', PHP_VERSION);
 
@@ -86,7 +86,6 @@ class lucid
         if (is_null(lucid::$session) === true) {
             lucid::$session = new Session();
         }
-
         if (in_array('DevLucid\\SessionInterface', class_implements(lucid::$session)) === false){
             throw new \Exception('For compatibility, any class that replaces lucid::$session must implement DevLucid\\SessionInterface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/SessionInterface.php');
         }
@@ -168,7 +167,7 @@ class lucid
         }
     }
 
-    private static function includeIfExists($file, $paths = null)
+    private static function includeIfExists(string $file, $paths = null)
     {
         if (is_null($paths) === true) {
             if (file_exists($file) === true) {
@@ -190,7 +189,7 @@ class lucid
         }
 
         # we can split objects/arrays into multiple lines using print_r and some exploding
-        if (is_object($text) === true or is_array($text) === true) {
+        if (is_object($text) === true || is_array($text) === true) {
             $text = print_r($text, true);
             $text = explode("\n",$text);
             foreach ($text as $line) {
@@ -206,18 +205,18 @@ class lucid
         }
     }
 
-    public static function jslog($text)
+    public static function jslog(string $text)
     {
         $text = str_replace("'", "\\'", $text);
         lucid::$response->javascript("console.log('".$text."');");
     }
 
-    public static function config($name)
+    public static function config(string $name)
     {
         return lucid::includeIfExists($name.'.php', lucid::$paths['config']);
     }
 
-    public static function controller(string $name)
+    public static function controller(string $name): Controller
     {
         $class_name = 'DevLucid\\Controller'.$name;
         $name = lucid::cleanFileName($name);
@@ -311,7 +310,7 @@ class lucid
         }
     }
 
-    public static function processCommandLineAction($argv)
+    public static function processCommandLineAction(array $argv)
     {
         array_shift($argv);
         $action = array_shift($argv);
@@ -323,7 +322,7 @@ class lucid
         lucid::addAction('request', $action, $parameters);
     }
 
-    public static function addAction($when, $controllerMethod, $parameters = [])
+    public static function addAction(string $when, string $controllerMethod, $parameters = [])
     {
         lucid::$actions[$when][] = [$controllerMethod, new Request($parameters)];
     }
@@ -343,14 +342,14 @@ class lucid
         lucid::processActionList('post');
     }
 
-    private static function processActionList($name)
+    private static function processActionList(string $name)
     {
         for ($i=0; $i<count(lucid::$actions[$name]); $i++) {
             lucid::callAction(lucid::$actions[$name][$i][0], lucid::$actions[$name][$i][1]);
         }
     }
 
-    public static function callAction($action, $passedParameters=[])
+    public static function callAction(string $action, $passedParameters=[])
     {
         list($controllerName, $method) = explode('.',$action);
 
@@ -372,7 +371,7 @@ class lucid
         }
     }
 
-    public static function redirect($new_view)
+    public static function redirect(string $new_view)
     {
         lucid::view($new_view);
         lucid::$response->javascript('lucid.updateHash(\'#!view.'.$new_view.'\');');

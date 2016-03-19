@@ -26,17 +26,17 @@ class Response implements ResponseInterface
         ];
     }
 
-    public function title($title)
+    public function title(string $title)
     {
         $this->data['title'] = $title;
     }
 
-    public function description($description)
+    public function description(string $description)
     {
         $this->data['description'] = $description;
     }
 
-    public function keywords($keywords)
+    public function keywords(string $keywords)
     {
         $this->data['keywords'] = $keywords;
     }
@@ -46,17 +46,17 @@ class Response implements ResponseInterface
         $this->data['data'][$key] = $data;
     }
 
-    public function javascript($js, $runBefore = false)
+    public function javascript(string $js, $runBefore = false)
     {
         $this->data[ (($runBefore)?'pre':'post') . 'Javascript' ] .= $js;
     }
 
-    public function error($msg)
+    public function error(string $msg)
     {
         $this->data['errors'][] = $msg;
     }
 
-    public function replace($area, $content=null)
+    public function replace(string $area, $content=null)
     {
         if (isset($area) === false and is_null($this->defaultPosition) === false) {
             $area = $this->defaultPosition;
@@ -73,7 +73,7 @@ class Response implements ResponseInterface
         $this->data['replace'][$area] = $content;
     }
 
-    public function append($area, $content=null)
+    public function append(string $area, $content=null)
     {
         if (isset($area) === false and is_null($this->defaultPosition) === false) {
             $area = $this->defaultPosition;
@@ -90,7 +90,7 @@ class Response implements ResponseInterface
         $this->data['append'][$area] = $content;
     }
 
-    public function prepend($area, $content=null)
+    public function prepend(string $area, $content=null)
     {
         if (isset($area) === false and is_null($this->defaultPosition) === false) {
             $area = $this->defaultPosition;
