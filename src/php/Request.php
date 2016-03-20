@@ -23,12 +23,12 @@ class Request implements RequestInterface
 
     public function raw(string $name, $defaultValue = null)
     {
-        return (isset($this->_source[$name]) === true)?$this->_source[$name]:$defaultValue;
+        return $this->_source[$name] ?? $defaultValue;
     }
 
     public function string(string $name, $defaultValue=null): string
     {
-        return (isset($this->_source[$name]) === true)?strval($this->_source[$name]):$defaultValue;
+        return strval($this->_source[$name] ?? $defaultValue);
     }
 
     public function int(string $name, $defaultValue=null): int
