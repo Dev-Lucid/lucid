@@ -54,7 +54,7 @@ class ControllerVw_organizations_details extends Controller
         # This loads the table row that you are trying to update. If $org_id === 0, then the model's
         # ->create() method will be called. This does not actually insert a row into the database until the
         # ->save() method is called.
-        $data = lucid::model('vw_organizations_details', $org_id, false);
+        $data = lucid::$mvc->model('vw_organizations_details', $org_id, false);
 
         $data->name         = $name;
         $data->role_id      = $role_id;
@@ -81,7 +81,7 @@ class ControllerVw_organizations_details extends Controller
         lucid::$security->requireLogin();
         # lucid::$security->requirePermission('delete'); # add required permissions to this array
 
-        lucid::model('vw_organizations_details')->where('org_id', $org_id)->delete_many();
+        lucid::$mvc->model('vw_organizations_details')->where('org_id', $org_id)->delete_many();
         if ($do_redirect === true) {
             lucid::redirect('vw_organizations_details-table');
         }

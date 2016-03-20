@@ -87,14 +87,10 @@ class ControllerCompiler extends Controller
                     # the actual model class, directly load the file, and then manually instantiate.
                     if ($type == 'controllers') {
                         $class = 'DevLucid\\Controller'.$name;
-                        $obj = lucid::controller($name);
+                        $obj = lucid::$mvc->controller($name);
                     } else {
                         $class = 'DevLucid\\Model'.$name;
-                        $classParts = explode('\\',$class);
-                        $instantiableClass = array_pop($classParts);
-                        if (class_exists($instantiableClass) === false) {
-                            include($fileName);
-                        }
+                        $instantiableClass = lucid::$mvc->loadModel($name);
 
                         $obj = new $instantiableClass();
                     }

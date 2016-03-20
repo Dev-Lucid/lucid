@@ -8,12 +8,12 @@ lucid::config('js');
 ob_end_clean();
 
 # perform compilations on first load
-lucid::controller('compiler')->scss();
-lucid::controller('compiler')->javascript();
-lucid::controller('compiler')->documentation('models');
-lucid::controller('compiler')->documentation('views');
-lucid::controller('compiler')->documentation('controllers');
-lucid::controller('compiler')->documentation('tables');
+lucid::$mvc->controller('compiler')->scss();
+lucid::$mvc->controller('compiler')->javascript();
+lucid::$mvc->controller('compiler')->documentation('models');
+lucid::$mvc->controller('compiler')->documentation('views');
+lucid::$mvc->controller('compiler')->documentation('controllers');
+lucid::$mvc->controller('compiler')->documentation('tables');
 
 
 use Lurker\Event\FilesystemEvent;
@@ -41,7 +41,7 @@ foreach (array_keys($js_paths) as $path) {
 
 $scss_event = function (FilesystemEvent $event) {
     if ($event->getResource() != lucid::$scssProductionBuild) {
-        lucid::controller('compiler')->scss();
+        lucid::$mvc->controller('compiler')->scss();
         echo $event->getResource() . ':' . $event->getTypeString()." - SCSS compilation complete\n";
     }
 };
@@ -49,27 +49,27 @@ $scss_event = function (FilesystemEvent $event) {
 $js_event = function (FilesystemEvent $event) {
     echo("change to ".$event->getResource()."\n");
     if($event->getResource() != lucid::$jsProductionBuild) {
-        lucid::controller('compiler')->javascript();
+        lucid::$mvc->controller('compiler')->javascript();
         echo $event->getResource() . ':' . $event->getTypeString()." - Javascript compilation complete\n";
     }
 };
 
 $models_event = function (FilesystemEvent $event) {
     echo("change to ".$event->getResource()."\n");
-    lucid::controller('compiler')->documentation('models');
-    lucid::controller('compiler')->documentation('tables');
+    lucid::$mvc->controller('compiler')->documentation('models');
+    lucid::$mvc->controller('compiler')->documentation('tables');
     echo $event->getResource() . ':' . $event->getTypeString()." - Models documentation compilation complete\n";
 };
 
 $views_event = function (FilesystemEvent $event) {
     echo("change to ".$event->getResource()."\n");
-    lucid::controller('compiler')->documentation('views');
+    lucid::$mvc->controller('compiler')->documentation('views');
     echo $event->getResource() . ':' . $event->getTypeString()." - Views documentation compilation complete\n";
 };
 
 $controllers_event = function (FilesystemEvent $event) {
     echo("change to ".$event->getResource()."\n");
-    lucid::controller('compiler')->documentation('controllers');
+    lucid::$mvc->controller('compiler')->documentation('controllers');
     echo $event->getResource() . ':' . $event->getTypeString()." - Controllers documentation compilation complete\n";
 };
 

@@ -11,7 +11,7 @@ lucid::$security->requireLogin();
 lucid::$response->title(_('branding:app_name').' - {{title}}');
 
 # Render the navigation controller.
-lucid::controller('navigation')->render('view.{{table}}-table');
+lucid::$mvc->controller('navigation')->render('view.{{table}}-table');
 
 # build the data table. The parameters are as follows:
 # 0) The title of the table. This text is placed inside the card header, and defaults to the name of the modelName
@@ -25,7 +25,7 @@ lucid::controller('navigation')->render('view.{{table}}-table');
 # 5) The default sort direction for this table. May be either 'asc' or 'desc'
 # 6) The page size for the table, defaults to 10
 # 7) The current page for the table, defaults to 0 (first page)
-$table = html::dataTable(_('model:{{table}}'), '{{table}}-table', lucid::model('{{table}}'), 'app.php?action=view.{{table}}-table');
+$table = html::dataTable(_('model:{{table}}'), '{{table}}-table', lucid::$mvc->model('{{table}}'), 'app.php?action=view.{{table}}-table');
 
 # Add a default renderer for the table. This function is called when rendering every column (unless it is overridden
 # at the column level), and is passed the data for the entire row. This returns the html that should be placed into

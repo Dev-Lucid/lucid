@@ -58,7 +58,7 @@ class ControllerRegions extends Controller
         # This loads the table row that you are trying to update. If $region_id === 0, then the model's
         # ->create() method will be called. This does not actually insert a row into the database until the
         # ->save() method is called.
-        $data = lucid::model('regions', $region_id, false);
+        $data = lucid::$mvc->model('regions', $region_id, false);
 
         $data->country_id   = $country_id;
         $data->abbreviation = $abbreviation;
@@ -87,7 +87,7 @@ class ControllerRegions extends Controller
         lucid::$security->requireLogin();
         # lucid::$security->requirePermission('delete'); # add required permissions to this array
 
-        lucid::model('regions')->where('region_id', $region_id)->delete_many();
+        lucid::$mvc->model('regions')->where('region_id', $region_id)->delete_many();
         if ($do_redirect === true) {
             lucid::redirect('regions-table');
         }

@@ -16,10 +16,10 @@ lucid::$security->requireLogin();
 lucid::$response->title(_('branding:app_name').' - Vw_users_details');
 
 # Render the navigation controller.
-lucid::controller('navigation')->render('view.vw_users_details-table', 'view.vw_users_details-edit');
+lucid::$mvc->controller('navigation')->render('view.vw_users_details-table', 'view.vw_users_details-edit');
 
 # Load the model. If $user_id == 0, then the model's ->create method will be called.
-$data = lucid::model('vw_users_details', $user_id);
+$data = lucid::$mvc->model('vw_users_details', $user_id);
 
 # the ->notFound method will throw an error if the first parameter === false, which will be the case
 # if the model function is passed an ID that is not zero, but is not able to retrieve a row for that ID
@@ -38,7 +38,7 @@ $headerMsg = _('form:edit_'.(($data->user_id == 0)?'new':'existing'), [
 # method of the ruleset object packages up the rules into json, and sends them to the client so that they can be
 # used clientside when the form submits.
 $form = html::form('vw_users_details-edit', '#!vw_users_details.save');
-lucid::controller('vw_users_details')->ruleset()->send($form->name);
+lucid::$mvc->controller('vw_users_details')->ruleset()->send($form->name);
 
 # create the main structure for the form
 $card = html::card();

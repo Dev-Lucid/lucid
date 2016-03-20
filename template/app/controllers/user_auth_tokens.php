@@ -52,7 +52,7 @@ class ControllerUser_auth_tokens extends Controller
         # This loads the table row that you are trying to update. If $token_id === 0, then the model's
         # ->create() method will be called. This does not actually insert a row into the database until the
         # ->save() method is called.
-        $data = lucid::model('user_auth_tokens', $token_id, false);
+        $data = lucid::$mvc->model('user_auth_tokens', $token_id, false);
 
         $data->user_id    = $user_id;
         $data->token      = $token;
@@ -78,7 +78,7 @@ class ControllerUser_auth_tokens extends Controller
         lucid::$security->requireLogin();
         # lucid::$security->requirePermission('delete'); # add required permissions to this array
 
-        lucid::model('user_auth_tokens')->where('token_id', $token_id)->delete_many();
+        lucid::$mvc->model('user_auth_tokens')->where('token_id', $token_id)->delete_many();
         if ($do_redirect === true) {
             lucid::redirect('user_auth_tokens-table');
         }

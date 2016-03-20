@@ -16,10 +16,10 @@ lucid::$security->requireLogin();
 lucid::$response->title(_('branding:app_name').' - Regions');
 
 # Render the navigation controller.
-lucid::controller('navigation')->render('view.dashboard', 'view.regions-table', 'view.regions-edit');
+lucid::$mvc->controller('navigation')->render('view.dashboard', 'view.regions-table', 'view.regions-edit');
 
 # Load the model. If $region_id == 0, then the model's ->create method will be called.
-$data = lucid::model('regions', $region_id);
+$data = lucid::$mvc->model('regions', $region_id);
 
 # the ->notFound method will throw an error if the first parameter === false, which will be the case
 # if the model function is passed an ID that is not zero, but is not able to retrieve a row for that ID
@@ -38,7 +38,7 @@ $headerMsg = _('form:edit_'.(($data->region_id == 0)?'new':'existing'), [
 # method of the ruleset object packages up the rules into json, and sends them to the client so that they can be
 # used clientside when the form submits.
 $form = html::form('regions-edit', '#!regions.save');
-lucid::controller('regions')->ruleset()->send($form->name);
+lucid::$mvc->controller('regions')->ruleset()->send($form->name);
 
 # create the main structure for the form
 $card = html::card();

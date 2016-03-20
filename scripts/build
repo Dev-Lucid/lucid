@@ -128,7 +128,7 @@ function perform_build(string $table, bool $build_model = true, bool $build_tabl
                         list($keyTable, $idColumn, $labelColumn) = findTableForKey($table, $column['name'], $meta);
                         if ($keyTable !== false) {
                             $source = '$'.$column['name'].'_options';
-                            $template_keys['select_options'] .= '$'.$column['name'].'_options = lucid::model(\''.$keyTable.'\')';
+                            $template_keys['select_options'] .= '$'.$column['name'].'_options = lucid::$mvc->model(\''.$keyTable.'\')';
                             $template_keys['select_options'] .= "\n    ->select('$idColumn', 'value')";
                             $template_keys['select_options'] .= "\n    ->select('$labelColumn', 'label')";
                             $template_keys['select_options'] .= "\n    ->order_by_asc('$labelColumn')";

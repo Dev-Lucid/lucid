@@ -1,7 +1,7 @@
 <?php
 namespace DevLucid;
 
-lucid::controller('navigation')->render('view.dashboard', 'view.dashboard');
+lucid::$mvc->controller('navigation')->render('view.dashboard', 'view.dashboard');
 
 
 $card_tabs = html::cardTabs();

@@ -16,10 +16,10 @@ lucid::$security->requireLogin();
 lucid::$response->title(_('branding:app_name').' - User_auth_tokens');
 
 # Render the navigation controller.
-lucid::controller('navigation')->render('view.user_auth_tokens-table', 'view.user_auth_tokens-edit');
+lucid::$mvc->controller('navigation')->render('view.user_auth_tokens-table', 'view.user_auth_tokens-edit');
 
 # Load the model. If $token_id == 0, then the model's ->create method will be called.
-$data = lucid::model('user_auth_tokens', $token_id);
+$data = lucid::$mvc->model('user_auth_tokens', $token_id);
 
 # the ->notFound method will throw an error if the first parameter === false, which will be the case
 # if the model function is passed an ID that is not zero, but is not able to retrieve a row for that ID
@@ -38,7 +38,7 @@ $headerMsg = _('form:edit_'.(($data->token_id == 0)?'new':'existing'), [
 # method of the ruleset object packages up the rules into json, and sends them to the client so that they can be
 # used clientside when the form submits.
 $form = html::form('user_auth_tokens-edit', '#!user_auth_tokens.save');
-lucid::controller('user_auth_tokens')->ruleset()->send($form->name);
+lucid::$mvc->controller('user_auth_tokens')->ruleset()->send($form->name);
 
 $user_id_options = lucid::model('users')
     ->select('user_id', 'value')

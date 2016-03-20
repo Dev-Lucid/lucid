@@ -48,7 +48,7 @@ class ControllerRoles extends Controller
         # This loads the table row that you are trying to update. If $role_id === 0, then the model's
         # ->create() method will be called. This does not actually insert a row into the database until the
         # ->save() method is called.
-        $data = lucid::model('roles', $role_id, false);
+        $data = lucid::$mvc->model('roles', $role_id, false);
 
         $data->name = $name;
         $data->save();
@@ -72,7 +72,7 @@ class ControllerRoles extends Controller
         lucid::$security->requireLogin();
         # lucid::$security->requirePermission('delete'); # add required permissions to this array
 
-        lucid::model('roles')->where('role_id', $role_id)->delete_many();
+        lucid::$mvc->model('roles')->where('role_id', $role_id)->delete_many();
         if ($do_redirect === true) {
             lucid::redirect('roles-table');
         }

@@ -16,10 +16,10 @@ lucid::$security->requireLogin();
 lucid::$response->title(_('branding:app_name').' - {{title}}');
 
 # Render the navigation controller.
-lucid::controller('navigation')->render('view.{{table}}-table', 'view.{{table}}-edit');
+lucid::$mvc->controller('navigation')->render('view.{{table}}-table', 'view.{{table}}-edit');
 
 # Load the model. If ${{id}} == 0, then the model's ->create method will be called.
-$data = lucid::model('{{table}}', ${{id}});
+$data = lucid::$mvc->model('{{table}}', ${{id}});
 
 # the ->notFound method will throw an error if the first parameter === false, which will be the case
 # if the model function is passed an ID that is not zero, but is not able to retrieve a row for that ID
@@ -38,7 +38,7 @@ $headerMsg = _('form:edit_'.(($data->{{id}} == 0)?'new':'existing'), [
 # method of the ruleset object packages up the rules into json, and sends them to the client so that they can be
 # used clientside when the form submits.
 $form = html::form('{{table}}-edit', '#!{{table}}.save');
-lucid::controller('{{table}}')->ruleset()->send($form->name);
+lucid::$mvc->controller('{{table}}')->ruleset()->send($form->name);
 
 {{select_options}}# create the main structure for the form
 $card = html::card();

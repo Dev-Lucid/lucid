@@ -137,8 +137,8 @@ class Response implements ResponseInterface
                 $passedParameters[$parameters[$i]] = $parameters[$i + 1];
             }
 
-            lucid::addAction('request', $action, $passedParameters);
-            lucid::processActions();
+            lucid::$queue->add('request', $action, $passedParameters);
+            lucid::$queue->process();
 
             $src = '<!DOCTYPE html><html lang="en"><head>';
             if (isset(lucid::$response->data['title']) === true) {

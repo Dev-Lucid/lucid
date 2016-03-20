@@ -2,7 +2,7 @@
 
 namespace DevLucid;
 
-#lucid::controller('authentication')->ruleset()->send();
+#lucid::$mvc->controller('authentication')->ruleset()->send();
 
 $card = html::card();
 $card->header(_('navigation:views.registration'));

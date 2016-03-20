@@ -66,7 +66,7 @@ class ControllerAddresses extends Controller
         # This loads the table row that you are trying to update. If $address_id === 0, then the model's
         # ->create() method will be called. This does not actually insert a row into the database until the
         # ->save() method is called.
-        $data = lucid::model('addresses', $address_id, false);
+        $data = lucid::$mvc->model('addresses', $address_id, false);
 
         $data->org_id         = $org_id;
         $data->name           = $name;
@@ -99,7 +99,7 @@ class ControllerAddresses extends Controller
         lucid::$security->requireLogin();
         # lucid::$security->requirePermission('delete'); # add required permissions to this array
 
-        lucid::model('addresses')->where('address_id', $address_id)->delete_many();
+        lucid::$mvc->model('addresses')->where('address_id', $address_id)->delete_many();
         if ($do_redirect === true) {
             lucid::redirect('addresses-table');
         }

@@ -57,20 +57,20 @@ class Error implements ErrorInterface
     public function notFound($data, string $replace_selector = '#body')
     {
         if ($data === false) {
-            lucid::view('error_data_not_found', ['replace_selector'=>$replace_selector]);
+            lucid::$mvc->view('error_data_not_found', ['replace_selector'=>$replace_selector]);
             throw new Exception\Silent('Data not found');
         }
     }
 
     public function permissionDenied(string $replace_selector = '#body')
     {
-        lucid::view('error_permission_denied', ['replace_selector'=>$replace_selector]);
+        lucid::$mvc->view('error_permission_denied', ['replace_selector'=>$replace_selector]);
         throw new Exception\Silent('Permission denied');
     }
 
     public function loginRequired(string $replace_selector = '#body')
     {
-        lucid::view('error_login_required', ['replace_selector'=>$replace_selector]);
+        lucid::$mvc->view('error_login_required', ['replace_selector'=>$replace_selector]);
         throw new Exception\Silent('Login required');
     }
 }

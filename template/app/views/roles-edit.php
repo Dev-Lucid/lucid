@@ -16,10 +16,10 @@ lucid::$security->requireLogin();
 lucid::$response->title(_('branding:app_name').' - Roles');
 
 # Render the navigation controller.
-lucid::controller('navigation')->render('view.dashboard', 'view.roles-table', 'view.roles-edit');
+lucid::$mvc->controller('navigation')->render('view.dashboard', 'view.roles-table', 'view.roles-edit');
 
 # Load the model. If $role_id == 0, then the model's ->create method will be called.
-$data = lucid::model('roles', $role_id);
+$data = lucid::$mvc->model('roles', $role_id);
 
 # the ->notFound method will throw an error if the first parameter === false, which will be the case
 # if the model function is passed an ID that is not zero, but is not able to retrieve a row for that ID
@@ -38,7 +38,7 @@ $headerMsg = _('form:edit_'.(($data->role_id == 0)?'new':'existing'), [
 # method of the ruleset object packages up the rules into json, and sends them to the client so that they can be
 # used clientside when the form submits.
 $form = html::form('roles-edit', '#!roles.save');
-lucid::controller('roles')->ruleset()->send($form->name);
+lucid::$mvc->controller('roles')->ruleset()->send($form->name);
 
 # create the main structure for the form
 $card = html::card();

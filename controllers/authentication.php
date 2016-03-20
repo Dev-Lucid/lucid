@@ -16,7 +16,7 @@ class ControllerAuthentication extends Controller
         lucid::log('Attempting to authenticate user: '.$email);
         $this->ruleset()->sendErrors();
 
-        $user = lucid::model('vw_users_details')
+        $user = lucid::$mvc->model('vw_users_details')
             ->where_raw('LOWER(email) = ?',strtolower($email))
             ->find_one();
 

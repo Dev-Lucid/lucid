@@ -50,7 +50,7 @@ class ControllerPatches extends Controller
         # This loads the table row that you are trying to update. If $patch_id === 0, then the model's
         # ->create() method will be called. This does not actually insert a row into the database until the
         # ->save() method is called.
-        $data = lucid::model('patches', $patch_id, false);
+        $data = lucid::$mvc->model('patches', $patch_id, false);
 
         $data->identifier      = $identifier;
         $data->applied_on_date = $applied_on_date->format(\DateTime::ISO8601);
@@ -75,7 +75,7 @@ class ControllerPatches extends Controller
         lucid::$security->requireLogin();
         # lucid::$security->requirePermission('delete'); # add required permissions to this array
 
-        lucid::model('patches')->where('patch_id', $patch_id)->delete_many();
+        lucid::$mvc->model('patches')->where('patch_id', $patch_id)->delete_many();
         if ($do_redirect === true) {
             lucid::redirect('patches-table');
         }

@@ -16,10 +16,10 @@ lucid::$security->requireLogin();
 lucid::$response->title(_('branding:app_name').' - Patches');
 
 # Render the navigation controller.
-lucid::controller('navigation')->render('view.patches-table', 'view.patches-edit');
+lucid::$mvc->controller('navigation')->render('view.patches-table', 'view.patches-edit');
 
 # Load the model. If $patch_id == 0, then the model's ->create method will be called.
-$data = lucid::model('patches', $patch_id);
+$data = lucid::$mvc->model('patches', $patch_id);
 
 # the ->notFound method will throw an error if the first parameter === false, which will be the case
 # if the model function is passed an ID that is not zero, but is not able to retrieve a row for that ID
@@ -38,7 +38,7 @@ $headerMsg = _('form:edit_'.(($data->patch_id == 0)?'new':'existing'), [
 # method of the ruleset object packages up the rules into json, and sends them to the client so that they can be
 # used clientside when the form submits.
 $form = html::form('patches-edit', '#!patches.save');
-lucid::controller('patches')->ruleset()->send($form->name);
+lucid::$mvc->controller('patches')->ruleset()->send($form->name);
 
 # create the main structure for the form
 $card = html::card();

@@ -30,9 +30,7 @@ class Security implements SecurityInterface
                 lucid::$error->permissionDenied();
             }
             return $this;
-        }
-        else
-        {
+        } else {
             throw new \Exception('Unknown security function call: '.$name.'. The DevLucid\Security class does allow calls to undefined methods if the follow the pattern ->require_$variable($value); (ex: ->require_role_id(5)). When the security object is used in this way, it looks for an offset named $variable in lucid::$session, and throws an error if its value does not equal $value. Calling the security object in this manner requires that the function name you\'re accessing start with require_, and be passed 1 argument (the value to check against).');
         }
     }

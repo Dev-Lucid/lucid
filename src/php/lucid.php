@@ -8,14 +8,16 @@ class lucid
     public static $php          = null;
 
     # these properties contain objects which must implement certain interfaces. They can be set by a
-    # config file passed to lucid::init(), and if they are blank after all config files are loaded then
+    # config file passed to lucid::init(), and if they are blank after all config files are loaded, then
     # a default object is instantiated.
+    public static $mvc      = null; # must implement DevLucid\MVCInterface
+    public static $queue    = null; # must implement DevLucid\QueueInterface
     public static $logger   = null; # must implement psr-3 logging
-    public static $response = null; # must implement i_lucid_response
-    public static $security = null; # must implement i_lucid_security
-    public static $session  = null; # must implement i_lucid_session
-    public static $error    = null; # must implement i_lucid_error
-    public static $i18n     = null; # must implement i_lucid_i18n
+    public static $response = null; # must implement DevLucid\ResponseInterface
+    public static $security = null; # must implement DevLucid\SecurityInterface
+    public static $session  = null; # must implement DevLucid\SessionInterface
+    public static $error    = null; # must implement DevLucid\ErrorInterface
+    public static $i18n     = null; # must implement DevLucid\I18nInterface
 
     public static $error_phrase = 'page:custom_error:help';
 
@@ -27,7 +29,6 @@ class lucid
     public static $request         = null;
     public static $default_request = null;
     public static $use_rewrite     = false;
-    private static $actions        = [];
 
     public static $lang_supported = ['en'];
 
@@ -67,12 +68,6 @@ class lucid
             lucid::$paths['base']. '/dictionaries/',
         ];
 
-        lucid::$actions = [
-            'pre'     => [],
-            'request' => [],
-            'post'    => [],
-        ];
-
         foreach($configs as $config) {
             try {
                 lucid::config($config);
@@ -81,8 +76,26 @@ class lucid
             }
         }
 
+        # if the configs did not instantiate an mvc object and place it into lucid::$mvc,
+        # instantiate a basic one. Any class that replaces this must implement DevLucid\MVCInterface
+        if (is_null(lucid::$mvc) === true) {
+            lucid::$mvc = new MVC();
+        }
+        if (in_array('DevLucid\\MVCInterface', class_implements(lucid::$mvc)) === false){
+            throw new \Exception('For compatibility, any class that replaces lucid::$mvc must implement DevLucid\\MVCInterface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/MVCInterface.php');
+        }
+
+        # if the configs did not instantiate a queue object and place it into lucid::$queue,
+        # instantiate a basic one. Any class that replaces this must implement DevLucid\QueueInterface
+        if (is_null(lucid::$queue) === true) {
+            lucid::$queue = new Queue();
+        }
+        if (in_array('DevLucid\\MVCInterface', class_implements(lucid::$mvc)) === false){
+            throw new \Exception('For compatibility, any class that replaces lucid::$mvc must implement DevLucid\\MVCInterface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/MVCInterface.php');
+        }
+
         # if the configs did not instantiate a session object and place it into lucid::$session,
-        # instantiate a basic one. Any class that replaces this must implement the i_lucid_session interface
+        # instantiate a basic one. Any class that replaces this must implement DevLucid\SessionInterface
         if (is_null(lucid::$session) === true) {
             lucid::$session = new Session();
         }
@@ -91,7 +104,7 @@ class lucid
         }
 
         # if the configs did not instantiate a security object and place it into lucid::$security,
-        # instantiate a basic one. Any class that replaces this must implement the i_lucid_security interface
+        # instantiate a basic one. Any class that replaces this must implement DevLucid\\SecurityInterface
         if (is_null(lucid::$security) === true) {
             lucid::$security = new Security();
         }
@@ -100,7 +113,7 @@ class lucid
         }
 
         # if the configs did not instantiate an error object and place it into lucid::$error,
-        # instantiate a basic one. Any class that replaces this must implement the i_lucid_error interface
+        # instantiate a basic one. Any class that replaces this must implement DevLucid\\ErrorInterface
         if (is_null(lucid::$error) === true) {
             lucid::$error = new Error();
         }
@@ -109,7 +122,7 @@ class lucid
         }
 
         # if the configs did not instantiate a response object and place it into lucid::$response,
-        # instantiate the default one. Any class that replaces this must implement the i_lucid_response interface
+        # instantiate the default one. Any class that replaces this must implement DevLucid\\ResponseInterface
         if (is_null(lucid::$response) === true) {
             lucid::$response = new Response();
         }
@@ -118,7 +131,7 @@ class lucid
         }
 
         # if the configs did not instantiate a request object and place it into lucid::$request,
-        # instantiate the default one. Any class that replaces this must implement the i_lucid_request interface
+        # instantiate the default one. Any class that replaces this must implement DevLucid\\RequestInterface
         if (is_null(lucid::$request) === true) {
             lucid::$request = new Request();
         }
@@ -126,8 +139,8 @@ class lucid
             throw new \Exception('For compatibility, any class that replaces lucid::$request must implement DevLucid\\RequestInterface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/RequestInterface.php');
         }
 
-        # if the configs did not instantiate a response object and place it into lucid::$response,
-        # instantiate the default one. Any class that replaces this must implement the i_lucid_response interface
+        # if the configs did not instantiate an internationalization object and place it into lucid::$i18n,
+        # instantiate the default one. Any class that replaces this must implement DevLucid\\I18nInterface
         if (is_callable('DevLucid\\_') === false) {
             if (is_null(lucid::$i18n) === true) {
                 lucid::$i18n = new I18n();
@@ -151,14 +164,6 @@ class lucid
             lucid::$logger = new Logger();
         } elseif (in_array('Psr\\Log\\LoggerInterface', class_implements(lucid::$logger)) === false) {
             throw new \Exception('For compatibility, any class that replaces lucid::$logger must implement the Psr\\Log\\LoggerInterface.');;
-        }
-
-        # setup the action request
-        #if (lucid::$use_rewrite === true) # figure out how to do this using php development server
-        if (lucid::$request->string('action', false)) {
-            $action = lucid::$request->string('action');
-            lucid::$request->un_set('action');
-            lucid::addAction('request', $action, lucid::$request->get_array());
         }
 
         # now that init is complete, send all errors that we caught to the Logger
@@ -216,47 +221,6 @@ class lucid
         return lucid::includeIfExists($name.'.php', lucid::$paths['config']);
     }
 
-    public static function controller(string $name): Controller
-    {
-        $class_name = 'DevLucid\\Controller'.$name;
-        $name = lucid::cleanFileName($name);
-
-        # only bother to load if the class isn't already loaded.
-        if (class_exists($class_name) === false) {
-            lucid::includeIfExists($name.'.php', lucid::$paths['controllers']);
-        }
-        if (class_exists($class_name) === false) {
-            throw new \Exception('Unable to load controller: '.$name.'. Either no controller file was found, or the file did not contain a class named '.$class_name);
-        }
-        $new_obj = new $class_name();
-        return $new_obj;
-    }
-
-    public static function view(string $name, $parameters=[])
-    {
-        lucid::log()->info('view->'.$name.'()');
-        $name = lucid::cleanFileName($name);
-        if (is_object($parameters) === true) {
-            $parameters = $parameters->get_array();
-        }
-
-        foreach (lucid::$paths['views'] as $viewPath) {
-            $fileName = $viewPath . $name . '.php';
-            if (file_exists($fileName) === true) {
-                foreach ($parameters as $key=>$val) {
-                    global $$key;
-                    $$key = $val;
-                }
-                $result = include($fileName);
-                foreach ($parameters as $key=>$val) {
-                    unset($GLOBALS[$key]);
-                }
-                return $result;
-            }
-        }
-        throw new \Exception('Unable to load view '.$file_name.', file does not exist');
-    }
-
     public static function requireParameters(string ...$names)
     {
         $notFound = [];
@@ -272,108 +236,9 @@ class lucid
         }
     }
 
-    private static function cleanFileName(string $name): string
-    {
-        $name = preg_replace('/[^a-z0-9_\-\/]+/i', '', $name);
-        return $name;
-    }
-
-    private static function cleanFunctionName(string $name): string
-    {
-        $name = preg_replace('/[^a-z0-9_\-\s]+/i', '', $name);
-        $name = str_replace('-', '_', $name);
-        return $name;
-    }
-
-    public static function model(string $name, $id=null, bool $setIdOnCreate = true)
-    {
-        if (is_callable(lucid::$ormFunction) === true) {
-            $func = lucid::$ormFunction;
-            $model = $func($name);
-
-            if (is_null($id) === true) {
-                return $model;
-            }
-            if (strval($id) == '0' || $id === false) {
-                $model = $model->create();
-                if ($setIdOnCreate === true) {
-                    $class = get_class($model);
-                    $idCol = $class::$_id_column;
-                    $model->$idCol = 0;
-                }
-                return $model;
-            } else {
-                return $model->find_one($id);
-            }
-        } else {
-            throw new \Exception('No ORM function defined');
-        }
-    }
-
-    public static function processCommandLineAction(array $argv)
-    {
-        array_shift($argv);
-        $action = array_shift($argv);
-        $parameters = [];
-        while (count($argv) > 0) {
-            list($key, $value) = explode('=', array_shift($argv));
-            $parameters[$key] = $value;
-        }
-        lucid::addAction('request', $action, $parameters);
-    }
-
-    public static function addAction(string $when, string $controllerMethod, $parameters = [])
-    {
-        lucid::$actions[$when][] = [$controllerMethod, new Request($parameters)];
-    }
-
-    public static function processActions()
-    {
-        lucid::processActionList('pre');
-        try {
-            lucid::processActionList('request');
-        } catch (Exception\Silent $e) {
-            #lucid::log('Exception: '.$e->getMessage());
-        } catch (\Exception $e) {
-            #lucid::log('Exception: '.$e->getMessage());
-            lucid::$error->handle($e);
-        }
-
-        lucid::processActionList('post');
-    }
-
-    private static function processActionList(string $name)
-    {
-        for ($i=0; $i<count(lucid::$actions[$name]); $i++) {
-            lucid::callAction(lucid::$actions[$name][$i][0], lucid::$actions[$name][$i][1]);
-        }
-    }
-
-    public static function callAction(string $action, $passedParameters=[])
-    {
-        list($controllerName, $method) = explode('.',$action);
-
-        try {
-            if ($controllerName == 'view') {
-                # 'view' isn't a real controller
-                return lucid::view($method, $passedParameters);
-            } else {
-                $controller = lucid::controller($controllerName);
-                lucid::log()->info($controllerName.'->'.$method.'()');
-                return $controller->_callMethodWithParameters($method, $passedParameters);
-            }
-        } catch(Exception\Silent $e) {
-            lucid::log('Caught silent error: '.$e->getMessage());
-            return;
-        } catch(Exception $e) {
-            lucid::$error->handle($e);
-            return;
-        }
-    }
-
     public static function redirect(string $new_view)
     {
-        lucid::view($new_view);
+        lucid::$mvc->view($new_view);
         lucid::$response->javascript('lucid.updateHash(\'#!view.'.$new_view.'\');');
     }
 }
