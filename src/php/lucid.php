@@ -89,8 +89,8 @@ class lucid
         if (is_null(lucid::$queue) === true) {
             lucid::$queue = new Queue();
         }
-        if (in_array('DevLucid\\MVCInterface', class_implements(lucid::$mvc)) === false){
-            throw new \Exception('For compatibility, any class that replaces lucid::$mvc must implement DevLucid\\MVCInterface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/MVCInterface.php');
+        if (in_array('DevLucid\\QueueInterface', class_implements(lucid::$queue)) === false){
+            throw new \Exception('For compatibility, any class that replaces lucid::$queue must implement DevLucid\\QueueInterface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/QueueInterface.php');
         }
 
         # if the configs did not instantiate a session object and place it into lucid::$session,
