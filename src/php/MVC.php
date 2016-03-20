@@ -92,8 +92,6 @@ class MVC implements MVCInterface
             $arrayParameters = [];
         }
 
-        lucid::log('here');
-
         foreach ($arrayParameters as $key=>$val) {
             global $$key;
             $$key = $val;
@@ -143,7 +141,6 @@ class MVC implements MVCInterface
     public function controller(string $name)
     {
         $class = $this->loadController($name);
-        lucid::log('about to instantiate '.$class);
         $object = new $class();
         return $object;
     }
