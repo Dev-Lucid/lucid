@@ -6,7 +6,7 @@ namespace DevLucid;
   *
   * @package Vw_organizations_details
   */
-class ControllerVw_organizations_details extends Controller
+class ControllerVw_organizations_details extends Controller implements ControllerInterface
 {
     /**
       * This method is used to construct the validation rules that should be enforced both

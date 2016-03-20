@@ -6,7 +6,7 @@ namespace DevLucid;
   *
   * @package User_auth_tokens
   */
-class ControllerUser_auth_tokens extends Controller
+class ControllerUser_auth_tokens extends Controller implements ControllerInterface
 {
     /**
       * This method is used to construct the validation rules that should be enforced both

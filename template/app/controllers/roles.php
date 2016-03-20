@@ -6,7 +6,7 @@ namespace DevLucid;
   *
   * @package Roles
   */
-class ControllerRoles extends Controller
+class ControllerRoles extends Controller implements ControllerInterface
 {
     /**
       * This method is used to construct the validation rules that should be enforced both

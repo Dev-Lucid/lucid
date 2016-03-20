@@ -6,7 +6,7 @@ namespace DevLucid;
   *
   * @package {{uc(table)}}
   */
-class Controller{{uc(table)}} extends Controller
+class Controller{{uc(table)}} extends Controller implements ControllerInterface
 {
     /**
       * This method is used to construct the validation rules that should be enforced both

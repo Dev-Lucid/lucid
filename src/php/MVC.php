@@ -46,6 +46,9 @@ class MVC implements MVCInterface
         if (class_exists($class) === false) {
             throw new \Exception('MVC model instantiation failure. File '.$fileName.' must contain a class named '.$class.' that inherits from Controller, and must be in the root namespace (NOT DevLucid).');
         }
+        if (in_array('DevLucid\\ModelInterface', class_implements($class)) === false) {
+            throw new \Exception('Could not use model '.$name.'. For compatibility, a model class must implement DevLucid\\ModelInterface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/ModelInterface.php');
+        }
 
         return $class;
     }
@@ -130,6 +133,10 @@ class MVC implements MVCInterface
         if (class_exists($class) === false) {
             throw new \Exception('MVC controller instantiation failure. File '.$fileName.' must contain a class named '.$class.' that inherits from Controller, and must be in the DevLucid namespace.');
         }
+        if (in_array('DevLucid\\ControllerInterface', class_implements($class)) === false) {
+            throw new \Exception('Could not use controller '.$name.'. For compatibility, a controller class must implement DevLucid\\ControllerInterface. The definition for this interface can be found in '.lucid::$paths['lucid'].'/src/php/ControllerInterface.php');
+        }
+
         return $class;
     }
 

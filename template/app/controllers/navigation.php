@@ -2,7 +2,7 @@
 
 namespace DevLucid;
 
-class ControllerNavigation extends Controller
+class ControllerNavigation extends Controller implements ControllerInterface
 {
     public $structure = [];
 

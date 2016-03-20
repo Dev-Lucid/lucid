@@ -1,7 +1,7 @@
 <?php
 namespace DevLucid;
 
-class ControllerCompiler extends Controller
+class ControllerCompiler extends Controller implements ControllerInterface
 {
     private function headers($type)
     {

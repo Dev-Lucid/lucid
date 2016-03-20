@@ -6,7 +6,7 @@ namespace DevLucid;
   *
   * @package Addresses
   */
-class ControllerAddresses extends Controller
+class ControllerAddresses extends Controller implements ControllerInterface
 {
     /**
       * This method is used to construct the validation rules that should be enforced both
