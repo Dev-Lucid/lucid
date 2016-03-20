@@ -41,11 +41,11 @@ class Error implements ErrorInterface
         }
     }
 
-    public function handle($e, bool $send_message=true)
+    public function handle($e, bool $sendMessage=true)
     {
         $msg = lucid::$error->buildErrorString($e);
         lucid::$logger->error($msg);
-        if ($send_message === true) {
+        if ($sendMessage === true) {
             if (lucid::$stage === 'development') {
                 lucid::$response->error($msg);
             } else {
@@ -54,10 +54,10 @@ class Error implements ErrorInterface
         }
     }
 
-    public function notFound($data, string $replace_selector = '#body')
+    public function notFound($data, string $replaceSelector = '#body')
     {
         if ($data === false) {
-            lucid::$mvc->view('error_data_not_found', ['replace_selector'=>$replace_selector]);
+            lucid::$mvc->view('error_data_not_found', ['replaceSelector'=>$replaceSelector]);
             throw new Exception\Silent('Data not found');
         }
     }
