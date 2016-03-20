@@ -23,7 +23,6 @@ class lucid
 
     public static $db           = null;
     public static $db_stages    = [];
-    public static $ormFunction = null;
     public static $paths        = [];
 
     public static $request         = null;
