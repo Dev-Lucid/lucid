@@ -81,7 +81,7 @@ class ControllerOrganizations extends Controller implements ControllerInterface
         lucid::$security->requireLogin();
         # lucid::$security->requirePermission('delete'); # add required permissions to this array
 
-        lucid::$mvc->model('organizations')->where('org_id', $org_id)->delete_many();
+        lucid::$mvc->model('organizations', $org_id)->delete();
         if ($do_redirect === true) {
             lucid::redirect('organizations-table');
         }

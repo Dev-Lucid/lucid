@@ -40,6 +40,8 @@ $headerMsg = _('form:edit_'.(($data->org_id == 0)?'new':'existing'), [
 $form = html::form('organizations-edit', '#!organizations.save');
 lucid::$mvc->controller('organizations')->ruleset()->send($form->name);
 
+#throw new \Exception('testing error handling');
+
 $role_id_options = lucid::$mvc->model('roles')
     ->select('role_id', 'value')
     ->select('name', 'label')

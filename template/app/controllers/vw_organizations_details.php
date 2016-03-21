@@ -81,7 +81,7 @@ class ControllerVw_organizations_details extends Controller implements Controlle
         lucid::$security->requireLogin();
         # lucid::$security->requirePermission('delete'); # add required permissions to this array
 
-        lucid::$mvc->model('vw_organizations_details')->where('org_id', $org_id)->delete_many();
+        lucid::$mvc->model('vw_organizations_details', $org_id)->delete();
         if ($do_redirect === true) {
             lucid::redirect('vw_organizations_details-table');
         }

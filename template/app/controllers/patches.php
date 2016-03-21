@@ -75,7 +75,7 @@ class ControllerPatches extends Controller implements ControllerInterface
         lucid::$security->requireLogin();
         # lucid::$security->requirePermission('delete'); # add required permissions to this array
 
-        lucid::$mvc->model('patches')->where('patch_id', $patch_id)->delete_many();
+        lucid::$mvc->model('patches', $patch_id)->delete();
         if ($do_redirect === true) {
             lucid::redirect('patches-table');
         }

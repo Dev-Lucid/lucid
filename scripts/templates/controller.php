@@ -65,7 +65,7 @@ class Controller{{uc(table)}} extends Controller implements ControllerInterface
         lucid::$security->requireLogin();
         # lucid::$security->requirePermission('delete'); # add required permissions to this array
 
-        lucid::$mvc->model('{{table}}')->where('{{id}}', ${{id}})->delete_many();
+        lucid::$mvc->model('{{table}}', ${{id}})->delete();
         if ($do_redirect === true) {
             lucid::redirect('{{table}}-table');
         }

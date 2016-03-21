@@ -43,7 +43,7 @@ class lucid
         lucid::$php = explode('.', PHP_VERSION);
 
         # this array contains errors that are caught before logging is initialized.
-        $startupErrors = [];
+        $configErrors = [];
 
         # set the default paths. These can be overridden in a config file
         lucid::$paths['base']  = realpath(__DIR__.'/../../../../../');
@@ -70,8 +70,8 @@ class lucid
         foreach($configs as $config) {
             try {
                 lucid::config($config);
-            } catch(Exception $e) {
-                $startupErrors[] = $e;
+            } catch(\Exception $e) {
+                $configErrors[] = $e;
             }
         }
 
@@ -166,8 +166,10 @@ class lucid
         }
 
         # now that init is complete, send all errors that we caught to the Logger
-        foreach ($startupErrors as $error) {
-            lucid::$error->handle($error);
+        $errorCount = count($configErrors);
+        for ($i=0; $i<$errorCount; $i++){
+            # on the last error, we want to send them all.
+            lucid::$error->handle($configErrors[$i], (($i+1) == $errorCount));
         }
     }
 

@@ -87,7 +87,7 @@ class ControllerRegions extends Controller implements ControllerInterface
         lucid::$security->requireLogin();
         # lucid::$security->requirePermission('delete'); # add required permissions to this array
 
-        lucid::$mvc->model('regions')->where('region_id', $region_id)->delete_many();
+        lucid::$mvc->model('regions', $region_id)->delete();
         if ($do_redirect === true) {
             lucid::redirect('regions-table');
         }

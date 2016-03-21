@@ -78,7 +78,7 @@ class ControllerUser_auth_tokens extends Controller implements ControllerInterfa
         lucid::$security->requireLogin();
         # lucid::$security->requirePermission('delete'); # add required permissions to this array
 
-        lucid::$mvc->model('user_auth_tokens')->where('token_id', $token_id)->delete_many();
+        lucid::$mvc->model('user_auth_tokens', $token_id)->delete();
         if ($do_redirect === true) {
             lucid::redirect('user_auth_tokens-table');
         }

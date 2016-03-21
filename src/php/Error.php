@@ -24,7 +24,14 @@ class Error implements ErrorInterface
         } else {
             $error = $e;
         }
-        return $error['message'].' on line '.$error['line'].' in '.$error['file'];
+        return str_replace(lucid::$paths['base'], '', $error['file']).'#'.$error['line'].': '.$error['message'];
+    }
+
+    public function throwError($message)
+    {
+        $backtrace = debug_backtrace()[0];
+        lucid::$logger->error(str_replace(lucid::$paths['base'], '', $backtrace['file']).'#'.$backtrace['line'].': '.$message);
+        throw new Exception\Silent();
     }
 
     public function shutdown()
@@ -34,7 +41,7 @@ class Error implements ErrorInterface
         if (is_null($error) === false) {
             try {
                 lucid::$error->handle($error);
-                lucid::$response->send();
+
             } catch (Exception $e) {
                 exit(print_r($error, true));
             }
@@ -45,12 +52,13 @@ class Error implements ErrorInterface
     {
         $msg = lucid::$error->buildErrorString($e);
         lucid::$logger->error($msg);
+        if (lucid::$stage === 'development') {
+            lucid::$response->error($msg);
+        } else {
+            lucid::$response->error(_(lucid::$error_phrase));
+        }
         if ($sendMessage === true) {
-            if (lucid::$stage === 'development') {
-                lucid::$response->error($msg);
-            } else {
-                lucid::$response->error(_(lucid::$error_phrase));
-            }
+            lucid::$response->send();
         }
     }
 

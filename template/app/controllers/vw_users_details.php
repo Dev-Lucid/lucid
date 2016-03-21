@@ -93,7 +93,7 @@ class ControllerVw_users_details extends Controller implements ControllerInterfa
         lucid::$security->requireLogin();
         # lucid::$security->requirePermission('delete'); # add required permissions to this array
 
-        lucid::$mvc->model('vw_users_details')->where('user_id', $user_id)->delete_many();
+        lucid::$mvc->model('vw_users_details', $user_id)->delete();
         if ($do_redirect === true) {
             lucid::redirect('vw_users_details-table');
         }

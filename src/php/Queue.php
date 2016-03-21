@@ -62,16 +62,14 @@ class Queue implements QueueInterface
         try {
             if ($controllerName == 'view') {
                 # 'view' isn't a real controller
+                lucid::$logger->info($controllerName.'->'.$method.'()');
                 return lucid::$mvc->view($method, $parameters);
             } else {
                 $controller = lucid::$mvc->controller($controllerName);
-                lucid::log()->info($controllerName.'->'.$method.'()');
+                lucid::$logger->info($controllerName.'->'.$method.'()');
                 return call_user_func_array([$controller, $method], lucid::$mvc->buildParameters($controller, $method, $parameters));
             }
-        } catch(Exception\Silent $e) {
-            lucid::log('Caught silent error: '.$e->getMessage());
-            return;
-        } catch(Exception $e) {
+        } catch(\Exception $e) {
             lucid::$error->handle($e);
             return;
         }

@@ -72,7 +72,7 @@ class ControllerRoles extends Controller implements ControllerInterface
         lucid::$security->requireLogin();
         # lucid::$security->requirePermission('delete'); # add required permissions to this array
 
-        lucid::$mvc->model('roles')->where('role_id', $role_id)->delete_many();
+        lucid::$mvc->model('roles', $role_id)->delete();
         if ($do_redirect === true) {
             lucid::redirect('roles-table');
         }

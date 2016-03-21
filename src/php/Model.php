@@ -4,13 +4,34 @@ namespace DevLucid;
 
 class Model extends \Model
 {
-    protected $select_rows = null;
+    protected $readOnlyColumns = [];
+    protected $writeOnceColumns = [];
 
-    public function _run()
+    protected function checkSetColumnPermissions($property)
     {
-        $this->select_rows = parent::_run();
-        $this->requirePermissionSelect($this->select_rows);
-        return $this->select_rows;
+        if (in_array($property, $this->readOnlyColumns) === true) {
+            throw new \Exception($this::$_table.'.'.$property.' is a read-only column. Attempting to set a value for this column will throw an exception.');
+        }
+        if (in_array($property, $this->writeOnceColumns) === true && is_null($this->get($property)) === false) {
+            throw new \Exception($this::$_table.'.'.$property.' is a write-once column. It currently is set to a non-null value, so attempting to set a new value for this column will throw an exception.');
+        }
+    }
+
+    public function set($property, $value =null)
+    {
+        $this->checkSetColumnPermissions($property);
+        return parent::set($property, $value);
+    }
+
+    public function __set($property, $value) {
+        $this->checkSetColumnPermissions($property);
+        parent::__set($property, $value);
+    }
+
+    public function set_orm($orm)
+    {
+        parent::set_orm($orm);
+        $this->requirePermissionSelect($orm->as_array());
     }
 
     public function save()
@@ -28,73 +49,39 @@ class Model extends \Model
         return parent::delete();
     }
 
-    public function hasPermissionSelect(): bool
-	{
-		return true;
-	}
-
-	public function hasPermissionInsert(): bool
-	{
-		return true;
-	}
-
-	public function hasPermissionUpdate(): bool
-	{
-		return true;
-	}
-
-	public function hasPermissionDelete(): bool
-	{
-		return true;
-	}
 
     public function requirePermissionSelect($data)
     {
         if ($this->hasPermissionSelect($data) === false) {
-            throw new \Exception('You do not have permission to select this row.');
+            $this->throwPermissionError('Select');
         }
     }
 
     public function requirePermissionInsert($data)
     {
         if ($this->hasPermissionInsert($data) === false) {
-            throw new \Exception('You do not have permission to insert this row.');
+            $this->throwPermissionError('Insert');
         }
     }
 
     public function requirePermissionUpdate($data)
     {
         if ($this->hasPermissionUpdate($data) === false) {
-            throw new \Exception('You do not have permission to update this row.');
+            $this->throwPermissionError('Update');
         }
     }
 
     public function requirePermissionDelete($data)
     {
         if ($this->hasPermissionDelete($data) === false) {
-            throw new \Exception('You do not have permission to delete this row.');
+            $this->throwPermissionError('Delete');
         }
     }
 
-	public function hasPermissions($data, string ...$actions): bool
-	{
-		$result = true;
-		foreach ($actions as $action) {
-			if (method_exists($this, 'hasPermission'.$action) === true) {
-				if (call_user_func([$this, 'hasPermission'.$action]) === false) {
-					$result = false;
-				}
-			}
-		}
-		return $result;
-	}
-
-	public function requirePermissions($data, string ...$actions)
-	{
-		foreach ($actions as $action) {
-			if (method_exists($this, 'requirePermission'.$action) === true) {
-				$result = call_user_func([$this, 'requirePermission'.$action], [$data]);
-			}
-		}
-	}
+    protected function throwPermissionError($type)
+    {
+        $mr = new \ReflectionMethod($this, 'hasPermission'.$type);
+        $fileName = str_replace(lucid::$paths['base'], '' , $mr->getFilename());
+        throw new \Exception($type.' permission denied on table '.$this::$_table.'. Check the rules defined in '.$fileName.' on line '.$mr->getStartLine());
+    }
 }

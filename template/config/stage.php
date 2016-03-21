@@ -13,8 +13,8 @@ $stage = 'production';
 if (isset($_SERVER['APP_STAGE']) === true) {
     $stage = $_SERVER['APP_STAGE'];
 }
-if (isset($_ENV['APP_STAGE']) === true) {
-    $stage = $_ENV['APP_STAGE'];
+if (getenv('APP_STAGE') != '') {
+    $stage = getenv('APP_STAGE');
 }
 
 DevLucid\lucid::$stage = $stage;
