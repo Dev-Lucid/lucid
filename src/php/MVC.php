@@ -1,6 +1,6 @@
 <?php
 
-namespace DevLucid;
+namespace DevLucid\Component\MVC;
 
 class MVC implements MVCInterface
 {

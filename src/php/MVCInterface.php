@@ -1,5 +1,5 @@
 <?php
-namespace DevLucid;
+namespace DevLucid\Component\MVC;
 
 interface MVCInterface
 {

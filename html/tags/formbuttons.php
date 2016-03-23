@@ -1,5 +1,4 @@
 <?php
-
 namespace DevLucid\Lucid\Tags;
 
 \DevLucid\lucid::log('FormButtons lib loaded');
