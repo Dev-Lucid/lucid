@@ -3,30 +3,30 @@ namespace Lucid;
 
 class Lucid
 {
-    public    static $stage = 'unknown';
-    public    static $path  = null;
-    protected static $components                     = [];
-    protected static $componentInterfaceRequirements = [];
+    public static $stage                 = 'unknown';
+    public static $path                  = null;
+    protected static $components         = [];
+    protected static $requiredInterfaces = [];
 
     public static function init()
     {
         static::$path = realpath(__DIR__.'/../../../../../');
-        static::addRequireInterface('request',    'Lucid\\Component\\StoreInterface');
-        static::addRequireInterface('session',    'Lucid\\Component\\StoreInterface');
-        static::addRequireInterface('cookie',     'Lucid\\Component\\StoreInterface');
-        static::addRequireInterface('mvc',        'Lucid\\Component\\MVCInterface');
-        static::addRequireInterface('queue',      'Lucid\\Component\\QueueInterface');
-        static::addRequireInterface('response',   'Lucid\\Component\\ResponseInterface');
-        static::addRequireInterface('permissions','Lucid\\Component\\PermissionsInterface');
-        static::addRequireInterface('logger',     'Psr\\Log\\LoggerInterface');
-        static::addRequireInterface('i18n',       'Lucid\\Component\\I18nInterface');
-        static::addRequireInterface('error',      'Lucid\\Component\\ErrorInterface');
+        static::addRequiredInterfaces('request',    'Lucid\\Component\\Store\\StoreInterface');
+        static::addRequiredInterfaces('session',    'Lucid\\Component\\Store\\StoreInterface');
+        static::addRequiredInterfaces('cookie',     'Lucid\\Component\\Store\\StoreInterface');
+        static::addRequiredInterfaces('mvc',        'Lucid\\Component\\MVC\\MVCInterface');
+        static::addRequiredInterfaces('queue',      'Lucid\\Component\\Queue\\QueueInterface');
+        static::addRequiredInterfaces('response',   'Lucid\\Component\\Response\\ResponseInterface');
+        static::addRequiredInterfaces('permissions','Lucid\\Component\\Permissions\\PermissionsInterface');
+        static::addRequiredInterfaces('logger',     'Psr\\Log\\LoggerInterface');
+        static::addRequiredInterfaces('i18n',       'Lucid\\Component\\I18n\\I18nInterface');
+        static::addRequiredInterfaces('error',      'Lucid\\Component\\Error\\ErrorInterface');
     }
 
-    public static function addRequireInterface(string $name, string $interface)
+    public static function addRequiredInterfaces(string $name, string ...$interfaces)
     {
         static::$components[$name] = null;
-        static::$componentInterfaceRequirements[$name] = $interface;
+        static::$requiredInterfaces[$name] = $interfaces;
     }
 
     public static function __callStatic($name, $args=[])
@@ -39,10 +39,15 @@ class Lucid
 
     public static function setComponent(string $name, $component)
     {
-        if ( isset(static::$componentInterfaceRequirements[$name]) === true) {
-            $implements = class_implements($component);
-            if (in_array(static::$componentInterfaceRequirements[$name], $implements) === false) {
-                throw new \Exception('New component for '.$name.' does not implement the required interface: '.static::$componentInterfaceRequirements[$name]);
+        if ( isset(static::$requiredInterfaces[$name]) === true) {
+            $interfaces = static::$requiredInterfaces[$name];
+            $implements = array_keys(class_implements($component));
+            #error_log('checking for required interfaces on '.$name.': '.print_r($interfaces, true));
+            #error_log($name.' currently implements: '.print_r($implements, true));
+            foreach ($interfaces as $interface) {
+                if (in_array($interface, $implements) === false) {
+                    throw new \Exception('New component for '.$name.' does not implement the required interface: '.$interface);
+                }
             }
         }
         static::$components[$name] = $component;
@@ -51,29 +56,34 @@ class Lucid
     public static function setDefaults()
     {
         if (is_null(static::$components['request']) === true) {
-            static::$components['request'] = new \Lucid\Component\Store\Store($_REQUEST);
+            static::setComponent('request', new \Lucid\Component\Store\Store($_REQUEST));
         }
+
         if (is_null(static::$components['session']) === true) {
             session_start();
-            static::$components['session'] = new \Lucid\Component\Store\Store($_SESSION);
+            static::setComponent('session', new \Lucid\Component\Store\Store($_SESSION));
         }
+
         if (is_null(static::$components['mvc']) === true) {
-            static::$components['mvc'] = new \Lucid\Component\MVC\MVC();
-            static::$components['mvc']->setPath('model',      static::$path.'/db/models/');
-            static::$components['mvc']->setPath('view',       static::$path.'/app/views/');
-            static::$components['mvc']->setPath('controller', static::$path.'/app/controllers/');
+            static::setComponent('mvc', new \Lucid\Component\MVC\MVC());
+            static::mvc()->setPath('model',      static::$path.'/db/models/');
+            static::mvc()->setPath('view',       static::$path.'/app/views/');
+            static::mvc()->setPath('controller', static::$path.'/app/controllers/');
         }
+
         if (is_null(static::$components['queue']) === true) {
-            static::$components['queue'] = new \Lucid\Component\Queue\Queue();
+            static::setComponent('queue', new \Lucid\Component\Queue\Queue());
         }
+
         if (is_null(static::$components['response']) === true) {
-            static::$components['response'] = new \Lucid\Component\Response\Json();
+            static::setComponent('response', new \Lucid\Component\Response\Json());
         }
+
         if (is_null(static::$components['error']) === true) {
-            static::$components['error'] = new \Lucid\Component\Error\Error();
-            static::$components['error']->setReportingDirective(E_ALL);
-            static::$components['error']->setDebugStages('development');
-            static::$components['error']->registerHandlers();
+            static::setComponent('error', new \Lucid\Component\Error\Error());
+            static::error()->setReportingDirective(E_ALL);
+            static::error()->setDebugStages('development');
+            static::error()->registerHandlers();
         }
     }
 }
