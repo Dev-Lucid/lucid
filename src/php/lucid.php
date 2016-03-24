@@ -17,7 +17,7 @@ class Lucid
         static::addRequiredInterfaces('mvc',        'Lucid\\Component\\MVC\\MVCInterface');
         static::addRequiredInterfaces('queue',      'Lucid\\Component\\Queue\\QueueInterface');
         static::addRequiredInterfaces('response',   'Lucid\\Component\\Response\\ResponseInterface');
-        static::addRequiredInterfaces('permissions','Lucid\\Component\\Permissions\\PermissionsInterface');
+        static::addRequiredInterfaces('permission', 'Lucid\\Component\\Permission\\PermissionInterface');
         static::addRequiredInterfaces('logger',     'Psr\\Log\\LoggerInterface');
         static::addRequiredInterfaces('i18n',       'Lucid\\Component\\I18n\\I18nInterface');
         static::addRequiredInterfaces('error',      'Lucid\\Component\\Error\\ErrorInterface');
@@ -90,5 +90,24 @@ class Lucid
             static::error()->setDebugStages('development');
             static::error()->registerHandlers();
         }
+
+        if (is_null(static::$components['permission']) === true) {
+            static::setComponent('permission', new \Lucid\Component\Permission\Permission());
+        }
+
+        if (is_null(static::$components['i18n']) === true) {
+            static::setComponent('i18n', new \Lucid\Component\I18n\I18n());
+            static::i18n()->addAvailableLanguage('en', []);
+            static::i18n()->setLanguage('en');
+            if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) === true) {
+                static::i18n()->parseLanguageHeader($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+            }
+            static::i18n()->loadDictionaries(static::$path.'/app/dictionaries/');
+        }
+    }
+
+    public static function _(...$params)
+    {
+        return \Lucid\lucid::i18n()->translate(...$params);
     }
 }
