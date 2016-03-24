@@ -66,9 +66,10 @@ class Lucid
 
         if (is_null(static::$components['mvc']) === true) {
             static::setComponent('mvc', new \Lucid\Component\MVC\MVC());
-            static::mvc()->setPath('model',      static::$path.'/db/models/');
+            static::mvc()->setPath('model',      static::$path.'/app/models/');
             static::mvc()->setPath('view',       static::$path.'/app/views/');
             static::mvc()->setPath('controller', static::$path.'/app/controllers/');
+            static::mvc()->setPath('library',    static::$path.'/app/libraries/');
         }
 
         if (is_null(static::$components['queue']) === true) {
