@@ -4,13 +4,13 @@ namespace Lucid;
 class Lucid
 {
     public    static $stage = 'unknown';
-    public    static $basePath                       = null;
+    public    static $path  = null;
     protected static $components                     = [];
     protected static $componentInterfaceRequirements = [];
 
     public static function init()
     {
-        static::$basePath = realpath(__DIR__.'/../../../../../');
+        static::$path = realpath(__DIR__.'/../../../../../');
         static::addRequireInterface('request',    'Lucid\\Component\\StoreInterface');
         static::addRequireInterface('session',    'Lucid\\Component\\StoreInterface');
         static::addRequireInterface('cookie',     'Lucid\\Component\\StoreInterface');
@@ -59,15 +59,21 @@ class Lucid
         }
         if (is_null(static::$components['mvc']) === true) {
             static::$components['mvc'] = new \Lucid\Component\MVC\MVC();
-            static::$components['mvc']->setPath('model',      static::$basePath.'/db/models/');
-            static::$components['mvc']->setPath('view',       static::$basePath.'/app/views/');
-            static::$components['mvc']->setPath('controller', static::$basePath.'/app/controllers/');
+            static::$components['mvc']->setPath('model',      static::$path.'/db/models/');
+            static::$components['mvc']->setPath('view',       static::$path.'/app/views/');
+            static::$components['mvc']->setPath('controller', static::$path.'/app/controllers/');
         }
         if (is_null(static::$components['queue']) === true) {
             static::$components['queue'] = new \Lucid\Component\Queue\Queue();
         }
         if (is_null(static::$components['response']) === true) {
             static::$components['response'] = new \Lucid\Component\Response\Json();
+        }
+        if (is_null(static::$components['error']) === true) {
+            static::$components['error'] = new \Lucid\Component\Error\Error();
+            static::$components['error']->setReportingDirective(E_ALL);
+            static::$components['error']->setDebugStages('development');
+            static::$components['error']->registerHandlers();
         }
     }
 }
