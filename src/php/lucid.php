@@ -64,6 +64,10 @@ class Lucid
             static::setComponent('session', new \Lucid\Component\Store\Store($_SESSION));
         }
 
+        if (is_null(static::$components['cookie']) === true) {
+            static::setComponent('cookie', new \Lucid\Component\Store\CookieStore());
+        }
+
         if (is_null(static::$components['mvc']) === true) {
             static::setComponent('mvc', new \Lucid\Component\MVC\MVC());
             static::mvc()->setPath('model',      static::$path.'/app/models/');
