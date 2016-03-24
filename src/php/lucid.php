@@ -3,11 +3,12 @@ namespace Lucid;
 
 class Lucid
 {
+    public    static $stage = 'unknown';
     public    static $basePath                       = null;
     protected static $components                     = [];
     protected static $componentInterfaceRequirements = [];
 
-    protected function __construct()
+    public static function init()
     {
         static::$basePath = realpath(__DIR__.'/../../../../../');
         static::addRequireInterface('request',    'Lucid\\Component\\StoreInterface');
@@ -28,19 +29,16 @@ class Lucid
         static::$componentInterfaceRequirements[$name] = $interface;
     }
 
-
-    public static function __invoke($name)
+    public static function __callStatic($name, $args=[])
     {
-
-        if (isset(static::$components[$name] === false || is_null(static::$components[$name]) === true) {
+        if (isset(static::$components[$name]) === false || is_null(static::$components[$name]) === true) {
             throw new \Exception('Lucid does not currently contain a component named '.$name);
         }
         return static::$components[$name];
     }
 
-    public function setComponent(string $name, $component)
+    public static function setComponent(string $name, $component)
     {
-        static::createInstanceIfNecessary();
         if ( isset(static::$componentInterfaceRequirements[$name]) === true) {
             $implements = class_implements($component);
             if (in_array(static::$componentInterfaceRequirements[$name], $implements) === false) {
@@ -50,7 +48,7 @@ class Lucid
         static::$components[$name] = $component;
     }
 
-    public static function init()
+    public static function setDefaults()
     {
         if (is_null(static::$components['request']) === true) {
             static::$components['request'] = new \Lucid\Component\Store\Store($_REQUEST);
@@ -61,12 +59,15 @@ class Lucid
         }
         if (is_null(static::$components['mvc']) === true) {
             static::$components['mvc'] = new \Lucid\Component\MVC\MVC();
-            static::$components['mvc']->setPath('model',      static::$basePath.'/db/models/';
-            static::$components['mvc']->setPath('view',       static::$basePath.'/app/views/';
-            static::$components['mvc']->setPath('controller', static::$basePath.'/app/controllers/';
+            static::$components['mvc']->setPath('model',      static::$basePath.'/db/models/');
+            static::$components['mvc']->setPath('view',       static::$basePath.'/app/views/');
+            static::$components['mvc']->setPath('controller', static::$basePath.'/app/controllers/');
         }
         if (is_null(static::$components['queue']) === true) {
-            static::$components['queue'] = new \Lucid\Component\Store\Queue();
+            static::$components['queue'] = new \Lucid\Component\Queue\Queue();
+        }
+        if (is_null(static::$components['response']) === true) {
+            static::$components['response'] = new \Lucid\Component\Response\Json();
         }
     }
 }
