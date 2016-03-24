@@ -108,6 +108,6 @@ class Lucid
 
     public static function _(...$params)
     {
-        return \Lucid\lucid::i18n()->translate(...$params);
+        return static::i18n()->translate(...$params);
     }
 }
