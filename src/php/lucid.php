@@ -15,6 +15,8 @@ class Lucid
         static::addRequiredInterfaces('session',    'Lucid\\Component\\Store\\StoreInterface');
         static::addRequiredInterfaces('cookie',     'Lucid\\Component\\Store\\StoreInterface');
         static::addRequiredInterfaces('mvc',        'Lucid\\Component\\MVC\\MVCInterface');
+        static::addRequiredInterfaces('factory',    'Lucid\\Component\\Factory\\FactoryInterface');
+        static::addRequiredInterfaces('router',     'Lucid\\Component\\Router\\RouterInterface');
         static::addRequiredInterfaces('queue',      'Lucid\\Component\\Queue\\QueueInterface');
         static::addRequiredInterfaces('response',   'Lucid\\Component\\Response\\ResponseInterface');
         static::addRequiredInterfaces('permission', 'Lucid\\Component\\Permission\\PermissionInterface');
@@ -55,6 +57,10 @@ class Lucid
 
     public static function setDefaults()
     {
+        if (is_null(static::$components['logger']) === true) {
+            static::setComponent('logger', new \Lucid\Component\BasicLogger\BasicLogger());
+        }
+
         if (is_null(static::$components['request']) === true) {
             static::setComponent('request', new \Lucid\Component\Store\Store($_REQUEST));
         }
@@ -70,29 +76,37 @@ class Lucid
 
         if (is_null(static::$components['mvc']) === true) {
             static::setComponent('mvc', new \Lucid\Component\MVC\MVC());
-            static::mvc()->setPath('model',      static::$path.'/app/models/');
-            static::mvc()->setPath('view',       static::$path.'/app/views/');
-            static::mvc()->setPath('controller', static::$path.'/app/controllers/');
-            static::mvc()->setPath('library',    static::$path.'/app/libraries/');
+            static::mvc()->setPath('model',      static::$path.'/app/model/');
+            static::mvc()->setPath('view',       static::$path.'/app/view/');
+            static::mvc()->setPath('controller', static::$path.'/app/controller/');
+            static::mvc()->setPath('library',    static::$path.'/app/library/');
+            static::mvc()->setPath('ruleset',    static::$path.'/app/ruleset/');
+        }
+        if (is_null(static::$components['factory']) === true) {
+            static::setComponent('factory', new \Lucid\Component\Factory\Factory(static::logger()));
+        }
+
+        if (is_null(static::$components['router']) === true) {
+            static::setComponent('router', new \Lucid\Component\Router\Router(static::logger()));
         }
 
         if (is_null(static::$components['queue']) === true) {
-            static::setComponent('queue', new \Lucid\Component\Queue\Queue());
+            static::setComponent('queue', new \Lucid\Component\Queue\Queue(static::logger(), static::router(), static::factory()));
         }
 
         if (is_null(static::$components['response']) === true) {
-            static::setComponent('response', new \Lucid\Component\Response\Json());
+            static::setComponent('response', new \Lucid\Component\Response\Json(static::logger()));
         }
 
         if (is_null(static::$components['error']) === true) {
-            static::setComponent('error', new \Lucid\Component\Error\Error());
+            static::setComponent('error', new \Lucid\Component\Error\Error(static::logger()));
             static::error()->setReportingDirective(E_ALL);
             static::error()->setDebugStages('development');
             static::error()->registerHandlers();
         }
 
         if (is_null(static::$components['permission']) === true) {
-            static::setComponent('permission', new \Lucid\Component\Permission\Permission());
+            static::setComponent('permission', new \Lucid\Component\Permission\Permission(static::session()));
         }
 
         if (is_null(static::$components['i18n']) === true) {
@@ -102,7 +116,7 @@ class Lucid
             if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) === true) {
                 static::i18n()->parseLanguageHeader($_SERVER['HTTP_ACCEPT_LANGUAGE']);
             }
-            static::i18n()->loadDictionaries(static::$path.'/app/dictionaries/');
+            static::i18n()->loadDictionaries(static::$path.'/app/dictionary/');
         }
     }
 
