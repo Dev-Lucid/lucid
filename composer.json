@@ -32,5 +32,7 @@
       "scripts/launch.sh",
       "scripts/unittest.sh",
       "scripts/tail-log.sh"
+      "scripts/compile.javascript.php"
+      "scripts/compile.scss.php"
   ]
 }
