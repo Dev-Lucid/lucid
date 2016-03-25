@@ -14,7 +14,6 @@ class Lucid
         static::addRequiredInterfaces('request',    'Lucid\\Component\\Store\\StoreInterface');
         static::addRequiredInterfaces('session',    'Lucid\\Component\\Store\\StoreInterface');
         static::addRequiredInterfaces('cookie',     'Lucid\\Component\\Store\\StoreInterface');
-        static::addRequiredInterfaces('mvc',        'Lucid\\Component\\MVC\\MVCInterface');
         static::addRequiredInterfaces('factory',    'Lucid\\Component\\Factory\\FactoryInterface');
         static::addRequiredInterfaces('router',     'Lucid\\Component\\Router\\RouterInterface');
         static::addRequiredInterfaces('queue',      'Lucid\\Component\\Queue\\QueueInterface');
@@ -74,14 +73,6 @@ class Lucid
             static::setComponent('cookie', new \Lucid\Component\Store\CookieStore());
         }
 
-        if (is_null(static::$components['mvc']) === true) {
-            static::setComponent('mvc', new \Lucid\Component\MVC\MVC());
-            static::mvc()->setPath('model',      static::$path.'/app/model/');
-            static::mvc()->setPath('view',       static::$path.'/app/view/');
-            static::mvc()->setPath('controller', static::$path.'/app/controller/');
-            static::mvc()->setPath('library',    static::$path.'/app/library/');
-            static::mvc()->setPath('ruleset',    static::$path.'/app/ruleset/');
-        }
         if (is_null(static::$components['factory']) === true) {
             static::setComponent('factory', new \Lucid\Component\Factory\Factory(static::logger()));
         }
