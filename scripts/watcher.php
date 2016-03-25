@@ -1,92 +1,35 @@
 <?php
-
-namespace DevLucid;
-
-include(__DIR__.'/../../../../bootstrap.php');
-lucid::config('scss');
-lucid::config('js');
-ob_end_clean();
-
-# perform compilations on first load
-lucid::$mvc->controller('compiler')->scss();
-lucid::$mvc->controller('compiler')->javascript();
-lucid::$mvc->controller('compiler')->documentation('models');
-lucid::$mvc->controller('compiler')->documentation('views');
-lucid::$mvc->controller('compiler')->documentation('controllers');
-lucid::$mvc->controller('compiler')->documentation('tables');
-
-
+use Lucid\Lucid;
 use Lurker\Event\FilesystemEvent;
 use Lurker\ResourceWatcher;
+define('BIN_PATH', dirname($_SERVER['PWD'].'/'.$_SERVER['SCRIPT_FILENAME']));
+define('ROOT_PATH', realpath(BIN_PATH.'/../'));
+include(ROOT_PATH.'/bootstrap.php');
+ob_end_clean();
+
+$scssConfig = include(ROOT_PATH.'/config/scss.php');
+$jsConfig = include(ROOT_PATH.'/config/javascript.php');
 
 $watcher = new ResourceWatcher;
 
-$scss_tracker_count = 0;
-foreach (lucid::$paths['scss'] as $path) {
-    echo("Watching for scss changes in $path\n");
-    $watcher->track('scss'.strval($scss_tracker_count), $path);
-    $scss_tracker_count++;
+$scssEvent = function (FilesystemEvent $event) {
+    $cmd = 'cd '.BIN_PATH.'; php -f ./compile.scss.php';
+    lucid::logger()->info('Recompiling scss: '.$cmd);
+    shell_exec($cmd);
+};
+for ($i=0; $i < count($scssConfig['importPaths']); $i++) {
+    $watcher->track('scss'.strval($i), $scssConfig['importPaths'][$i]);
+    $watcher->addListener('scss'.strval($i), $scssEvent);
 }
 
-$js_paths = [];
-$js_tracker_count = 0;
-foreach (lucid::$jsFiles as $js_file) {
-    $js_paths[dirname( $js_file)] = true;
+$jsEvent = function (FilesystemEvent $event) {
+    $cmd = 'cd '.BIN_PATH.'; php -f ./compile.javascript.php';
+    lucid::logger()->info('Recompiling javascript: '.$cmd);
+    shell_exec($cmd);
+};
+$jsPaths = array_keys($jsConfig['include']);
+for ($i=0; $i < count($jsPaths); $i++) {
+    $watcher->track('js'.strval($i), $jsPaths[$i]);
+    $watcher->addListener('js'.strval($i), $jsEvent);
 }
-foreach (array_keys($js_paths) as $path) {
-    echo("Watching for javascript changes in $path\n");
-    $watcher->track('js'.strval($js_tracker_count), $path.'/');
-    $js_tracker_count++;
-}
-
-$scss_event = function (FilesystemEvent $event) {
-    if ($event->getResource() != lucid::$scssProductionBuild) {
-        lucid::$mvc->controller('compiler')->scss();
-        echo $event->getResource() . ':' . $event->getTypeString()." - SCSS compilation complete\n";
-    }
-};
-
-$js_event = function (FilesystemEvent $event) {
-    echo("change to ".$event->getResource()."\n");
-    if($event->getResource() != lucid::$jsProductionBuild) {
-        lucid::$mvc->controller('compiler')->javascript();
-        echo $event->getResource() . ':' . $event->getTypeString()." - Javascript compilation complete\n";
-    }
-};
-
-$models_event = function (FilesystemEvent $event) {
-    echo("change to ".$event->getResource()."\n");
-    lucid::$mvc->controller('compiler')->documentation('models');
-    lucid::$mvc->controller('compiler')->documentation('tables');
-    echo $event->getResource() . ':' . $event->getTypeString()." - Models documentation compilation complete\n";
-};
-
-$views_event = function (FilesystemEvent $event) {
-    echo("change to ".$event->getResource()."\n");
-    lucid::$mvc->controller('compiler')->documentation('views');
-    echo $event->getResource() . ':' . $event->getTypeString()." - Views documentation compilation complete\n";
-};
-
-$controllers_event = function (FilesystemEvent $event) {
-    echo("change to ".$event->getResource()."\n");
-    lucid::$mvc->controller('compiler')->documentation('controllers');
-    echo $event->getResource() . ':' . $event->getTypeString()." - Controllers documentation compilation complete\n";
-};
-
-for ($i=0;$i<$js_tracker_count; $i++) {
-    $watcher->addListener('js'.strval($i), $js_event);
-}
-for ($i=0;$i<$scss_tracker_count; $i++) {
-    $watcher->addListener('scss'.strval($i), $scss_event);
-}
-
-$watcher->track('controllers', lucid::$paths['app'].'/controllers/');
-$watcher->track('views', lucid::$paths['app'].'/views/');
-$watcher->track('models1', lucid::$paths['base'].'/db/models/');
-$watcher->track('models2', lucid::$paths['base'].'/db/migrations/');
-$watcher->addListener('models1', $models_event);
-$watcher->addListener('models2', $models_event);
-$watcher->addListener('views', $views_event);
-$watcher->addListener('controllers', $controllers_event);
-
 $watcher->start();
