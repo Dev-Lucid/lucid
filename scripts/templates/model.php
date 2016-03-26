@@ -1,5 +1,5 @@
 <?php
-namespace App\Model
+namespace App\Model;
 
 class {{uc(table)}} extends \Lucid\Component\Factory\Model
 {

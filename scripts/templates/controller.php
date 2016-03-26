@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+use Lucid\Lucid;
 
 /**
   * {{uc(table)}} Controller
@@ -17,7 +18,7 @@ class {{uc(table)}} extends \Lucid\Component\Factory\Controller implements \Luci
       */
     public function save({{save_parameters}}bool $do_redirect=true)
     {
-        lucid::permission()->requireLogin();
+        #lucid::permission()->requireLogin();
         # lucid::$security->requirePermission([]); # add required permissions to this array
 
         # This will check the parameters passed to this function, and run them against the rules returned
@@ -34,7 +35,7 @@ class {{uc(table)}} extends \Lucid\Component\Factory\Controller implements \Luci
 {{save_actions}}        $data->save();
 
         if ($do_redirect === true) {
-            lucid::redirect('view.{{table}}.table');
+            lucid::response()->redirect('{{table}}','table');
         }
     }
 
@@ -49,12 +50,12 @@ class {{uc(table)}} extends \Lucid\Component\Factory\Controller implements \Luci
       */
     public function delete(int ${{id}}, bool $do_redirect=true)
     {
-        lucid::permission()->requireLogin();
+        #lucid::permission()->requireLogin();
         # lucid::$security->requirePermission('delete'); # add required permissions to this array
 
         lucid::factory()->model('{{table}}', ${{id}})->delete();
         if ($do_redirect === true) {
-            lucid::redirect('view.{{table}}.table');
+            lucid::response()->redirect('{{table}}','table');
         }
     }
 }

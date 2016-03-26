@@ -14,7 +14,7 @@ $arguments = new \cli\Arguments(compact('strict'));
 $arguments->addFlag(array('help', 'h'), 'Show this help screen');
 
 $arguments->addOption(array('table', 't'), array(
-	'description' => 'Which table to build for. This parameter is required.'));
+	'description' => 'Which table(s) to build for, comma separated. This parameter is required.'));
 $arguments->addOption(array('model', 'm'), array(
 	'default'     => 'true',
 	'description' => 'As part of build, create model file. true or false.'));
@@ -49,63 +49,113 @@ $arguments['dictionary'] = (($arguments['dictionary'] ?? ($arguments->getOption(
 $arguments['appdir']     = ($arguments['appdir'] ?? ($arguments->getOption('appdir'))['default']);
 
 
-$table = trim($arguments['table'] ?? '');
-if ($table == '') {
-    echo("You must pass the name of a table to build for.\n\n");
+$tables = trim($arguments['table'] ?? '');
+if ($tables == '') {
+    echo("You must pass the name of at least one table to build for.\n\n");
     echo($arguments->getHelpScreen());
     exit();
 }
+$tables = explode(',', $tables);
 
+global $meta;
 $meta = new \Lucid\Library\Metabase\Metabase(\ORM::get_db());
-$tables = $meta->getTables();
+$dbTables = $meta->getTables();
 
-if (in_array($table, $tables) === false) {
-    echo("Table $table does not exist in your database.\n");
-    exit();
-}
-
-$columns = $meta->getColumns($table);
-$keys = [
-    'table'=>$table,
-    'uc(table)'=>ucwords($table),
-    'id_type'=>$columns[0]['type'],
-    'id'=>$columns[0]['name'],
-];
-$buildOpts = ['model', 'view', 'controller', 'ruleset', 'dictionary'];
-foreach ($buildOpts as $buildOpt) {
-    if (file_exists($arguments['appdir'].'/'.$buildOpt) === false) {
-        if ($arguments[$buildOpt] === true) {
-            exit("Build cannot continue. Because $buildOpt is part of your build operation, directory ".$arguments['appdir'].'/'.$buildOpt." must exist.\n");
-        } else {
-            echo("Warning: Directory for $buildOpt does not exist, but it is not part of your build operation anyway. Build can continue, but the appdir specified does not appear to be complete.\n");
-        }
-    }
+foreach($tables as $table) {
+	if (in_array($table, $dbTables) === false) {
+	    echo("Table $table does not exist in your database.\n");
+	    exit();
+	}
 }
 
 function buildFromTemplate($templateName, $keys, $outputName) {
-    $source = file_get_contents(__DIR__.'/templates/'.$templateName.'.php');
-    foreach ($keys as $key=>$value) {
-        $source = str_replace('{{'.$key.'}}', $value, $source);
-    }
-    file_put_contents($outputName, $source);
+	$source = file_get_contents(__DIR__.'/templates/'.$templateName.'.php');
+	foreach ($keys as $key=>$value) {
+		$source = str_replace('{{'.$key.'}}', $value, $source);
+	}
+	echo("\tWriting file: $outputName\n");
+	file_put_contents($outputName, $source);
 }
 
-try {
-    foreach ($buildOpts as $buildOpt) {
+function findTableForKey($table, $key)
+{
+	global $meta;
+    $tables = $meta->getTables(false);
 
-        # even if we're not building something, we always call the *BuildKeys function as it may build
-        # keys used by other parts.
-        include($lucidScriptPath.'/build__'.$buildOpt.'.php');
-        $keys = ($buildOpt.'BuildKeys')($table, $columns, $keys, $arguments);
-    }
+    for ($i=0; $i<count($tables); $i++) {
+        $tableCols = $meta->getColumns($tables[$i]);
+        if ($tableCols[0]['name'] == $key) {
+            $return = [
+                $tables[$i],
+                $tableCols[0]['name'],
+            ];
 
-    foreach ($buildOpts as $buildOpt) {
-        if ($arguments[$buildOpt] === true) {
-            ($buildOpt.'BuildFiles')($table, $columns, $keys, $arguments);
+            for ($j = 1; $j<count($tableCols); $j++) {
+                if ($tableCols[$j]['type'] == 'string'){
+                    $return[] = $tableCols[$j]['name'];
+                    return $return;
+                }
+
+            }
+            lucid::log('Could not find a label column in table '.$tables[$i].'. Build script looks for the first column that is of a string type (varchar, char, text, etc).');
+            return [false, false, false];
         }
     }
-} catch(Exception $e) {
-    $file = str_replace($lucidScriptPath, '', $e->getFile()).'#'.$e->getLine();
-    exit("Exception: $file ".$e->getMessage());
+
+    lucid::log('Could not find a table to use as a source for '.$key.' select.');
+    return [false, false, false];
+}
+
+$buildOpts = ['model', 'view', 'controller', 'ruleset', 'dictionary'];
+foreach ($buildOpts as $buildOpt) {
+	include($lucidScriptPath.'/build__'.$buildOpt.'.php');
+}
+
+foreach($tables as $table)  {
+	echo("Table: $table\n");
+	$columns = $meta->getColumns($table);
+
+	$keys = [
+	    'table'=>$table,
+	    'uc(table)'=>ucwords($table),
+	    'id_type'=>$columns[0]['type'],
+	    'id'=>$columns[0]['name'],
+		'first_string_col'=>null,
+	];
+
+	foreach($columns as $column) {
+		if ($column['type'] == 'string' && is_null($keys['first_string_col']) === true) {
+			$keys['first_string_col'] = $column['name'];
+		}
+	}
+
+	foreach ($buildOpts as $buildOpt) {
+	    if (file_exists($arguments['appdir'].'/'.$buildOpt) === false) {
+	        if ($arguments[$buildOpt] === true) {
+	            exit("\nBuild cannot continue. Because $buildOpt is part of your build operation, directory ".$arguments['appdir'].'/'.$buildOpt." must exist.\n");
+	        } else {
+	            echo("\nWarning: Directory for $buildOpt does not exist, but it is not part of your build operation anyway. Build can continue, but the appdir specified does not appear to be complete.\n");
+	        }
+	    }
+	}
+
+	try {
+
+	    foreach ($buildOpts as $buildOpt) {
+
+	        # even if we're not building something, we always call the *BuildKeys function as it may build
+	        # keys used by other parts.
+	        $keys = ($buildOpt.'BuildKeys')($table, $columns, $keys, $arguments);
+	    }
+
+	    foreach ($buildOpts as $buildOpt) {
+	        if ($arguments[$buildOpt] === true) {
+	            ($buildOpt.'BuildFiles')($table, $columns, $keys, $arguments);
+	        }
+	    }
+	} catch(Exception $e) {
+	    $file = str_replace($lucidScriptPath, '', $e->getFile()).'#'.$e->getLine();
+	    exit("Exception: $file ".$e->getMessage());
+	}
 }
 exit("-----------------------------\nComplete.\n");

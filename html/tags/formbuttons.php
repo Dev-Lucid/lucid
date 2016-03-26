@@ -1,8 +1,9 @@
 <?php
-namespace DevLucid\Lucid\Tags;
+namespace Lucid\Html\Lucid\Tags;
+use Lucid\Lucid;
+use Lucid\Html\html;
 
-\DevLucid\lucid::log('FormButtons lib loaded');
-class FormButtons extends \DevLucid\Tag
+class FormButtons extends \Lucid\Html\Tag
 {
     public $tag = 'div';
 
@@ -13,7 +14,7 @@ class FormButtons extends \DevLucid\Tag
         $this->addClass('pull-right');
         $this->attributes['role'] = 'group';
 
-        $this->add(\DevLucid\html::button(\DevLucid\_('button:cancel'), 'secondary', 'history.go(-1);'));
-        $this->add(\DevLucid\html::submit(\DevLucid\_('button:save')));
+        $this->add(html::button(lucid::i18n()->translate('button:cancel'), 'secondary', 'history.go(-1);'));
+        $this->add(html::submit(lucid::i18n()->translate('button:save')));
     }
 }

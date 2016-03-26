@@ -2,20 +2,23 @@
 
 function controllerBuildKeys($table, $columns, $keys, $arguments)
 {
-    echo("Building controller keys\n");
     $keys['save_parameters'] = '';
     $keys['save_actions'] = '';
     $keys['phpdoc_save_parameters'] = '';
 
 
     foreach($columns as $column) {
-        $type = ($column['type'] == 'timestamp')?'DateTime':$column['type'];
+        $type = ($column['type'] == 'timestamp')?'\DateTime':$column['type'];
         $keys['save_parameters'] .= $type.' $'.$column['name'].', ';
 
         $keys['phpdoc_save_parameters'] .= "      * @param ".$type.' $'.$column['name']."\n";
 
         if($column['name'] != $columns[0]['name']){
-            $keys['save_actions'] .= "\t\t$"."data->".$column['name']." = $".$column['name'].";\n";
+            $keys['save_actions'] .= "\t\t$"."data->".$column['name']." = $".$column['name'];
+            if($column['type'] == 'timestamp') {
+                $keys['save_actions'] .= '->format(\DateTime::ISO8601)';
+            }
+            $keys['save_actions'] .= ";\n";
         }
     }
 
