@@ -1,8 +1,7 @@
 <?php
+namespace App\Model
 
-use DevLucid\lucid;
-
-class Model{{uc(table)}} extends \DevLucid\Model implements \DevLucid\ModelInterface
+class {{uc(table)}} extends \Lucid\Component\Factory\Model
 {
     public static $_table     = '{{table}}';
 	public static $_id_column = '{{id}}';
