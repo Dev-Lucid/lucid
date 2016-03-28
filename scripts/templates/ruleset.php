@@ -1,8 +1,8 @@
 <?php
 namespace App\Ruleset;
-use Lucid\Lucid;
+use App\App, Lucid\Lucid, Lucid\Html\html;
 
-class {{uc(table)}} extends \Lucid\Component\Ruleset\Ruleset
+class {{uc(table)}} extends \App\Ruleset
 {
     function setupRules()
     {{{rules}}

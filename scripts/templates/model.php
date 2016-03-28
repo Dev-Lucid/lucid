@@ -1,7 +1,8 @@
 <?php
 namespace App\Model;
+use App\App, Lucid\Lucid, Lucid\Html\html;
 
-class {{uc(table)}} extends \Lucid\Component\Factory\Model
+class {{uc(table)}} extends \App\Model
 {
     public static $_table     = '{{table}}';
 	public static $_id_column = '{{id}}';

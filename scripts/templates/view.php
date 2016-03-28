@@ -1,9 +1,8 @@
 <?php
 namespace App\View;
-use Lucid\Lucid;
-use Lucid\Html\html;
+use App\App, Lucid\Lucid, Lucid\Html\html;
 
-class {{uc(table)}} extends \Lucid\Component\Factory\View
+class {{uc(table)}} extends \App\View
 {
     public function edit({{id_type}} ${{id}})
     {
@@ -14,13 +13,13 @@ class {{uc(table)}} extends \Lucid\Component\Factory\View
 
         # Set the title tag for the page. Optionally, you can also set the description or keywords meta tag
         # by calling lucid::$response->description() or lucid::$response->keywords()
-        lucid::response()->title(lucid::i18n()->translate('branding:app_name').' - {{title}}');
+        lucid::response()->title(lucid::i18n()->translate('branding:app_name').' - {{uc(table)}}');
 
         # Render the navigation controller.
         #lucid::factory()->controller('navigation')->render('view.{{table}}-table', 'view.{{table}}-edit');
 
         # Load the model. If ${{id}} == 0, then the model's ->create method will be called.
-        $data = lucid::factory()->model('{{table}}', ${{id}});
+        $data = $this->controller()->getOne(${{id}});
 
         # the ->notFound method will throw an error if the first parameter === false, which will be the case
         # if the model function is passed an ID that is not zero, but is not able to retrieve a row for that ID
@@ -39,7 +38,7 @@ class {{uc(table)}} extends \Lucid\Component\Factory\View
         # method of the ruleset object packages up the rules into json, and sends them to the client so that they can be
         # used clientside when the form submits.
         $form = html::form('{{table}}-edit', '#!controller.{{table}}.save');
-        lucid::factory()->ruleset('{{table}}')->send($form->name);
+        $this->ruleset()->send($form->name);
 
         {{select_options}}
         # create the main structure for the form
@@ -80,7 +79,7 @@ class {{uc(table)}} extends \Lucid\Component\Factory\View
         # 5) The default sort direction for this table. May be either 'asc' or 'desc'
         # 6) The page size for the table, defaults to 10
         # 7) The current page for the table, defaults to 0 (first page)
-        $table = html::dataTable(lucid::i18n()->translate('model:{{table}}'), '{{table}}-table', lucid::factory()->model('{{table}}'), 'app.php?action=view.{{table}}-table');
+        $table = html::dataTable(lucid::i18n()->translate('model:{{table}}'), '{{table}}-table', $this->controller()->getList(), 'app.php?action=view.{{table}}-table');
 
         # Add a default renderer for the table. This function is called when rendering every column (unless it is overridden
         # at the column level), and is passed the data for the entire row. This returns the html that should be placed into
@@ -99,7 +98,7 @@ class {{uc(table)}} extends \Lucid\Component\Factory\View
 
         # Add a column specifically for deleting rows.
         $table->add(html::dataColumn('', null, '10%', false, function($data){
-            return html::button(lucid::i18n()->translate('button:delete'), 'danger', "if(confirm('".lucid::i18n()->translate('button:confirm_delete')."')){ lucid.request('#!{{table}}.delete|{{id}}|".$data->{{id}}."');}")->size('sm')->pull('right');
+            return html::button(lucid::i18n()->translate('button:delete'), 'danger', "if(confirm('".lucid::i18n()->translate('button:confirm_delete')."')){ lucid.request('#!controller.{{table}}.delete|{{id}}|".$data->{{id}}."');}")->size('sm')->pull('right');
         }));
 
         # Enable searching this table based on some of the fields
