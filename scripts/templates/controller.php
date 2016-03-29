@@ -9,19 +9,21 @@ use App\App, Lucid\Lucid, Lucid\Html\html;
   */
 class {{uc(table)}} extends \App\Controller
 {
-
     public function getList()
     {
-        $data = $this->model('{{table}}');
-        # put additional where clauses here
+        $data = $this->model();
+
+        # put additional where clauses here!
         # Ex: $data->where('org_id', lucid::session()->int('user_id'));
+
         return $data;
     }
 
-    public function getOne(${{id}})
+    public function getOne({{primary_key_col_type}} ${{id}})
     {
         return $this->getList()->find_one(${{id}});
     }
+    
     /**
       * Updates an existing row or inserts a new row into table {{table}}.
       *
@@ -38,7 +40,7 @@ class {{uc(table)}} extends \App\Controller
         # from ->ruleset(). If the data does not pass validation, an error message is sent to the client
         # and the request ends. If the data passes validation, then processing continues. You do not
         # need to check if the data passes or not.
-        $this->ruleset()->checkParameters(func_get_args());
+        $this->ruleset('edit')->checkParameters(func_get_args());
 
         # This loads the table row that you are trying to update. If ${{id}} === 0, then the model's
         # ->create() method will be called. This does not actually insert a row into the database until the

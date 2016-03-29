@@ -5,6 +5,7 @@ function controllerBuildKeys($table, $columns, $keys, $arguments)
     $keys['save_parameters'] = '';
     $keys['save_actions'] = '';
     $keys['phpdoc_save_parameters'] = '';
+    $keys['primary_key_col_type'] = $columns[0]['type'];
 
 
     foreach($columns as $column) {

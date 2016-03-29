@@ -1,6 +1,6 @@
 var lucid = {
     'defaultRequest': '',
-    'entryUrl':'app.php',
+    'entryUrl':'actions.php',
     'stage':'development',
     'errorHtml':'<div id="lucid-error" class="alert alert-danger alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span id="lucid-error-msg"></span></div>',
     'lastFormSubmit':'',

@@ -56,7 +56,7 @@ function viewBuildKeys($table, $columns, $keys, $arguments)
     # build the list of table columns
     foreach($columns as $column) {
         if ($column['index'] > 0) {
-            $keys['table_cols'] .= '$table->add(html::dataColumn(lucid::i18n()->translate(\'model:'.$table.':'.$column['name'].'\'), \''.$column['name'].'\', \''. ceil(90 / (count($columns) - 1)) .'%\', true));'."\n";
+            $keys['table_cols'] .= '        $table->add(html::dataColumn(lucid::i18n()->translate(\'model:'.$table.':'.$column['name'].'\'), \''.$column['name'].'\', \''. ceil(90 / (count($columns) - 1)) .'%\', true));'."\n";
         }
     }
 
