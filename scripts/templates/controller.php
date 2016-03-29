@@ -9,6 +9,11 @@ use App\App, Lucid\Lucid, Lucid\Html\html;
   */
 class {{uc(table)}} extends \App\Controller
 {
+    /**
+      * Instantiates a paris query object.
+      *
+      * @return ???
+      */
     public function getList()
     {
         $data = $this->model();
@@ -19,11 +24,21 @@ class {{uc(table)}} extends \App\Controller
         return $data;
     }
 
+    /**
+      * Gets a single row from the {{table}} table. Note that this method calls
+      * $this->getList(), so any permission/business rules that are applied in that function
+      * will also be applied.
+      *
+      * @return \App\Model\{{uc(table)}}
+      */
     public function getOne({{primary_key_col_type}} ${{id}})
     {
+        if (${{id}} == 0) {
+            return $this->model()->create();
+        }
         return $this->getList()->find_one(${{id}});
     }
-    
+
     /**
       * Updates an existing row or inserts a new row into table {{table}}.
       *
