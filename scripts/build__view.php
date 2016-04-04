@@ -16,14 +16,14 @@ function viewBuildKeys($table, $columns, $keys, $arguments)
                 case 'int':
                 case 'float':
 
-                    if ($column['type'] == 'int' && strpos($column['name'], '_id') !== false) {
+                    if (strpos(strrev($column['name']), 'di_') === 0) {
                         echo ("trying to find options for ".$column['name']."\n");
                         # this is likely a foreign key for another table. make it a select list instead of a text field
                         $source = '[]';
                         list($keyTable, $idColumn, $labelColumn) = findTableForKey($table, $column['name']);
                         if ($keyTable !== false) {
                             $source = '$'.$column['name'].'_options';
-                            $keys['select_options'] .= '$'.$column['name'].'_options = lucid::factory()->model(\''.$keyTable.'\')';
+                            $keys['select_options'] .= '        $'.$column['name'].'_options = lucid::factory()->model(\''.$keyTable.'\')';
                             $keys['select_options'] .= "\n            ->select('$idColumn', 'value')";
                             $keys['select_options'] .= "\n            ->select('$labelColumn', 'label')";
                             $keys['select_options'] .= "\n            ->order_by_asc('$labelColumn')";

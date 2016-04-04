@@ -33,7 +33,7 @@ class {{uc(table)}} extends \App\Controller
       */
     public function getOne({{primary_key_col_type}} ${{id}})
     {
-        if (${{id}} == 0) {
+        if (is_numeric(${{id}}) === true && ${{id}} == 0) {
             return $this->model()->create();
         }
         return $this->getList()->find_one(${{id}});
@@ -64,6 +64,7 @@ class {{uc(table)}} extends \App\Controller
 
 {{save_actions}}        $data->save();
 
+        lucid::response()->message(lucid::i18n()->translate('button:save_response'));
         if ($do_redirect === true) {
             lucid::response()->redirect('{{table}}','table');
         }
@@ -84,6 +85,7 @@ class {{uc(table)}} extends \App\Controller
         # lucid::$security->requirePermission('delete'); # add required permissions to this array
 
         $this->getOne(${{id}})->delete();
+        lucid::response()->message(lucid::i18n()->translate('button:delete_response'));
         if ($do_redirect === true) {
             lucid::response()->redirect('{{table}}','table');
         }

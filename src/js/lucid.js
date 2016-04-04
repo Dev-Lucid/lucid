@@ -2,10 +2,15 @@ var lucid = {
     'defaultRequest': '',
     'entryUrl':'actions.php',
     'stage':'development',
-    'errorHtml':'<div id="lucid-error" class="alert alert-danger alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span id="lucid-error-msg"></span></div>',
     'lastFormSubmit':'',
+    'formDisabledSubmitButtons':{},
     'currentView':null,
     'handlers':{}
+};
+
+lucid.setDefaultRequest=function(url){
+    lucid.defaultRequest = url;
+    jQuery('a.navbar-brand').attr('href', url);
 };
 
 lucid.init=function(){
@@ -71,7 +76,13 @@ lucid.submit=function(form){
 
     if (result === true){
         data.__form_name = $form.attr('name');
-        lucid.request($form.attr('action'), data);
+        submitButtons = $form.find('input[type=submit],button[type=submit]');
+
+        lucid.request($form.attr('action'), data, function(){
+            submitButtons.each(function(){
+                $(this).attr('disabled', null);
+            });
+        });
     }
     return false;
 };
@@ -179,39 +190,14 @@ lucid.handleResponse=function(xhr, statusCode){
                 console.log(data.postJavascript);
             }
         }
-        lucid.handleErrors(data.errors);
+        lucid.messages.show(status, data.messages);
     }else{
-        lucid.handleErrors(['Invalid response from server: '+statusCode]);
+        lucid.messages.show('error', ['Invalid response from server: '+statusCode]);
         console.log(xhr);
     }
     lucid.callHandlers('post-handleResponse', {'jqxhr':xhr, 'statusCode':statusCode});
 };
 
-lucid.handleErrors=function(errorList){
-    var error = jQuery('#lucid-error');
-    if (error.length === 0){
-        jQuery('body').append(lucid.errorHtml);
-        error = jQuery('#lucid-error');
-    }
-
-    var msg = '';
-
-    if(lucid.stage == 'production'){
-        if(errorList.length > 0){
-            msg += errorList[0]; // only show the first error msg on development, presumed to be the general error msg
-        }
-    }else{
-        // on all other stages, show the full list of errors
-        for(var i=0;i<errorList.length;i++){
-            console.log('Error: ' + errorList[i]);
-            msg += '<p>' + errorList[i] + '</p>';
-        }
-    }
-    if(msg !== ''){
-        error.find('#lucid-error-msg').html(msg);
-        error.fadeIn(200);
-    }
-};
 
 lucid.updateHash=function(newHash){
     lucid.currentView = newHash;

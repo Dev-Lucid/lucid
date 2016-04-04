@@ -24,6 +24,9 @@ $arguments->addOption(array('view', 'v'), array(
 $arguments->addOption(array('controller', 'c'), array(
 	'default'     => 'true',
 	'description' => 'As part of build, create controller file. true or false.'));
+$arguments->addOption(array('library', 'l'), array(
+	'default'     => 'true',
+	'description' => 'As part of build, create library file. true or false.'));
 $arguments->addOption(array('ruleset', 'r'), array(
 	'default'     => 'true',
 	'description' => 'As part of build, create ruleset file. true or false.'));
@@ -45,6 +48,7 @@ $arguments['model']      = (($arguments['model'] ?? ($arguments->getOption('mode
 $arguments['view']       = (($arguments['view'] ?? ($arguments->getOption('view'))['default'])             == 'true');
 $arguments['controller'] = (($arguments['controller'] ?? ($arguments->getOption('controller'))['default']) == 'true');
 $arguments['ruleset']    = (($arguments['ruleset'] ?? ($arguments->getOption('ruleset'))['default'])       == 'true');
+$arguments['library']    = (($arguments['library'] ?? ($arguments->getOption('library'))['default'])       == 'true');
 $arguments['dictionary'] = (($arguments['dictionary'] ?? ($arguments->getOption('dictionary'))['default']) == 'true');
 $arguments['appdir']     = ($arguments['appdir'] ?? ($arguments->getOption('appdir'))['default']);
 
@@ -95,7 +99,6 @@ function findTableForKey($table, $key)
                     $return[] = $tableCols[$j]['name'];
                     return $return;
                 }
-
             }
             lucid::log('Could not find a label column in table '.$tables[$i].'. Build script looks for the first column that is of a string type (varchar, char, text, etc).');
             return [false, false, false];
@@ -106,12 +109,12 @@ function findTableForKey($table, $key)
     return [false, false, false];
 }
 
-$buildOpts = ['model', 'view', 'controller', 'ruleset', 'dictionary'];
+$buildOpts = ['model', 'view', 'controller', 'ruleset', 'library', 'dictionary'];
 foreach ($buildOpts as $buildOpt) {
 	include($lucidScriptPath.'/build__'.$buildOpt.'.php');
 }
 
-foreach($tables as $table)  {
+foreach ($tables as $table) {
 	echo("Table: $table\n");
 	$columns = $meta->getColumns($table);
 
@@ -140,9 +143,7 @@ foreach($tables as $table)  {
 	}
 
 	try {
-
 	    foreach ($buildOpts as $buildOpt) {
-
 	        # even if we're not building something, we always call the *BuildKeys function as it may build
 	        # keys used by other parts.
 	        $keys = ($buildOpt.'BuildKeys')($table, $columns, $keys, $arguments);

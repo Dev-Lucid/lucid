@@ -7,7 +7,6 @@ function controllerBuildKeys($table, $columns, $keys, $arguments)
     $keys['phpdoc_save_parameters'] = '';
     $keys['primary_key_col_type'] = $columns[0]['type'];
 
-
     foreach($columns as $column) {
         $type = ($column['type'] == 'timestamp')?'\DateTime':$column['type'];
         $keys['save_parameters'] .= $type.' $'.$column['name'].', ';

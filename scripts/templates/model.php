@@ -16,21 +16,45 @@ class {{uc(table)}} extends \App\Model
 
     public function hasPermissionSelect(array $rowData): bool
     {
+        # By default, admins can select anything
+        if (lucid::permission()->isAdmin() === true) {
+            return true;
+        }
+
+        # add your rules here. Ex: return ($rowData['org_id'] == lucid::session()->int('org_id'));
         return true;
     }
 
     public function hasPermissionInsert(array $rowData): bool
     {
+        # By default, admins can insert anything
+        if (lucid::permission()->isAdmin() === true) {
+            return true;
+        }
+
+        # add your rules here. Ex: return ($rowData['org_id'] == lucid::session()->int('org_id'));
         return true;
     }
 
     public function hasPermissionUpdate(array $rowData): bool
     {
+        # By default, admins can update anything
+        if (lucid::permission()->isAdmin() === true) {
+            return true;
+        }
+
+        # add your rules here. Ex: return ($rowData['org_id'] == lucid::session()->int('org_id'));
         return true;
     }
 
     public function hasPermissionDelete(array $rowData): bool
     {
+        # By default, admins can delete anything
+        if (lucid::permission()->isAdmin() === true) {
+            return true;
+        }
+        
+        # add your rules here. Ex: return ($rowData['org_id'] == lucid::session()->int('org_id'));
         return true;
     }
 }
