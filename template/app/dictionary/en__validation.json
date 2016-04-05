@@ -1,0 +1,8 @@
+{
+    "validation:lengthRange":":label must be between :min and :max characters long",
+    "validation:integerValue":":label must be chosen",
+    "validation:integerValueMin":":label must be greater than :min",
+    "validation:integerValueMax":":label must be less than :max",
+    "validation:integerValueMinMax":":label must be between :min and :max",
+    "validation:checked":":label must be checked"
+}

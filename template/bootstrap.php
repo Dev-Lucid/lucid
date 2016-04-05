@@ -1,23 +1,18 @@
 <?php
-date_default_timezone_set('UTC');
-session_start();
+use Lucid\lucid;
 
-include(__DIR__.'/vendor/autoload.php');
+# This enables the composer autoloader
+include('vendor/autoload.php');
 
-$configs = [];
-if (defined('__LOAD_STAGE__') === false or __LOAD_STAGE__ === true) {
-    $configs[] = 'stage';
-}
-if (defined('__LOAD_LOGGER__') === false or __LOAD_LOGGER__ === true) {
-    $configs[] = 'monolog';
-}
-if (defined('__LOAD_DB__') === false or __LOAD_DB__ === true) {
-    $configs[] = 'db';
-}
-if (defined('__LOAD_I18N__') === false or __LOAD_I18N__ === true) {
-    $configs[] = 'i18n';
-}
-if (defined('__LOAD_HTML__') === false or __LOAD_HTML__ === true) {
-    $configs[] = 'html';
-}
-DevLucid\lucid::init($configs);
+# Prepare the dependency injection container
+lucid::init();
+
+# load various configs
+include('config/stage.php');
+include('config/logger.php');
+include('config/db.php');
+include('config/html.php');
+
+# set the defaults for the container
+lucid::setDefaults();
+

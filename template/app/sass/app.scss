@@ -1,0 +1,13 @@
+@import 'bootstrap';
+@import 'lucid_html_bootstrap';
+@import 'lucid';
+@import 'font-awesome';
+$border-radius-base: $border-radius;
+$screen-sm-min: 768px;
+$screen-md-min: 992px;
+$screen-lg-min: 1200px;
+@import 'bootstrap-datetimepicker-build';
+
+.myclass {
+    font-weight:bold;
+}

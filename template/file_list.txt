@@ -2,90 +2,84 @@ bootstrap.php
 composer.json
 .gitignore
 
+app/tags/
+app/traits/
+app/migration/
+
 config/db.php
-config/i18n.php
-config/monolog.php
+config/html.php
+config/javascript.php
+config/logger.php
+config/scss.php
 config/stage.php
 
-dictionaries/en__buttons.json
-dictionaries/en__misc.json
-dictionaries/en__errors.json
-dictionaries/en__models.json
-dictionaries/en__navigation.json
-dictionaries/en__validation.json
-dictionaries/en.json
+app/cli.php
+app/baseClasses/App.php
+app/baseClasses/Controller.php
+app/baseClasses/Model.php
+app/baseClasses/View.php
+app/baseClasses/Library.php
+app/baseClasses/Ruleset.php
 
-docs/app_nav1.md
-docs/index.md
+app/controller/addresses.php
+app/controller/authentication.php
+app/controller/contents.php
+app/controller/countries.php
+app/controller/regions.php
+app/controller/roles.php
+app/controller/users.php
+app/controller/vw_users_details.php
 
-db/build/sqlite.regions.sql
-db/build/sqlite.main.sql
-db/build/sqlite.views.sql
+app/model/addresses.php
+app/model/contents.php
+app/model/countries.php
+app/model/regions.php
+app/model/roles.php
+app/model/users.php
+app/model/vw_users_details.php
 
-tests/base_tests.php
-tests/address_Test.php
-tests/countries_Test.php
-tests/organizations_Test.php
-tests/regions_Test.php
-tests/roles_Test.php
-tests/users_Test.php
+app/view/addresses.php
+app/view/authentication.php
+app/view/contents.php
+app/view/countries.php
+app/view/regions.php
+app/view/roles.php
+app/view/users.php
+app/view/vw_users_details.php
 
-app/app.php
-app/index.php
+app/library/addresses.php
+app/library/contents.php
+app/library/countries.php
+app/library/regions.php
+app/library/roles.php
+app/library/users.php
+app/library/vw_users_details.php
 
-app/controllers/addresses.php
-app/controllers/countries.php
-app/controllers/organizations.php
-app/controllers/regions.php
-app/controllers/patches.php
-app/controllers/roles.php
-app/controllers/users.php
-app/controllers/user_auth_tokens.php
-app/controllers/navigation.php
-app/controllers/vw_users_details.php
-app/controllers/vw_organizations_details.php
+app/ruleset/addresses.php
+app/ruleset/authentication.php
+app/ruleset/contents.php
+app/ruleset/countries.php
+app/ruleset/regions.php
+app/ruleset/roles.php
+app/ruleset/users.php
+app/ruleset/vw_users_details.php
 
 
+app/javascript/app.js
+app/sass/app.scss
 
-db/models/addresses.php
-db/models/countries.php
-db/models/organizations.php
-db/models/regions.php
-db/models/patches.php
-db/models/roles.php
-db/models/users.php
-db/models/user_auth_tokens.php
-db/models/navigation.php
-db/models/vw_users_details.php
-db/models/vw_organizations_details.php
+app/dictionary/en__buttons.json
+app/dictionary/en__misc.json
+app/dictionary/en__models.json
+app/dictionary/en__navigation.json
+app/dictionary/en__validation.json
 
-app/media/js/app.js
-app/media/scss/app.scss
+web/api.php
+web/actions.php
+web/index.php
+web/css/
+web/fonts/
+web/javascript/
 
-app/views/addresses-edit.php
-app/views/addresses-table.php
-app/views/countries-edit.php
-app/views/countries-table.php
-app/views/organizations-edit.php
-app/views/organizations-table.php
-app/views/regions-edit.php
-app/views/regions-table.php
-app/views/roles-edit.php
-app/views/roles-table.php
-app/views/users-edit.php
-app/views/users-table.php
 
-app/views/patches-edit.php
-app/views/patches-table.php
-app/views/user_auth_tokens-edit.php
-app/views/user_auth_tokens-table.php
-app/views/vw_users_details-edit.php
-app/views/vw_users_details-table.php
-app/views/vw_organizations_details-edit.php
-app/views/vw_organizations_details-table.php
-
-app/views/login.php
-app/views/dashboard.php
-app/views/form-authentication.php
-app/views/form-registration.php
 

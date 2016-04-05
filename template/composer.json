@@ -1,6 +1,6 @@
 {
     "config": {
-        "bin-dir": "scripts"
+        "bin-dir": "bin"
     },
     "minimum-stability": "alpha",
     "repositories": [
@@ -15,7 +15,8 @@
                     "reference":"master"
                 },
                 "bin": [
-                    "scripts/build",
+                    "scripts/build.php",
+                    "scripts/create.php",
                     "scripts/deploy",
                     "scripts/build_db.sh",
                     "scripts/make_app.php",
@@ -26,10 +27,10 @@
                     "scripts/tail-log.sh"
                 ],
                 "autoload": {
-                    "psr-4": {"DevLucid\\": "/src/php/"}
+                    "psr-4": {"Lucid\\": "/src/php/"}
                 },
                 "autoload-dev": {
-                    "psr-4": {"DevLucid\\": "/src/php/"}
+                    "psr-4": {"Lucid\\": "/src/php/"}
                 }
             }
         },
@@ -46,10 +47,210 @@
                 "bin": [
                 ],
                 "autoload": {
-                    "psr-4": {"DevLucid\\": "/"}
+                    "psr-4": {"Lucid\\Html\\": "/"}
                 },
                 "autoload-dev": {
-                    "psr-4": {"DevLucid\\": "/"}
+                    "psr-4": {"Lucid\\Html\\": "/"}
+                }
+            }
+        },
+        {
+            "type":"package",
+            "package": {
+                "name": "devlucid/factory",
+                "version":"master",
+                "source": {
+                    "url": "git@github.com:Dev-Lucid/factory.git",
+                    "type": "git",
+                    "reference":"master"
+                },
+                "bin": [
+                ],
+                "autoload": {
+                    "psr-4": {"Lucid\\Component\\Factory\\": "/src/php/"}
+                },
+                "autoload-dev": {
+                    "psr-4": {"Lucid\\Component\\Factory\\": "/src/php/"}
+                }
+            }
+        },
+        {
+            "type":"package",
+            "package": {
+                "name": "devlucid/queue",
+                "version":"master",
+                "source": {
+                    "url": "git@github.com:Dev-Lucid/queue.git",
+                    "type": "git",
+                    "reference":"master"
+                },
+                "bin": [
+                ],
+                "autoload": {
+                    "psr-4": {"Lucid\\Component\\Queue\\": "/src/php/"}
+                },
+                "autoload-dev": {
+                    "psr-4": {"Lucid\\Component\\Queue\\": "/src/php/"}
+                }
+            }
+        },
+        {
+            "type":"package",
+            "package": {
+                "name": "devlucid/response",
+                "version":"master",
+                "source": {
+                    "url": "git@github.com:Dev-Lucid/response.git",
+                    "type": "git",
+                    "reference":"master"
+                },
+                "bin": [
+                ],
+                "autoload": {
+                    "psr-4": {"Lucid\\Component\\Response\\": "/src/php/"}
+                },
+                "autoload-dev": {
+                    "psr-4": {"Lucid\\Component\\Response\\": "/src/php/"}
+                }
+            }
+        },
+        {
+            "type":"package",
+            "package": {
+                "name": "devlucid/store",
+                "version":"master",
+                "source": {
+                    "url": "git@github.com:Dev-Lucid/store.git",
+                    "type": "git",
+                    "reference":"master"
+                },
+                "bin": [
+                ],
+                "autoload": {
+                    "psr-4": {"Lucid\\Component\\Store\\": "/src/php/"}
+                },
+                "autoload-dev": {
+                    "psr-4": {"Lucid\\Component\\Store\\": "/src/php/"}
+                }
+            }
+        },
+        {
+            "type":"package",
+            "package": {
+                "name": "devlucid/error",
+                "version":"master",
+                "source": {
+                    "url": "git@github.com:Dev-Lucid/error.git",
+                    "type": "git",
+                    "reference":"master"
+                },
+                "bin": [
+                ],
+                "autoload": {
+                    "psr-4": {"Lucid\\Component\\Error\\": "/src/php/"}
+                },
+                "autoload-dev": {
+                    "psr-4": {"Lucid\\Component\\Error\\": "/src/php/"}
+                }
+            }
+        },
+        {
+            "type":"package",
+            "package": {
+                "name": "devlucid/ruleset",
+                "version":"master",
+                "source": {
+                    "url": "git@github.com:Dev-Lucid/ruleset.git",
+                    "type": "git",
+                    "reference":"master"
+                },
+                "bin": [
+                ],
+                "autoload": {
+                    "psr-4": {"Lucid\\Component\\Ruleset\\": "/src/php/"}
+                },
+                "autoload-dev": {
+                    "psr-4": {"Lucid\\Component\\Ruleset\\": "/src/php/"}
+                }
+            }
+        },
+        {
+            "type":"package",
+            "package": {
+                "name": "devlucid/permission",
+                "version":"master",
+                "source": {
+                    "url": "git@github.com:Dev-Lucid/permission.git",
+                    "type": "git",
+                    "reference":"master"
+                },
+                "bin": [
+                ],
+                "autoload": {
+                    "psr-4": {"Lucid\\Component\\Permission\\": "/src/php/"}
+                },
+                "autoload-dev": {
+                    "psr-4": {"Lucid\\Component\\Permission\\": "/src/php/"}
+                }
+            }
+        },
+        {
+            "type":"package",
+            "package": {
+                "name": "devlucid/i18n",
+                "version":"master",
+                "source": {
+                    "url": "git@github.com:Dev-Lucid/i18n.git",
+                    "type": "git",
+                    "reference":"master"
+                },
+                "bin": [
+                ],
+                "autoload": {
+                    "psr-4": {"Lucid\\Component\\I18n\\": "/src/php/"}
+                },
+                "autoload-dev": {
+                    "psr-4": {"Lucid\\Component\\I18n\\": "/src/php/"}
+                }
+            }
+        },
+        {
+            "type":"package",
+            "package": {
+                "name": "devlucid/basiclogger",
+                "version":"master",
+                "source": {
+                    "url": "git@github.com:Dev-Lucid/basiclogger.git",
+                    "type": "git",
+                    "reference":"master"
+                },
+                "bin": [
+                ],
+                "autoload": {
+                    "psr-4": {"Lucid\\Component\\BasicLogger\\": "/src/php/"}
+                },
+                "autoload-dev": {
+                    "psr-4": {"Lucid\\Component\\BasicLogger\\": "/src/php/"}
+                }
+            }
+        },
+        {
+            "type":"package",
+            "package": {
+                "name": "devlucid/router",
+                "version":"master",
+                "source": {
+                    "url": "git@github.com:Dev-Lucid/router.git",
+                    "type": "git",
+                    "reference":"master"
+                },
+                "bin": [
+                ],
+                "autoload": {
+                    "psr-4": {"Lucid\\Component\\Router\\": "/src/php/"}
+                },
+                "autoload-dev": {
+                    "psr-4": {"Lucid\\Component\\Router\\": "/src/php/"}
                 }
             }
         },
@@ -66,27 +267,14 @@
                 "bin": [
                 ],
                 "autoload": {
-                    "psr-4": {"DevLucid\\": "/src/php/"}
+                    "psr-4": {"Lucid\\Library\\Metabase\\": "/src/php/"}
                 },
                 "autoload-dev": {
-                    "psr-4": {"DevLucid\\": "/src/php/"}
+                    "psr-4": {"Lucid\\Library\\Metabase\\": "/src/php/"}
                 }
             }
         },
-        {
-            "type":"package",
-            "package": {
-                "name": "devlucid/datetimepicker",
-                "version":"master",
-                "source": {
-                    "url": "git@github.com:Dev-Lucid/datetimepicker.git",
-                    "type": "git",
-                    "reference":"master"
-                },
-                "bin": [
-                ]
-            }
-        },
+
         {
             "type":"package",
             "package": {
@@ -100,6 +288,9 @@
             }
         }
     ],
+    "autoload": {
+        "psr-4": {"App\\": "/app/baseClasses/"}
+    },
     "require":{
         "j4mie/paris": "^1.5",
         "leafo/scssphp": "^0.6.3",
@@ -109,17 +300,25 @@
         "devlucid/lucid": "master@dev",
         "devlucid/metabase": "master@dev",
         "devlucid/html": "master@dev",
-        "devlucid/datetimepicker": "master@dev",
+        "devlucid/queue": "master@dev",
+        "devlucid/response": "master@dev",
+        "devlucid/store": "master@dev",
+        "devlucid/factory": "master@dev",
+        "devlucid/ruleset": "master@dev",
+        "devlucid/error": "master@dev",
+        "devlucid/router": "master@dev",
+        "devlucid/i18n": "master@dev",
+        "devlucid/permission": "master@dev",
+        "devlucid/basiclogger": "master@dev",
         "henrikbjorn/lurker": "^1.1.0",
         "robmorgan/phinx": "0.5.3",
         "swiftmailer/swiftmailer": "5.4.1",
         "erusev/parsedown": "^1.6.0",
-        "kartik-v/php-date-formatter": "@dev"
-    },
-    "require-dev": {
-        "devlucid/lucid": "master@dev",
-        "devlucid/html": "master@dev",
-        "phpunit/phpunit": "4.8.*"
+        "kartik-v/php-date-formatter": "@dev",
+        "tedivm/jshrink": "~1.0",
+        "wp-cli/php-cli-tools": "0.11.1",
+        "eonasdan/bootstrap-datetimepicker":"4.17.37",
+        "dungphanxuan/yii2-editor": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

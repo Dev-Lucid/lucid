@@ -1,0 +1,45 @@
+<?php
+return [
+    'outputPath'=>'web/javascript/',
+
+    'include'=>[
+        'vendor/twbs/bootstrap/docs/assets/js/vendor'=>[
+            'jquery.min.js',
+            'tether.min.js',
+        ],
+        'vendor/twbs/bootstrap/docs/assets/js'=>[
+            'ie10-viewport-bug-workaround.js',
+        ],
+        'vendor/twbs/bootstrap/dist/js'=>[
+            'bootstrap.min.js',
+        ],
+        'vendor/moment/moment/min'=>[
+            'moment.min.js',
+            //'locales.js',
+        ],
+        'vendor/eonasdan/bootstrap-datetimepicker/build/js'=>[
+            'bootstrap-datetimepicker.min.js',
+        ],
+        'vendor/dungphanxuan/yii2-editor/assets'=>[
+            'js/markdown.js',
+            'js/bootstrap-markdown.js',
+            'locale/bootstrap-markdown.vi.js',
+            'locale/bootstrap-markdown.ja.js',
+            'js/jquery.hotkeys.js',
+        ],
+        'vendor/devlucid/lucid/src/js'=>[
+            'lucid.js',
+            'lucid.ruleset.js',
+            'lucid.i18n.js',
+            'lucid.dataTable.js',
+            'lucid.messages.js',
+        ],
+        'vendor/devlucid/html/src/base/js'=>[
+            'lucid.html.js',
+            'lucid.html.dataTable.js',
+        ],
+        'app/javascript'=>[
+            'app.js'
+        ],
+    ],
+];

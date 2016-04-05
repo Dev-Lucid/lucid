@@ -1,0 +1,14 @@
+{
+    "navigation:addresses.view.table": "Addresses",
+    "navigation:authentication.controller.logout": "Logout",
+    "navigation:authentication.view.login": "Login",
+    "navigation:contents.view.table": "Contents",
+    "navigation:countries.view.table": "Countries",
+    "navigation:dashboard.view.admin": "Dashboard",
+    "navigation:dashboard.view.user": "Dashboard",
+    "navigation:organizations.view.table": "Organizations",
+    "navigation:regions.view.table": "Regions",
+    "navigation:roles.view.table": "Roles",
+    "navigation:users.view.table": "Users",
+    "navigation:vw_users_details.view.table": "Vw Users Details"
+}

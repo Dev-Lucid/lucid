@@ -8,13 +8,12 @@
 # Notably if you change stage names, you should search all of the code of anyplace that is hardcoded to
 # use the old names. Likely places are app/index.php (for determining whether or not to compile the js/css),
 # and config/db.php (for determining which db to connect to).
+use Lucid\lucid;
 
-$stage = 'production';
+lucid::$stage = 'production';
 if (isset($_SERVER['APP_STAGE']) === true) {
-    $stage = $_SERVER['APP_STAGE'];
+    lucid::$stage = $_SERVER['APP_STAGE'];
 }
 if (getenv('APP_STAGE') != '') {
-    $stage = getenv('APP_STAGE');
+    lucid::$stage = getenv('APP_STAGE');
 }
-
-DevLucid\lucid::$stage = $stage;

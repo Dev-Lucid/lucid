@@ -1,5 +1,5 @@
 vendor/
-scripts/
+bin/
 app/media/fonts/*.eot
 app/media/fonts/*.svg
 app/media/fonts/*.ttf

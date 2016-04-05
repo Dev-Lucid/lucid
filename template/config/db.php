@@ -5,6 +5,29 @@
 # certainly unsuitable for a production environment where you should be using
 # an ACID compliant database. Try out Postgresql or Mysql!
 
+use Lucid\Lucid;
+\Model::$auto_prefix_models = 'App\\model\\';
+\ORM::configure('caching', true);
+\ORM::configure('caching_auto_clear', true);
+\ORM::configure('logging', true);
+\ORM::configure('logger', function ($logString, $queryTime) {
+    lucid::logger()->info($logString . ' in ' . $queryTime);
+});
+
+
+switch (lucid::$stage) {
+    case 'development':
+        \ORM::configure('sqlite:'.__DIR__.'/../app/development.sqlite');
+        break;
+    case 'qa':
+        break;
+    case 'production':
+        break;
+
+}
+
+
+/*
 DevLucid\lucid::$db_stages = [
     'development'=>[
         'adapter'=>'sqlite',
@@ -34,3 +57,4 @@ switch (DevLucid\lucid::$stage) {
         break;
 }
 
+*/
