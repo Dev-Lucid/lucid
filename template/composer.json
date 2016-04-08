@@ -326,5 +326,11 @@
     "scripts": {
         "post-install-cmd": [
          ]
+   },
+   "autoload": {
+       "psr-4": {"App\\": "/app/baseClasses/"}
+   },
+   "autoload-dev": {
+       "psr-4": {"App\\": "/app/baseClasses/"}
    }
 }
