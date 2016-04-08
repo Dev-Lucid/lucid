@@ -291,9 +291,6 @@
             }
         }
     ],
-    "autoload": {
-        "psr-4": {"App\\": "/app/baseClasses/"}
-    },
     "require":{
         "j4mie/paris": "^1.5",
         "leafo/scssphp": "^0.6.3",
@@ -328,9 +325,9 @@
          ]
    },
    "autoload": {
-       "psr-4": {"App\\": "/app/baseClasses/"}
+       "psr-4": {"App\\": "app/baseClasses/"}
    },
    "autoload-dev": {
-       "psr-4": {"App\\": "/app/baseClasses/"}
+       "psr-4": {"App\\": "app/baseClasses/"}
    }
 }
