@@ -24,7 +24,7 @@
   "license": "MIT",
   "bin": [
       "scripts/deploy",
-      "scripts/build",
+      "scripts/create.php",
       "scripts/build_db.sh",
       "scripts/make_app.php",
       "scripts/watcher.php",

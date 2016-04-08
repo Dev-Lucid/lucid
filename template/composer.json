@@ -24,7 +24,10 @@
                     "scripts/copy_fonts.php",
                     "scripts/launch.sh",
                     "scripts/unittest.sh",
-                    "scripts/tail-log.sh"
+                    "scripts/tail-log.sh",
+                    "scripts/compile.javascript.php",
+                    "scripts/compile.scss.php"
+
                 ],
                 "autoload": {
                     "psr-4": {"Lucid\\": "/src/php/"}

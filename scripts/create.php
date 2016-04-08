@@ -7,9 +7,7 @@ $lucidScriptPath = __DIR__;
 $templatePath = realpath($lucidScriptPath.'/../template/');
 
 
-include(ROOT_PATH.'/bootstrap.php');
-lucid::setComponent('response', new \Lucid\Component\Response\CommandLine(lucid::logger()));
-
+include(ROOT_PATH.'/vendor/autoload.php');
 
 $arguments = new \cli\Arguments(compact('strict'));
 $arguments->addFlag(array('help', 'h'), 'Show this help screen');
