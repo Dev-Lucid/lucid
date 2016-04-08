@@ -46,6 +46,7 @@ app/view/regions.php
 app/view/roles.php
 app/view/users.php
 app/view/vw_users_details.php
+app/view/navigation.php
 
 app/library/addresses.php
 app/library/contents.php
