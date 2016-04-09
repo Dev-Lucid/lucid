@@ -18,7 +18,7 @@
                     "scripts/build.php",
                     "scripts/create.php",
                     "scripts/deploy",
-                    "scripts/build_db.php",
+                    "scripts/init_db.php",
                     "scripts/watcher.php",
                     "scripts/copy_fonts.php",
                     "scripts/launch.sh",
