@@ -53,7 +53,7 @@ include(__DIR__.'/../bootstrap.php');
         <script language="Javascript" src="javascript/<?=((lucid::error()->isDebugStage())?'debug':'production')?>.js?_time_=<?=time()?>"></script>
         <script language="Javascript">
 
-        lucid.setDefaultRequest('#!roles.view.table');
+        lucid.setDefaultRequest('#!authentication.view.login');
         var layouts = {
             'layout-leftcol':['#main-leftcol'],
             'layout-rightcol':['#main-rightcol'],

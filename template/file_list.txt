@@ -28,6 +28,7 @@ app/controller/countries.php
 app/controller/regions.php
 app/controller/roles.php
 app/controller/users.php
+app/controller/organizations.php
 app/controller/vw_users_details.php
 
 app/model/addresses.php
@@ -36,6 +37,7 @@ app/model/countries.php
 app/model/regions.php
 app/model/roles.php
 app/model/users.php
+app/model/organizations.php
 app/model/vw_users_details.php
 
 app/view/addresses.php
@@ -45,8 +47,10 @@ app/view/countries.php
 app/view/regions.php
 app/view/roles.php
 app/view/users.php
+app/view/organizations.php
 app/view/vw_users_details.php
 app/view/navigation.php
+app/view/dashboard.php
 
 app/library/addresses.php
 app/library/contents.php
@@ -63,6 +67,7 @@ app/ruleset/countries.php
 app/ruleset/regions.php
 app/ruleset/roles.php
 app/ruleset/users.php
+app/ruleset/organizations.php
 app/ruleset/vw_users_details.php
 
 
