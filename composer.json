@@ -25,8 +25,7 @@
   "bin": [
       "scripts/deploy",
       "scripts/create.php",
-      "scripts/build_db.sh",
-      "scripts/make_app.php",
+      "scripts/init_db.php",
       "scripts/watcher.php",
       "scripts/copy_fonts.php",
       "scripts/launch.sh",

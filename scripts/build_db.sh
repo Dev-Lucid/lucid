@@ -1,7 +1,7 @@
 #!/bin/sh
 BASEDIR=$(dirname "$0")
 
-DB="$BASEDIR/../db/development.sqlite"
+DB="$BASEDIR/../app/development.sqlite"
 
 if [ -f $DB ] ; then
     rm $DB
