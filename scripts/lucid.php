@@ -8,6 +8,7 @@ $config['composer-url'] = 'https://raw.githubusercontent.com/Dev-Lucid/lucid/{lu
 $config['lucid-branch'] = 'master';
 $config['usage-action'] = null;
 $config['name'] = null;
+$config['table'] = null;
 $config['no-model']      = false;
 $config['no-view']       = false;
 $config['no-controller'] = false;
@@ -33,6 +34,12 @@ $config['parameters'] = [
         'type'=>'value',
         'optional'=>false,
         'actions'=> ['create', 'generate'],
+    ],
+    'table'=>[
+        'type'=>'value',
+        'optional'=>true,
+        'comment'=>'If table parameter is not set, generate will assume that the table has the same value as name parameter.',
+        'actions'=> ['generate'],
     ],
     'no-model'=>[
         'type'=>'flag',
@@ -134,6 +141,7 @@ function buildParametersForUsage($action)
     $optionals = '';
     $mandatories = '';
     $options = '';
+    $comments = '';
     foreach ($config['parameters'] as $name=>$settings) {
         if (in_array($action, $settings['actions']) === true) {
             if ($settings['optional'] === true) {
@@ -166,12 +174,21 @@ function buildParametersForUsage($action)
                     }
                 }
             }
+
+            if (isset($settings['comment']) === true && $settings['comment'] != '') {
+                $comments .= $settings['comment']."\n\n;";
+            }
         }
     }
-    return $mandatories.$optionals;
+
+    if ($comments != '') {
+        $comments = "\n\nNotes:\n--------------------------------------\n".$comments;
+    }
+    return $mandatories.$optionals.$comments;;
 }
 
-function checkParameters($action) {
+function checkParameters($action)
+{
     global $config;
     foreach ($config['parameters'] as $name=>$settings) {
         if (
@@ -184,6 +201,14 @@ function checkParameters($action) {
             LucidActions::$method();
             exit();
         }
+    }
+}
+
+function checkValidProject()
+{
+    $path = getcwd();
+    if (file_exists($path.'/vendor/devlucid/lucid/') === false) {
+        exit("The current directory does not seem to contain a valid lucid project.\n");
     }
 }
 
@@ -220,9 +245,9 @@ class LucidActions
     public static function generate()
     {
         global $config;
+        checkValidProject();
         checkParameters('generate');
         echo("Generate called\n");
-        echo($url);
 
     }
 
@@ -257,6 +282,7 @@ class LucidActions
     public static function server()
     {
         global $config;
+        checkValidProject();
         checkParameters('server');
 
         echo("Copying fonts...\n");
