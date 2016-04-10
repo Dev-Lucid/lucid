@@ -20,7 +20,7 @@ app/baseClasses/App.php
 app/baseClasses/Controller.php
 app/baseClasses/Model.php
 app/baseClasses/View.php
-app/baseClasses/Library.php
+app/baseClasses/Helper.php
 app/baseClasses/Ruleset.php
 
 app/controller/addresses.php
@@ -54,13 +54,13 @@ app/view/vw_users_details.php
 app/view/navigation.php
 app/view/dashboard.php
 
-app/library/addresses.php
-app/library/contents.php
-app/library/countries.php
-app/library/regions.php
-app/library/roles.php
-app/library/users.php
-app/library/vw_users_details.php
+app/helper/addresses.php
+app/helper/contents.php
+app/helper/countries.php
+app/helper/regions.php
+app/helper/roles.php
+app/helper/users.php
+app/helper/vw_users_details.php
 
 app/ruleset/addresses.php
 app/ruleset/authentication.php
