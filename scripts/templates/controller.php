@@ -3,11 +3,11 @@ namespace App\Controller;
 use App\App, Lucid\Lucid, Lucid\Html\html;
 
 /**
-  * {{uc(table)}} Controller
+      * {{name}} Controller
   *
-  * @package {{uc(table)}}
+  * @package {{name}}
   */
-class {{uc(table)}} extends \App\Controller
+class {{name}} extends \App\Controller
 {
     /**
       * Instantiates a paris query object.
@@ -29,7 +29,7 @@ class {{uc(table)}} extends \App\Controller
       * $this->getList(), so any permission/business rules that are applied in that function
       * will also be applied.
       *
-      * @return \App\Model\{{uc(table)}}
+      * @return \App\Model\{{name}}
       */
     public function getOne({{primary_key_col_type}} ${{id}})
     {

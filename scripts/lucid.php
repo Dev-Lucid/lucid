@@ -27,6 +27,7 @@ $config['no-controller'] = false;
 $config['no-helper']     = false;
 $config['no-ruleset']    = false;
 $config['no-test']   = false;
+$config['no-dictionary']   = false;
 $config['no-comments']   = false;
 
 $config['path']   = getcwd();
@@ -115,6 +116,11 @@ $config['parameters'] = [
         'actions'=> ['generate'],
     ],
     'no-helper'=>[
+        'type'=>'flag',
+        'optional'=>true,
+        'actions'=> ['generate'],
+    ],
+    'no-test'=>[
         'type'=>'flag',
         'optional'=>true,
         'actions'=> ['generate'],
@@ -270,6 +276,48 @@ function checkValidProject()
 }
 
 
+function findTableForKey($table, $key, $config)
+{
+	$tables = $config['meta']->getTables(false);
+
+    for ($i=0; $i<count($tables); $i++) {
+        $tableCols = $config['meta']->getColumns($tables[$i]);
+        if ($tableCols[0]['name'] == $key) {
+            $return = [
+                $tables[$i],
+                $tableCols[0]['name'],
+            ];
+
+            for ($j = 1; $j<count($tableCols); $j++) {
+                if ($tableCols[$j]['type'] == 'string'){
+                    $return[] = $tableCols[$j]['name'];
+                    return $return;
+                }
+            }
+            echo('Could not find a label column in table '.$tables[$i].'. Build script looks for the first column that is of a string type (varchar, char, text, etc).');
+            return [false, false, false];
+        }
+    }
+
+    echo('Could not find a table to use as a source for '.$key.' select.');
+    return [false, false, false];
+}
+
+function buildFromTemplate($templateName, $keys, $outputName) {
+    global $config;
+	$source = file_get_contents($config['path'].'/vendor/devlucid/lucid/scripts/templates/'.$templateName.'.php');
+	foreach ($keys as $key=>$value) {
+		$source = str_replace('{{'.$key.'}}', $value, $source);
+	}
+	#echo("\tWriting file: $outputName\n");
+	file_put_contents($outputName, $source);
+}
+
+function disableBuffering()
+{
+    while (@ ob_end_flush());
+}
+
 class LucidActions
 {
     public static function usage()
@@ -304,7 +352,17 @@ class LucidActions
         global $config;
         checkValidProject();
         checkParameters('generate');
-        echo("Generate called\n");
+
+        include($config['path'].'/bootstrap.php');
+        #disableBuffering();
+        \Lucid\lucid::setComponent('response', new \Lucid\Component\Response\CommandLine());
+
+        $config['meta'] = new \Lucid\Library\Metabase\Metabase(\ORM::get_db());
+
+        if (is_null($config['table']) === true) {
+            $config['table'] = $config['name'];
+        }
+        $config['columns'] = $config['meta']->getColumns($config['table']);
 
         include($config['path'].'/vendor/devlucid/lucid/scripts/build__model.php');
         include($config['path'].'/vendor/devlucid/lucid/scripts/build__view.php');
@@ -314,7 +372,22 @@ class LucidActions
         include($config['path'].'/vendor/devlucid/lucid/scripts/build__test.php');
         include($config['path'].'/vendor/devlucid/lucid/scripts/build__dictionary.php');
 
-        $keys = [];
+        $keys = [
+            'name'=>$config['name'],
+            'table'=>$config['table'],
+            'id_type'=>$config['columns'][0]['type'],
+    	    'id'=>$config['columns'][0]['name'],
+    		'first_string_col'=>null,
+            'title'=>$config['name'],
+        ];
+
+        foreach($config['columns'] as $column) {
+    		if ($column['type'] == 'string' && is_null($keys['first_string_col']) === true) {
+    			$keys['first_string_col'] = $column['name'];
+    		}
+    	}
+
+
         $keys = modelBuildKeys($keys, $config);
         $keys = viewBuildKeys($keys, $config);
         $keys = controllerBuildKeys($keys, $config);
@@ -393,7 +466,7 @@ class LucidActions
         $cmd_watcher = "php ./bin/watcher.php";
         $cmd_logs    = "./bin/tail-log.sh";
 
-        while (@ ob_end_flush());
+        disableBuffering();
 
         $config['proc-server']  = popen($cmd_server, 'w');
         $config['proc-watcher'] = popen($cmd_watcher, 'w');
@@ -419,6 +492,18 @@ class LucidActions
             echo fread($config['proc-logs'], 4096);
             @ flush();
         }
+    }
+
+    public static function test__usage()
+    {
+        echo("lucid test ".buildParametersForUsage('test')."\n");
+    }
+
+    public static function test()
+    {
+        echo("Running tests...\n");
+        echo(shell_exec('phpunit --bootstrap ./bootstrap.php tests/'));
+
     }
 
     public static function version__usage()

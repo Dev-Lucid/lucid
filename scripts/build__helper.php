@@ -1,11 +1,11 @@
 <?php
 
-function helperBuildKeys($table, $columns, $keys, $arguments)
+function helperBuildKeys($keys, $config)
 {
     return $keys;
 }
 
-function helperBuildFiles($table, $columns, $keys, $arguments)
+function helperBuildFiles($keys, $config)
 {
-    buildFromTemplate('helper', $keys, $arguments['appdir'].'/helper/'.$table.'.php');
+    buildFromTemplate('helper', $keys, $config['path'].'/app/helper/'.$config['table'].'.php');
 }

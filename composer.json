@@ -23,12 +23,11 @@
   },
   "license": "MIT",
   "bin": [
-      "scripts/deploy",
+      "scripts/lucid.php",
       "scripts/create.php",
       "scripts/init_db.php",
       "scripts/watcher.php",
       "scripts/copy_fonts.php",
-      "scripts/launch.sh",
       "scripts/unittest.sh",
       "scripts/tail-log.sh"
       "scripts/compile.javascript.php"

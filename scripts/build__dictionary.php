@@ -1,26 +1,26 @@
 <?php
 
-function dictionaryBuildKeys($table, $columns, $keys, $arguments)
+function dictionaryBuildKeys($keys, $arguments)
 {
     return $keys;
 }
 
-function dictionaryBuildFiles($table, $columns, $keys, $arguments)
+function dictionaryBuildFiles($keys, $config)
 {
-    $modelDictPath = $arguments['appdir'].'/dictionary/en__models.json';
+    $modelDictPath = $config['path'].'/app/dictionary/en__models.json';
     if (file_exists($modelDictPath)){
         $dictionaryKeys = json_decode(file_get_contents($modelDictPath), true);
     } else {
         $dictionaryKeys = [];
     }
 
-    if (isset($dictionaryKeys['model:'.$table]) === false) {
-        $dictionaryKeys['model:'.$table] = ucwords($table);
+    if (isset($dictionaryKeys['model:'.$config['table']]) === false) {
+        $dictionaryKeys['model:'.$config['table']] = ucwords($config['table']);
     }
 
-    foreach ($columns as $column) {
-        if (isset($dictionaryKeys['model:'.$table.':'.$column['name']]) === false) {
-            $dictionaryKeys['model:'.$table.':'.$column['name']] = ucwords(str_replace('_', ' ', $column['name']));
+    foreach ($config['columns'] as $column) {
+        if (isset($dictionaryKeys['model:'.$config['table'].':'.$column['name']]) === false) {
+            $dictionaryKeys['model:'.$config['table'].':'.$column['name']] = ucwords(str_replace('_', ' ', $column['name']));
         }
     }
 
@@ -28,15 +28,15 @@ function dictionaryBuildFiles($table, $columns, $keys, $arguments)
 
     file_put_contents($modelDictPath, json_encode($dictionaryKeys, JSON_PRETTY_PRINT));
 
-    $navigationDictPath = $arguments['appdir'].'/dictionary/en__navigation.json';
+    $navigationDictPath = $config['path'].'/app/dictionary/en__navigation.json';
     if (file_exists($modelDictPath)){
         $dictionaryKeys = json_decode(file_get_contents($navigationDictPath), true);
     } else {
         $dictionaryKeys = [];
     }
 
-    if (isset($dictionaryKeys['navigation:'.$table.'.view.table']) === false) {
-        $dictionaryKeys['navigation:'.$table.'.view.table'] = ucwords(str_replace('_', ' ', $table));
+    if (isset($dictionaryKeys['navigation:'.$config['table'].'.view.table']) === false) {
+        $dictionaryKeys['navigation:'.$config['table'].'.view.table'] = ucwords(str_replace('_', ' ', $config['table']));
     }
 
     ksort($dictionaryKeys);

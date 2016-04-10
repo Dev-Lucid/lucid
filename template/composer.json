@@ -15,13 +15,11 @@
                     "reference":"master"
                 },
                 "bin": [
-                    "scripts/build.php",
+                    "scripts/lucid.php",
                     "scripts/create.php",
-                    "scripts/deploy",
                     "scripts/init_db.php",
                     "scripts/watcher.php",
                     "scripts/copy_fonts.php",
-                    "scripts/launch.sh",
                     "scripts/unittest.sh",
                     "scripts/tail-log.sh",
                     "scripts/compile.javascript.php",

@@ -2,7 +2,7 @@
 namespace App\View;
 use App\App, Lucid\Lucid, Lucid\Html\html;
 
-class {{uc(table)}} extends \App\View
+class {{name}} extends \App\View
 {
     public function table()
     {
@@ -78,7 +78,7 @@ class {{uc(table)}} extends \App\View
 
         # Set the title tag for the page. Optionally, you can also set the description or keywords meta tag
         # by calling lucid::$response->description() or lucid::$response->keywords()
-        lucid::response()->title(lucid::i18n()->translate('branding:app_name').' - {{uc(table)}}');
+        lucid::response()->title(lucid::i18n()->translate('branding:app_name').' - {{name}}');
 
         # Render the navigation controller.
         lucid::factory()->view('navigation')->render('{{table}}.view.table', '{{table}}.view.edit');

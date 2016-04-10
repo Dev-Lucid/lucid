@@ -1,11 +1,11 @@
 <?php
 
-function testBuildKeys($table, $columns, $keys, $arguments)
+function testBuildKeys($keys, $config)
 {
     return $keys;
 }
 
-function testBuildFiles($table, $columns, $keys, $arguments)
+function testBuildFiles($keys, $config)
 {
-    buildFromTemplate('test', $keys, $arguments['appdir'].'/../tests/'.$table.'.php');
+    buildFromTemplate('test', $keys, $config['path'].'/tests/'.$config['table'].'_Test.php');
 }

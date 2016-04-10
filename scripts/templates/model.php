@@ -2,7 +2,7 @@
 namespace App\Model;
 use App\App, Lucid\Lucid, Lucid\Html\html;
 
-class {{uc(table)}} extends \App\Model
+class {{name}} extends \App\Model
 {
     public static $_table     = '{{table}}';
 	public static $_id_column = '{{id}}';
@@ -53,7 +53,7 @@ class {{uc(table)}} extends \App\Model
         if (lucid::permission()->isAdmin() === true) {
             return true;
         }
-        
+
         # add your rules here. Ex: return ($rowData['org_id'] == lucid::session()->int('org_id'));
         return true;
     }

@@ -92,5 +92,6 @@ web/css/
 web/fonts/
 web/javascript/
 
-
+tests/organizations_Test.php
+tests/users_Test.php
 

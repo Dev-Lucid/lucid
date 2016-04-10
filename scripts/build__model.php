@@ -1,11 +1,11 @@
 <?php
 
-function modelBuildKeys($table, $columns, $keys, $arguments)
+function modelBuildKeys($keys, $config)
 {
     return $keys;
 }
 
-function modelBuildFiles($table, $columns, $keys, $arguments)
+function modelBuildFiles($keys, $config)
 {
-    buildFromTemplate('model', $keys, $arguments['appdir'].'/model/'.$table.'.php');
+    buildFromTemplate('model', $keys, $config['path'].'/app/model/'.$config['table'].'.php');
 }
