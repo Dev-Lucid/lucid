@@ -501,6 +501,7 @@ class LucidActions
 
     public static function test()
     {
+        checkValidProject();
         echo("Running tests...\n");
         echo(shell_exec('phpunit --bootstrap ./bootstrap.php tests/'));
 
