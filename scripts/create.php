@@ -82,6 +82,6 @@ foreach ($files as $file) {
     copy($from.$file, $to.$file);
 }
 
-exit("\nComplete.\n\nYou should also configure your staging in config/stage.php, and your database connection in config/db.php. Once that is complete, you should init your local database using php bin/init_db.php. If you do not make any changes to your configs, running php bin/init_db.php will create a sqlite database in app/.\n");
+exit("\nComplete.\n\nYou should also configure your staging in config/stage.php, and your database connection in config/db.php. Once that is complete, you should init your local database using php bin/init_db.php. If you do not make any changes to your configs, running php bin/init_db.php will create a sqlite database in database/.\n");
 #print_r($files);
 

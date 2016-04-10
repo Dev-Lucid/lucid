@@ -2,9 +2,11 @@ bootstrap.php
 composer.json
 .gitignore
 
+database/migrations/
+database/seeds/
+
 app/tags/
 app/traits/
-app/migration/
 
 config/db.php
 config/html.php

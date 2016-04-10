@@ -17,7 +17,7 @@ use Lucid\Lucid;
 
 switch (lucid::$stage) {
     case 'development':
-        \ORM::configure('sqlite:'.__DIR__.'/../app/development.sqlite');
+        \ORM::configure('sqlite:'.__DIR__.'/../database/development.sqlite');
         break;
     case 'qa':
         break;
