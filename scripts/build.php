@@ -2,7 +2,7 @@
 use Lucid\Lucid;
 
 define('BIN_PATH', dirname($_SERVER['PWD'].'/'.$_SERVER['SCRIPT_NAME']));
-define('ROOT_PATH', BIN_PATH.'/..');
+define('ROOT_PATH', realpath(__DIR__.'/../../../../'));
 $lucidScriptPath = __DIR__;
 
 include(ROOT_PATH.'/bootstrap.php');

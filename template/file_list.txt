@@ -5,6 +5,8 @@ composer.json
 database/migrations/
 database/seeds/
 
+tests/
+
 app/tags/
 app/traits/
 
@@ -22,6 +24,7 @@ app/baseClasses/Model.php
 app/baseClasses/View.php
 app/baseClasses/Helper.php
 app/baseClasses/Ruleset.php
+app/baseClasses/Test.php
 
 app/controller/addresses.php
 app/controller/authentication.php
