@@ -9,16 +9,33 @@ $config['lucid-branch'] = 'master';
 $config['usage-action'] = null;
 $config['name'] = null;
 $config['table'] = null;
+
+
+$config['db-type'] = 'sqlite';
+
+# These are only placeholders for future postgresql/mysql integration
+$config['db-name'] = null;
+$config['db-host'] = null;
+$config['db-port'] = null;
+$config['db-user'] = null;
+$config['db-pass'] = null;
+
+/* flags for generating code */
 $config['no-model']      = false;
 $config['no-view']       = false;
 $config['no-controller'] = false;
 $config['no-helper']     = false;
 $config['no-ruleset']    = false;
+$config['no-test']   = false;
 $config['no-comments']   = false;
+
 $config['path']   = getcwd();
 $config['verbose'] = false;
+
+# server config
 $config['host'] = '127.0.0.1';
 $config['port'] = '9000';
+
 $config['parameters'] = [
     'verbose'=>[
         'type'=>'flag',
@@ -30,6 +47,42 @@ $config['parameters'] = [
         'optional'=>true,
         'actions'=> ['create', ],
     ],
+    'db-type'=>[
+        'type'=>'value',
+        'optional'=>true,
+        'values'=>['sqlite', 'postgresql', 'mysql',],
+        'actions'=> ['create', ],
+    ],
+    'db-host'=>[
+        'type'=>'value',
+        'optional'=>true,
+        'comment'=>'--db-host is only needed if database is not sqlite.',
+        'actions'=> ['create', ],
+    ],
+    'db-name'=>[
+        'type'=>'value',
+        'optional'=>true,
+        'comment'=>'--db-name is only needed if database is not sqlite.',
+        'actions'=> ['create', ],
+    ],
+    'db-port'=>[
+        'type'=>'value',
+        'optional'=>true,
+        'comment'=>'--db-port is only needed if database is not sqlite.',
+        'actions'=> ['create', ],
+    ],
+    'db-user'=>[
+        'type'=>'value',
+        'optional'=>true,
+        'comment'=>'--db-user is only needed if database is not sqlite.',
+        'actions'=> ['create', ],
+    ],
+    'db-pass'=>[
+            'type'=>'value',
+            'optional'=>true,
+            'comment'=>'--db-pass is only needed if database is not sqlite.',
+            'actions'=> ['create', ],
+        ],
     'name'=>[
         'type'=>'value',
         'optional'=>false,
@@ -114,12 +167,10 @@ if(count($argv) > 0) {
         }
         $parameter = substr($parameter, 2, strlen($parameter));
         if (isset($config['parameters'][$parameter]) === false) {
-
             echo("Unknown option: $parameter\n\n");
             $config['usage-action'] = $action;
             $config['action'] = 'usage';
             break;
-
         }
 
         if ($config['parameters'][$parameter]['type'] == 'flag') {
@@ -128,7 +179,13 @@ if(count($argv) > 0) {
             if (count($argv) == 0) {
                 exit("Parameter $parameter requires a value.\n");
             }
-            $config[$parameter] = array_shift($argv);
+            $value = array_shift($argv);
+
+            if (isset($config['parameters'][$parameter]['values']) === true && in_array($value, $config['parameters'][$parameter]['values']) === false) {
+                exit("Parameter $parameter may only have one of the following values: ".implode(', ', $config['parameters'][$parameter]['values'])."\n");
+            }
+
+            $config[$parameter] = $value;
         }
     }
 }
@@ -176,7 +233,7 @@ function buildParametersForUsage($action)
             }
 
             if (isset($settings['comment']) === true && $settings['comment'] != '') {
-                $comments .= $settings['comment']."\n\n;";
+                $comments .= $settings['comment']."\n";
             }
         }
     }
@@ -248,6 +305,45 @@ class LucidActions
         checkValidProject();
         checkParameters('generate');
         echo("Generate called\n");
+
+        include($config['path'].'/vendor/devlucid/lucid/scripts/build__model.php');
+        include($config['path'].'/vendor/devlucid/lucid/scripts/build__view.php');
+        include($config['path'].'/vendor/devlucid/lucid/scripts/build__controller.php');
+        include($config['path'].'/vendor/devlucid/lucid/scripts/build__helper.php');
+        include($config['path'].'/vendor/devlucid/lucid/scripts/build__ruleset.php');
+        include($config['path'].'/vendor/devlucid/lucid/scripts/build__test.php');
+        include($config['path'].'/vendor/devlucid/lucid/scripts/build__dictionary.php');
+
+        $keys = [];
+        $keys = modelBuildKeys($keys, $config);
+        $keys = viewBuildKeys($keys, $config);
+        $keys = controllerBuildKeys($keys, $config);
+        $keys = helperBuildKeys($keys, $config);
+        $keys = rulesetBuildKeys($keys, $config);
+        $keys = testBuildKeys($keys, $config);
+        $keys = dictionaryBuildKeys($keys, $config);
+
+        if ($config['no-model'] === false) {
+            modelBuildFiles($keys, $config);
+        }
+        if ($config['no-view'] === false) {
+            viewBuildFiles($keys, $config);
+        }
+        if ($config['no-controller'] === false) {
+            controllerBuildFiles($keys, $config);
+        }
+        if ($config['no-helper'] === false) {
+            helperBuildFiles($keys, $config);
+        }
+        if ($config['no-ruleset'] === false) {
+            rulesetBuildFiles($keys, $config);
+        }
+        if ($config['no-test'] === false) {
+            testBuildFiles($keys, $config);
+        }
+        if ($config['no-dictionary'] === false) {
+            dictionaryBuildFiles($keys, $config);
+        }
 
     }
 
