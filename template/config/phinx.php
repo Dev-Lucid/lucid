@@ -1,15 +1,25 @@
 <?php
-include(__DIR__.'/../../../../bootstrap.php');
+include(__DIR__.'/../bootstrap.php');
 
 return [
     "paths" => [
-        "migrations" => lucid::$paths['base']."/db/migrations/",
+        "migrations" => __DIR__."/../dataase/migrations/",
+        "seeds" => __DIR__."/../database/migrations/",
     ],
     "environments" => [
         "default_migration_table" => "phinxlog",
         "default_database" => "development",
-        "development" => lucid::$db_stages['development'],
-        "qa" => lucid::$db_stages['qa'],
-        "production" => lucid::$db_stages['production'],
+        "development" => [
+            'connection'=> \ORM::getDb(),
+            'name'=>'development',
+        ],
+        "qa" => [
+            'connection'=> \ORM::getDb(),
+            'name'=>'qa',
+        ],
+        "production" => [
+            'connection'=> \ORM::getDb(),
+            'name'=>'production',
+        ],
     ],
 ];
