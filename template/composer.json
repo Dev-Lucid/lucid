@@ -20,11 +20,8 @@
                     "scripts/init_db.php",
                     "scripts/watcher.php",
                     "scripts/copy_fonts.php",
-                    "scripts/unittest.sh",
-                    "scripts/tail-log.sh",
                     "scripts/compile.javascript.php",
                     "scripts/compile.scss.php"
-
                 ],
                 "autoload": {
                     "psr-4": {"Lucid\\": "/src/php/"}
