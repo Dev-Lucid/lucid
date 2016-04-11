@@ -37,6 +37,9 @@ $config['verbose'] = false;
 $config['host'] = '127.0.0.1';
 $config['port'] = '9000';
 
+# migration config
+$config['migration-id'] = null;
+
 $config['parameters'] = [
     'verbose'=>[
         'type'=>'flag',
@@ -87,7 +90,7 @@ $config['parameters'] = [
     'name'=>[
         'type'=>'value',
         'optional'=>false,
-        'actions'=> ['create', 'generate'],
+        'actions'=> ['create', 'generate', 'migration', ],
     ],
     'table'=>[
         'type'=>'value',
@@ -149,6 +152,12 @@ $config['parameters'] = [
         'type'=>'value',
         'optional'=>true,
         'actions'=>['launch'],
+    ],
+    'migration-id'=>[
+        'type'=>'value',
+        'optional'=>true,
+        'actions'=>['migrate'],
+        'comment'=>'If migration-id is not specified, then all unapplied migrations will be run.',
     ],
 ];
 
@@ -260,7 +269,7 @@ function checkParameters($action)
             (is_null($config[$name]) === true || $config['name'] == '')
         ) {
             echo("Error: parameter --$name requires a value.\n\n");
-            $method = $action.'__usage';
+            $method = '_'.$action.'Usage';
             LucidActions::$method();
             exit();
         }
@@ -325,12 +334,12 @@ class LucidActions
         global $config;
         if ($config['usage-action'] == '') {
             $methods = '['.implode(' || ', array_filter(get_class_methods('LucidActions'), function($func){
-                return (strpos($func, '__usage') === false);
+                return (strpos($func, '_') !== 0);
             })).']';
             exit("Usage: lucid $methods\n");
 
         } else {
-            $method = $config['usage-action'].'__usage';
+            $method = '_'.$config['usage-action'].'Usage';
             if (method_exists('LucidActions', $method) === true) {
 
                 LucidActions::$method();
@@ -342,7 +351,7 @@ class LucidActions
         }
     }
 
-    public static function generate__usage()
+    public static function _generateUsage()
     {
         echo("lucid generate ".buildParametersForUsage('generate')."\n");
     }
@@ -420,7 +429,7 @@ class LucidActions
 
     }
 
-    public static function create__usage()
+    public static function _createUsage()
     {
         echo("lucid create ".buildParametersForUsage('create')."\n");
         exit();
@@ -442,7 +451,7 @@ class LucidActions
         chdir($path);
     }
 
-    public static function server__usage()
+    public static function _serverUsage()
     {
         echo("lucid server ".buildParametersForUsage('launch')."\n");
 
@@ -494,7 +503,7 @@ class LucidActions
         }
     }
 
-    public static function test__usage()
+    public static function _testUsage()
     {
         echo("lucid test ".buildParametersForUsage('test')."\n");
     }
@@ -507,7 +516,115 @@ class LucidActions
 
     }
 
-    public static function version__usage()
+    public static function _determineMigrationSystem()
+    {
+        global $config;
+
+        if (file_exists($config['path'].'/config/phinx.php') === true) {
+            return 'phinx';
+        }
+        return 'unknown';
+
+    }
+
+    public static function _statusUsage()
+    {
+        echo("lucid status ".buildParametersForUsage('status')."\n");
+    }
+
+    public static function status()
+    {
+        global $config;
+        checkParameters('status');
+        checkValidProject();
+        $system = static::_determineMigrationSystem();
+        include($config['path'].'/bootstrap.php');
+        switch($system) {
+            case 'phinx':
+                $result = shell_exec('bin/phinx status -c config/phinx.php -p php -e '.\Lucid\lucid::$stage.' -vvv');
+                $result = explode("\n", $result);
+                while (strpos($result[0], 'using environment ') === false) {
+                    array_shift($result);
+                }
+                array_shift($result);
+
+                $result = implode("\n", $result);
+                $result = str_replace('using the create command.', 'using the lucid migration command.', $result);
+
+                echo($result);
+                break;
+            # add new migration systems here
+            default:
+                exit("Could not determine which migration system is being used by this project.\n");
+                break;
+        }
+    }
+
+    public static function _migrationUsage()
+    {
+        echo("lucid migration ".buildParametersForUsage('migration')."\n");
+    }
+
+    public static function migration()
+    {
+        global $config;
+        checkParameters('migration');
+        checkValidProject();
+        $system = static::_determineMigrationSystem();
+        include($config['path'].'/bootstrap.php');
+        switch($system) {
+            case 'phinx':
+                $result = shell_exec('bin/phinx create '.$config['name'].' -c config/phinx.php -p php -vvv');
+
+                $result = explode("\n", $result);
+                while (count($result) > 0 && strpos($result[0], 'using default template') === false) {
+                    array_shift($result);
+                }
+                array_shift($result);
+                echo(implode("\n", $result));
+                break;
+            # add new migration systems here
+            default:
+                exit("Could not determine which migration system is being used by this project.\n");
+                break;
+        }
+    }
+
+    public static function _migrateUsage()
+    {
+        echo("lucid migrate ".buildParametersForUsage('migrate')."\n");
+    }
+
+    public static function migrate()
+    {
+        global $config;
+        checkParameters('migrate');
+        checkValidProject();
+        $system = static::_determineMigrationSystem();
+        include($config['path'].'/bootstrap.php');
+        switch($system) {
+            case 'phinx':
+                $id = '';
+                if (is_null($config['migration-id']) === false) {
+                    $id = ' -t '.$config['migration-id'];
+                }
+                $result = shell_exec('bin/phinx migrate'.$id.' -c config/phinx.php -p php -e '.\Lucid\lucid::$stage.' -vvv');
+
+                $result = explode("\n", $result);
+                while (count($result) > 0 && strpos($result[0], 'using database ') === false) {
+                    array_shift($result);
+                }
+                array_shift($result);
+                echo(implode("\n", $result));
+                break;
+            # add new migration systems here
+            default:
+                exit("Could not determine which migration system is being used by this project.\n");
+                break;
+        }
+    }
+
+    public static function _versionUsage()
     {
         echo("lucid version ".buildParametersForUsage('version')."\n");
     }
@@ -519,7 +636,7 @@ class LucidActions
         exit("Lucid version ".$config['version']."\n");
     }
 
-    public static function install__usage()
+    public static function _installUsage()
     {
         echo("lucid install ".buildParametersForUsage('install')."\n");
     }

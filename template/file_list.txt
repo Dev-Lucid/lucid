@@ -15,6 +15,7 @@ config/html.php
 config/javascript.php
 config/logger.php
 config/scss.php
+config/phinx.php
 config/stage.php
 
 app/cli.php
