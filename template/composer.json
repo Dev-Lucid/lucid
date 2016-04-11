@@ -314,8 +314,7 @@
         "kartik-v/php-date-formatter": "@dev",
         "tedivm/jshrink": "~1.0",
         "wp-cli/php-cli-tools": "0.11.1",
-        "eonasdan/bootstrap-datetimepicker":"4.17.37",
-        "dungphanxuan/yii2-editor": "dev-master"
+        "stephanecollot/datetimepicker-bundle":"1.0.1"
     },
     "scripts": {
         "post-install-cmd": [

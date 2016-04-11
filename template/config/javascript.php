@@ -13,19 +13,8 @@ return [
         'vendor/twbs/bootstrap/dist/js'=>[
             'bootstrap.min.js',
         ],
-        'vendor/moment/moment/min'=>[
-            'moment.min.js',
-            //'locales.js',
-        ],
-        'vendor/eonasdan/bootstrap-datetimepicker/build/js'=>[
-            'bootstrap-datetimepicker.min.js',
-        ],
-        'vendor/dungphanxuan/yii2-editor/assets'=>[
-            'js/markdown.js',
-            'js/bootstrap-markdown.js',
-            'locale/bootstrap-markdown.vi.js',
-            'locale/bootstrap-markdown.ja.js',
-            'js/jquery.hotkeys.js',
+        'vendor/stephanecollot/datetimepicker-bundle/SC/DatetimepickerBundle/Resources/public/js/'=>[
+            'bootstrap-datetimepicker.js',
         ],
         'vendor/devlucid/lucid/src/js'=>[
             'lucid.js',
