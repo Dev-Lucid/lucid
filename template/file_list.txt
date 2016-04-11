@@ -9,6 +9,7 @@ tests/
 
 app/tags/
 app/traits/
+app/tasks/
 
 config/db.php
 config/html.php

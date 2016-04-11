@@ -18,7 +18,9 @@ foreach ($files as $file) {
 }
 file_put_contents(lucid::$path.'/'.$config['outputPath'].'/debug.js', $source);
 
-$source = \JShrink\Minifier::minify($source);
+#$source = \JSMin::minify($source);
+#$source = \JShrink\Minifier::minify($source);
+
 file_put_contents(lucid::$path.'/'.$config['outputPath'].'/production.js', $source);
 
 exit();
