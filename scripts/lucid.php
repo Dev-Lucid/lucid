@@ -142,7 +142,7 @@ abstract class Task
                 case 'flag':
                     $this->config[$this->parameters[$i]->name] = $this->parameters[$i]->default;
                     for ($j=0; $j< (count($arguments) - 1); $j++) {
-                        if ($arguments[$j] == $this->parameters[$i]->name) {
+                        if ($arguments[$j] == '--'.$this->parameters[$i]->name) {
                             $parsedArguments[$j] = true;
                             $this->config[$this->parameters[$i]->name] = (!$this->config[$this->parameters[$i]->name]);
                         }
@@ -164,7 +164,7 @@ abstract class Task
 
 class Parameter
 {
-    public function __construct(string $name = '', string $type, bool $optional = true, string $default = null, string $comment = '', string $exampleValue = null )
+    public function __construct(string $name = '', string $type, bool $optional = true, $default = null, string $comment = '', string $exampleValue = null )
     {
         $this->name = $name;
         $this->type = $type; # 'unlabeled', 'labeled', 'flag'

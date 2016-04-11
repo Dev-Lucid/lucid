@@ -7,26 +7,26 @@ class Generate extends Task implements TaskInterface
 
     public function __construct()
     {
+        $this->parameters[] = new \Lucid\Task\Parameter('name', 'unlabeled', false, null);
+        $this->parameters[] = new \Lucid\Task\Parameter('table', 'labeled', true, null);
+        $this->parameters[] = new \Lucid\Task\Parameter('no-model', 'flag', true, false);
+        $this->parameters[] = new \Lucid\Task\Parameter('no-view', 'flag', true, false);
+        $this->parameters[] = new \Lucid\Task\Parameter('no-controller', 'flag', true, false);
+        $this->parameters[] = new \Lucid\Task\Parameter('no-helper', 'flag', true, false);
+        $this->parameters[] = new \Lucid\Task\Parameter('no-ruleset', 'flag', true, false);
+        $this->parameters[] = new \Lucid\Task\Parameter('no-test', 'flag', true, false);
+        $this->parameters[] = new \Lucid\Task\Parameter('no-dictionary', 'flag', true, false);
     }
 
     public function run()
     {
         include(getcwd().'/bootstrap.php');
-
         $this->config['meta'] = new \Lucid\Library\Metabase\Metabase(\ORM::get_db());
 
         if (is_null($this->config['table']) === true) {
             $this->config['table'] = $this->config['name'];
         }
         $this->config['columns'] = $this->config['meta']->getColumns($this->config['table']);
-
-        include(getcwd().'/vendor/devlucid/lucid/scripts/build__model.php');
-        include(getcwd().'/vendor/devlucid/lucid/scripts/build__view.php');
-        include(getcwd().'/vendor/devlucid/lucid/scripts/build__controller.php');
-        include(getcwd().'/vendor/devlucid/lucid/scripts/build__helper.php');
-        include(getcwd().'/vendor/devlucid/lucid/scripts/build__ruleset.php');
-        include(getcwd().'/vendor/devlucid/lucid/scripts/build__test.php');
-        include(getcwd().'/vendor/devlucid/lucid/scripts/build__dictionary.php');
 
         $this->config['keys'] = [
             'name'=>$this->config['name'],
@@ -53,27 +53,36 @@ class Generate extends Task implements TaskInterface
         $this->testBuildKeys();
         $this->dictionaryBuildKeys();
 
+
         if ($this->config['no-model'] === false) {
+            echo("Building Model...\n");
             $this->modelBuildFiles();
         }
         if ($this->config['no-view'] === false) {
+            echo("Building View...\n");
             $this->viewBuildFiles();
         }
         if ($this->config['no-controller'] === false) {
+            echo("Building Controller...\n");
             $this->controllerBuildFiles();
         }
         if ($this->config['no-helper'] === false) {
+            echo("Building Helper...\n");
             $this->helperBuildFiles();
         }
         if ($this->config['no-ruleset'] === false) {
+            echo("Building Ruleset...\n");
             $this->rulesetBuildFiles();
         }
         if ($this->config['no-test'] === false) {
+            echo("Building Test...\n");
             $this->testBuildFiles();
         }
         if ($this->config['no-dictionary'] === false) {
+            echo("Building Dictionary...\n");
             $this->dictionaryBuildFiles();
         }
+        echo("Complete.\n");
     }
 
     protected function buildFromTemplate($templateName, $outputName) {
@@ -136,12 +145,11 @@ class Generate extends Task implements TaskInterface
                     case 'string':
                     case 'int':
                     case 'float':
-
                         if (strpos(strrev($column['name']), 'di_') === 0) {
                             #echo ("trying to find options for ".$column['name']."\n");
                             # this is likely a foreign key for another table. make it a select list instead of a text field
                             $source = '[]';
-                            list($keyTable, $idColumn, $labelColumn) = findTableForKey($this->config['table'], $column['name'], $this->config);
+                            list($keyTable, $idColumn, $labelColumn) = $this->findTableForKey($this->config['table'], $column['name']);
                             if ($keyTable !== false) {
                                 $source = '$'.$column['name'].'_options';
                                 $this->config['keys']['select_options'] .= '        $'.$column['name'].'_options = lucid::factory()->model(\''.$keyTable.'\')';
@@ -309,7 +317,7 @@ class Generate extends Task implements TaskInterface
 
     public function testBuildFiles()
     {
-        buildFromTemplate('test', getcwd().'/tests/'.$this->config['table'].'_Test.php');
+        $this->buildFromTemplate('test', getcwd().'/tests/'.$this->config['table'].'_Test.php');
     }
 }
 Container::addTask(new Generate());
