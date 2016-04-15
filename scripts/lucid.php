@@ -260,7 +260,7 @@ class Create extends Task implements TaskInterface
             #exit("Cannot create lucid project in this folder, one already exists.\n");
         }
 
-        $composerUrl = 'https://getcomposer.org/download/1.0.0/composer.phar';
+        $composerUrl = 'https://getcomposer.org/composer.phar';
         $composerTest = shell_exec('composer');
         $composerCmd = '';
 
