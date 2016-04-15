@@ -252,9 +252,24 @@ class Create extends Task implements TaskInterface
 
     public function run()
     {
+        $instructions = "\n\nYour project has been created. The path to your new project is: ".$this->config['path'].'/'.$this->config['name']."\n";
+
         $this->config['composer-url'] = 'https://raw.githubusercontent.com/Dev-Lucid/lucid/{{branch}}/template/composer.json';
         if (Container::$config['isValidProject'] === true) {
             #exit("Cannot create lucid project in this folder, one already exists.\n");
+        }
+
+        $composerUrl = 'https://getcomposer.org/download/1.0.0/composer.phar';
+        $composerTest = shell_exec('composer');
+        $composerCmd = '';
+
+        # need to download a temporary version of composer for the install, and then tell the user
+        # how to install a real version
+        if (strpos($composerTest, 'Available commands:') === false) {
+            $composerCmd = 'curl '.$composerUrl.' > composer.phar; php composer.phar install; rm composer.phar;';
+            $instructions .= "\nBecause you did not have a version of composer installed, a copy has been temporarily downloaded to ".$this->config['path']."/composer.phar. This copy was automatically deleted after installation, but you will likely want to install composer permanently using the directions here: https://getcomposer.org/download/\n";
+        } else {
+            $composerCmd = 'composer install;';
         }
 
         $url = $this->config['composer-url'];
@@ -263,10 +278,11 @@ class Create extends Task implements TaskInterface
         if (file_exists($path) === false) {
             mkdir($path);
         }
+
         $composer = file_get_contents($url);
         file_put_contents($path.'/composer.json', $composer);
-        shell_exec('cd '.$path.';composer install;php bin/create.php; php bin/init_db.php;');
-        chdir($path);
+        shell_exec('cd '.$path.'; '.$composerCmd.' php bin/create.php; php bin/init_db.php;');
+        exit($instructions);
     }
 }
 Container::addTask(new \Lucid\Task\Create());
