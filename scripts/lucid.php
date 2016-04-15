@@ -111,7 +111,7 @@ abstract class Task
     public function parseArguments(array $arguments)
     {
         $parsedArguments = array_fill(0, count($arguments), false);
-
+        
         for ($i=0; $i<count($this->parameters); $i++) {
             switch ($this->parameters[$i]->type) {
                 case 'unlabeled':
@@ -133,6 +133,7 @@ abstract class Task
                             $parsedArguments[$j] = true;
                             $parsedArguments[$j + 1] = true;
                             $this->config[$this->parameters[$i]->name] = $arguments[$j + 1];
+                            $i++;
                         }
                     }
                     if (isset($config[$this->parameters[$i]->name]) === false) {
