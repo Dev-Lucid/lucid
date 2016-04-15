@@ -221,6 +221,7 @@ class Install extends Task implements TaskInterface
     public function run()
     {
         switch(strtolower(php_uname('s'))) {
+            case 'linux':
             case 'darwin':
                 if( file_exists('/usr/local/bin') === false) {
                     mkdir('/usr/local/bin', true);
