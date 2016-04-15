@@ -254,7 +254,7 @@ class Self_Update extends Task implements TaskInterface
         echo("Update complete.\n");
     }
 }
-Container::addTask(new \Lucid\Task\Install());
+Container::addTask(new \Lucid\Task\Self_Update());
 
 class Create extends Task implements TaskInterface
 {
