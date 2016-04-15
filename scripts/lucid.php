@@ -111,7 +111,7 @@ abstract class Task
     public function parseArguments(array $arguments)
     {
         $parsedArguments = array_fill(0, count($arguments), false);
-        
+
         for ($i=0; $i<count($this->parameters); $i++) {
             switch ($this->parameters[$i]->type) {
                 case 'unlabeled':
@@ -238,6 +238,20 @@ class Install extends Task implements TaskInterface
                 exit("Sorry, I don't know how to install on operating system ".php_uname('s')."\n");
                 break;
         }
+    }
+}
+Container::addTask(new \Lucid\Task\Install());
+
+class Self_Update extends Task implements TaskInterface
+{
+    public static $trigger = 'self-update';
+
+    public function run()
+    {
+
+        $cmd = "curl https://raw.githubusercontent.com/Dev-Lucid/lucid/master/scripts/lucid.php > ".__FILE__;
+        $result = shell_exec($cmd);
+        echo("Update complete.\n");
     }
 }
 Container::addTask(new \Lucid\Task\Install());
