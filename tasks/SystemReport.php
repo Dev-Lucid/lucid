@@ -27,7 +27,7 @@ class SystemReport extends Task implements TaskInterface
         }
     }
 
-    public function formatter(bool $isOk, string $prefix, string $description='', string $notes = '')
+    public function formatter($isOk, $prefix, $description='', $notes = '')
     {
         $output = '';
         if ($isOk === true) {

@@ -10,7 +10,7 @@ class PhinxMigration extends Task implements TaskInterface
         $this->parameters[] = new \Lucid\Task\Parameter('name', 'unlabeled', false, null);
     }
 
-    public function isAvailable():bool
+    public function isAvailable()
     {
         return (file_exists(getcwd().'/config/phinx.php') === true);
     }

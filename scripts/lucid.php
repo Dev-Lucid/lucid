@@ -8,12 +8,13 @@ class Container
     static $config = [
         'version'=>'0.1.0',
         'path'=>'',
-        'isValidProject'=>false,
+        'isValidProject'=>false
     ];
 
     public static function addTask($newTaskObject)
     {
-        $trigger = (get_class($newTaskObject))::$trigger;
+        $thisClass = get_class($newTaskObject);
+        $trigger = $thisClass::$trigger;
         if (in_array('Lucid\Task\TaskInterface', class_implements($newTaskObject)) === false) {
             throw new Exception("$trigger does not implement Lucid\Task\TaskInterface, so it cannot be used by the task container.");
         }
@@ -110,7 +111,11 @@ abstract class Task
 
     public function parseArguments(array $arguments)
     {
-        $parsedArguments = array_fill(0, count($arguments), false);
+        if (count($arguments) > 0) {
+            $parsedArguments = array_fill(0, count($arguments), false);
+        } else {
+            $parsedArguments = [];
+        }
 
         for ($i=0; $i<count($this->parameters); $i++) {
             switch ($this->parameters[$i]->type) {
@@ -165,7 +170,7 @@ abstract class Task
 
 class Parameter
 {
-    public function __construct(string $name = '', string $type, bool $optional = true, $default = null, string $comment = '', string $exampleValue = null )
+    public function __construct($name = null, $type, $optional = null, $default = null, $comment = null, $exampleValue = null)
     {
         $this->name = $name;
         $this->type = $type; # 'unlabeled', 'labeled', 'flag'

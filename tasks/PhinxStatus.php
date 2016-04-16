@@ -5,7 +5,7 @@ class PhinxStatus extends Task implements TaskInterface
 {
     public static $trigger = 'status';
 
-    public function isAvailable():bool
+    public function isAvailable()
     {
         return (file_exists(getcwd().'/config/phinx.php') === true);
     }
