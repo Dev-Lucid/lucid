@@ -67,7 +67,7 @@ Container::$config['isValidProject'] = (file_exists(getcwd().'/vendor/devlucid/l
 interface TaskInterface
 {
     public function parseArguments(array $arguments);
-    public function isAvailable(): bool;
+    public function isAvailable();
     public function showUsage();
     public function run();
 }
@@ -103,7 +103,7 @@ abstract class Task
         }
     }
 
-    public function isAvailable(): bool
+    public function isAvailable()
     {
         return true;
     }

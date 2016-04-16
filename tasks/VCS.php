@@ -10,7 +10,7 @@ class VCS extends Task implements TaskInterface
         $this->config = $arguments;
     }
 
-    public function isAvailable():bool
+    public function isAvailable()
     {
         return (file_exists(getcwd().'/.git') === true || file_exists(getcwd().'/.hg') === true || file_exists(getcwd().'/.svn') === true);
     }
