@@ -87,7 +87,7 @@ abstract class Task
                     $parameters .= ' $'.$parameter->name;
                     break;
                 case 'labeled':
-                    $parameters .= ' [--'.$parameter->name.' $newValue]';
+                    $parameters .= ' [--'.$parameter->name.' '.((is_null($parameter->default) === true)?'$newValue':$parameter->default).']';
                     break;
                 case 'flag':
                     $parameters .= ' [--'.$parameter->name.']';
