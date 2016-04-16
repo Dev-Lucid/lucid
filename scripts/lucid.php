@@ -192,7 +192,7 @@ class Usage extends Task implements TaskInterface
     public function run()
     {
         if (is_null($this->config['task']) === true) {
-            echo("Usage: lucid [ ".implode(' || ', array_keys(Container::$tasks))." ]\n");
+            echo("Usage: lucid [".implode(' | ', array_keys(Container::$tasks))."]\n");
             return;
         } else {
             if (isset(Container::$tasks[$this->config['task']]) === false) {
@@ -246,10 +246,15 @@ class Self_Update extends Task implements TaskInterface
 {
     public static $trigger = 'self-update';
 
+    public function __construct()
+    {
+        $this->parameters[] = new \Lucid\Task\Parameter('branch', 'labeled', true, 'master');
+    }
+
     public function run()
     {
 
-        $cmd = "curl https://raw.githubusercontent.com/Dev-Lucid/lucid/master/scripts/lucid.php > ".__FILE__;
+        $cmd = "curl https://raw.githubusercontent.com/Dev-Lucid/lucid/".$this->config['branch']."/scripts/lucid.php > ".__FILE__;
         $result = shell_exec($cmd);
         echo("Update complete.\n");
     }

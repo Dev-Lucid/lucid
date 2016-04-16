@@ -7,9 +7,9 @@ class Server extends Task implements TaskInterface
 
     public function __construct()
     {
+        $this->parameters[] = new \Lucid\Task\Parameter('stage',  'labeled', true, 'development');
         $this->parameters[] = new \Lucid\Task\Parameter('host',   'labeled', true, '127.0.0.1');
         $this->parameters[] = new \Lucid\Task\Parameter('port',   'labeled', true, '9000');
-        $this->parameters[] = new \Lucid\Task\Parameter('usleep', 'labeled', true, '1000000');
     }
 
     public function run()
@@ -21,9 +21,9 @@ class Server extends Task implements TaskInterface
         echo("Compiling sass...\n");
         shell_exec("php bin/compile.scss.php");
 
-        echo("Assets ready, starting server: http://".$this->config['host'].":".$this->config['port']."\n----------------------------------------------------------\n");
+        echo("Assets ready, starting ".$this->config['stage']." server: http://".$this->config['host'].":".$this->config['port']."\n----------------------------------------------------------\n");
 
-        $cmd_server  = "touch debug.log & php -S ".$this->config['host'].":".$this->config['port']." -t web > /dev/null 2>&1";
+        $cmd_server  = "touch debug.log; export APP_STAGE=".$this->config['stage']."; php -S ".$this->config['host'].":".$this->config['port']." -t web > /dev/null 2>&1";
         $cmd_watcher = "php ./bin/watcher.php";
         $cmd_logs    = "tail -n 0 -f ./debug.log | cut -c 76-10000";
 
@@ -36,7 +36,7 @@ class Server extends Task implements TaskInterface
         while (!feof($this->config['proc-logs'])) {
             echo fread($this->config['proc-logs'], 4096);
             @ flush();
-            usleep($this->config['usleep']);
+            usleep(1000000);
         }
     }
 
