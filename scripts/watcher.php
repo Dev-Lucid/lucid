@@ -13,7 +13,7 @@ $jsConfig = include(ROOT_PATH.'/config/javascript.php');
 $watcher = new ResourceWatcher;
 
 $scssEvent = function (FilesystemEvent $event) {
-    $cmd = 'cd '.BIN_PATH.'; php -f ./compile.scss.php';
+    $cmd = ' php bin/lucid.php compile-sass';
     lucid::logger()->info('Recompiling scss: '.$cmd);
     shell_exec($cmd);
 };
@@ -23,7 +23,7 @@ for ($i=0; $i < count($scssConfig['importPaths']); $i++) {
 }
 
 $jsEvent = function (FilesystemEvent $event) {
-    $cmd = 'cd '.BIN_PATH.'; php -f ./compile.javascript.php';
+    $cmd = 'php bin/lucid.php compile-javascript';
     lucid::logger()->info('Recompiling javascript: '.$cmd);
     shell_exec($cmd);
 };

@@ -18,9 +18,9 @@ class Server extends Task implements TaskInterface
         echo("Copying fonts...\n");
         shell_exec("php bin/copy_fonts.php");
         echo("Compiling javascript...\n");
-        shell_exec("php bin/compile.javascript.php");
+        shell_exec("php bin/lucid.php compile-javascript");
         echo("Compiling sass...\n");
-        shell_exec("php bin/compile.scss.php");
+        shell_exec("php bin/lucid.php compile-sass");
         echo("Building docs...\n");
         shell_exec("php bin/lucid.php build-docs;");
 

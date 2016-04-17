@@ -30,7 +30,7 @@ class BuildDocs extends Task implements TaskInterface
         #$pdf->SetKeywords('TCPDF, PDF, example, test, guide');
         $pdf->setPrintHeader(false);
         $pdf->setPrintFooter(false);
-        $pdf->SetFont('times', '', 20);
+        $pdf->SetFont('helvetica', '', 20);
         $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
         $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
         $pdf->AddPage();
