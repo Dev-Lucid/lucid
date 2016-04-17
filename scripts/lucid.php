@@ -371,23 +371,23 @@ class SystemReport extends Task implements TaskInterface
     {
         $pdoDrivers = \PDO::getAvailableDrivers();
         $ok = (in_array('sqlite', $pdoDrivers) && (in_array('mysql', $pdoDrivers) || in_array('pgsql', $pdoDrivers)));
-        $this->formatter($ok, 'PDO Drivers', implode(', ', $pdoDrivers), 'This is more of a suggestion than a requirement as you may configure any PDO driver that you want for your project. This check only checks for sqlite and either mysql or pgsql. If you\'re confidient that your project does not require any of those drivers (ex: you\'re using oracle, etc), then you may safely ignore this check.');
+        $this->formatter($ok, 'PDO Drivers', implode(', ', $pdoDrivers), 'This is more of a suggestion than a requirement as you may configure any PDO driver that you want for your project. This check only checks for sqlite and either mysql or pgsql. If you\'re confident that your project does not require any of those drivers (ex: you\'re using oracle, etc), then you may safely ignore this check.');
     }
 
     public function checkVcs()
     {
         $availableVcs = [];
-        $svnResult = shell_exec('svn --version');
+        $svnResult = shell_exec('svn --version 2>&1');
         if (strpos($svnResult, 'The Apache Software Foundation') !== false) {
             $availableVcs[] = 'svn';
         }
 
-        $gitResult = shell_exec('git --version');
+        $gitResult = shell_exec('git --version 2>&1');
         if (strpos($gitResult, 'git version') !== false) {
             $availableVcs[] = 'git';
         }
 
-        $hgResult = shell_exec('hg --version');
+        $hgResult = shell_exec('hg --version 2>&1');
         if (strpos($hgResult, 'mercurial-scm.org') !== false) {
             $availableVcs[] = 'hg';
         }
