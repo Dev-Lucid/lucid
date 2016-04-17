@@ -133,16 +133,21 @@ abstract class Task
                     }
                     break;
                 case 'labeled':
+                    $found = false;
                     for ($j=0; $j< (count($arguments) - 1); $j++) {
                         if ($arguments[$j] == '--'.$this->parameters[$i]->name) {
                             $parsedArguments[$j] = true;
                             $parsedArguments[$j + 1] = true;
                             $this->config[$this->parameters[$i]->name] = $arguments[$j + 1];
-                            $i++;
+                            $found = true;
+
                         }
                     }
-                    if (isset($config[$this->parameters[$i]->name]) === false) {
+                    if (isset($this->config[$this->parameters[$i]->name]) === false) {
                         $this->config[$this->parameters[$i]->name] = $this->parameters[$i]->default;
+                    }
+                    if ($found === true) {
+                        $i++;
                     }
                     break;
                 case 'flag':

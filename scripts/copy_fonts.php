@@ -14,8 +14,10 @@ echo("Copying fonts...\n");
 
 foreach ($files as $file) {
     $file_to_go = str_replace($src, $dst, $file);
-    echo(str_replace(ROOT_PATH, '', $file).' -> '.str_replace(ROOT_PATH, '', $file_to_go)."\n");
-    copy($file, $file_to_go);
+    if (is_dir($file) === false) {
+        echo(str_replace(ROOT_PATH, '', $file).' -> '.str_replace(ROOT_PATH, '', $file_to_go)."\n");
+        copy($file, $file_to_go);
+    }
 }
 
 exit("Font copy complete\n");

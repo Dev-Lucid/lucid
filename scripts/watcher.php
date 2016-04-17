@@ -32,4 +32,20 @@ for ($i=0; $i < count($jsPaths); $i++) {
     $watcher->track('js'.strval($i), $jsPaths[$i]);
     $watcher->addListener('js'.strval($i), $jsEvent);
 }
+
+
+$docsEvent = function (FilesystemEvent $event) {
+
+    $fileInfo = pathinfo($event->getResource());
+    if ($fileInfo['extension'] != 'pdf') {
+        $cmd = 'php bin/lucid.php build-docs';
+        lucid::logger()->info('Building docs: '.$cmd);
+        shell_exec($cmd);
+    }
+};
+$watcher->track('docs1', ROOT_PATH.'/docs/');
+$watcher->addListener('docs1', $docsEvent);
+$watcher->track('docs2', ROOT_PATH.'/vendor/devlucid/lucid/docs/');
+$watcher->addListener('docs2', $docsEvent);
+
 $watcher->start();
