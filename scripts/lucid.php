@@ -117,6 +117,53 @@ abstract class Task
             $parsedArguments = [];
         }
 
+        # First, set defaults if they exist for all configs
+        for ($i=0; $i<count($this->parameters); $i++) {
+            $this->config[$this->parameters[$i]->name] = $this->parameters[$i]->default;
+        }
+
+        $startOfLabeledParameters = 0;
+        # Second, parse out unlabeled parameters. These must be in order, and must not start with --.
+        for ($i=0; $i<count($this->parameters); $i++) {
+            if ($this->parameters[$i]->type == 'unlabeled') {
+                if ($i < count($arguments) && strpos($arguments[$i], '--') !== 0) {
+                    $parsedArguments[$i] = true;
+                    $this->config[$this->parameters[$i]->name] = $arguments[$i];
+                } else {
+                    if ($this->parameters[$i]->optional === false) {
+                        echo("Error: No value found for mandatory parameter ".$this->parameters[$i]->name."\n\n");
+                        \Lucid\Task\Container::run('usage', [static::$trigger]);
+                        exit();
+                    }
+                }
+            } else {
+                $startOfLabeledParameters = $i;
+                $i = count($this->parameters);
+
+            }
+        }
+
+        # Next, loop over the arguments and look for labeled parameters.
+        for ($j=0; $j< count($arguments); $j++) {
+            # if the argument starts with a --
+            if (strpos($arguments[$i], '--') == 0) {
+                # find this argument's equivalent paramenter
+                for ($i=$startOfLabeledParameters; $i<count($this->parameters); $i++) {
+                    if ($this->parameters[$i]->name == '--'.$arguments[$j]) {
+                        if ($this->parameters[$i]->type == 'labeled') {
+                            $this->config[$this->parameters[$i]->name] = $arguments[$j + 1];
+                            $parsedArguments[$j] = true;
+                            $parsedArguments[$j + 1] = true;
+                        } elseif ($this->parameters[$i]->type == 'flag') {
+                            $this->config[$this->parameters[$i]->name] = (!$this->config[$this->parameters[$i]->name]);
+                            $parsedArguments[$j] = true;
+                        }
+                    }
+                }
+            }
+        }
+
+        /*
         for ($i=0; $i<count($this->parameters); $i++) {
             switch ($this->parameters[$i]->type) {
                 case 'unlabeled':
@@ -162,6 +209,7 @@ abstract class Task
             }
 
         }
+        */
 
         for ($i=0; $i<count($parsedArguments); $i++) {
             if ($parsedArguments[$i] === false) {
