@@ -146,10 +146,10 @@ abstract class Task
         # Next, loop over the arguments and look for labeled parameters.
         for ($j=0; $j< count($arguments); $j++) {
             # if the argument starts with a --
-            if (strpos($arguments[$i], '--') == 0) {
+            if (strpos($arguments[$j], '--') == 0) {
                 # find this argument's equivalent paramenter
                 for ($i=$startOfLabeledParameters; $i<count($this->parameters); $i++) {
-                    if ($this->parameters[$i]->name == '--'.$arguments[$j]) {
+                    if ('--'.$this->parameters[$i]->name == $arguments[$j]) {
                         if ($this->parameters[$i]->type == 'labeled') {
                             $this->config[$this->parameters[$i]->name] = $arguments[$j + 1];
                             $parsedArguments[$j] = true;
