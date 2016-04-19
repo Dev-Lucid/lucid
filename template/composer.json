@@ -10,7 +10,7 @@
                 "name": "devlucid/lucid",
                 "version":"master",
                 "source": {
-                    "url": "git@github.com:Dev-Lucid/lucid",
+                    "url": "https://github.com/Dev-Lucid/lucid",
                     "type": "git",
                     "reference":"master"
                 },
@@ -37,7 +37,7 @@
                 "name": "devlucid/html",
                 "version":"master",
                 "source": {
-                    "url": "git@github.com:Dev-Lucid/html.git",
+                    "url": "https://github.com/Dev-Lucid/html.git",
                     "type": "git",
                     "reference":"master"
                 },
@@ -57,7 +57,7 @@
                 "name": "devlucid/factory",
                 "version":"master",
                 "source": {
-                    "url": "git@github.com:Dev-Lucid/factory.git",
+                    "url": "https://github.com/Dev-Lucid/factory.git",
                     "type": "git",
                     "reference":"master"
                 },
@@ -77,7 +77,7 @@
                 "name": "devlucid/queue",
                 "version":"master",
                 "source": {
-                    "url": "git@github.com:Dev-Lucid/queue.git",
+                    "url": "https://github.com/Dev-Lucid/queue.git",
                     "type": "git",
                     "reference":"master"
                 },
@@ -97,7 +97,7 @@
                 "name": "devlucid/response",
                 "version":"master",
                 "source": {
-                    "url": "git@github.com:Dev-Lucid/response.git",
+                    "url": "https://github.com/Dev-Lucid/response.git",
                     "type": "git",
                     "reference":"master"
                 },
@@ -117,7 +117,7 @@
                 "name": "devlucid/store",
                 "version":"master",
                 "source": {
-                    "url": "git@github.com:Dev-Lucid/store.git",
+                    "url": "https://github.com/Dev-Lucid/store.git",
                     "type": "git",
                     "reference":"master"
                 },
@@ -137,7 +137,7 @@
                 "name": "devlucid/error",
                 "version":"master",
                 "source": {
-                    "url": "git@github.com:Dev-Lucid/error.git",
+                    "url": "https://github.com/Dev-Lucid/error.git",
                     "type": "git",
                     "reference":"master"
                 },
@@ -157,7 +157,7 @@
                 "name": "devlucid/ruleset",
                 "version":"master",
                 "source": {
-                    "url": "git@github.com:Dev-Lucid/ruleset.git",
+                    "url": "https://github.com/Dev-Lucid/ruleset.git",
                     "type": "git",
                     "reference":"master"
                 },
@@ -177,7 +177,7 @@
                 "name": "devlucid/permission",
                 "version":"master",
                 "source": {
-                    "url": "git@github.com:Dev-Lucid/permission.git",
+                    "url": "https://github.com/Dev-Lucid/permission.git",
                     "type": "git",
                     "reference":"master"
                 },
@@ -197,7 +197,7 @@
                 "name": "devlucid/i18n",
                 "version":"master",
                 "source": {
-                    "url": "git@github.com:Dev-Lucid/i18n.git",
+                    "url": "https://github.com/Dev-Lucid/i18n.git",
                     "type": "git",
                     "reference":"master"
                 },
@@ -217,7 +217,7 @@
                 "name": "devlucid/basiclogger",
                 "version":"master",
                 "source": {
-                    "url": "git@github.com:Dev-Lucid/basiclogger.git",
+                    "url": "https://github.com/Dev-Lucid/basiclogger.git",
                     "type": "git",
                     "reference":"master"
                 },
@@ -237,7 +237,7 @@
                 "name": "devlucid/router",
                 "version":"master",
                 "source": {
-                    "url": "git@github.com:Dev-Lucid/router.git",
+                    "url": "https://github.com/Dev-Lucid/router.git",
                     "type": "git",
                     "reference":"master"
                 },
@@ -257,7 +257,7 @@
                 "name": "devlucid/metabase",
                 "version":"master",
                 "source": {
-                    "url": "git@github.com:Dev-Lucid/metabase.git",
+                    "url": "https://github.com/Dev-Lucid/metabase.git",
                     "type": "git",
                     "reference":"master"
                 },
@@ -278,14 +278,19 @@
                 "name": "twbs/bootstrap",
                 "version": "4.0.0-alpha.2",
                 "source": {
-                    "url": "git@github.com:twbs/bootstrap.git",
+                    "url": "https://github.com/twbs/bootstrap.git",
                     "type": "git",
                     "reference":"v4-dev"
                 }
             }
         }
     ],
+    "require-dev":{
+        "heroku/heroku-buildpack-php": "master@dev"
+    },
     "require":{
+        "php": "^7.0",
+        "ext-pdo_sqlite": "*",
         "j4mie/paris": "^1.5",
         "leafo/scssphp": "^0.6.3",
         "monolog/monolog": "^1.17",
