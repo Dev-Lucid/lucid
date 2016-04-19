@@ -379,6 +379,7 @@ class SystemReport extends Task implements TaskInterface
         $this->checkVersion();
         $this->checkPdo();
         $this->checkVcs();
+        $this->checkCaseSensitive();
 
         echo($this->checks);
 
@@ -456,6 +457,13 @@ class SystemReport extends Task implements TaskInterface
 
         $ok = ($kernel == 'darwin' || $kernel == 'linux');
         $this->formatter($ok, 'Kernel', $kernel, 'If you are not running on linux or osx, you\'re in uncharted territory. If on windows, you should probably look into cygwin or setting up some kind of unix-like environment on your machine.');
+    }
+
+    public function checkCaseSensitive()
+    {
+        $ok = (!(file_exists(strtoupper(__FILE__)) && file_exists(strtolower(__FILE__))));
+        $caseSensitive = true;
+        $this->formatter($ok, 'FS Case Sensitive', ($ok)?'Sensitive':'Insensitive', 'Your current filesystem appears to be case-insensitive, which may lead to problems if you deploy your code to a case-sensitive production server.');
     }
 }
 Container::addTask(new SystemReport());
