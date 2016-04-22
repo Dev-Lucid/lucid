@@ -32,7 +32,6 @@
       "dev-lucid/i18n": "~1.0",
       "dev-lucid/factory": "^1.0",
       "leafo/scssphp": "^0.6.3",
-      "monolog/monolog": "^1.17",
       "henrikbjorn/lurker": "^1.1.0",
       "erusev/parsedown": "^1.6.0",
       "tecnickcom/tcpdf": "dev-master"
@@ -43,7 +42,8 @@
   "suggest": {
       "heroku/heroku-buildpack-php": "master@dev; useful for deploying to heroku",
       "robmorgan/phinx": "0.5.3; useful for handling your migrations",
-      "swiftmailer/swiftmailer": "5.4.1; useful for sending out email"
+      "swiftmailer/swiftmailer": "5.4.1; useful for sending out email",
+      "monolog/monolog": "^1.17; useful for logging"
   },
   "bin": [
       "scripts/lucid.php",
