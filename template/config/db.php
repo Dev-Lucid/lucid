@@ -14,47 +14,10 @@ use Lucid\Lucid;
     lucid::logger()->info($logString . ' in ' . $queryTime);
 });
 
-
-switch (lucid::$stage) {
+switch (lucid::config()->string('stage')) {
     case 'development':
+    case 'qa':
+    case 'production':
         \ORM::configure('sqlite:'.__DIR__.'/../database/development.sqlite');
         break;
-    case 'qa':
-        break;
-    case 'production':
-        break;
-
 }
-
-
-/*
-DevLucid\lucid::$db_stages = [
-    'development'=>[
-        'adapter'=>'sqlite',
-        'name'=>DevLucid\lucid::$paths['base'].'/db/development.sqlite',
-    ],
-    'qa'=>[
-        'adapter'=>'sqlite',
-        'name'=>DevLucid\lucid::$paths['base'].'/db/development.sqlite',
-    ],
-    'production'=>[
-        'adapter'=>'sqlite',
-        'name'=>DevLucid\lucid::$paths['base'].'/db/development.sqlite',
-    ],
-];
-
-
-switch (DevLucid\lucid::$stage) {
-    case 'development':
-        \ORM::configure('sqlite:'.DevLucid\lucid::$db_stages['development']['name']);
-        #\ORM::configure('pgsql:host=localhost;port=5432;dbname=sad_qa;user=mike;');
-        break;
-    case 'qa':
-        \ORM::configure('sqlite:'.DevLucid\lucid::$db_stages['qa']['name']);
-        break;
-    case 'production':
-        \ORM::configure('sqlite:'.DevLucid\lucid::$db_stages['production']['name']);
-        break;
-}
-
-*/

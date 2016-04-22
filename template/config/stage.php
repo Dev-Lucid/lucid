@@ -10,10 +10,12 @@
 # and config/db.php (for determining which db to connect to).
 use Lucid\lucid;
 
-lucid::$stage = 'production';
+lucid::config()->set('stage', 'production');
+
 if (isset($_SERVER['APP_STAGE']) === true) {
-    lucid::$stage = $_SERVER['APP_STAGE'];
+    lucid::config()->set('stage', $_SERVER['APP_STAGE']);
 }
 if (getenv('APP_STAGE') != '') {
-    lucid::$stage = getenv('APP_STAGE');
+    lucid::config()->set('stage', getenv('APP_STAGE'));
 }
+
