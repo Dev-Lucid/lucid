@@ -1,7 +1,6 @@
 {
-  "name": "lucid",
+  "name": "dev-lucid/lucid",
   "type":"library",
-  "repo": "devlucid/lucid",
   "description": "",
   "authors": [
       {
@@ -19,18 +18,38 @@
       "psr-4": {"Lucid\\": "/src/php/"}
   },
   "autoload-dev": {
-      "psr-4": {"Lucid\\": "/src/php/"}
+      "psr-4": {"Lucid\\": "/src/php/", "Lucid\\": "src/php/"}
   },
   "license": "MIT",
+  "require":{
+      "php": "^7.0",
+      "dev-lucid/container":"~1.0",
+      "dev-lucid/basiclogger": "~1.0",
+      "dev-lucid/router": "~1.0",
+      "dev-lucid/queue": "~1.0",
+      "dev-lucid/response": "~1.0",
+      "dev-lucid/metabase": "~1.0",
+      "dev-lucid/i18n": "~1.0",
+      "dev-lucid/factory": "^1.0",
+      "leafo/scssphp": "^0.6.3",
+      "monolog/monolog": "^1.17",
+      "henrikbjorn/lurker": "^1.1.0",
+      "erusev/parsedown": "^1.6.0",
+      "tecnickcom/tcpdf": "dev-master"
+  },
+  "require-dev": {
+      "phpunit/phpunit": "^5.0"
+  },
+  "suggest": {
+      "heroku/heroku-buildpack-php": "master@dev; useful for deploying to heroku",
+      "robmorgan/phinx": "0.5.3; useful for handling your migrations",
+      "swiftmailer/swiftmailer": "5.4.1; useful for sending out email"
+  },
   "bin": [
       "scripts/lucid.php",
       "scripts/create.php",
       "scripts/init_db.php",
       "scripts/watcher.php",
       "scripts/copy_fonts.php",
-      "scripts/unittest.sh",
-      "scripts/tail-log.sh"
-      "scripts/compile.javascript.php"
-      "scripts/compile.scss.php"
   ]
 }
