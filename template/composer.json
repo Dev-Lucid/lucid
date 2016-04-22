@@ -4,26 +4,6 @@
     },
     "minimum-stability": "alpha",
     "repositories": [
-        {
-            "type":"package",
-            "package": {
-                "name": "dev-lucid/html",
-                "version":"master",
-                "source": {
-                    "url": "https://github.com/Dev-Lucid/html.git",
-                    "type": "git",
-                    "reference":"master"
-                },
-                "bin": [
-                ],
-                "autoload": {
-                    "psr-4": {"Lucid\\Html\\": "/"}
-                },
-                "autoload-dev": {
-                    "psr-4": {"Lucid\\Html\\": "/"}
-                }
-            }
-        },
 
         {
             "type":"package",
@@ -44,8 +24,8 @@
         "monolog/monolog": "^1.17",
         "fortawesome/font-awesome": "^4.5",
         "twbs/bootstrap": "4.0.0-alpha.2",
-        "dev-lucid/lucid": "master@dev",
-        "dev-lucid/html": "master@dev",
+        "dev-lucid/lucid": "~0.0.1",
+        "dev-lucid/html": "~1.0",
         "robmorgan/phinx": "0.5.3",
         "swiftmailer/swiftmailer": "5.4.1",
         "kartik-v/php-date-formatter": "@dev",
