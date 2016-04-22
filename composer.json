@@ -50,6 +50,6 @@
       "scripts/create.php",
       "scripts/init_db.php",
       "scripts/watcher.php",
-      "scripts/copy_fonts.php",
+      "scripts/copy_fonts.php"
   ]
 }
