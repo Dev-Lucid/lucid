@@ -5,7 +5,7 @@ use Lucid\lucid;
 include('vendor/autoload.php');
 
 # Prepare the dependency injection container
-lucid::init();
+
 
 # load various configs
 include('config/stage.php');
@@ -14,5 +14,5 @@ include('config/db.php');
 include('config/html.php');
 
 # set the defaults for the container
-lucid::setDefaults();
+lucid::setMissingComponents();
 
