@@ -11,7 +11,6 @@
         "fortawesome/font-awesome": "^4.5",
         "twbs/bootstrap": "dev-v4-dev",
         "dev-lucid/lucid": "~0.0.1",
-        "dev-lucid/html": "~1.0",
         "robmorgan/phinx": "0.5.3",
         "swiftmailer/swiftmailer": "5.4.1",
         "kartik-v/php-date-formatter": "^1.3",

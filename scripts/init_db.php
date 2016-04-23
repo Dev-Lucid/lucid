@@ -4,11 +4,10 @@ use Lucid\Lucid;
 define('BIN_PATH', dirname($_SERVER['PWD'].'/'.$_SERVER['SCRIPT_NAME']));
 define('ROOT_PATH', BIN_PATH.'/..');
 $lucidScriptPath = __DIR__;
-$seedpath = ROOT_PATH."/vendor/devlucid/lucid/template/db/build/";
+$seedpath = ROOT_PATH."/vendor/dev-lucid/lucid/template/db/build/";
 
 include(ROOT_PATH.'/bootstrap.php');
 
-$arguments = new \cli\Arguments(compact('strict'));
 
 echo("initing db...\n");
 $pdo = \ORM::get_db();

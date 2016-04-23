@@ -8,10 +8,10 @@ $templatePath = realpath($lucidScriptPath.'/../template/');
 
 
 include(ROOT_PATH.'/vendor/autoload.php');
-$arguments['direction'] == 'toapp';
+$direction = 'toapp';
 
-if ($argv[1] == '--from-app') {
-    $arguments['direction'] = 'fromapp';
+if (($argv[1] ?? null) == '--from-app') {
+    $direction = 'fromapp';
 }
 /*
 $arguments = new \cli\Arguments(compact('strict'));
@@ -36,8 +36,8 @@ if ($arguments['help']) {
 }
 */
 
-echo ("Processing, direction == ".$arguments['direction']."\n");
-if ($arguments['direction'] == 'fromapp') {
+echo ("Processing, direction == ".$direction."\n");
+if ($direction == 'fromapp') {
     $from = realpath(ROOT_PATH).'/';
     $to   = $templatePath.'/';
 } else {

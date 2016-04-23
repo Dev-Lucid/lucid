@@ -65,7 +65,7 @@ class Lucid
         }
 
         if (is_null(static::$components['response']) === true) {
-            static::setComponent('response', new \Lucid\Component\Response\Json());
+            static::setComponent('response', new \Lucid\Component\Response\JsonResponse());
         }
 
         /*
