@@ -8,7 +8,12 @@ $templatePath = realpath($lucidScriptPath.'/../template/');
 
 
 include(ROOT_PATH.'/vendor/autoload.php');
+$arguments['direction'] == 'toapp';
 
+if ($argv[1] == '--from-app') {
+    $arguments['direction'] = 'fromapp';
+}
+/*
 $arguments = new \cli\Arguments(compact('strict'));
 $arguments->addFlag(array('help', 'h'), 'Show this help screen');
 
@@ -29,6 +34,7 @@ if ($arguments['help']) {
 	echo $arguments->getHelpScreen();
 	exit("\n\n");
 }
+*/
 
 echo ("Processing, direction == ".$arguments['direction']."\n");
 if ($arguments['direction'] == 'fromapp') {
