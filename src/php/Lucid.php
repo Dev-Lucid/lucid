@@ -13,7 +13,7 @@ class Lucid
 
     public static function __callStatic($name, $args=[])
     {
-        if (isset(static::$components[$name]) === false || is_null(static::$components[$name]) === true) {
+        if (isset(static::$components[$name]) === false || isset(static::$components[$name]) === true) {
             throw new \Exception('Lucid does not currently contain a component named '.$name);
         }
         return static::$components[$name];
@@ -35,41 +35,41 @@ class Lucid
 
     public static function setMissingComponents()
     {
-        if (is_null(static::$components['logger']) === true) {
+        if (isset(static::$components['logger']) === false) {
             static::setComponent('logger', new \Lucid\Component\BasicLogger\BasicLogger());
         }
 
-        if (is_null(static::$components['request']) === true) {
+        if (isset(static::$components['request']) === false) {
             static::setComponent('request', new \Lucid\Component\Container\RequestContainer());
         }
 
-        if (is_null(static::$components['session']) === true) {
+        if (isset(static::$components['session']) === false) {
             session_start();
             static::setComponent('session', new \Lucid\Component\Container\Container($_SESSION));
         }
 
-        if (is_null(static::$components['cookie']) === true) {
+        if (isset(static::$components['cookie']) === false) {
             static::setComponent('cookie', new \Lucid\Component\Container\CookieContainer());
         }
 
-        if (is_null(static::$components['factory']) === true) {
+        if (isset(static::$components['factory']) === false) {
             static::setComponent('factory', new \Lucid\Component\Factory\Factory(static::logger(), static::config()));
         }
 
-        if (is_null(static::$components['router']) === true) {
+        if (isset(static::$components['router']) === false) {
             static::setComponent('router', new \Lucid\Component\Router\Router());
         }
 
-        if (is_null(static::$components['queue']) === true) {
+        if (isset(static::$components['queue']) === false) {
             static::setComponent('queue', new \Lucid\Component\Queue\Queue(static::logger(), static::router(), static::factory()));
         }
 
-        if (is_null(static::$components['response']) === true) {
+        if (isset(static::$components['response']) === false) {
             static::setComponent('response', new \Lucid\Component\Response\JsonResponse());
         }
 
         /*
-        if (is_null(static::$components['error']) === true) {
+        if (isset(static::$components['error']) === true) {
             static::setComponent('error', new \Lucid\Component\Error\Error(static::logger()));
             static::error()->setReportingDirective(E_ALL);
             static::error()->setDebugStages('development');
@@ -77,11 +77,11 @@ class Lucid
         }
         */
 
-        if (is_null(static::$components['permission']) === true) {
+        if (isset(static::$components['permission']) === false) {
             static::setComponent('permission', new \Lucid\Component\Permission\Permission(static::session()));
         }
 
-        if (is_null(static::$components['i18n']) === true) {
+        if (isset(static::$components['i18n']) === false) {
             static::setComponent('i18n', new \Lucid\Component\I18n\I18n());
             static::i18n()->addAvailableLanguage('en', []);
             static::i18n()->setLanguage('en');

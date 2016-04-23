@@ -1,11 +1,6 @@
 <?php
-use Lucid\lucid;
-
 # This enables the composer autoloader
-include('vendor/autoload.php');
-
-# Prepare the dependency injection container
-
+include(__DIR__.'/vendor/autoload.php');
 
 # load various configs
 include('config/stage.php');
@@ -14,5 +9,4 @@ include('config/db.php');
 include('config/html.php');
 
 # set the defaults for the container
-lucid::setMissingComponents();
-
+Lucid\lucid::setMissingComponents();
