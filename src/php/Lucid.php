@@ -13,7 +13,7 @@ class Lucid
 
     public static function __callStatic($name, $args=[])
     {
-        if (isset(static::$components[$name]) === false || isset(static::$components[$name]) === true) {
+        if (isset(static::$components[$name]) === false) {
             throw new \Exception('Lucid does not currently contain a component named '.$name);
         }
         return static::$components[$name];
