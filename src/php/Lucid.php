@@ -61,7 +61,9 @@ class Lucid
         }
 
         if (static::$app->has('factory') === false) {
-            static::$app->set('factory', new \Lucid\Component\Factory\Factory(static::$app->logger(), new \Lucid\Component\Container\PrefixDecorator('factory/', static::$app->config())));
+            $configDecorator = new \Lucid\Component\Container\PrefixDecorator('factory/', static::$app->config());
+            $configDecorator->set('root', static::$app->config()->root());
+            static::$app->set('factory', new \Lucid\Component\Factory\Factory(static::$app->logger(), $configDecorator));
         }
 
         if (static::$app->has('router') === false) {
@@ -110,5 +112,5 @@ Lucid::$app->requireInterfacesForIndex('logger', 'Psr\\Log\\LoggerInterface');
 Lucid::$app->requireInterfacesForIndex('i18n', 'Lucid\\Component\\I18n\\I18nInterface');
 
 Lucid::$app->set('config', new \Lucid\Component\Container\Container());
-Lucid::$app->config()->set('root', ($_SERVER['DOCUMENT_ROOT'] == '')?getcwd():$_SERVER['DOCUMENT_ROOT']);
+Lucid::$app->config()->set('root', ($_SERVER['DOCUMENT_ROOT'] == '')?getcwd():realpath($_SERVER['DOCUMENT_ROOT'].'/../'));
 Lucid::$app->config()->set('stage', '');
