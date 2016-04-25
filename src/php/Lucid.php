@@ -3,7 +3,7 @@ namespace Lucid;
 
 class Lucid
 {
-    public $app;
+    public static $app;
 
 
     /*
