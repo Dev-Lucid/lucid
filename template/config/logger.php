@@ -14,4 +14,4 @@ $format .= "%level_name%: %message%\n";
 $handler->setFormatter(new Monolog\Formatter\LineFormatter($format));
 $logger->pushHandler($handler);
 
-\Lucid\lucid::setComponent('logger', $logger);
+\Lucid\lucid::$app->set('logger', $logger);

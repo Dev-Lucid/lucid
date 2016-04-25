@@ -19,7 +19,7 @@ class Organizations extends \App\Controller
         $data = $this->model();
 
         # put additional where clauses here!
-        # Ex: $data->where('org_id', lucid::session()->int('user_id'));
+        # Ex: $data->where('org_id', lucid::$app->session()->int('user_id'));
 
         return $data;
     }
@@ -53,34 +53,34 @@ class Organizations extends \App\Controller
       */
     public function save(int $org_id, int $role_id, string $name, bool $is_enabled, \DateTime $created_on, bool $do_redirect=true)
     {
-        lucid::logger()->debug('starting save function');
-        #lucid::permission()->requireLogin();
-        # lucid::$security->requirePermission([]); # add required permissions to this array
+        lucid::$app->logger()->debug('starting save function');
+        #lucid::$app->permission()->requireLogin();
+        # lucid::$app->$security->requirePermission([]); # add required permissions to this array
 
         # This will check the parameters passed to this function, and run them against the rules returned
         # from ->ruleset(). If the data does not pass validation, an error message is sent to the client
         # and the request ends. If the data passes validation, then processing continues. You do not
         # need to check if the data passes or not.
         $this->ruleset('edit')->checkParameters(func_get_args());
-        lucid::logger()->debug('done with parameter check');
+        lucid::$app->logger()->debug('done with parameter check');
 
         # This loads the table row that you are trying to update. If $org_id === 0, then the model's
         # ->create() method will be called. This does not actually insert a row into the database until the
         # ->save() method is called.
         $data = $this->getOne($org_id);
-        lucid::logger()->debug('data loaded');
+        lucid::$app->logger()->debug('data loaded');
 
 		$data->role_id = $role_id;
 		$data->name = $name;
 		$data->is_enabled = $is_enabled;
 		$data->created_on = $created_on->format(\DateTime::ISO8601);
-        lucid::logger()->debug('about to save');
+        lucid::$app->logger()->debug('about to save');
         $data->save();
 
-        lucid::logger()->debug('done saving');
-        lucid::response()->message(lucid::i18n()->translate('button:save_response'));
+        lucid::$app->logger()->debug('done saving');
+        lucid::$app->response()->message(lucid::$app->i18n()->translate('button:save_response'));
         if ($do_redirect === true) {
-            lucid::response()->redirect('organizations','table');
+            lucid::$app->response()->redirect('organizations','table');
         }
     }
 
@@ -95,13 +95,13 @@ class Organizations extends \App\Controller
       */
     public function delete(int $org_id, bool $do_redirect=true)
     {
-        #lucid::permission()->requireLogin();
-        # lucid::$security->requirePermission('delete'); # add required permissions to this array
+        #lucid::$app->permission()->requireLogin();
+        # lucid::$app->$security->requirePermission('delete'); # add required permissions to this array
 
         $this->getOne($org_id)->delete();
-        lucid::response()->message(lucid::i18n()->translate('button:delete_response'));
+        lucid::$app->response()->message(lucid::$app->i18n()->translate('button:delete_response'));
         if ($do_redirect === true) {
-            lucid::response()->redirect('organizations','table');
+            lucid::$app->response()->redirect('organizations','table');
         }
     }
 }

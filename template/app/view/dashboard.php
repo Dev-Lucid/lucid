@@ -6,13 +6,13 @@ class Dashboard extends \App\View
 {
     public function admin()
     {
-        lucid::factory()->view('navigation')->render('dashboard.view.admin', 'dashboard.view.admin');
-        lucid::response()->replace('#main-rightcol', html::h1('Admin dashboard'));
+        lucid::$app->factory()->view('navigation')->render('dashboard.view.admin', 'dashboard.view.admin');
+        lucid::$app->response()->replace('#main-rightcol', html::h1('Admin dashboard'));
     }
 
     public function user()
     {
-        lucid::factory()->view('navigation')->render('dashboard.view.user', 'dashboard.view.user');
-        lucid::response()->replace('#main-fullwidth', html::h1('User dashboard'));
+        lucid::$app->factory()->view('navigation')->render('dashboard.view.user', 'dashboard.view.user');
+        lucid::$app->response()->replace('#main-fullwidth', html::h1('User dashboard'));
     }
 }

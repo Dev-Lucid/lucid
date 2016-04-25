@@ -81,9 +81,9 @@ class Vw_users_details extends \App\Controller
 		$data->role_name = $role_name;
         $data->save();
 
-        lucid::response()->message(lucid::i18n()->translate('button:save_response'));
+        lucid::response()->message(lucid::$app->i18n()->translate('button:save_response'));
         if ($do_redirect === true) {
-            lucid::response()->redirect('vw_users_details','table');
+            lucid::$app->response()->redirect('vw_users_details','table');
         }
     }
 
@@ -102,9 +102,9 @@ class Vw_users_details extends \App\Controller
         # lucid::$security->requirePermission('delete'); # add required permissions to this array
 
         $this->getOne($user_id)->delete();
-        lucid::response()->message(lucid::i18n()->translate('button:delete_response'));
+        lucid::$app->response()->message(lucid::$app->i18n()->translate('button:delete_response'));
         if ($do_redirect === true) {
-            lucid::response()->redirect('vw_users_details','table');
+            lucid::$app->response()->redirect('vw_users_details','table');
         }
     }
 }

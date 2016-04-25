@@ -19,7 +19,7 @@ class PhinxMigrate extends Task implements TaskInterface
     {
         include(getcwd().'/bootstrap.php');
 
-        $cmd = 'php bin/phinx migrate -c ./config/phinx.php -p php -e '.\Lucid\Lucid::config()->string('stage').' -vvv';
+        $cmd = 'php bin/phinx migrate -c ./config/phinx.php -p php -e '.\Lucid\Lucid::$app->config()->string('stage').' -vvv';
         echo($cmd."\n\n");
         $result = shell_exec($cmd);
         exit($result);

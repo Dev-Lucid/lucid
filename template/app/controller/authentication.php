@@ -11,10 +11,10 @@ class Authentication extends \App\Controller
 {
     public function process(string $email, string $password)
     {
-        lucid::logger()->debug('Attempting to authenticate user: '.$email);
+        lucid::$app->logger()->debug('Attempting to authenticate user: '.$email);
         $this->ruleset()->sendErrors();
 
-        $user = lucid::factory()->model('vw_users_details')
+        $user = lucid::$app->factory()->model('vw_users_details')
             ->where_raw('LOWER(email) = ?', strtolower($email))
             ->find_one();
 
@@ -28,19 +28,18 @@ class Authentication extends \App\Controller
             //Ruleset::sendError(_('error:authentication:failed2'));
         }
 
-        lucid::session()->setValues($user->as_array());
+        lucid::$app->session()->setValues($user->as_array());
         \ORM::get_db()->query('update users set last_login=CURRENT_TIMESTAMP where user_id='.$user->user_id);
 
-        lucid::logger()->debug('Successful authentication for '.lucid::session()->string('email'));
-        lucid::response()->redirect('dashboard', lucid::session()->string('role_name'));
+        lucid::$app->logger()->debug('Successful authentication for '.lucid::$app->session()->string('email'));
+        lucid::$app->response()->redirect('dashboard', lucid::$app->session()->string('role_name'));
     }
 
     public function logout()
     {
-        lucid::logger()->debug('Logging out: '.lucid::session()->get('email'));
+        lucid::$app->logger()->debug('Logging out: '.lucid::$app->session()->get('email'));
         session_destroy();
         session_start();
-        lucid::session()->setSource($_SESSION);
-        lucid::response()->redirect('authentication','login');
+        lucid::$app->response()->redirect('authentication','login');
     }
 }

@@ -7,16 +7,16 @@ class {{name}} extends \App\View
     public function table()
     {
         # By default, require that the user be logged in to access the table. If you want additional
-        # permissions, use the lucid::$security->requirePermission() function.
-        #lucid::permission()->requireLogin();
-        # lucid::$security->requirePermission(); # add required permissions to this array
+        # permissions, use the lucid::$app->$security->requirePermission() function.
+        #lucid::$app->permission()->requireLogin();
+        # lucid::$app->$security->requirePermission(); # add required permissions to this array
 
         # Set the title tag for the page. Optionally, you can also set the description or keywords meta tag
-        # by calling lucid::$response->description() or lucid::$response->keywords()
-        lucid::response()->title(lucid::i18n()->translate('branding:app_name').' - {{title}}');
+        # by calling lucid::$app->$response->description() or lucid::$app->$response->keywords()
+        lucid::$app->response()->title(lucid::$app->i18n()->translate('branding:app_name').' - {{title}}');
 
         # Render the navigation controller.
-        lucid::factory()->view('navigation')->render('{{table}}.view.table');
+        lucid::$app->factory()->view('navigation')->render('{{table}}.view.table');
 
         # build the data table. The parameters are as follows:
         # 0) The title of the table. This text is placed inside the card header, and defaults to the name of the modelName
@@ -30,7 +30,7 @@ class {{name}} extends \App\View
         # 5) The default sort direction for this table. May be either 'asc' or 'desc'
         # 6) The page size for the table, defaults to 10
         # 7) The current page for the table, defaults to 0 (first page)
-        $table = html::dataTable(lucid::i18n()->translate('model:{{table}}'), '{{table}}-table', $this->controller()->getList(), 'actions.php?action={{table}}.view.table');
+        $table = html::dataTable(lucid::$app->i18n()->translate('model:{{table}}'), '{{table}}-table', $this->controller()->getList(), 'actions.php?action={{table}}.view.table');
 
         # Add a default renderer for the table. This function is called when rendering every column (unless it is overridden
         # at the column level), and is passed the data for the entire row. This returns the html that should be placed into
@@ -49,7 +49,7 @@ class {{name}} extends \App\View
 
         # Add a column specifically for deleting rows.
         $table->add(html::dataColumn('', null, '10%', false, function($data){
-            return html::button(lucid::i18n()->translate('button:delete'), 'danger', "if(confirm('".lucid::i18n()->translate('button:confirm_delete')."')){ lucid.request('#!{{table}}.controller.delete|{{id}}|".$data->{{id}}."');}")->size('sm')->pull('right');
+            return html::button(lucid::$app->i18n()->translate('button:delete'), 'danger', "if(confirm('".lucid::$app->i18n()->translate('button:confirm_delete')."')){ lucid.request('#!{{table}}.controller.delete|{{id}}|".$data->{{id}}."');}")->size('sm')->pull('right');
         }));
 
         # Enable searching this table based on some of the fields
@@ -57,7 +57,7 @@ class {{name}} extends \App\View
 
         # Enable adding rows to the table. This simply links to the edit form, and passes the value 0 into the
         # varialble ${{id}} on the form.
-        $table->enableAddNewButton('#!{{table}}.view.edit|{{id}}|0', lucid::i18n()->translate('button:add_new'));
+        $table->enableAddNewButton('#!{{table}}.view.edit|{{id}}|0', lucid::$app->i18n()->translate('button:add_new'));
 
         # This function call is very important. It looks in $_REQUEST to see if this request is from this same table, asking
         # for new data due to sorting, paging, or filtering. If it determines that this is case, only the table's body is rendered,
@@ -66,33 +66,33 @@ class {{name}} extends \App\View
         $table->sendRefresh();
 
         # Render out the table, and place it into the webpage.
-        lucid::response()->replace('#main-fullwidth', $table->render());
+        lucid::$app->response()->replace('#main-fullwidth', $table->render());
     }
 
     public function edit({{id_type}} ${{id}})
     {
         # By default, require that the user be logged in to access the edit form. If you want additional
-        # permissions, use the lucid::$security->requirePermission() function.
-        #lucid::permission()->requireLogin();
-        # lucid::$security->requirePermission('{{table}}-select');
+        # permissions, use the lucid::$app->$security->requirePermission() function.
+        #lucid::$app->permission()->requireLogin();
+        # lucid::$app->$security->requirePermission('{{table}}-select');
 
         # Set the title tag for the page. Optionally, you can also set the description or keywords meta tag
-        # by calling lucid::$response->description() or lucid::$response->keywords()
-        lucid::response()->title(lucid::i18n()->translate('branding:app_name').' - {{name}}');
+        # by calling lucid::$app->$response->description() or lucid::$app->$response->keywords()
+        lucid::$app->response()->title(lucid::$app->i18n()->translate('branding:app_name').' - {{name}}');
 
         # Render the navigation controller.
-        lucid::factory()->view('navigation')->render('{{table}}.view.table', '{{table}}.view.edit');
+        lucid::$app->factory()->view('navigation')->render('{{table}}.view.table', '{{table}}.view.edit');
 
         # Load the model. If ${{id}} == 0, then the model's ->create method will be called.
         $data = $this->controller()->getOne(${{id}});
 
         # the ->notFound method will throw an error if the first parameter === false, which will be the case
         # if the model function is passed an ID that is not zero, but is not able to retrieve a row for that ID
-        #lucid::$error->notFound($data, '#body');
+        #lucid::$app->$error->notFound($data, '#body');
 
         # Based on whether or not the primary key for the model == 0, the header message will either be the dictionary
         # key form:edit_new or form::edit_existing.
-        $headerMsg = lucid::i18n()->translate('form:edit_'.(($data->{{id}} == 0)?'new':'existing'), [
+        $headerMsg = lucid::$app->i18n()->translate('form:edit_'.(($data->{{id}} == 0)?'new':'existing'), [
             'type'=>'{{table}}',
             'name'=>$data->{{first_string_col}},
         ]);
@@ -115,6 +115,6 @@ class {{name}} extends \App\View
         $card->footer()->add(html::formButtons());
 
         $form->add($card);
-        lucid::response()->replace('#main-fullwidth', $form);
+        lucid::$app->response()->replace('#main-fullwidth', $form);
     }
 }

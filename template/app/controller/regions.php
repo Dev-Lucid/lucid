@@ -19,7 +19,7 @@ class Regions extends \App\Controller
         $data = $this->model();
 
         # put additional where clauses here!
-        # Ex: $data->where('org_id', lucid::session()->int('user_id'));
+        # Ex: $data->where('org_id', lucid::$app->session()->int('user_id'));
 
         return $data;
     }
@@ -55,8 +55,8 @@ class Regions extends \App\Controller
       */
     public function save(string $region_id, string $country_id, string $abbreviation, string $name, string $type, string $parent, bool $is_parent, bool $do_redirect=true)
     {
-        #lucid::permission()->requireLogin();
-        # lucid::$security->requirePermission([]); # add required permissions to this array
+        #lucid::$app->permission()->requireLogin();
+        # lucid::$app->$security->requirePermission([]); # add required permissions to this array
 
         # This will check the parameters passed to this function, and run them against the rules returned
         # from ->ruleset(). If the data does not pass validation, an error message is sent to the client
@@ -77,9 +77,9 @@ class Regions extends \App\Controller
 		$data->is_parent = $is_parent;
         $data->save();
 
-        lucid::response()->message(lucid::i18n()->translate('button:save_response'));
+        lucid::$app->response()->message(lucid::$app->i18n()->translate('button:save_response'));
         if ($do_redirect === true) {
-            lucid::response()->redirect('regions','table');
+            lucid::$app->response()->redirect('regions','table');
         }
     }
 
@@ -94,13 +94,13 @@ class Regions extends \App\Controller
       */
     public function delete(int $region_id, bool $do_redirect=true)
     {
-        #lucid::permission()->requireLogin();
-        # lucid::$security->requirePermission('delete'); # add required permissions to this array
+        #lucid::$app->permission()->requireLogin();
+        # lucid::$app->$security->requirePermission('delete'); # add required permissions to this array
 
         $this->getOne($region_id)->delete();
-        lucid::response()->message(lucid::i18n()->translate('button:delete_response'));
+        lucid::$app->response()->message(lucid::$app->i18n()->translate('button:delete_response'));
         if ($do_redirect === true) {
-            lucid::response()->redirect('regions','table');
+            lucid::$app->response()->redirect('regions','table');
         }
     }
 }

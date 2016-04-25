@@ -8,22 +8,22 @@ class Addresses extends \App\View
     public function table($org_id = null)
     {
         # Set the title tag for the page. Optionally, you can also set the description or keywords meta tag
-        # by calling lucid::$response->description() or lucid::$response->keywords()
-        lucid::response()->title(lucid::i18n()->translate('branding:app_name').' - {{title}}');
+        # by calling lucid::$app->$response->description() or lucid::$app->$response->keywords()
+        lucid::$app->response()->title(lucid::$app->i18n()->translate('branding:app_name').' - {{title}}');
 
         # Render the navigation controller.
-        lucid::factory()->view('navigation')->render('addresses.view.table');
+        lucid::$app->factory()->view('navigation')->render('addresses.view.table');
 
         # Render out the table, and place it into the webpage.
-        lucid::response()->replace('#main-fullwidth', $this->_table($org_id)->render());
+        lucid::$app->response()->replace('#main-fullwidth', $this->_table($org_id)->render());
     }
 
     public function _table($org_id = null)
     {
         # By default, require that the user be logged in to access the table. If you want additional
-        # permissions, use the lucid::$security->requirePermission() function.
-        #lucid::permission()->requireLogin();
-        # lucid::$security->requirePermission(); # add required permissions to this array
+        # permissions, use the lucid::$app->$security->requirePermission() function.
+        #lucid::$app->permission()->requireLogin();
+        # lucid::$app->$security->requirePermission(); # add required permissions to this array
 
 
         # build the data table. The parameters are as follows:
@@ -39,7 +39,7 @@ class Addresses extends \App\View
         # 6) The page size for the table, defaults to 10
         # 7) The current page for the table, defaults to 0 (first page)
         $source = $this->controller()->getList()->where('org_id', $org_id);
-        $table = html::dataTable(lucid::i18n()->translate('model:addresses'), 'addresses-table', $source, 'actions.php?action=addresses.view.table&org_id='.$org_id);
+        $table = html::dataTable(lucid::$app->i18n()->translate('model:addresses'), 'addresses-table', $source, 'actions.php?action=addresses.view.table&org_id='.$org_id);
 
         # Add a default renderer for the table. This function is called when rendering every column (unless it is overridden
         # at the column level), and is passed the data for the entire row. This returns the html that should be placed into
@@ -54,21 +54,21 @@ class Addresses extends \App\View
         # 3) The width of this column, expressed as a % (ex: 25%)
         # 4) boolean true/false: whether or not this column can be used to sort the table
         # 5) An optional renderer function. This function works like the table rendering function
-        $table->add(html::dataColumn(lucid::i18n()->translate('model:addresses:org_id'), 'org_id', '9%', true));
-        $table->add(html::dataColumn(lucid::i18n()->translate('model:addresses:name'), 'name', '9%', true));
-        $table->add(html::dataColumn(lucid::i18n()->translate('model:addresses:street_1'), 'street_1', '9%', true));
-        $table->add(html::dataColumn(lucid::i18n()->translate('model:addresses:street_2'), 'street_2', '9%', true));
-        $table->add(html::dataColumn(lucid::i18n()->translate('model:addresses:city'), 'city', '9%', true));
-        $table->add(html::dataColumn(lucid::i18n()->translate('model:addresses:region_id'), 'region_id', '9%', true));
-        $table->add(html::dataColumn(lucid::i18n()->translate('model:addresses:postal_code'), 'postal_code', '9%', true));
-        $table->add(html::dataColumn(lucid::i18n()->translate('model:addresses:country_id'), 'country_id', '9%', true));
-        $table->add(html::dataColumn(lucid::i18n()->translate('model:addresses:phone_number_1'), 'phone_number_1', '9%', true));
-        $table->add(html::dataColumn(lucid::i18n()->translate('model:addresses:phone_number_2'), 'phone_number_2', '9%', true));
+        $table->add(html::dataColumn(lucid::$app->i18n()->translate('model:addresses:org_id'), 'org_id', '9%', true));
+        $table->add(html::dataColumn(lucid::$app->i18n()->translate('model:addresses:name'), 'name', '9%', true));
+        $table->add(html::dataColumn(lucid::$app->i18n()->translate('model:addresses:street_1'), 'street_1', '9%', true));
+        $table->add(html::dataColumn(lucid::$app->i18n()->translate('model:addresses:street_2'), 'street_2', '9%', true));
+        $table->add(html::dataColumn(lucid::$app->i18n()->translate('model:addresses:city'), 'city', '9%', true));
+        $table->add(html::dataColumn(lucid::$app->i18n()->translate('model:addresses:region_id'), 'region_id', '9%', true));
+        $table->add(html::dataColumn(lucid::$app->i18n()->translate('model:addresses:postal_code'), 'postal_code', '9%', true));
+        $table->add(html::dataColumn(lucid::$app->i18n()->translate('model:addresses:country_id'), 'country_id', '9%', true));
+        $table->add(html::dataColumn(lucid::$app->i18n()->translate('model:addresses:phone_number_1'), 'phone_number_1', '9%', true));
+        $table->add(html::dataColumn(lucid::$app->i18n()->translate('model:addresses:phone_number_2'), 'phone_number_2', '9%', true));
 
 
         # Add a column specifically for deleting rows.
         $table->add(html::dataColumn('', null, '10%', false, function($data){
-            return html::button(lucid::i18n()->translate('button:delete'), 'danger', "if(confirm('".lucid::i18n()->translate('button:confirm_delete')."')){ lucid.request('#!addresses.controller.delete|address_id|".$data->address_id."');}")->size('sm')->pull('right');
+            return html::button(lucid::$app->i18n()->translate('button:delete'), 'danger', "if(confirm('".lucid::$app->i18n()->translate('button:confirm_delete')."')){ lucid.request('#!addresses.controller.delete|address_id|".$data->address_id."');}")->size('sm')->pull('right');
         }));
 
         # Enable searching this table based on some of the fields
@@ -76,7 +76,7 @@ class Addresses extends \App\View
 
         # Enable adding rows to the table. This simply links to the edit form, and passes the value 0 into the
         # varialble $address_id on the form.
-        $table->enableAddNewButton('#!addresses.view.edit|address_id|0', lucid::i18n()->translate('button:add_new'));
+        $table->enableAddNewButton('#!addresses.view.edit|address_id|0', lucid::$app->i18n()->translate('button:add_new'));
 
         # This function call is very important. It looks in $_REQUEST to see if this request is from this same table, asking
         # for new data due to sorting, paging, or filtering. If it determines that this is case, only the table's body is rendered,
@@ -90,27 +90,27 @@ class Addresses extends \App\View
     public function edit(int $address_id)
     {
         # By default, require that the user be logged in to access the edit form. If you want additional
-        # permissions, use the lucid::$security->requirePermission() function.
-        #lucid::permission()->requireLogin();
-        # lucid::$security->requirePermission('addresses-select');
+        # permissions, use the lucid::$app->$security->requirePermission() function.
+        #lucid::$app->permission()->requireLogin();
+        # lucid::$app->$security->requirePermission('addresses-select');
 
         # Set the title tag for the page. Optionally, you can also set the description or keywords meta tag
-        # by calling lucid::$response->description() or lucid::$response->keywords()
-        lucid::response()->title(lucid::i18n()->translate('branding:app_name').' - Addresses');
+        # by calling lucid::$app->$response->description() or lucid::$app->$response->keywords()
+        lucid::$app->response()->title(lucid::$app->i18n()->translate('branding:app_name').' - Addresses');
 
         # Render the navigation controller.
-        lucid::factory()->view('navigation')->render('addresses.view.table', 'addresses.view.edit');
+        lucid::$app->factory()->view('navigation')->render('addresses.view.table', 'addresses.view.edit');
 
         # Load the model. If $address_id == 0, then the model's ->create method will be called.
         $data = $this->controller()->getOne($address_id);
 
         # the ->notFound method will throw an error if the first parameter === false, which will be the case
         # if the model function is passed an ID that is not zero, but is not able to retrieve a row for that ID
-        #lucid::$error->notFound($data, '#body');
+        #lucid::$app->$error->notFound($data, '#body');
 
         # Based on whether or not the primary key for the model == 0, the header message will either be the dictionary
         # key form:edit_new or form::edit_existing.
-        $headerMsg = lucid::i18n()->translate('form:edit_'.(($data->address_id == 0)?'new':'existing'), [
+        $headerMsg = lucid::$app->i18n()->translate('form:edit_'.(($data->address_id == 0)?'new':'existing'), [
             'type'=>'addresses',
             'name'=>$data->name,
         ]);
@@ -123,21 +123,21 @@ class Addresses extends \App\View
         $form = html::form('addresses-edit', '#!addresses.controller.save');
         $this->ruleset('edit')->send($form->name);
 
-        $org_id_options = lucid::factory()->model('organizations')
+        $org_id_options = lucid::$app->factory()->model('organizations')
             ->select('org_id', 'value')
             ->select('name', 'label')
             ->order_by_asc('name')
             ->find_array();
         $org_id_options = array_merge([0, ''], $org_id_options);
 
-$region_id_options = lucid::factory()->model('regions')
+$region_id_options = lucid::$app->factory()->model('regions')
             ->select('region_id', 'value')
             ->select('country_id', 'label')
             ->order_by_asc('country_id')
             ->find_array();
         $region_id_options = array_merge([0, ''], $region_id_options);
 
-$country_id_options = lucid::factory()->model('countries')
+$country_id_options = lucid::$app->factory()->model('countries')
             ->select('country_id', 'value')
             ->select('alpha_3', 'label')
             ->order_by_asc('alpha_3')
@@ -149,21 +149,21 @@ $country_id_options = lucid::factory()->model('countries')
         $card = html::card();
         $card->header()->add($headerMsg);
         $card->block()->add([
-            html::formGroup(lucid::i18n()->translate('model:addresses:org_id'), html::select('org_id', $data->org_id, $org_id_options)),
-            html::formGroup(lucid::i18n()->translate('model:addresses:name'), html::input('text', 'name', $data->name)),
-            html::formGroup(lucid::i18n()->translate('model:addresses:street_1'), html::input('text', 'street_1', $data->street_1)),
-            html::formGroup(lucid::i18n()->translate('model:addresses:street_2'), html::input('text', 'street_2', $data->street_2)),
-            html::formGroup(lucid::i18n()->translate('model:addresses:city'), html::input('text', 'city', $data->city)),
-            html::formGroup(lucid::i18n()->translate('model:addresses:region_id'), html::select('region_id', $data->region_id, $region_id_options)),
-            html::formGroup(lucid::i18n()->translate('model:addresses:postal_code'), html::input('text', 'postal_code', $data->postal_code)),
-            html::formGroup(lucid::i18n()->translate('model:addresses:country_id'), html::select('country_id', $data->country_id, $country_id_options)),
-            html::formGroup(lucid::i18n()->translate('model:addresses:phone_number_1'), html::input('text', 'phone_number_1', $data->phone_number_1)),
-            html::formGroup(lucid::i18n()->translate('model:addresses:phone_number_2'), html::input('text', 'phone_number_2', $data->phone_number_2)),
+            html::formGroup(lucid::$app->i18n()->translate('model:addresses:org_id'), html::select('org_id', $data->org_id, $org_id_options)),
+            html::formGroup(lucid::$app->i18n()->translate('model:addresses:name'), html::input('text', 'name', $data->name)),
+            html::formGroup(lucid::$app->i18n()->translate('model:addresses:street_1'), html::input('text', 'street_1', $data->street_1)),
+            html::formGroup(lucid::$app->i18n()->translate('model:addresses:street_2'), html::input('text', 'street_2', $data->street_2)),
+            html::formGroup(lucid::$app->i18n()->translate('model:addresses:city'), html::input('text', 'city', $data->city)),
+            html::formGroup(lucid::$app->i18n()->translate('model:addresses:region_id'), html::select('region_id', $data->region_id, $region_id_options)),
+            html::formGroup(lucid::$app->i18n()->translate('model:addresses:postal_code'), html::input('text', 'postal_code', $data->postal_code)),
+            html::formGroup(lucid::$app->i18n()->translate('model:addresses:country_id'), html::select('country_id', $data->country_id, $country_id_options)),
+            html::formGroup(lucid::$app->i18n()->translate('model:addresses:phone_number_1'), html::input('text', 'phone_number_1', $data->phone_number_1)),
+            html::formGroup(lucid::$app->i18n()->translate('model:addresses:phone_number_2'), html::input('text', 'phone_number_2', $data->phone_number_2)),
             html::input('hidden', 'address_id', $data->address_id),
         ]);
         $card->footer()->add(html::formButtons());
 
         $form->add($card);
-        lucid::response()->replace('#main-fullwidth', $form);
+        lucid::$app->response()->replace('#main-fullwidth', $form);
     }
 }

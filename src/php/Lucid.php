@@ -3,6 +3,10 @@ namespace Lucid;
 
 class Lucid
 {
+    public $app;
+
+
+    /*
     protected static $components         = [];
     protected static $requiredInterfaces = [];
 
@@ -32,86 +36,79 @@ class Lucid
         }
         static::$components[$name] = $component;
     }
-
-    public static function setMissingComponents()
-    {
-        if (isset(static::$components['logger']) === false) {
-            static::setComponent('logger', new \Lucid\Component\BasicLogger\BasicLogger());
-        }
-
-        if (isset(static::$components['request']) === false) {
-            static::setComponent('request', new \Lucid\Component\Container\RequestContainer());
-        }
-
-        if (isset(static::$components['session']) === false) {
-            session_start();
-            static::setComponent('session', new \Lucid\Component\Container\Container($_SESSION));
-        }
-
-        if (isset(static::$components['cookie']) === false) {
-            static::setComponent('cookie', new \Lucid\Component\Container\CookieContainer());
-        }
-
-        if (isset(static::$components['factory']) === false) {
-            static::setComponent('factory', new \Lucid\Component\Factory\Factory(static::logger(), static::config()));
-        }
-
-        if (isset(static::$components['router']) === false) {
-            static::setComponent('router', new \Lucid\Component\Router\Router());
-        }
-
-        if (isset(static::$components['queue']) === false) {
-            static::setComponent('queue', new \Lucid\Component\Queue\Queue(static::logger(), static::router(), static::factory()));
-        }
-
-        if (isset(static::$components['response']) === false) {
-            static::setComponent('response', new \Lucid\Component\Response\JsonResponse());
-        }
-
-        /*
-        if (isset(static::$components['error']) === true) {
-            static::setComponent('error', new \Lucid\Component\Error\Error(static::logger()));
-            static::error()->setReportingDirective(E_ALL);
-            static::error()->setDebugStages('development');
-            static::error()->registerHandlers();
-        }
-        */
-
-        if (isset(static::$components['permission']) === false) {
-            static::setComponent('permission', new \Lucid\Component\Permission\Permission(static::session()));
-        }
-
-        if (isset(static::$components['i18n']) === false) {
-            static::setComponent('i18n', new \Lucid\Component\I18n\I18n());
-            static::i18n()->addAvailableLanguage('en', []);
-            static::i18n()->setLanguage('en');
-            if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) === true) {
-                static::i18n()->parseLanguageHeader($_SERVER['HTTP_ACCEPT_LANGUAGE']);
-            }
-            static::i18n()->loadDictionaries(static::config()->string('root').'/app/dictionary/');
-        }
-    }
-
     public static function _(...$params)
     {
         return static::i18n()->translate(...$params);
     }
+
+    */
+    public static function setMissingComponents()
+    {
+        if (static::$app->has('logger') === false) {
+            static::$app->set('logger', new \Lucid\Component\BasicLogger\BasicLogger());
+        }
+
+        if (static::$app->has('request') === false) {
+            static::$app->set('request', new \Lucid\Component\Container\RequestContainer());
+        }
+
+        if (static::$app->has('session') === false) {
+            static::$app->set('session', new \Lucid\Component\Container\SessionContainer());
+        }
+
+        if (static::$app->has('cookie') === false) {
+            static::$app->set('cookie', new \Lucid\Component\Container\CookieContainer());
+        }
+
+        if (static::$app->has('factory') === false) {
+            static::$app->set('factory', new \Lucid\Component\Factory\Factory(static::$app->logger(), new \Lucid\Component\Container\PrefixDecorator('factory/', static::$app->config())));
+        }
+
+        if (static::$app->has('router') === false) {
+            static::$app->set('router', new \Lucid\Component\Router\Router(new \Lucid\Component\Container\PrefixDecorator('router/', static::$app->config())));
+        }
+
+        if (static::$app->has('queue') === false) {
+            static::$app->set('queue', new \Lucid\Component\Queue\Queue(static::$app->logger(), static::$app->router(), static::$app->factory()));
+        }
+
+        if (static::$app->has('response') === false) {
+            static::$app->set('response', new \Lucid\Component\Response\JsonResponse());
+        }
+
+        if (static::$app->has('permission') === false) {
+            static::$app->set('permission', new \Lucid\Component\Permission\Permission(new \Lucid\Component\Container\PrefixDecorator('permission/', static::$app->config()), static::$app->session()));
+        }
+
+
+
+        if (static::$app->has('i18n') === false) {
+            static::$app->set('i18n', new \Lucid\Component\I18n\I18n(new \Lucid\Component\Container\PrefixDecorator('i18n/', static::$app->config())));
+            static::$app->i18n()->addAvailableLanguage('en', []);
+            static::$app->i18n()->setLanguage('en');
+            if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) === true) {
+                static::$app->i18n()->parseLanguageHeader($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+            }
+            static::$app->i18n()->loadDictionaries(static::$app->config()->string('root').'/app/dictionary/');
+        }
+    }
+
+
 }
 
-# only one component is added by default: config
-Lucid::addRequiredInterfaces('config', 'Lucid\\Component\\Container\\ContainerInterface');
-Lucid::setComponent('config', new \Lucid\Component\Container\Container());
-Lucid::config()->set('root', ($_SERVER['DOCUMENT_ROOT'] == '')?getcwd():$_SERVER['DOCUMENT_ROOT']);
-Lucid::config()->set('stage', '');
+Lucid::$app = new \Lucid\Component\Container\Container();
+Lucid::$app->requireInterfacesForIndex('config', 'Lucid\\Component\\Container\\ContainerInterface');
+Lucid::$app->requireInterfacesForIndex('request', 'Lucid\\Component\\Container\\ContainerInterface');
+Lucid::$app->requireInterfacesForIndex('session', 'Lucid\\Component\\Container\\ContainerInterface');
+Lucid::$app->requireInterfacesForIndex('cookie', 'Lucid\\Component\\Container\\ContainerInterface');
+Lucid::$app->requireInterfacesForIndex('factory', 'Lucid\\Component\\Factory\\FactoryInterface');
+Lucid::$app->requireInterfacesForIndex('router', 'Lucid\\Component\\Router\\RouterInterface');
+Lucid::$app->requireInterfacesForIndex('queue', 'Lucid\\Component\\Queue\\QueueInterface');
+Lucid::$app->requireInterfacesForIndex('response', 'Lucid\\Component\\Response\\ResponseInterface');
+Lucid::$app->requireInterfacesForIndex('permission', 'Lucid\\Component\\Permission\\PermissionInterface');
+Lucid::$app->requireInterfacesForIndex('logger', 'Psr\\Log\\LoggerInterface');
+Lucid::$app->requireInterfacesForIndex('i18n', 'Lucid\\Component\\I18n\\I18nInterface');
 
-# these required interfaces are added now though, even if they're empty.
-Lucid::addRequiredInterfaces('request',    'Lucid\\Component\\Container\\ContainerInterface');
-Lucid::addRequiredInterfaces('session',    'Lucid\\Component\\Container\\ContainerInterface');
-Lucid::addRequiredInterfaces('cookie',     'Lucid\\Component\\Container\\ContainerInterface');
-Lucid::addRequiredInterfaces('factory',    'Lucid\\Component\\Factory\\FactoryInterface');
-Lucid::addRequiredInterfaces('router',     'Lucid\\Component\\Router\\RouterInterface');
-Lucid::addRequiredInterfaces('queue',      'Lucid\\Component\\Queue\\QueueInterface');
-Lucid::addRequiredInterfaces('response',   'Lucid\\Component\\Response\\ResponseInterface');
-Lucid::addRequiredInterfaces('permission', 'Lucid\\Component\\Permission\\PermissionInterface');
-Lucid::addRequiredInterfaces('logger',     'Psr\\Log\\LoggerInterface');
-Lucid::addRequiredInterfaces('i18n',       'Lucid\\Component\\I18n\\I18nInterface');
+Lucid::$app->set('config', new \Lucid\Component\Container\Container());
+Lucid::$app->config()->set('root', ($_SERVER['DOCUMENT_ROOT'] == '')?getcwd():$_SERVER['DOCUMENT_ROOT']);
+Lucid::$app->config()->set('stage', '');

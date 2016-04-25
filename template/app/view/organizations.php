@@ -7,16 +7,16 @@ class Organizations extends \App\View
     public function table()
     {
         # By default, require that the user be logged in to access the table. If you want additional
-        # permissions, use the lucid::$security->requirePermission() function.
-        #lucid::permission()->requireLogin();
-        # lucid::$security->requirePermission(); # add required permissions to this array
+        # permissions, use the lucid::$app->$security->requirePermission() function.
+        #lucid::$app->permission()->requireLogin();
+        # lucid::$app->$security->requirePermission(); # add required permissions to this array
 
         # Set the title tag for the page. Optionally, you can also set the description or keywords meta tag
-        # by calling lucid::$response->description() or lucid::$response->keywords()
-        lucid::response()->title(lucid::i18n()->translate('branding:app_name').' - {{title}}');
+        # by calling lucid::$app->$response->description() or lucid::$app->$response->keywords()
+        lucid::$app->response()->title(lucid::$app->i18n()->translate('branding:app_name').' - {{title}}');
 
         # Render the navigation controller.
-        lucid::factory()->view('navigation')->render('organizations.view.table');
+        lucid::$app->factory()->view('navigation')->render('organizations.view.table');
 
         # build the data table. The parameters are as follows:
         # 0) The title of the table. This text is placed inside the card header, and defaults to the name of the modelName
@@ -30,7 +30,7 @@ class Organizations extends \App\View
         # 5) The default sort direction for this table. May be either 'asc' or 'desc'
         # 6) The page size for the table, defaults to 10
         # 7) The current page for the table, defaults to 0 (first page)
-        $table = html::dataTable(lucid::i18n()->translate('model:organizations'), 'organizations-table', $this->controller()->getList(), 'actions.php?action=organizations.view.table');
+        $table = html::dataTable(lucid::$app->i18n()->translate('model:organizations'), 'organizations-table', $this->controller()->getList(), 'actions.php?action=organizations.view.table');
 
         # Add a default renderer for the table. This function is called when rendering every column (unless it is overridden
         # at the column level), and is passed the data for the entire row. This returns the html that should be placed into
@@ -45,15 +45,15 @@ class Organizations extends \App\View
         # 3) The width of this column, expressed as a % (ex: 25%)
         # 4) boolean true/false: whether or not this column can be used to sort the table
         # 5) An optional renderer function. This function works like the table rendering function
-        $table->add(html::dataColumn(lucid::i18n()->translate('model:organizations:role_id'), 'role_id', '23%', true));
-        $table->add(html::dataColumn(lucid::i18n()->translate('model:organizations:name'), 'name', '23%', true));
-        $table->add(html::dataColumn(lucid::i18n()->translate('model:organizations:is_enabled'), 'is_enabled', '23%', true));
-        $table->add(html::dataColumn(lucid::i18n()->translate('model:organizations:created_on'), 'created_on', '23%', true));
+        $table->add(html::dataColumn(lucid::$app->i18n()->translate('model:organizations:role_id'), 'role_id', '23%', true));
+        $table->add(html::dataColumn(lucid::$app->i18n()->translate('model:organizations:name'), 'name', '23%', true));
+        $table->add(html::dataColumn(lucid::$app->i18n()->translate('model:organizations:is_enabled'), 'is_enabled', '23%', true));
+        $table->add(html::dataColumn(lucid::$app->i18n()->translate('model:organizations:created_on'), 'created_on', '23%', true));
 
 
         # Add a column specifically for deleting rows.
         $table->add(html::dataColumn('', null, '10%', false, function($data){
-            return html::button(lucid::i18n()->translate('button:delete'), 'danger', "if(confirm('".lucid::i18n()->translate('button:confirm_delete')."')){ lucid.request('#!organizations.controller.delete|org_id|".$data->org_id."');}")->size('sm')->pull('right');
+            return html::button(lucid::$app->i18n()->translate('button:delete'), 'danger', "if(confirm('".lucid::$app->i18n()->translate('button:confirm_delete')."')){ lucid.request('#!organizations.controller.delete|org_id|".$data->org_id."');}")->size('sm')->pull('right');
         }));
 
         # Enable searching this table based on some of the fields
@@ -61,7 +61,7 @@ class Organizations extends \App\View
 
         # Enable adding rows to the table. This simply links to the edit form, and passes the value 0 into the
         # varialble $org_id on the form.
-        $table->enableAddNewButton('#!organizations.view.edit|org_id|0', lucid::i18n()->translate('button:add_new'));
+        $table->enableAddNewButton('#!organizations.view.edit|org_id|0', lucid::$app->i18n()->translate('button:add_new'));
 
         # This function call is very important. It looks in $_REQUEST to see if this request is from this same table, asking
         # for new data due to sorting, paging, or filtering. If it determines that this is case, only the table's body is rendered,
@@ -70,33 +70,33 @@ class Organizations extends \App\View
         $table->sendRefresh();
 
         # Render out the table, and place it into the webpage.
-        lucid::response()->replace('#main-fullwidth', $table->render());
+        lucid::$app->response()->replace('#main-fullwidth', $table->render());
     }
 
     public function edit(int $org_id)
     {
         # By default, require that the user be logged in to access the edit form. If you want additional
-        # permissions, use the lucid::$security->requirePermission() function.
-        #lucid::permission()->requireLogin();
-        # lucid::$security->requirePermission('organizations-select');
+        # permissions, use the lucid::$app->$security->requirePermission() function.
+        #lucid::$app->permission()->requireLogin();
+        # lucid::$app->$security->requirePermission('organizations-select');
 
         # Set the title tag for the page. Optionally, you can also set the description or keywords meta tag
-        # by calling lucid::$response->description() or lucid::$response->keywords()
-        lucid::response()->title(lucid::i18n()->translate('branding:app_name').' - Organizations');
+        # by calling lucid::$app->$response->description() or lucid::$app->$response->keywords()
+        lucid::$app->response()->title(lucid::$app->i18n()->translate('branding:app_name').' - Organizations');
 
         # Render the navigation controller.
-        lucid::factory()->view('navigation')->render('organizations.view.table', 'organizations.view.edit');
+        lucid::$app->factory()->view('navigation')->render('organizations.view.table', 'organizations.view.edit');
 
         # Load the model. If $org_id == 0, then the model's ->create method will be called.
         $data = $this->controller()->getOne($org_id);
 
         # the ->notFound method will throw an error if the first parameter === false, which will be the case
         # if the model function is passed an ID that is not zero, but is not able to retrieve a row for that ID
-        #lucid::$error->notFound($data, '#body');
+        #lucid::$app->$error->notFound($data, '#body');
 
         # Based on whether or not the primary key for the model == 0, the header message will either be the dictionary
         # key form:edit_new or form::edit_existing.
-        $headerMsg = lucid::i18n()->translate('form:edit_'.(($data->org_id == 0)?'new':'existing'), [
+        $headerMsg = lucid::$app->i18n()->translate('form:edit_'.(($data->org_id == 0)?'new':'existing'), [
             'type'=>'organizations',
             'name'=>$data->name,
         ]);
@@ -109,7 +109,7 @@ class Organizations extends \App\View
         $form = html::form('organizations-edit', '#!organizations.controller.save');
         $this->ruleset('edit')->send($form->name);
 
-        $role_id_options = lucid::factory()->model('roles')
+        $role_id_options = lucid::$app->factory()->model('roles')
             ->select('role_id', 'value')
             ->select('name', 'label')
             ->order_by_asc('name')
@@ -121,10 +121,10 @@ class Organizations extends \App\View
         $card = html::card();
         $card->header()->add($headerMsg);
         $card->block()->add([
-            html::formGroup(lucid::i18n()->translate('model:organizations:role_id'), html::select('role_id', $data->role_id, $role_id_options)),
-            html::formGroup(lucid::i18n()->translate('model:organizations:name'), html::input('text', 'name', $data->name)),
-            html::formGroup(lucid::i18n()->translate('model:organizations:is_enabled'), html::input('checkbox', 'is_enabled', $data->is_enabled)),
-            html::formGroup(lucid::i18n()->translate('model:organizations:created_on'), html::input('date', 'created_on', (new \DateTime($data->created_on))->format('Y-m-d H:i'))),
+            html::formGroup(lucid::$app->i18n()->translate('model:organizations:role_id'), html::select('role_id', $data->role_id, $role_id_options)),
+            html::formGroup(lucid::$app->i18n()->translate('model:organizations:name'), html::input('text', 'name', $data->name)),
+            html::formGroup(lucid::$app->i18n()->translate('model:organizations:is_enabled'), html::input('checkbox', 'is_enabled', $data->is_enabled)),
+            html::formGroup(lucid::$app->i18n()->translate('model:organizations:created_on'), html::input('date', 'created_on', (new \DateTime($data->created_on))->format('Y-m-d H:i'))),
             html::input('hidden', 'org_id', $data->org_id),
         ]);
         $card->footer()->add(html::formButtons());
@@ -134,8 +134,8 @@ class Organizations extends \App\View
         $layout = html::row();
         list($left, $right) = $layout->grid([12,12,6,6,6],[12,12,6,6,6]);
         $left->add($form);
-        $right->add(lucid::factory()->view('addresses')->_table($org_id));
+        $right->add(lucid::$app->factory()->view('addresses')->_table($org_id));
 
-        lucid::response()->replace('#main-fullwidth', $layout->render());
+        lucid::$app->response()->replace('#main-fullwidth', $layout->render());
     }
 }

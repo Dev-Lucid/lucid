@@ -87,7 +87,7 @@ class Generate extends Task implements TaskInterface
 
     protected function buildFromTemplate($templateName, $outputName) {
 
-    	$source = file_get_contents(getcwd().'/vendor/devlucid/lucid/tasks/GenerateTemplates/'.$templateName.'.php');
+    	$source = file_get_contents(getcwd().'/vendor/dev-lucid/lucid/tasks/GenerateTemplates/'.$templateName.'.php');
     	foreach ($this->config['keys'] as $key=>$value) {
     		$source = str_replace('{{'.$key.'}}', $value, $source);
     	}

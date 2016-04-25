@@ -9,12 +9,12 @@
 # use the old names. Likely places are app/index.php (for determining whether or not to compile the js/css),
 # and config/db.php (for determining which db to connect to).
 
-Lucid\Lucid::config()->set('stage', 'production');
+Lucid\Lucid::$app->config()->set('stage', 'production');
 
 if (isset($_SERVER['APP_STAGE']) === true) {
-    Lucid\Lucid::config()->set('stage', $_SERVER['APP_STAGE']);
+    Lucid\Lucid::$app->config()->set('stage', $_SERVER['APP_STAGE']);
 }
 if (getenv('APP_STAGE') != '') {
-    Lucid\Lucid::config()->set('stage', getenv('APP_STAGE'));
+    Lucid\Lucid::$app->config()->set('stage', getenv('APP_STAGE'));
 }
 

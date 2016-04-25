@@ -45,7 +45,7 @@ class BuildDocs extends Task implements TaskInterface
     {
         $markdown = '';
         foreach ($links as $link) {
-            $lucidPath = '../vendor/devlucid/lucid/docs/';
+            $lucidPath = '../vendor/dev-lucid/lucid/docs/';
             $file = $link['file'];
             $file = str_replace('lucid/', $lucidPath, $file);
             $filePath = $this->config['doc-root'].$file.'.md';

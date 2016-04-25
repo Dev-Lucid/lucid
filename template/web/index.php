@@ -14,11 +14,11 @@ include(__DIR__.'/../bootstrap.php');
         <title>Jumbotron Template for Bootstrap</title>
         <meta name="keywords" content="" />
         <meta name="description" content="" />
-        <link href="css/<?=((lucid::error()->isDebugStage())?'debug':'production')?>.css?_time_=<?=time()?>" rel="stylesheet" />
+        <link href="css/production.css?_time_=<?=time()?>" rel="stylesheet" />
     </head>
     <body onload="lucid.init();app.init();">
         <nav class="navbar navbar-static-top navbar-dark bg-inverse">
-            <a class="navbar-brand"><?=lucid::i18n()->translate('branding:app_name')?></a>
+            <a class="navbar-brand"><?=lucid::$app->i18n()->translate('branding:app_name')?></a>
             <ul class="nav navbar-nav pull-right" id="nav1"></ul>
         </nav>
         <div class="container-fluid" style="margin:5px 0px 50px 0px;">
@@ -47,10 +47,10 @@ include(__DIR__.'/../bootstrap.php');
         </div>
         <nav class="navbar navbar-fixed-bottom navbar-light bg-faded">
             <footer>
-                <p>&copy; <?=lucid::i18n()->translate('branding:app_name')?> 2016</p>
+                <p>&copy; <?=lucid::$app->i18n()->translate('branding:app_name')?> 2016</p>
             </footer>
         </nav>
-        <script language="Javascript" src="javascript/<?=((lucid::error()->isDebugStage())?'debug':'production')?>.js?_time_=<?=time()?>"></script>
+        <script language="Javascript" src="javascript/production.js?_time_=<?=time()?>"></script>
         <script language="Javascript">
 
         lucid.setDefaultRequest('#!authentication.view.login');

@@ -11,19 +11,19 @@ class Navigation extends \App\View
         $this->structure['root'] = [
             'selector'=>'#nav1',
             'links'=>[
-                'dashboard.view.admin'=>(lucid::session()->int('user_id') > 0 && lucid::session()->int('role_id') == 1),
-                'dashboard.view.user'=>(lucid::session()->int('user_id') > 0 && lucid::session()->int('role_id') == 2),
-                'organizations.view.table'=>(lucid::session()->get('user_id',0) > 0),
-                'users.view.table'=>(lucid::session()->get('user_id',0) > 0),
-                'authentication.controller.logout'=>(lucid::session()->int('user_id',0) > 0),
-                'authentication.view.login'=>(lucid::session()->int('user_id', 0) == 0),
+                'dashboard.view.admin'=>(lucid::$app->session()->int('user_id') > 0 && lucid::$app->session()->int('role_id') == 1),
+                'dashboard.view.user'=>(lucid::$app->session()->int('user_id') > 0 && lucid::$app->session()->int('role_id') == 2),
+                'organizations.view.table'=>(lucid::$app->session()->get('user_id',0) > 0),
+                'users.view.table'=>(lucid::$app->session()->get('user_id',0) > 0),
+                'authentication.controller.logout'=>(lucid::$app->session()->int('user_id',0) > 0),
+                'authentication.view.login'=>(lucid::$app->session()->int('user_id', 0) == 0),
             ]
         ];
 
         $this->structure['root/dashboard.view.admin'] = [
             'selector'=>'ul.nav2',
             'links'=>[
-                'dashboard.view.admin'=>(lucid::session()->int('user_id') > 0 && lucid::session()->int('role_id') == 1),
+                'dashboard.view.admin'=>(lucid::$app->session()->int('user_id') > 0 && lucid::$app->session()->int('role_id') == 1),
                 'regions.view.table'=>true,
                 'countries.view.table'=>true,
                 'roles.view.table'=>true,
@@ -40,7 +40,7 @@ class Navigation extends \App\View
             $allNavs[$values['selector']] = true;
         }
         foreach (array_keys($allNavs) as $selector) {
-            lucid::response()->replace($selector, '');
+            lucid::$app->response()->replace($selector, '');
         }
         for ($i=0; $i<count($paths); $i++) {
             $func = 'renderStructure'.$i;
@@ -63,19 +63,19 @@ class Navigation extends \App\View
         if ($structure === false) {
             return;
         }
-        
+
         $html = '';
         foreach ($structure['links'] as $url=>$allowed) {
             if ($allowed === true) {
-                $link = html::navAnchor('#!'.$url, lucid::i18n()->translate('navigation:'.$url));
-                #lucid::log($url.'=='.$page);
+                $link = html::navAnchor('#!'.$url, lucid::$app->i18n()->translate('navigation:'.$url));
+                #lucid::$app->log($url.'=='.$page);
                 if ($url == $page) {
-                    #lucid::log($url.' is the active link');
+                    #lucid::$app->log($url.' is the active link');
                     $link->setactive(true);
                 }
                 $html .= html::navItem()->add($link)->render();
             }
         }
-        lucid::response()->replace($structure['selector'], $html);
+        lucid::$app->response()->replace($structure['selector'], $html);
     }
 }

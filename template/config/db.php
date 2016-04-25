@@ -14,7 +14,7 @@ use Lucid\Lucid;
     lucid::logger()->info($logString . ' in ' . $queryTime);
 });
 
-switch (lucid::config()->string('stage')) {
+switch (lucid::$app->config()->string('stage')) {
     case 'development':
     case 'qa':
     case 'production':

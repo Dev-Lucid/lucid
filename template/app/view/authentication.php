@@ -12,14 +12,14 @@ class Authentication extends \App\View
         $left->add($this->_registrationForm());
         $right->add($this->_loginForm());
 
-        lucid::factory()->view('navigation')->render('authentication.view.login');
-        lucid::response()->replace('#main-fullwidth', $row);
+        lucid::$app->factory()->view('navigation')->render('authentication.view.login');
+        lucid::$app->response()->replace('#main-fullwidth', $row);
     }
 
     public function _registrationForm()
     {
         $card = html::card();
-        $card->header(lucid::i18n()->translate('navigation:authentication.view.registration'));
+        $card->header(lucid::$app->i18n()->translate('navigation:authentication.view.registration'));
 
         $card->block()->add(html::form('regform','#!authentication.controller.process'));
 
@@ -27,13 +27,13 @@ class Authentication extends \App\View
         $form->add(html::row());
         list($left, $right) = $form->lastChild()->grid([12,12,6],[12,12,6]);
 
-        $left->add(html::formGroup(lucid::i18n()->translate('model:users:email'), html::input('email', 'email')->preAddon('@')));
-        $left->add(html::formGroup(lucid::i18n()->translate('model:users:password'), html::input('password', 'password')->preAddon(html::icon('lock'))));
+        $left->add(html::formGroup(lucid::$app->i18n()->translate('model:users:email'), html::input('email', 'email')->preAddon('@')));
+        $left->add(html::formGroup(lucid::$app->i18n()->translate('model:users:password'), html::input('password', 'password')->preAddon(html::icon('lock'))));
 
-        $right->add(html::formGroup(lucid::i18n()->translate('model:users:first_name'), html::input('text', 'first_name')));
-        $right->add(html::formGroup(lucid::i18n()->translate('model:users:last_name'), html::input('text', 'last_name')));
+        $right->add(html::formGroup(lucid::$app->i18n()->translate('model:users:first_name'), html::input('text', 'first_name')));
+        $right->add(html::formGroup(lucid::$app->i18n()->translate('model:users:last_name'), html::input('text', 'last_name')));
 
-        $form->add(html::submit(lucid::i18n()->translate('button:register'))->pull('right'));
+        $form->add(html::submit(lucid::$app->i18n()->translate('button:register'))->pull('right'));
 
         $this->ruleset('register')->send($form->name);
 
@@ -43,16 +43,16 @@ class Authentication extends \App\View
     public function _loginForm()
     {
         $card = html::card();
-        $card->add(html::cardHeader(lucid::i18n()->translate('navigation:authentication.view.login')));
+        $card->add(html::cardHeader(lucid::$app->i18n()->translate('navigation:authentication.view.login')));
         $card->add(html::cardBlock());
 
         $card->lastChild()->add(html::form('authform','#!authentication.controller.process'));
         $form = $card->lastChild()->lastChild();
 
-        $form->add(html::formGroup(lucid::i18n()->translate('model:users:email'), html::input('email', 'email')->preAddon('@')));
-        $form->add(html::formGroup(lucid::i18n()->translate('model:users:password'), html::input('password', 'password')->preAddon(html::icon('lock'))));
+        $form->add(html::formGroup(lucid::$app->i18n()->translate('model:users:email'), html::input('email', 'email')->preAddon('@')));
+        $form->add(html::formGroup(lucid::$app->i18n()->translate('model:users:password'), html::input('password', 'password')->preAddon(html::icon('lock'))));
 
-        $form->add(html::submit(lucid::i18n()->translate('button:login'))->pull('right'));
+        $form->add(html::submit(lucid::$app->i18n()->translate('button:login'))->pull('right'));
 
         $this->ruleset('login')->send($form->name);
         return $card;
