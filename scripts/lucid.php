@@ -47,8 +47,8 @@ class Container
     public static function findTasks()
     {
         $cwd = getcwd();
-        if (file_exists($cwd.'/vendor/devlucid/lucid/tasks') === true) {
-            $files = glob($cwd.'/vendor/devlucid/lucid/tasks/*.php');
+        if (file_exists($cwd.'/vendor/dev-lucid/lucid/tasks') === true) {
+            $files = glob($cwd.'/vendor/dev-lucid/lucid/tasks/*.php');
             foreach ($files as $file) {
                 include($file);
             }
@@ -63,7 +63,7 @@ class Container
 }
 
 Container::$config['path'] = getcwd();
-Container::$config['isValidProject'] = (file_exists(getcwd().'/vendor/devlucid/lucid') && file_exists(getcwd().'/app'));
+Container::$config['isValidProject'] = (file_exists(getcwd().'/vendor/dev-lucid/lucid') && file_exists(getcwd().'/app'));
 
 interface TaskInterface
 {
