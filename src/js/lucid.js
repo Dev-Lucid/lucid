@@ -60,7 +60,7 @@ lucid.request=function(url, data, callback){
         'dataType':'json',
         'method':'POST',
         'complete':function(jqXHR, statusCode){
-            lucid.handleResponse(jqXHR, statusCode);
+            lucid.response.json(jqXHR, statusCode);
             if(typeof(callback) == 'function'){
                 callback(jqXHR, statusCode);
             }

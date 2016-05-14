@@ -8,7 +8,7 @@ class Generate extends Task implements TaskInterface
     public function __construct()
     {
         $this->parameters[] = new \Lucid\Task\Parameter('name', 'unlabeled', false, null);
-        $this->parameters[] = new \Lucid\Task\Parameter('table', 'labeled', true, null);
+        $this->parameters[] = new \Lucid\Task\Parameter('table', 'unlabeled', false, null);
         $this->parameters[] = new \Lucid\Task\Parameter('no-model', 'flag', true, false);
         $this->parameters[] = new \Lucid\Task\Parameter('no-view', 'flag', true, false);
         $this->parameters[] = new \Lucid\Task\Parameter('no-controller', 'flag', true, false);
@@ -21,6 +21,13 @@ class Generate extends Task implements TaskInterface
     public function run()
     {
         include(getcwd().'/bootstrap.php');
+
+
+        if (preg_match('#^\p{Lu}#u', $this->config['name']) === 0){
+            echo("Error: parameter name must be camel-case. At a minimum, it must start with a capital letter.\n");
+            \Lucid\Task\Container::run('usage', [static::$trigger]);
+            exit();
+        }
         $this->config['meta'] = new \Lucid\Library\Metabase\Metabase(\ORM::get_db());
 
         if (is_null($this->config['table']) === true) {
@@ -127,7 +134,7 @@ class Generate extends Task implements TaskInterface
 
     public function modelBuildFiles()
     {
-        $this->buildFromTemplate('model', getcwd().'/app/model/'.$this->config['table'].'.php');
+        $this->buildFromTemplate('model', getcwd().'/app/model/'.$this->config['name'].'.php');
     }
 
     public function viewBuildKeys()
@@ -150,9 +157,26 @@ class Generate extends Task implements TaskInterface
                             # this is likely a foreign key for another table. make it a select list instead of a text field
                             $source = '[]';
                             list($keyTable, $idColumn, $labelColumn) = $this->findTableForKey($this->config['table'], $column['name']);
+
+                            $modelName = null;
+                            # so here's the annoying thing: all mvchr class names are camel-case, but when we look up
+                            # tables using Metabase lib for keys, we get the actual db table name, which by convention
+                            # is lowercase. So, we need to try to find a camel-cased-named model file. Arggh!
+                            $existingModels = glob(getcwd().'/app/model/*.php');
+                            foreach ($existingModels as $existingModel) {
+                                $finalName = basename($existingModel);
+                                if (strtolower($finalName) == $keyTable.'.php') {
+                                    $modelName = substr($finalName, 0, strlen($keyTable));
+                                }
+                            }
+                            if (is_null($modelName) === true) {
+                                echo("Note: Tried to generate a select option list for field ".$column['name'].", but could not find a model for database table $keyTable. You may have to generate that model and rerun this task.\n\n");
+                                $keyTable = false;
+                            }
+
                             if ($keyTable !== false) {
                                 $source = '$'.$column['name'].'_options';
-                                $this->config['keys']['select_options'] .= '        $'.$column['name'].'_options = lucid::factory()->model(\''.$keyTable.'\')';
+                                $this->config['keys']['select_options'] .= '        $'.$column['name'].'_options = lucid::$app->factory()->model(\''.$modelName.'\')';
                                 $this->config['keys']['select_options'] .= "\n            ->select('$idColumn', 'value')";
                                 $this->config['keys']['select_options'] .= "\n            ->select('$labelColumn', 'label')";
                                 $this->config['keys']['select_options'] .= "\n            ->order_by_asc('$labelColumn')";
@@ -160,20 +184,20 @@ class Generate extends Task implements TaskInterface
                                 $this->config['keys']['select_options'] .= "\n        $".$column['name'].'_options = array_merge([0, \'\'], $'.$column['name']."_options);\n\n";
                             }
 
-                            $this->config['keys']['form_fields'] .= '            html::formGroup(lucid::i18n()->translate(\'model:'.$this->config['table'].':'.$column['name'].'\'), html::select(\''.$column['name'].'\', $data->'.$column['name'].', '.$source.')),'."\n";
+                            $this->config['keys']['form_fields'] .= '            html::formGroup(lucid::$app->i18n()->translate(\'model:'.$this->config['table'].':'.$column['name'].'\'), html::select(\''.$column['name'].'\', $data->'.$column['name'].', '.$source.')),'."\n";
                         } else {
                             if ($column['type'] == 'string' && is_null($this->config['keys']['first_string_col']) === true) {
                                 $this->config['keys']['first_string_col'] = $column['name'];
                             }
-                            $this->config['keys']['form_fields'] .= '            html::formGroup(lucid::i18n()->translate(\'model:'.$this->config['table'].':'.$column['name'].'\'), html::input(\'text\', \''.$column['name'].'\', $data->'.$column['name'].')),'."\n";
+                            $this->config['keys']['form_fields'] .= '            html::formGroup(lucid::$app->i18n()->translate(\'model:'.$this->config['table'].':'.$column['name'].'\'), html::input(\'text\', \''.$column['name'].'\', $data->'.$column['name'].')),'."\n";
                         }
 
                         break;
                     case 'bool':
-                        $this->config['keys']['form_fields'] .= '            html::formGroup(lucid::i18n()->translate(\'model:'.$this->config['table'].':'.$column['name'].'\'), html::input(\'checkbox\', \''.$column['name'].'\', $data->'.$column['name'].')),'."\n";
+                        $this->config['keys']['form_fields'] .= '            html::formGroup(lucid::$app->i18n()->translate(\'model:'.$this->config['table'].':'.$column['name'].'\'), html::input(\'checkbox\', \''.$column['name'].'\', $data->'.$column['name'].')),'."\n";
                         break;
                     case 'timestamp':
-                        $this->config['keys']['form_fields'] .= '            html::formGroup(lucid::i18n()->translate(\'model:'.$this->config['table'].':'.$column['name'].'\'), html::input(\'date\', \''.$column['name'].'\', (new \DateTime($data->'.$column['name'].'))->format(\'Y-m-d H:i\'))),'."\n";
+                        $this->config['keys']['form_fields'] .= '            html::formGroup(lucid::$app->i18n()->translate(\'model:'.$this->config['table'].':'.$column['name'].'\'), html::input(\'date\', \''.$column['name'].'\', (new \DateTime($data->'.$column['name'].'))->format(\'Y-m-d H:i\'))),'."\n";
                         break;
                     default:
                         echo("no logic for rendering type ". $column['type']."\n");
@@ -185,7 +209,7 @@ class Generate extends Task implements TaskInterface
         # build the list of table columns
         foreach($this->config['columns'] as $column) {
             if ($column['index'] > 0) {
-                $this->config['keys']['table_cols'] .= '        $table->add(html::dataColumn(lucid::i18n()->translate(\'model:'.$this->config['table'].':'.$column['name'].'\'), \''.$column['name'].'\', \''. ceil(90 / (count($this->config['columns']) - 1)) .'%\', true));'."\n";
+                $this->config['keys']['table_cols'] .= '        $table->add(html::dataColumn(lucid::$app->i18n()->translate(\'model:'.$this->config['table'].':'.$column['name'].'\'), \''.$column['name'].'\', \''. ceil(90 / (count($this->config['columns']) - 1)) .'%\', true));'."\n";
             }
         }
 
@@ -199,7 +223,7 @@ class Generate extends Task implements TaskInterface
 
     public function viewBuildFiles()
     {
-        $this->buildFromTemplate('view', getcwd().'/app/view/'.$this->config['table'].'.php');
+        $this->buildFromTemplate('view', getcwd().'/app/view/'.$this->config['name'].'.php');
     }
 
     public function controllerBuildKeys()
@@ -227,7 +251,7 @@ class Generate extends Task implements TaskInterface
 
     public function controllerBuildFiles()
     {
-        $this->buildFromTemplate('controller', getcwd().'/app/controller/'.$this->config['table'].'.php');
+        $this->buildFromTemplate('controller', getcwd().'/app/controller/'.$this->config['name'].'.php');
     }
 
     public function helperBuildKeys()
@@ -236,7 +260,7 @@ class Generate extends Task implements TaskInterface
 
     public function helperBuildFiles()
     {
-        $this->buildFromTemplate('helper',  getcwd().'/app/helper/'.$this->config['table'].'.php');
+        $this->buildFromTemplate('helper',  getcwd().'/app/helper/'.$this->config['name'].'.php');
     }
 
     public function rulesetBuildKeys()
@@ -245,19 +269,19 @@ class Generate extends Task implements TaskInterface
         for ($i=1; $i<count($this->config['columns']); $i++) {
             $this->config['keys']['rules'] .= "\n\t\t".'$this->addRule(';
             if (strpos(strrev($this->config['columns'][$i]['name']), 'di_') === 0) {
-                $this->config['keys']['rules'] .= '[\'type\'=>\'anyValue\', \'label\'=>lucid::i18n()->translate(\'model:'.$this->config['table'].':'.$this->config['columns'][$i]['name'].'\'), \'field\'=>\''.$this->config['columns'][$i]['name'].'\', ]';
+                $this->config['keys']['rules'] .= '[\'type\'=>\'anyValue\', \'label\'=>lucid::$app->i18n()->translate(\'model:'.$this->config['table'].':'.$this->config['columns'][$i]['name'].'\'), \'field\'=>\''.$this->config['columns'][$i]['name'].'\', ]';
             } elseif ($this->config['columns'][$i]['type'] == 'string') {
-                $this->config['keys']['rules'] .= '[\'type\'=>\'lengthRange\', \'label\'=>lucid::i18n()->translate(\'model:'.$this->config['table'].':'.$this->config['columns'][$i]['name'].'\'), \'field\'=>\''.$this->config['columns'][$i]['name'].'\', \'min\'=>\'2\', \'max\'=>\'255\', ]';
+                $this->config['keys']['rules'] .= '[\'type\'=>\'lengthRange\', \'label\'=>lucid::$app->i18n()->translate(\'model:'.$this->config['table'].':'.$this->config['columns'][$i]['name'].'\'), \'field\'=>\''.$this->config['columns'][$i]['name'].'\', \'min\'=>\'2\', \'max\'=>\'255\', ]';
             } elseif ($this->config['columns'][$i]['type'] == 'bool') {
-                $this->config['keys']['rules'] .= '[\'type\'=>\'checked\', \'label\'=>lucid::i18n()->translate(\'model:'.$this->config['table'].':'.$this->config['columns'][$i]['name'].'\'), \'field\'=>\''.$this->config['columns'][$i]['name'].'\', ]';
+                $this->config['keys']['rules'] .= '[\'type\'=>\'checked\', \'label\'=>lucid::$app->i18n()->translate(\'model:'.$this->config['table'].':'.$this->config['columns'][$i]['name'].'\'), \'field\'=>\''.$this->config['columns'][$i]['name'].'\', ]';
             } elseif ($this->config['columns'][$i]['type'] == 'int') {
-                $this->config['keys']['rules'] .= '[\'type\'=>\'integerValue\', \'label\'=>lucid::i18n()->translate(\'model:'.$this->config['table'].':'.$this->config['columns'][$i]['name'].'\'), \'field\'=>\''.$this->config['columns'][$i]['name'].'\', ]';
+                $this->config['keys']['rules'] .= '[\'type\'=>\'integerValue\', \'label\'=>lucid::$app->i18n()->translate(\'model:'.$this->config['table'].':'.$this->config['columns'][$i]['name'].'\'), \'field\'=>\''.$this->config['columns'][$i]['name'].'\', ]';
             } elseif ($this->config['columns'][$i]['type'] == 'float') {
-                $this->config['keys']['rules'] .= '[\'type\'=>\'floatValue\', \'label\'=>lucid::i18n()->translate(\'model:'.$this->config['table'].':'.$this->config['columns'][$i]['name'].'\'), \'field\'=>\''.$this->config['columns'][$i]['name'].'\', ]';
+                $this->config['keys']['rules'] .= '[\'type\'=>\'floatValue\', \'label\'=>lucid::$app->i18n()->translate(\'model:'.$this->config['table'].':'.$this->config['columns'][$i]['name'].'\'), \'field\'=>\''.$this->config['columns'][$i]['name'].'\', ]';
             } elseif ($this->config['columns'][$i]['type'] == 'timestamp') {
-                $this->config['keys']['rules'] .= '[\'type\'=>\'validDate\', \'label\'=>lucid::i18n()->translate(\'model:'.$this->config['table'].':'.$this->config['columns'][$i]['name'].'\'), \'field\'=>\''.$this->config['columns'][$i]['name'].'\', ]';
+                $this->config['keys']['rules'] .= '[\'type\'=>\'validDate\', \'label\'=>lucid::$app->i18n()->translate(\'model:'.$this->config['table'].':'.$this->config['columns'][$i]['name'].'\'), \'field\'=>\''.$this->config['columns'][$i]['name'].'\', ]';
             } else {
-                $this->config['keys']['rules'] .= '[\'type\'=>\'anyValue\', \'label\'=>lucid::i18n()->translate(\'model:'.$this->config['table'].':'.$this->config['columns'][$i]['name'].'\'), \'field\'=>\''.$this->config['columns'][$i]['name'].'\', ]';
+                $this->config['keys']['rules'] .= '[\'type\'=>\'anyValue\', \'label\'=>lucid::$app->i18n()->translate(\'model:'.$this->config['table'].':'.$this->config['columns'][$i]['name'].'\'), \'field\'=>\''.$this->config['columns'][$i]['name'].'\', ]';
             }
             $this->config['keys']['rules'] .= ');';
         }
@@ -265,7 +289,7 @@ class Generate extends Task implements TaskInterface
 
     public function rulesetBuildFiles()
     {
-        $this->buildFromTemplate('ruleset', getcwd().'/app/ruleset/'.$this->config['table'].'.php');
+        $this->buildFromTemplate('ruleset', getcwd().'/app/ruleset/'.$this->config['name'].'.php');
     }
 
     public function dictionaryBuildKeys()
@@ -317,7 +341,7 @@ class Generate extends Task implements TaskInterface
 
     public function testBuildFiles()
     {
-        $this->buildFromTemplate('test', getcwd().'/tests/'.$this->config['table'].'_Test.php');
+        $this->buildFromTemplate('test', getcwd().'/tests/'.$this->config['name'].'_Test.php');
     }
 }
 Container::addTask(new Generate());

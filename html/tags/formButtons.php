@@ -14,7 +14,7 @@ class FormButtons extends \Lucid\Html\Tag
         $this->addClass('pull-right');
         $this->attributes['role'] = 'group';
 
-        $this->add(html::button(lucid::i18n()->translate('button:cancel'), 'secondary', 'history.go(-1);'));
-        $this->add(html::submit(lucid::i18n()->translate('button:save')));
+        $this->add(html::button(lucid::$app->i18n()->translate('button:cancel'), 'secondary', 'history.go(-1);'));
+        $this->add(html::submit(lucid::$app->i18n()->translate('button:save')));
     }
 }

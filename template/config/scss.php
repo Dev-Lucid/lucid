@@ -9,8 +9,8 @@ return [
     'importPaths'=>[
         'vendor/twbs/bootstrap/scss',
         'vendor/fortawesome/font-awesome/scss',
-        'vendor/devlucid/lucid/src/scss',
-        'vendor/devlucid/html/src/bootstrap/scss',
+        'vendor/dev-lucid/lucid/src/scss',
+        'vendor/dev-lucid/html/src/bootstrap/scss',
         'app/sass/',
     ]
 ];

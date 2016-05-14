@@ -13,7 +13,7 @@ class PhinxStatus extends Task implements TaskInterface
     public function run()
     {
         include(getcwd().'/bootstrap.php');
-        $cmd = 'bin/phinx status -c config/phinx.php -p php -e '.\Lucid\Lucid::$app->config()->string('stage').' -vvv';
+        $cmd = 'bin/phinx status -c config/phinx.php -p php -e '.app('config')->stage().' -vvv';
         echo($cmd."\n\n");
         $result = shell_exec($cmd);
         exit($result);

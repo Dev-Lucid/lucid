@@ -6,6 +6,7 @@ database/migrations/
 database/seeds/
 
 tests/
+docs/
 
 app/tags/
 app/traits/
@@ -17,7 +18,16 @@ config/javascript.php
 config/logger.php
 config/scss.php
 config/phinx.php
+config/error.php
 config/stage.php
+
+docs/app.md
+docs/controllers.md
+docs/index.md
+docs/index.php
+docs/models.md
+docs/navigation.php
+docs/views.md
 
 app/cli.php
 app/baseClasses/App.php

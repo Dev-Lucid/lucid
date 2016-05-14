@@ -11,7 +11,7 @@ use Lucid\Lucid;
 \ORM::configure('caching_auto_clear', true);
 \ORM::configure('logging', true);
 \ORM::configure('logger', function ($logString, $queryTime) {
-    lucid::logger()->info($logString . ' in ' . $queryTime);
+    lucid::$app->logger()->info($logString . ' in ' . $queryTime);
 });
 
 switch (lucid::$app->config()->string('stage')) {

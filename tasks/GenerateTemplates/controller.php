@@ -55,7 +55,7 @@ class {{name}} extends \App\Controller
         # from ->ruleset(). If the data does not pass validation, an error message is sent to the client
         # and the request ends. If the data passes validation, then processing continues. You do not
         # need to check if the data passes or not.
-        $this->ruleset('edit')->checkParameters(func_get_args());
+        $this->ruleset()->edit()->validateParameters(func_get_args());
 
         # This loads the table row that you are trying to update. If ${{id}} === 0, then the model's
         # ->create() method will be called. This does not actually insert a row into the database until the
@@ -66,7 +66,7 @@ class {{name}} extends \App\Controller
 
         lucid::$app->response()->message(lucid::$app->i18n()->translate('button:save_response'));
         if ($do_redirect === true) {
-            lucid::$app->response()->redirect('{{table}}','table');
+            lucid::$app->response()->redirect('{{name}}','table');
         }
     }
 
@@ -87,7 +87,7 @@ class {{name}} extends \App\Controller
         $this->getOne(${{id}})->delete();
         lucid::$app->response()->message(lucid::$app->i18n()->translate('button:delete_response'));
         if ($do_redirect === true) {
-            lucid::$app->response()->redirect('{{table}}','table');
+            lucid::$app->response()->redirect('{{name}}','table');
         }
     }
 }

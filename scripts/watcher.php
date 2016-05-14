@@ -33,7 +33,6 @@ for ($i=0; $i < count($jsPaths); $i++) {
     $watcher->addListener('js'.strval($i), $jsEvent);
 }
 
-
 $docsEvent = function (FilesystemEvent $event) {
 
     $fileInfo = pathinfo($event->getResource());
@@ -45,7 +44,7 @@ $docsEvent = function (FilesystemEvent $event) {
 };
 $watcher->track('docs1', ROOT_PATH.'/docs/');
 $watcher->addListener('docs1', $docsEvent);
-$watcher->track('docs2', ROOT_PATH.'/vendor/devlucid/lucid/docs/');
+$watcher->track('docs2', ROOT_PATH.'/vendor/dev-lucid/lucid/docs/');
 $watcher->addListener('docs2', $docsEvent);
 
 $watcher->start();

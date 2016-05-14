@@ -124,6 +124,7 @@ abstract class Task
 
         $startOfLabeledParameters = 0;
         # Second, parse out unlabeled parameters. These must be in order, and must not start with --.
+
         for ($i=0; $i<count($this->parameters); $i++) {
             if ($this->parameters[$i]->type == 'unlabeled') {
                 if ($i < count($arguments) && strpos($arguments[$i], '--') !== 0) {

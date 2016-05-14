@@ -61,7 +61,7 @@ class Organizations extends \App\Controller
         # from ->ruleset(). If the data does not pass validation, an error message is sent to the client
         # and the request ends. If the data passes validation, then processing continues. You do not
         # need to check if the data passes or not.
-        $this->ruleset('edit')->checkParameters(func_get_args());
+        $this->ruleset()->edit()->validateParameters(func_get_args());
         lucid::$app->logger()->debug('done with parameter check');
 
         # This loads the table row that you are trying to update. If $org_id === 0, then the model's

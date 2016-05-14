@@ -16,14 +16,17 @@ return [
         'vendor/stephanecollot/datetimepicker-bundle/SC/DatetimepickerBundle/Resources/public/js/'=>[
             'bootstrap-datetimepicker.js',
         ],
-        'vendor/devlucid/lucid/src/js'=>[
+        'vendor/dev-lucid/lucid/src/js'=>[
             'lucid.js',
             'lucid.ruleset.js',
             'lucid.i18n.js',
             'lucid.dataTable.js',
             'lucid.messages.js',
         ],
-        'vendor/devlucid/html/src/base/js'=>[
+        'vendor/dev-lucid/response/src/js'=>[
+            'lucid.response.json.js',
+        ],
+        'vendor/dev-lucid/html/src/base/js'=>[
             'lucid.html.js',
             'lucid.html.dataTable.js',
         ],

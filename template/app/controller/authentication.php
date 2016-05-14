@@ -12,7 +12,7 @@ class Authentication extends \App\Controller
     public function process(string $email, string $password)
     {
         lucid::$app->logger()->debug('Attempting to authenticate user: '.$email);
-        $this->ruleset()->sendErrors();
+        $this->ruleset()->login()->validateParameters(func_get_args());
 
         $user = lucid::$app->factory()->model('vw_users_details')
             ->where_raw('LOWER(email) = ?', strtolower($email))

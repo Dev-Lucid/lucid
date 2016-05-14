@@ -16,7 +16,7 @@ class {{name}} extends \App\View
         lucid::$app->response()->title(lucid::$app->i18n()->translate('branding:app_name').' - {{title}}');
 
         # Render the navigation controller.
-        lucid::$app->factory()->view('navigation')->render('{{table}}.view.table');
+        lucid::$app->factory()->view('navigation')->render('{{name}}.view.table');
 
         # build the data table. The parameters are as follows:
         # 0) The title of the table. This text is placed inside the card header, and defaults to the name of the modelName
@@ -30,13 +30,13 @@ class {{name}} extends \App\View
         # 5) The default sort direction for this table. May be either 'asc' or 'desc'
         # 6) The page size for the table, defaults to 10
         # 7) The current page for the table, defaults to 0 (first page)
-        $table = html::dataTable(lucid::$app->i18n()->translate('model:{{table}}'), '{{table}}-table', $this->controller()->getList(), 'actions.php?action={{table}}.view.table');
+        $table = html::dataTable(lucid::$app->i18n()->translate('model:{{table}}'), '{{table}}-table', $this->controller()->getList(), 'actions.php?action={{name}}.view.table');
 
         # Add a default renderer for the table. This function is called when rendering every column (unless it is overridden
         # at the column level), and is passed the data for the entire row. This returns the html that should be placed into
         # the cell for that row/column
         $table->renderer = function($data, string $column){
-            return html::anchor('#!{{table}}.view.edit|{{id}}|'.$data->{{id}}, $data->$column);
+            return html::anchor('#!{{name}}.view.edit|{{id}}|'.$data->{{id}}, $data->$column);
         };
 
         # Add the table's columns. The parameters for the constructor are:
@@ -49,7 +49,7 @@ class {{name}} extends \App\View
 
         # Add a column specifically for deleting rows.
         $table->add(html::dataColumn('', null, '10%', false, function($data){
-            return html::button(lucid::$app->i18n()->translate('button:delete'), 'danger', "if(confirm('".lucid::$app->i18n()->translate('button:confirm_delete')."')){ lucid.request('#!{{table}}.controller.delete|{{id}}|".$data->{{id}}."');}")->size('sm')->pull('right');
+            return html::button(lucid::$app->i18n()->translate('button:delete'), 'danger', "if(confirm('".lucid::$app->i18n()->translate('button:confirm_delete')."')){ lucid.request('#!{{name}}.controller.delete|{{id}}|".$data->{{id}}."');}")->size('sm')->pull('right');
         }));
 
         # Enable searching this table based on some of the fields
@@ -81,7 +81,7 @@ class {{name}} extends \App\View
         lucid::$app->response()->title(lucid::$app->i18n()->translate('branding:app_name').' - {{name}}');
 
         # Render the navigation controller.
-        lucid::$app->factory()->view('navigation')->render('{{table}}.view.table', '{{table}}.view.edit');
+        lucid::$app->factory()->view('navigation')->render('{{name}}.view.table', '{{name}}.view.edit');
 
         # Load the model. If ${{id}} == 0, then the model's ->create method will be called.
         $data = $this->controller()->getOne(${{id}});
@@ -102,7 +102,7 @@ class {{name}} extends \App\View
         # of fields, but the auto-generated ruleset-returning function is simply called ->ruleset(). The ->send()
         # method of the ruleset object packages up the rules into json, and sends them to the client so that they can be
         # used clientside when the form submits.
-        $form = html::form('{{table}}-edit', '#!{{table}}.controller.save');
+        $form = html::form('{{table}}-edit', '#!{{name}}.controller.save');
         $this->ruleset('edit')->send($form->name);
 
 {{select_options}}
