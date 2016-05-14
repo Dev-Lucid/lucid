@@ -28,8 +28,6 @@
       "dev-lucid/router": "^2.0",
       "dev-lucid/response": "^1.1",
       "dev-lucid/metabase": "^1.0",
-      "dev-lucid/i18n": "^1.0",
-      "dev-lucid/permission": "^1.0",
       "dev-lucid/html": "^1.0",
       "leafo/scssphp": "^0.6.3",
       "henrikbjorn/lurker": "^1.1.0",
