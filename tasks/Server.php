@@ -26,7 +26,7 @@ class Server extends Task implements TaskInterface
 
         echo("Assets ready! starting servers...\nApp server: http://".$this->config['host'].":".$this->config['port']."\nDoc server: http://".$this->config['host'].":".$this->config['docs-port']." \n----------------------------------------------------------\n");
 
-        $cmd_server  = "touch debug.log; export APP_STAGE=".$this->config['stage']."; php -S ".$this->config['host'].":".$this->config['port']." -t web > /dev/null 2>&1";
+        $cmd_server  = "touch debug.log; export APP_STAGE=".$this->config['stage']."; php -S ".$this->config['host'].":".$this->config['port']." -t public config/rewrite.php > /dev/null 2>&1";
         $cmd_docs_server  = "php -S ".$this->config['host'].":".$this->config['docs-port']." -t docs > /dev/null 2>&1";
         $cmd_watcher = "php ./bin/watcher.php";
         $cmd_logs    = "tail -n 0 -f ./debug.log | cut -c 76-10000";

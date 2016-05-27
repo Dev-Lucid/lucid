@@ -28,7 +28,7 @@
       "dev-lucid/router": "^2.0",
       "dev-lucid/response": "^1.1",
       "dev-lucid/metabase": "^1.0",
-      "dev-lucid/html": "^1.0",
+      "dev-lucid/html": "^2.0",
       "leafo/scssphp": "^0.6.3",
       "henrikbjorn/lurker": "^1.1.0",
       "erusev/parsedown": "^1.6.0",

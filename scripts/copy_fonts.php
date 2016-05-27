@@ -7,7 +7,7 @@ $lucidScriptPath = __DIR__;
 
 
 $src = ROOT_PATH.'/vendor/fortawesome/font-awesome/fonts/';
-$dst = ROOT_PATH.'/web/fonts/';
+$dst = ROOT_PATH.'/public/fonts/';
 $files = glob($src.'/*.*');
 
 echo("Copying fonts...\n");

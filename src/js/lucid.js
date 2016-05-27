@@ -1,6 +1,5 @@
 var lucid = {
     'defaultRequest': '',
-    'entryUrl':'actions.php',
     'stage':'development',
     'lastFormSubmit':'',
     'formDisabledSubmitButtons':{},
@@ -48,13 +47,13 @@ lucid.request=function(url, data, callback){
     url = String(url);
     url = url.substr(2,url.length);
     var parts = url.split('|');
-    data.action = parts.shift();
+    actionUrl = '/'  + String(parts.shift());
     while(parts.length > 0){
         data[parts.shift()] = parts.shift();
     }
 
-    console.log('Sending request to '+lucid.entryUrl+'?action='+data.action);
-    jQuery.ajax(lucid.entryUrl,{
+    console.log('Sending request to '+actionUrl);
+    jQuery.ajax(actionUrl,{
         'cache':false,
         'data':data,
         'dataType':'json',
