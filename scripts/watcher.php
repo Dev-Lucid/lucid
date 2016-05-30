@@ -14,7 +14,7 @@ $watcher = new ResourceWatcher;
 
 $scssEvent = function (FilesystemEvent $event) {
     $cmd = ' php bin/lucid.php compile-sass';
-    lucid::$app->logger()->info('Recompiling scss: '.$cmd);
+    app('logger')->info('Recompiling scss: '.$cmd);
     shell_exec($cmd);
 };
 for ($i=0; $i < count($scssConfig['importPaths']); $i++) {
@@ -24,7 +24,7 @@ for ($i=0; $i < count($scssConfig['importPaths']); $i++) {
 
 $jsEvent = function (FilesystemEvent $event) {
     $cmd = 'php bin/lucid.php compile-javascript';
-    lucid::$app->logger()->info('Recompiling javascript: '.$cmd);
+    app('logger')->info('Recompiling javascript: '.$cmd);
     shell_exec($cmd);
 };
 $jsPaths = array_keys($jsConfig['include']);
@@ -38,7 +38,7 @@ $docsEvent = function (FilesystemEvent $event) {
     $fileInfo = pathinfo($event->getResource());
     if ($fileInfo['extension'] != 'pdf') {
         $cmd = 'php bin/lucid.php build-docs';
-        lucid::$app->logger()->info('Building docs: '.$cmd);
+        app('logger')->info('Building docs: '.$cmd);
         shell_exec($cmd);
     }
 };

@@ -57,12 +57,15 @@ lucid.ruleset.showErrors=function(name,errors){
     }
     jQuery('#'+formErrorId +' > p').html(lucid.ruleset.buildErrorHtml(errors));
     jQuery('#'+formErrorId).fadeIn(300);
-}
+};
 
 lucid.ruleset.clearErrors=function(form){
     var formErrorId = jQuery(form).attr('name')+'-errors';
-    jQuery('#'+formErrorId).hide();
-}
+    var errorArea = jQuery('#'+formErrorId);
+    if (errorArea){
+        errorArea.hide();
+    }
+};
 
 lucid.ruleset.buildErrorHtml =function(errors){
     if(lucid.ruleset.mode == 'single-categorized'){

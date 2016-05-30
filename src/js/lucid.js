@@ -14,9 +14,10 @@ lucid.setDefaultRequest=function(url){
 
 lucid.init=function(){
     $(window).bind( 'hashchange', function(e) {
-        if (window.location.hash != '' && window.location.hash != lucid.currentView){
-            lucid.currentView = window.location.hash;
-            lucid.request(window.location.hash);
+        if (window.location.hash != lucid.currentView){
+            var newHash = (window.location.hash == '')?lucid.defaultRequest:window.location.hash;
+            lucid.currentView = newHash;
+            lucid.request(newHash);
         }
     });
     lucid.request((window.location.hash == '')?lucid.defaultRequest:window.location.hash);
@@ -39,15 +40,17 @@ lucid.callHandlers=function(action, parameters){
 
 lucid.request=function(url, data, callback){
     if(url === ''){
-        return;
+        url = lucid.defaultRequest;
     }
     if(typeof(data) != 'object'){
         data = {};
     }
     url = String(url);
-    url = url.substr(2,url.length);
+    if (url.substring(0,2) === '#!'){
+        url = '/' + url.substr(2,url.length);
+    }
     var parts = url.split('|');
-    actionUrl = '/'  + String(parts.shift());
+    actionUrl = String(parts.shift());
     while(parts.length > 0){
         data[parts.shift()] = parts.shift();
     }
@@ -68,12 +71,14 @@ lucid.request=function(url, data, callback){
 };
 
 lucid.submit=function(form){
+    console.log('preparing to submit:');
     $form = jQuery(form);
     var data = lucid.getFormValues(form);
     lucid.ruleset.clearErrors(form);
     var result = lucid.ruleset.process($form.attr('name'), data);
-
+    
     if (result === true){
+        console.log('here, getting ready to submit to '+$form.attr('action'));
         data.__form_name = $form.attr('name');
         submitButtons = $form.find('input[type=submit],button[type=submit]');
 
@@ -196,7 +201,6 @@ lucid.handleResponse=function(xhr, statusCode){
     }
     lucid.callHandlers('post-handleResponse', {'jqxhr':xhr, 'statusCode':statusCode});
 };
-
 
 lucid.updateHash=function(newHash){
     lucid.currentView = newHash;
